@@ -1,104 +1,143 @@
-import { MongoClient } from 'mongodb'
-import { v4 as uuidv4 } from 'uuid'
 import { NextResponse } from 'next/server'
+import puppeteer from 'puppeteer'
 
-// MongoDB connection
-let client
-let db
-
-async function connectToMongo() {
-  if (!client) {
-    client = new MongoClient(process.env.MONGO_URL)
-    await client.connect()
-    db = client.db(process.env.DB_NAME)
+const MACBOOK_MODELS = [
+  {
+    model: 'MacBook Pro 16"',
+    configuration: 'M3 Max, 36GB RAM, 1TB SSD',
+    id: 'm3-max-36-1tb'
+  },
+  {
+    model: 'MacBook Pro 16"',
+    configuration: 'M4 Pro, 24GB RAM, 512GB SSD',
+    id: 'm4-pro-24-512gb'
+  },
+  {
+    model: 'MacBook Pro 16"',
+    configuration: 'M4 Max, 36GB RAM, 1TB SSD',
+    id: 'm4-max-36-1tb'
+  },
+  {
+    model: 'MacBook Pro 16"',
+    configuration: 'M4 Max, 48GB RAM, 1TB SSD',
+    id: 'm4-max-48-1tb'
   }
-  return db
-}
+]
 
-// Helper function to handle CORS
-function handleCORS(response) {
-  response.headers.set('Access-Control-Allow-Origin', process.env.CORS_ORIGINS || '*')
-  response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-  response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-  response.headers.set('Access-Control-Allow-Credentials', 'true')
-  return response
-}
-
-// OPTIONS handler for CORS
-export async function OPTIONS() {
-  return handleCORS(new NextResponse(null, { status: 200 }))
-}
-
-// Route handler function
-async function handleRoute(request, { params }) {
-  const { path = [] } = params
-  const route = `/${path.join('/')}`
-  const method = request.method
-
+async function getExchangeRate() {
   try {
-    const db = await connectToMongo()
+    const response = await fetch('https://api.exchangerate-api.com/v4/latest/INR')
+    const data = await response.json()
+    return data.rates.VND || 300
+  } catch (error) {
+    console.error('Exchange rate fetch error:', error)
+    return 300
+  }
+}
 
-    // Root endpoint - GET /api/root (since /api/ is not accessible with catch-all)
-    if (route === '/root' && method === 'GET') {
-      return handleCORS(NextResponse.json({ message: "Hello World" }))
+function getMockPriceData() {
+  return [
+    {
+      model: 'MacBook Pro 16"',
+      configuration: 'M3 Max, 36GB RAM, 1TB SSD',
+      vndPrice: 73990000,
+      available: true,
+      id: 'm3-max-36-1tb'
+    },
+    {
+      model: 'MacBook Pro 16"',
+      configuration: 'M4 Pro, 24GB RAM, 512GB SSD',
+      vndPrice: 64990000,
+      available: true,
+      id: 'm4-pro-24-512gb'
+    },
+    {
+      model: 'MacBook Pro 16"',
+      configuration: 'M4 Max, 36GB RAM, 1TB SSD',
+      vndPrice: 79990000,
+      available: true,
+      id: 'm4-max-36-1tb'
+    },
+    {
+      model: 'MacBook Pro 16"',
+      configuration: 'M4 Max, 48GB RAM, 1TB SSD',
+      vndPrice: 94990000,
+      available: false,
+      id: 'm4-max-48-1tb'
     }
-    // Root endpoint - GET /api/root (since /api/ is not accessible with catch-all)
-    if (route === '/' && method === 'GET') {
-      return handleCORS(NextResponse.json({ message: "Hello World" }))
-    }
+  ]
+}
 
-    // Status endpoints - POST /api/status
-    if (route === '/status' && method === 'POST') {
-      const body = await request.json()
-      
-      if (!body.client_name) {
-        return handleCORS(NextResponse.json(
-          { error: "client_name is required" }, 
-          { status: 400 }
-        ))
+function calculatePrices(priceData, exchangeRate) {
+  return priceData.map(item => {
+    if (!item.vndPrice) {
+      return {
+        ...item,
+        inrPrice: null,
+        vatRefund: null,
+        finalPrice: null
       }
-
-      const statusObj = {
-        id: uuidv4(),
-        client_name: body.client_name,
-        timestamp: new Date()
-      }
-
-      await db.collection('status_checks').insertOne(statusObj)
-      return handleCORS(NextResponse.json(statusObj))
     }
+    
+    const inrPrice = item.vndPrice / exchangeRate
+    const vatRefund = inrPrice * 0.085
+    const finalPrice = inrPrice - vatRefund
+    
+    return {
+      ...item,
+      inrPrice: Math.round(inrPrice),
+      vatRefund: Math.round(vatRefund),
+      finalPrice: Math.round(finalPrice)
+    }
+  })
+}
 
-    // Status endpoints - GET /api/status
-    if (route === '/status' && method === 'GET') {
-      const statusChecks = await db.collection('status_checks')
-        .find({})
-        .limit(1000)
-        .toArray()
-
-      // Remove MongoDB's _id field from response
-      const cleanedStatusChecks = statusChecks.map(({ _id, ...rest }) => rest)
+export async function GET(request) {
+  try {
+    const { pathname } = new URL(request.url)
+    
+    if (pathname.includes('/api/macbook-prices')) {
+      console.log('Fetching MacBook prices...')
       
-      return handleCORS(NextResponse.json(cleanedStatusChecks))
+      const exchangeRate = await getExchangeRate()
+      console.log('Exchange rate (INR to VND):', exchangeRate)
+      
+      // Using mock data for now - will implement scraper next
+      const priceData = getMockPriceData()
+      
+      const finalPrices = calculatePrices(priceData, exchangeRate)
+      
+      return NextResponse.json({
+        success: true,
+        prices: finalPrices,
+        exchangeRate: exchangeRate,
+        timestamp: new Date().toISOString(),
+        source: 'Mock Data (FPT Shop Vietnam)'
+      })
     }
-
-    // Route not found
-    return handleCORS(NextResponse.json(
-      { error: `Route ${route} not found` }, 
-      { status: 404 }
-    ))
-
+    
+    if (pathname.includes('/api/health')) {
+      return NextResponse.json({
+        status: 'healthy',
+        timestamp: new Date().toISOString()
+      })
+    }
+    
+    return NextResponse.json({ error: 'Endpoint not found' }, { status: 404 })
+    
   } catch (error) {
     console.error('API Error:', error)
-    return handleCORS(NextResponse.json(
-      { error: "Internal server error" }, 
+    return NextResponse.json(
+      { 
+        success: false, 
+        error: error.message,
+        timestamp: new Date().toISOString()
+      }, 
       { status: 500 }
-    ))
+    )
   }
 }
 
-// Export all HTTP methods
-export const GET = handleRoute
-export const POST = handleRoute
-export const PUT = handleRoute
-export const DELETE = handleRoute
-export const PATCH = handleRoute
+export async function POST(request) {
+  return NextResponse.json({ error: 'Method not allowed' }, { status: 405 })
+}
