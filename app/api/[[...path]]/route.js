@@ -3,23 +3,6 @@ import { NextResponse } from "next/server";
 // Get all marketplace prices with realistic Vietnamese market prices (Oct 2025)
 function getMarketplacePrices() {
   const baseProducts = [
-    // M4 Models
-    {
-      model: 'MacBook Pro 16"',
-      category: "M4",
-      configuration: "M4, 10-core CPU, 10-core GPU, 16GB, 512GB",
-      id: "m4-base-16-512gb",
-      vndPrice: 42990000,
-      available: true,
-    },
-    {
-      model: 'MacBook Pro 16"',
-      category: "M4",
-      configuration: "M4, 10-core CPU, 10-core GPU, 24GB, 1TB",
-      id: "m4-top-24-1tb",
-      vndPrice: 51990000,
-      available: true,
-    },
     // M4 Pro Models
     {
       model: 'MacBook Pro 16"',
