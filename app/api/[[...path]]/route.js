@@ -36,33 +36,35 @@ async function getExchangeRate() {
 }
 
 function getMockPriceData() {
+  // Realistic pricing based on Apple's official 2025 pricing converted to VND
+  // Base M4 Pro starts at $2,499 USD ≈ 63M VND
   return [
     {
       model: 'MacBook Pro 16"',
       configuration: 'M3 Max, 36GB RAM, 1TB SSD',
-      vndPrice: 73990000,
+      vndPrice: 89990000, // ~$3,600 USD (Previous gen, premium config)
       available: true,
       id: 'm3-max-36-1tb'
     },
     {
       model: 'MacBook Pro 16"',
       configuration: 'M4 Pro, 24GB RAM, 512GB SSD',
-      vndPrice: 64990000,
+      vndPrice: 74990000, // ~$2,999 USD (Current gen, mid-tier)
       available: true,
       id: 'm4-pro-24-512gb'
     },
     {
       model: 'MacBook Pro 16"',
       configuration: 'M4 Max, 36GB RAM, 1TB SSD',
-      vndPrice: 79990000,
+      vndPrice: 99990000, // ~$4,000 USD (Current gen, high-end)
       available: true,
       id: 'm4-max-36-1tb'
     },
     {
       model: 'MacBook Pro 16"',
       configuration: 'M4 Max, 48GB RAM, 1TB SSD',
-      vndPrice: 94990000,
-      available: false,
+      vndPrice: 124990000, // ~$5,000 USD (Top-tier config)
+      available: true, // Changed to available
       id: 'm4-max-48-1tb'
     }
   ]
