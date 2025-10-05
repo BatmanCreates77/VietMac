@@ -24,46 +24,73 @@ const MACBOOK_MODELS = [
   }
 ]
 
-async function getExchangeRate() {
+async function getExchangeRateFromWise() {
+  // Try to fetch from Wise's currency converter page
   try {
-    // Try to fetch from Wise's public API or currency converter
-    // Note: Wise doesn't have a public unauthenticated API, so we'll try multiple approaches
+    const response = await fetch('https://wise.com/in/currency-converter/inr-to-vnd-rate', {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.5',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Connection': 'keep-alive',
+        'Upgrade-Insecure-Requests': '1'
+      }
+    })
     
-    // Method 1: Try Wise's internal API (sometimes accessible)
-    try {
-      const wiseResponse = await fetch('https://api.wise.com/v1/rates?source=INR&target=VND', {
-        headers: {
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-        }
-      })
+    if (response.ok) {
+      const html = await response.text()
       
-      if (wiseResponse.ok) {
-        const wiseData = await wiseResponse.json()
-        if (wiseData.rate) {
-          console.log('✅ Fetched rate from Wise API:', wiseData.rate)
-          return wiseData.rate
+      // Try to extract rate from HTML - Wise often embeds it in JSON or meta tags
+      const ratePatterns = [
+        /"rate"\\s*:\\s*([\\d.]+)/,
+        /"exchangeRate"\\s*:\\s*([\\d.]+)/,
+        /data-rate="([\\d.]+)"/,
+        /exchange-rate[^>]*>([\\d.,]+)/i,
+        /1\\s*INR\\s*=\\s*([\\d.,]+)\\s*VND/i
+      ]
+      
+      for (const pattern of ratePatterns) {
+        const match = html.match(pattern)
+        if (match && match[1]) {
+          const rate = parseFloat(match[1].replace(/,/g, ''))
+          if (rate > 200 && rate < 400) { // Sanity check for INR to VND range
+            console.log('✅ Fetched rate from Wise page:', rate)
+            return rate
+          }
         }
       }
-    } catch (wiseError) {
-      console.log('Wise API not accessible, trying alternatives...')
+    }
+  } catch (error) {
+    console.log('Failed to fetch from Wise page:', error.message)
+  }
+  
+  return null
+}
+
+async function getExchangeRate() {
+  try {
+    // Method 1: Try Wise's currency converter page
+    const wiseRate = await getExchangeRateFromWise()
+    if (wiseRate) {
+      return wiseRate
     }
     
-    // Method 2: Fallback to exchangerate-api.com (free tier)
+    // Method 2: Fallback to exchangerate-api.com (reliable free tier)
     const response = await fetch('https://api.exchangerate-api.com/v4/latest/INR')
     const data = await response.json()
     const rate = data.rates.VND
     
     if (rate) {
-      console.log('✅ Fetched rate from ExchangeRate-API:', rate)
+      console.log('✅ Fetched rate from ExchangeRate-API (fallback):', rate)
       return rate
     }
     
-    // Method 3: Fallback rate
     throw new Error('No rate available from any source')
     
   } catch (error) {
     console.error('Exchange rate fetch error:', error)
-    // Realistic fallback rate (approximate current INR to VND)
+    // Realistic fallback rate based on current market
     console.log('📍 Using fallback rate: 298')
     return 298
   }
