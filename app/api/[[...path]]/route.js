@@ -25,7 +25,6 @@ const MACBOOK_MODELS = [
 ]
 
 async function getExchangeRateFromWise() {
-  // Try to fetch from Wise's currency converter page
   try {
     const response = await fetch('https://wise.com/in/currency-converter/inr-to-vnd-rate', {
       headers: {
@@ -38,39 +37,29 @@ async function getExchangeRateFromWise() {
     
     if (response.ok) {
       const html = await response.text()
-      console.log('📡 Fetched Wise page, parsing...')
+      console.log('📡 Fetched Wise page, parsing for rate...')
       
-      // Enhanced patterns to extract rate from Wise HTML
-      const ratePatterns = [
-        // Direct rate display pattern like "₹1 INR = 297.2 VND"
-        /₹1\s*INR\s*=\s*([\d.,]+)\s*VND/i,
-        // Pattern in span with dir="ltr"  
-        /<span[^>]*dir="ltr"[^>]*>.*?₹1\s*INR\s*=\s*([\d.,]+)\s*VND.*?<\/span>/i,
-        // JSON rate pattern
-        /"rate"\s*:\s*([\d.]+)/,
-        // Alternative JSON patterns
-        /"exchangeRate"\s*:\s*([\d.]+)/,
-        /"midMarketRate"\s*:\s*([\d.]+)/,
-        // Data attribute patterns
-        /data-rate="([\d.]+)"/,
-        // Generic INR to VND patterns  
-        /1\s*INR\s*=\s*([\d.,]+)\s*VND/i,
-        /INR\s*=\s*([\d.,]+)\s*VND/i
-      ]
-      
-      for (const pattern of ratePatterns) {
-        const match = html.match(pattern)
-        if (match && match[1]) {
-          const rateStr = match[1].replace(/,/g, '')
-          const rate = parseFloat(rateStr)
-          if (rate > 250 && rate < 350) { // Reasonable range for INR to VND
-            console.log('✅ Successfully extracted rate from Wise:', rate)
-            return rate
-          }
+      // Simple string search for the rate pattern we saw: ₹1 INR = 297.2 VND
+      const rateMatch = html.match(/₹1\s*INR\s*=\s*([\d.,]+)\s*VND/i)
+      if (rateMatch && rateMatch[1]) {
+        const rate = parseFloat(rateMatch[1].replace(/,/g, ''))
+        if (rate > 250 && rate < 350) {
+          console.log('✅ Successfully extracted rate from Wise:', rate)
+          return rate
         }
       }
       
-      console.log('⚠️ Could not find rate in Wise HTML with current patterns')
+      // Fallback: look for JSON data with rate
+      const jsonMatch = html.match(/"rate"\s*:\s*([\d.]+)/)
+      if (jsonMatch && jsonMatch[1]) {
+        const rate = parseFloat(jsonMatch[1])
+        if (rate > 250 && rate < 350) {
+          console.log('✅ Successfully extracted rate from Wise JSON:', rate)
+          return rate
+        }
+      }
+      
+      console.log('⚠️ Could not find rate in Wise HTML')
     } else {
       console.log('❌ Wise page request failed:', response.status)
     }
