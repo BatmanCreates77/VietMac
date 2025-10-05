@@ -29,7 +29,7 @@ const allColumns = [
   "INR Price",
   "VAT Refund",
   "Final Price",
-] as const;
+];
 
 function MacBookPricesTable({ data }) {
   const [visibleColumns, setVisibleColumns] = useState([...allColumns]);
@@ -38,16 +38,16 @@ function MacBookPricesTable({ data }) {
 
   const filteredData = data.filter((item) => {
     return (
-      (!categoryFilter || item.category.toLowerCase().includes(categoryFilter.toLowerCase())) &&
-      (!shopFilter || item.shop.toLowerCase().includes(shopFilter.toLowerCase()))
+      (!categoryFilter ||
+        item.category.toLowerCase().includes(categoryFilter.toLowerCase())) &&
+      (!shopFilter ||
+        item.shop.toLowerCase().includes(shopFilter.toLowerCase()))
     );
   });
 
   const toggleColumn = (col) => {
     setVisibleColumns((prev) =>
-      prev.includes(col)
-        ? prev.filter((c) => c !== col)
-        : [...prev, col]
+      prev.includes(col) ? prev.filter((c) => c !== col) : [...prev, col],
     );
   };
 
@@ -92,14 +92,30 @@ function MacBookPricesTable({ data }) {
       <Table className="w-full">
         <TableHeader>
           <TableRow>
-            {visibleColumns.includes("Shop") && <TableHead className="w-[150px]">Shop</TableHead>}
-            {visibleColumns.includes("Model") && <TableHead className="w-[180px]">Model</TableHead>}
-            {visibleColumns.includes("Configuration") && <TableHead className="w-[300px]">Configuration</TableHead>}
-            {visibleColumns.includes("Category") && <TableHead className="w-[120px]">Category</TableHead>}
-            {visibleColumns.includes("VND Price") && <TableHead className="w-[130px]">VND Price</TableHead>}
-            {visibleColumns.includes("INR Price") && <TableHead className="w-[130px]">INR Price</TableHead>}
-            {visibleColumns.includes("VAT Refund") && <TableHead className="w-[130px]">VAT Refund</TableHead>}
-            {visibleColumns.includes("Final Price") && <TableHead className="w-[130px]">Final Price</TableHead>}
+            {visibleColumns.includes("Shop") && (
+              <TableHead className="w-[150px]">Shop</TableHead>
+            )}
+            {visibleColumns.includes("Model") && (
+              <TableHead className="w-[180px]">Model</TableHead>
+            )}
+            {visibleColumns.includes("Configuration") && (
+              <TableHead className="w-[300px]">Configuration</TableHead>
+            )}
+            {visibleColumns.includes("Category") && (
+              <TableHead className="w-[120px]">Category</TableHead>
+            )}
+            {visibleColumns.includes("VND Price") && (
+              <TableHead className="w-[130px]">VND Price</TableHead>
+            )}
+            {visibleColumns.includes("INR Price") && (
+              <TableHead className="w-[130px]">INR Price</TableHead>
+            )}
+            {visibleColumns.includes("VAT Refund") && (
+              <TableHead className="w-[130px]">VAT Refund</TableHead>
+            )}
+            {visibleColumns.includes("Final Price") && (
+              <TableHead className="w-[130px]">Final Price</TableHead>
+            )}
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -114,7 +130,8 @@ function MacBookPricesTable({ data }) {
                         item.shop === "FPT Shop" && "bg-blue-500 text-white",
                         item.shop === "ShopDunk" && "bg-purple-500 text-white",
                         item.shop === "TopZone" && "bg-green-500 text-white",
-                        item.shop === "CellphoneS" && "bg-orange-500 text-white",
+                        item.shop === "CellphoneS" &&
+                          "bg-orange-500 text-white",
                       )}
                     >
                       {item.shop}
@@ -122,10 +139,14 @@ function MacBookPricesTable({ data }) {
                   </TableCell>
                 )}
                 {visibleColumns.includes("Model") && (
-                  <TableCell className="font-medium whitespace-nowrap">{item.model}</TableCell>
+                  <TableCell className="font-medium whitespace-nowrap">
+                    {item.model}
+                  </TableCell>
                 )}
                 {visibleColumns.includes("Configuration") && (
-                  <TableCell className="whitespace-nowrap text-xs">{item.configuration}</TableCell>
+                  <TableCell className="whitespace-nowrap text-xs">
+                    {item.configuration}
+                  </TableCell>
                 )}
                 {visibleColumns.includes("Category") && (
                   <TableCell className="whitespace-nowrap">
@@ -156,7 +177,10 @@ function MacBookPricesTable({ data }) {
             ))
           ) : (
             <TableRow>
-              <TableCell colSpan={visibleColumns.length} className="text-center py-6">
+              <TableCell
+                colSpan={visibleColumns.length}
+                className="text-center py-6"
+              >
                 No results found.
               </TableCell>
             </TableRow>
