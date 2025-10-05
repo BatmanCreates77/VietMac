@@ -70,6 +70,20 @@ function MacBookPricesTable({ data }) {
 
   const filteredData = filterAndSortData();
 
+  // Find min and max final prices
+  const finalPrices = filteredData
+    .map((item) => item.finalPrice)
+    .filter((price) => price != null);
+  const minPrice = Math.min(...finalPrices);
+  const maxPrice = Math.max(...finalPrices);
+
+  const getPriceHighlightClass = (finalPrice) => {
+    if (!finalPrice || finalPrices.length === 0) return "";
+    if (finalPrice === minPrice) return "bg-green-50";
+    if (finalPrice === maxPrice) return "bg-red-50";
+    return "";
+  };
+
   const toggleColumn = (col) => {
     setVisibleColumns((prev) =>
       prev.includes(col) ? prev.filter((c) => c !== col) : [...prev, col],
@@ -176,7 +190,10 @@ function MacBookPricesTable({ data }) {
             filteredData.map((item, idx) => (
               <div
                 key={`${item.shop}-${item.id}-${idx}`}
-                className="border rounded-lg p-4 bg-white space-y-3"
+                className={cn(
+                  "border rounded-lg p-4 space-y-3",
+                  getPriceHighlightClass(item.finalPrice) || "bg-white",
+                )}
               >
                 <div className="flex justify-between items-start">
                   <div className="flex flex-col gap-2">
@@ -272,7 +289,10 @@ function MacBookPricesTable({ data }) {
           <TableBody>
             {filteredData.length ? (
               filteredData.map((item, idx) => (
-                <TableRow key={`${item.shop}-${item.id}-${idx}`}>
+                <TableRow
+                  key={`${item.shop}-${item.id}-${idx}`}
+                  className={cn(getPriceHighlightClass(item.finalPrice))}
+                >
                   {visibleColumns.includes("Shop") && (
                     <TableCell className="font-medium whitespace-nowrap">
                       <Badge
