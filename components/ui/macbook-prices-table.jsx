@@ -33,17 +33,31 @@ const allColumns = [
 
 function MacBookPricesTable({ data }) {
   const [visibleColumns, setVisibleColumns] = useState([...allColumns]);
-  const [categoryFilter, setCategoryFilter] = useState("");
-  const [shopFilter, setShopFilter] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [sortOrder, setSortOrder] = useState("default");
 
-  const filteredData = data.filter((item) => {
-    return (
-      (!categoryFilter ||
-        item.category.toLowerCase().includes(categoryFilter.toLowerCase())) &&
-      (!shopFilter ||
-        item.shop.toLowerCase().includes(shopFilter.toLowerCase()))
-    );
-  });
+  const categories = ["All", "M4 Pro", "M4 Max", "M3 Max"];
+
+  const filterAndSortData = () => {
+    let filtered =
+      selectedCategory === "All"
+        ? data
+        : data.filter((item) => item.category === selectedCategory);
+
+    if (sortOrder === "low-to-high") {
+      filtered = [...filtered].sort(
+        (a, b) => (a.finalPrice || 0) - (b.finalPrice || 0),
+      );
+    } else if (sortOrder === "high-to-low") {
+      filtered = [...filtered].sort(
+        (a, b) => (b.finalPrice || 0) - (a.finalPrice || 0),
+      );
+    }
+
+    return filtered;
+  };
+
+  const filteredData = filterAndSortData();
 
   const toggleColumn = (col) => {
     setVisibleColumns((prev) =>
@@ -53,22 +67,77 @@ function MacBookPricesTable({ data }) {
 
   return (
     <div className="container my-10 space-y-4 p-4 border border-border rounded-lg bg-background shadow-sm overflow-x-auto">
-      <div className="flex flex-wrap gap-4 items-center justify-between mb-6">
-        <div className="flex gap-2 flex-wrap">
-          <Input
-            placeholder="Filter by shop..."
-            value={shopFilter}
-            onChange={(e) => setShopFilter(e.target.value)}
-            className="w-48"
-          />
-          <Input
-            placeholder="Filter by category..."
-            value={categoryFilter}
-            onChange={(e) => setCategoryFilter(e.target.value)}
-            className="w-48"
-          />
+      <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between mb-6">
+        {/* Category Filter Buttons */}
+        <div className="flex flex-col gap-2 w-full md:w-auto">
+          <div className="text-sm font-semibold text-gray-700">
+            Filter by Chip:
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {categories.map((category) => (
+              <Button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                size="sm"
+                variant={selectedCategory === category ? "default" : "outline"}
+                className={
+                  selectedCategory === category
+                    ? "bg-indigo-600 hover:bg-indigo-700"
+                    : ""
+                }
+              >
+                {category}
+              </Button>
+            ))}
+          </div>
         </div>
 
+        {/* Sort Buttons */}
+        <div className="flex flex-col gap-2 w-full md:w-auto">
+          <div className="text-sm font-semibold text-gray-700">
+            Sort by Price:
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <Button
+              onClick={() => setSortOrder("default")}
+              size="sm"
+              variant={sortOrder === "default" ? "default" : "outline"}
+              className={
+                sortOrder === "default"
+                  ? "bg-indigo-600 hover:bg-indigo-700"
+                  : ""
+              }
+            >
+              Default
+            </Button>
+            <Button
+              onClick={() => setSortOrder("low-to-high")}
+              size="sm"
+              variant={sortOrder === "low-to-high" ? "default" : "outline"}
+              className={
+                sortOrder === "low-to-high"
+                  ? "bg-indigo-600 hover:bg-indigo-700"
+                  : ""
+              }
+            >
+              Low to High
+            </Button>
+            <Button
+              onClick={() => setSortOrder("high-to-low")}
+              size="sm"
+              variant={sortOrder === "high-to-low" ? "default" : "outline"}
+              className={
+                sortOrder === "high-to-low"
+                  ? "bg-indigo-600 hover:bg-indigo-700"
+                  : ""
+              }
+            >
+              High to Low
+            </Button>
+          </div>
+        </div>
+
+        {/* Column Visibility Toggle */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" size="sm">
