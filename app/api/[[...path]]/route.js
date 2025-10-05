@@ -44,8 +44,8 @@ async function getExchangeRateFromWise() {
       const ratePatterns = [
         // Direct rate display pattern like "₹1 INR = 297.2 VND"
         /₹1\s*INR\s*=\s*([\d.,]+)\s*VND/i,
-        // Pattern in span with dir="ltr"
-        /<span dir="ltr"[^>]*>.*?₹1\s*INR\s*=\s*([\d.,]+)\s*VND.*?<\/span>/i,
+        // Pattern in span with dir="ltr"  
+        /<span[^>]*dir="ltr"[^>]*>.*?₹1\s*INR\s*=\s*([\d.,]+)\s*VND.*?<\/span>/i,
         // JSON rate pattern
         /"rate"\s*:\s*([\d.]+)/,
         // Alternative JSON patterns
@@ -53,7 +53,7 @@ async function getExchangeRateFromWise() {
         /"midMarketRate"\s*:\s*([\d.]+)/,
         // Data attribute patterns
         /data-rate="([\d.]+)"/,
-        // Generic INR to VND patterns
+        // Generic INR to VND patterns  
         /1\s*INR\s*=\s*([\d.,]+)\s*VND/i,
         /INR\s*=\s*([\d.,]+)\s*VND/i
       ]
