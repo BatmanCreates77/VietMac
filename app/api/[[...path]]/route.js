@@ -114,7 +114,7 @@ export async function GET(request) {
         prices: finalPrices,
         exchangeRate: exchangeRate,
         timestamp: new Date().toISOString(),
-        source: 'Mock Data (FPT Shop Vietnam)'
+        source: 'Estimated Pricing (Based on Apple Official Rates + Vietnam Market)'
       })
     }
     
