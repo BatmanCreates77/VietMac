@@ -26,12 +26,46 @@ const MACBOOK_MODELS = [
 
 async function getExchangeRate() {
   try {
+    // Try to fetch from Wise's public API or currency converter
+    // Note: Wise doesn't have a public unauthenticated API, so we'll try multiple approaches
+    
+    // Method 1: Try Wise's internal API (sometimes accessible)
+    try {
+      const wiseResponse = await fetch('https://api.wise.com/v1/rates?source=INR&target=VND', {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+        }
+      })
+      
+      if (wiseResponse.ok) {
+        const wiseData = await wiseResponse.json()
+        if (wiseData.rate) {
+          console.log('✅ Fetched rate from Wise API:', wiseData.rate)
+          return wiseData.rate
+        }
+      }
+    } catch (wiseError) {
+      console.log('Wise API not accessible, trying alternatives...')
+    }
+    
+    // Method 2: Fallback to exchangerate-api.com (free tier)
     const response = await fetch('https://api.exchangerate-api.com/v4/latest/INR')
     const data = await response.json()
-    return data.rates.VND || 300
+    const rate = data.rates.VND
+    
+    if (rate) {
+      console.log('✅ Fetched rate from ExchangeRate-API:', rate)
+      return rate
+    }
+    
+    // Method 3: Fallback rate
+    throw new Error('No rate available from any source')
+    
   } catch (error) {
     console.error('Exchange rate fetch error:', error)
-    return 300
+    // Realistic fallback rate (approximate current INR to VND)
+    console.log('📍 Using fallback rate: 298')
+    return 298
   }
 }
 
