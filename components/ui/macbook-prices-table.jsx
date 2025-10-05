@@ -18,7 +18,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const allColumns = [
   "Shop",
@@ -35,8 +35,19 @@ function MacBookPricesTable({ data }) {
   const [visibleColumns, setVisibleColumns] = useState([...allColumns]);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [sortOrder, setSortOrder] = useState("default");
+  const [isMobile, setIsMobile] = useState(false);
 
   const categories = ["All", "M4 Pro", "M4 Max", "M3 Max"];
+
+  // Detect mobile screen size
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const filterAndSortData = () => {
     let filtered =
@@ -158,44 +169,20 @@ function MacBookPricesTable({ data }) {
         </DropdownMenu>
       </div>
 
-      <Table className="w-full">
-        <TableHeader>
-          <TableRow>
-            {visibleColumns.includes("Shop") && (
-              <TableHead className="w-[150px]">Shop</TableHead>
-            )}
-            {visibleColumns.includes("Model") && (
-              <TableHead className="w-[180px]">Model</TableHead>
-            )}
-            {visibleColumns.includes("Configuration") && (
-              <TableHead className="w-[300px]">Configuration</TableHead>
-            )}
-            {visibleColumns.includes("Category") && (
-              <TableHead className="w-[120px]">Category</TableHead>
-            )}
-            {visibleColumns.includes("VND Price") && (
-              <TableHead className="w-[130px]">VND Price</TableHead>
-            )}
-            {visibleColumns.includes("INR Price") && (
-              <TableHead className="w-[130px]">INR Price</TableHead>
-            )}
-            {visibleColumns.includes("VAT Refund") && (
-              <TableHead className="w-[130px]">VAT Refund</TableHead>
-            )}
-            {visibleColumns.includes("Final Price") && (
-              <TableHead className="w-[130px]">Final Price</TableHead>
-            )}
-          </TableRow>
-        </TableHeader>
-        <TableBody>
+      {/* Mobile Card View */}
+      {isMobile ? (
+        <div className="space-y-4">
           {filteredData.length ? (
             filteredData.map((item, idx) => (
-              <TableRow key={`${item.shop}-${item.id}-${idx}`}>
-                {visibleColumns.includes("Shop") && (
-                  <TableCell className="font-medium whitespace-nowrap">
+              <div
+                key={`${item.shop}-${item.id}-${idx}`}
+                className="border rounded-lg p-4 bg-white space-y-3"
+              >
+                <div className="flex justify-between items-start">
+                  <div className="flex flex-col gap-2">
                     <Badge
                       className={cn(
-                        "whitespace-nowrap",
+                        "w-fit",
                         item.shop === "FPT Shop" && "bg-blue-500 text-white",
                         item.shop === "ShopDunk" && "bg-purple-500 text-white",
                         item.shop === "TopZone" && "bg-green-500 text-white",
@@ -205,57 +192,154 @@ function MacBookPricesTable({ data }) {
                     >
                       {item.shop}
                     </Badge>
-                  </TableCell>
-                )}
-                {visibleColumns.includes("Model") && (
-                  <TableCell className="font-medium whitespace-nowrap">
-                    {item.model}
-                  </TableCell>
-                )}
-                {visibleColumns.includes("Configuration") && (
-                  <TableCell className="whitespace-nowrap text-xs">
+                    <Badge variant="outline" className="w-fit">
+                      {item.category}
+                    </Badge>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-2xl font-bold text-indigo-600">
+                      ₹{item.finalPrice?.toLocaleString() || "N/A"}
+                    </div>
+                    <div className="text-xs text-gray-500">Final Price</div>
+                  </div>
+                </div>
+
+                <div className="border-t pt-3">
+                  <div className="font-medium text-sm">{item.model}</div>
+                  <div className="text-xs text-gray-600 mt-1">
                     {item.configuration}
-                  </TableCell>
-                )}
-                {visibleColumns.includes("Category") && (
-                  <TableCell className="whitespace-nowrap">
-                    <Badge variant="outline">{item.category}</Badge>
-                  </TableCell>
-                )}
-                {visibleColumns.includes("VND Price") && (
-                  <TableCell className="whitespace-nowrap">
-                    ₫{item.vndPrice?.toLocaleString() || "N/A"}
-                  </TableCell>
-                )}
-                {visibleColumns.includes("INR Price") && (
-                  <TableCell className="whitespace-nowrap">
-                    ₹{item.inrPrice?.toLocaleString() || "N/A"}
-                  </TableCell>
-                )}
-                {visibleColumns.includes("VAT Refund") && (
-                  <TableCell className="whitespace-nowrap text-green-600">
-                    -₹{item.vatRefund?.toLocaleString() || "N/A"}
-                  </TableCell>
-                )}
-                {visibleColumns.includes("Final Price") && (
-                  <TableCell className="whitespace-nowrap font-bold text-primary">
-                    ₹{item.finalPrice?.toLocaleString() || "N/A"}
-                  </TableCell>
-                )}
-              </TableRow>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3 text-sm border-t pt-3">
+                  <div>
+                    <div className="text-gray-500 text-xs">VND Price</div>
+                    <div className="font-medium">
+                      ₫{item.vndPrice?.toLocaleString() || "N/A"}
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-gray-500 text-xs">INR Price</div>
+                    <div className="font-medium">
+                      ₹{item.inrPrice?.toLocaleString() || "N/A"}
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-gray-500 text-xs">VAT Refund</div>
+                    <div className="font-medium text-green-600">
+                      -₹{item.vatRefund?.toLocaleString() || "N/A"}
+                    </div>
+                  </div>
+                </div>
+              </div>
             ))
           ) : (
-            <TableRow>
-              <TableCell
-                colSpan={visibleColumns.length}
-                className="text-center py-6"
-              >
-                No results found.
-              </TableCell>
-            </TableRow>
+            <div className="text-center py-8 text-gray-500">
+              No results found.
+            </div>
           )}
-        </TableBody>
-      </Table>
+        </div>
+      ) : (
+        <Table className="w-full">
+          <TableHeader>
+            <TableRow>
+              {visibleColumns.includes("Shop") && (
+                <TableHead className="w-[150px]">Shop</TableHead>
+              )}
+              {visibleColumns.includes("Model") && (
+                <TableHead className="w-[180px]">Model</TableHead>
+              )}
+              {visibleColumns.includes("Configuration") && (
+                <TableHead className="w-[300px]">Configuration</TableHead>
+              )}
+              {visibleColumns.includes("Category") && (
+                <TableHead className="w-[120px]">Category</TableHead>
+              )}
+              {visibleColumns.includes("VND Price") && (
+                <TableHead className="w-[130px]">VND Price</TableHead>
+              )}
+              {visibleColumns.includes("INR Price") && (
+                <TableHead className="w-[130px]">INR Price</TableHead>
+              )}
+              {visibleColumns.includes("VAT Refund") && (
+                <TableHead className="w-[130px]">VAT Refund</TableHead>
+              )}
+              {visibleColumns.includes("Final Price") && (
+                <TableHead className="w-[130px]">Final Price</TableHead>
+              )}
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {filteredData.length ? (
+              filteredData.map((item, idx) => (
+                <TableRow key={`${item.shop}-${item.id}-${idx}`}>
+                  {visibleColumns.includes("Shop") && (
+                    <TableCell className="font-medium whitespace-nowrap">
+                      <Badge
+                        className={cn(
+                          "whitespace-nowrap",
+                          item.shop === "FPT Shop" && "bg-blue-500 text-white",
+                          item.shop === "ShopDunk" &&
+                            "bg-purple-500 text-white",
+                          item.shop === "TopZone" && "bg-green-500 text-white",
+                          item.shop === "CellphoneS" &&
+                            "bg-orange-500 text-white",
+                        )}
+                      >
+                        {item.shop}
+                      </Badge>
+                    </TableCell>
+                  )}
+                  {visibleColumns.includes("Model") && (
+                    <TableCell className="font-medium whitespace-nowrap">
+                      {item.model}
+                    </TableCell>
+                  )}
+                  {visibleColumns.includes("Configuration") && (
+                    <TableCell className="whitespace-nowrap text-xs">
+                      {item.configuration}
+                    </TableCell>
+                  )}
+                  {visibleColumns.includes("Category") && (
+                    <TableCell className="whitespace-nowrap">
+                      <Badge variant="outline">{item.category}</Badge>
+                    </TableCell>
+                  )}
+                  {visibleColumns.includes("VND Price") && (
+                    <TableCell className="whitespace-nowrap">
+                      ₫{item.vndPrice?.toLocaleString() || "N/A"}
+                    </TableCell>
+                  )}
+                  {visibleColumns.includes("INR Price") && (
+                    <TableCell className="whitespace-nowrap">
+                      ₹{item.inrPrice?.toLocaleString() || "N/A"}
+                    </TableCell>
+                  )}
+                  {visibleColumns.includes("VAT Refund") && (
+                    <TableCell className="whitespace-nowrap text-green-600">
+                      -₹{item.vatRefund?.toLocaleString() || "N/A"}
+                    </TableCell>
+                  )}
+                  {visibleColumns.includes("Final Price") && (
+                    <TableCell className="whitespace-nowrap font-bold text-primary">
+                      ₹{item.finalPrice?.toLocaleString() || "N/A"}
+                    </TableCell>
+                  )}
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell
+                  colSpan={visibleColumns.length}
+                  className="text-center py-6"
+                >
+                  No results found.
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      )}
     </div>
   );
 }
