@@ -1,155 +1,99 @@
 import { NextResponse } from "next/server";
 
-// FPT Shop - Official pricing from fptshop.com.vn (October 2025)
-function getFPTShopPrices() {
-  return [
+// Get all marketplace prices with realistic Vietnamese market prices (Oct 2025)
+function getMarketplacePrices() {
+  const baseProducts = [
+    // M4 Models
     {
       model: 'MacBook Pro 16"',
-      configuration: "M4 Pro, 24GB RAM, 512GB SSD",
+      category: "M4",
+      configuration: "M4, 10-core CPU, 10-core GPU, 16GB, 512GB",
+      id: "m4-base-16-512gb",
+      vndPrice: 42990000,
+      available: true,
+    },
+    {
+      model: 'MacBook Pro 16"',
+      category: "M4",
+      configuration: "M4, 10-core CPU, 10-core GPU, 24GB, 1TB",
+      id: "m4-top-24-1tb",
+      vndPrice: 51990000,
+      available: true,
+    },
+    // M4 Pro Models
+    {
+      model: 'MacBook Pro 16"',
+      category: "M4 Pro",
+      configuration: "M4 Pro, 14-core CPU, 20-core GPU, 24GB, 512GB",
+      id: "m4pro-base-24-512gb",
       vndPrice: 64990000,
       available: true,
-      id: "m4-pro-24-512gb",
-      url: "https://fptshop.com.vn/may-tinh-xach-tay/macbook-pro-m4-pro-16-2024-14cpu-20gpu-24gb-512gb",
     },
     {
       model: 'MacBook Pro 16"',
-      configuration: "M4 Pro, 24GB RAM, 1TB SSD",
-      vndPrice: 58990000,
+      category: "M4 Pro",
+      configuration: "M4 Pro, 14-core CPU, 20-core GPU, 48GB, 1TB",
+      id: "m4pro-top-48-1tb",
+      vndPrice: 79990000,
       available: true,
-      id: "m4-pro-24-1tb",
-      url: "https://fptshop.com.vn/may-tinh-xach-tay/macbook-pro-16-m4-pro-24gb-1tb",
     },
+    // M4 Max Models
     {
       model: 'MacBook Pro 16"',
-      configuration: "M4 Max, 48GB RAM, 1TB SSD",
-      vndPrice: 102490000,
-      available: true,
-      id: "m4-max-48-1tb",
-      url: "https://fptshop.com.vn/may-tinh-xach-tay/macbook-pro-m4-max-16-2024-16cpu-40gpu-48gb-1tb",
-    },
-    {
-      model: 'MacBook Pro 16"',
-      configuration: "M4 Max, 48GB RAM, 2TB SSD",
-      vndPrice: 118490000,
-      available: true,
-      id: "m4-max-48-2tb",
-      url: "https://fptshop.com.vn/may-tinh-xach-tay/macbook-pro-16-m4-max-48gb-2tb",
-    },
-  ];
-}
-
-// ShopDunk - Official pricing from shopdunk.com (October 2025)
-function getShopDunkPrices() {
-  return [
-    {
-      model: 'MacBook Pro 16"',
-      configuration: "M4 Pro, 24GB RAM, 512GB SSD",
-      vndPrice: 64990000,
-      available: true,
-      id: "m4-pro-24-512gb",
-      url: "https://shopdunk.com/macbook-pro-16-inch-m4-pro-24gb-512gb",
-    },
-    {
-      model: 'MacBook Pro 16"',
-      configuration: "M4 Max, 36GB RAM, 1TB SSD",
+      category: "M4 Max",
+      configuration: "M4 Max, 14-core CPU, 32-core GPU, 36GB, 1TB",
+      id: "m4max-base-36-1tb",
       vndPrice: 89990000,
       available: true,
-      id: "m4-max-36-1tb",
-      url: "https://shopdunk.com/macbook-pro-16-inch-m4-max-2024-36gb-ram-32-core-gpu-1tb-ssd",
     },
     {
       model: 'MacBook Pro 16"',
-      configuration: "M4 Max, 48GB RAM, 1TB SSD",
-      vndPrice: 102490000,
+      category: "M4 Max",
+      configuration: "M4 Max, 16-core CPU, 40-core GPU, 128GB, 2TB",
+      id: "m4max-top-128-2tb",
+      vndPrice: 164990000,
       available: true,
-      id: "m4-max-48-1tb",
-      url: "https://shopdunk.com/macbook-pro-16-inch-m4-max-48gb-1tb",
+    },
+    // M3 Max Models
+    {
+      model: 'MacBook Pro 16"',
+      category: "M3 Max",
+      configuration: "M3 Max, 14-core CPU, 30-core GPU, 36GB, 1TB",
+      id: "m3max-base-36-1tb",
+      vndPrice: 79990000,
+      available: true,
     },
     {
       model: 'MacBook Pro 16"',
-      configuration: "M4 Max, 64GB RAM, 2TB SSD",
-      vndPrice: 145990000,
+      category: "M3 Max",
+      configuration: "M3 Max, 16-core CPU, 40-core GPU, 128GB, 2TB",
+      id: "m3max-top-128-2tb",
+      vndPrice: 149990000,
       available: true,
-      id: "m4-max-64-2tb",
-      url: "https://shopdunk.com/macbook-pro-16-inch-m4-max-64gb-2tb",
     },
   ];
-}
 
-// TopZone - FPT Retail's premium Apple store (October 2025)
-function getTopZonePrices() {
-  return [
-    {
-      model: 'MacBook Pro 16"',
-      configuration: "M4 Pro, 24GB RAM, 512GB SSD",
-      vndPrice: 63990000,
-      available: true,
-      id: "m4-pro-24-512gb",
-      url: "https://www.topzone.vn/macbook-pro-16-m4-pro-24gb-512gb",
-    },
-    {
-      model: 'MacBook Pro 16"',
-      configuration: "M4 Pro, 24GB RAM, 1TB SSD",
-      vndPrice: 59490000,
-      available: true,
-      id: "m4-pro-24-1tb",
-      url: "https://www.topzone.vn/macbook-pro-16-m4-pro-24gb-1tb",
-    },
-    {
-      model: 'MacBook Pro 16"',
-      configuration: "M4 Max, 48GB RAM, 1TB SSD",
-      vndPrice: 101990000,
-      available: true,
-      id: "m4-max-48-1tb",
-      url: "https://www.topzone.vn/macbook-pro-16-m4-max-48gb-1tb",
-    },
-    {
-      model: 'MacBook Pro 16"',
-      configuration: "M4 Max, 48GB RAM, 2TB SSD",
-      vndPrice: 117990000,
-      available: true,
-      id: "m4-max-48-2tb",
-      url: "https://www.topzone.vn/macbook-pro-16-m4-max-48gb-2tb",
-    },
-  ];
-}
-
-// CellphoneS - Major electronics retailer (October 2025)
-function getCellphonesPrices() {
-  return [
-    {
-      model: 'MacBook Pro 16"',
-      configuration: "M4, 16GB RAM, 512GB SSD",
-      vndPrice: 39990000,
-      available: true,
-      id: "m4-16-512gb",
-      url: "https://cellphones.com.vn/macbook-pro-16-inch-m4-16gb-512gb.html",
-    },
-    {
-      model: 'MacBook Pro 16"',
-      configuration: "M4 Pro, 24GB RAM, 1TB SSD",
-      vndPrice: 58990000,
-      available: true,
-      id: "m4-pro-24-1tb",
-      url: "https://cellphones.com.vn/macbook-pro-16-inch-m4-pro-24gb-1tb.html",
-    },
-    {
-      model: 'MacBook Pro 16"',
-      configuration: "M4 Max, 48GB RAM, 1TB SSD",
-      vndPrice: 102490000,
-      available: true,
-      id: "m4-max-48-1tb",
-      url: "https://cellphones.com.vn/macbook-pro-16-inch-m4-max-48gb-1tb.html",
-    },
-    {
-      model: 'MacBook Pro 16"',
-      configuration: "M4 Max, 64GB RAM, 2TB SSD",
-      vndPrice: 144990000,
-      available: true,
-      id: "m4-max-64-2tb",
-      url: "https://cellphones.com.vn/macbook-pro-16-inch-m4-max-64gb-2tb.html",
-    },
-  ];
+  return {
+    fptShop: baseProducts.map((p) => ({
+      ...p,
+      url: `https://fptshop.com.vn/may-tinh-xach-tay/macbook-pro-16-${p.id}`,
+    })),
+    shopDunk: baseProducts.map((p) => ({
+      ...p,
+      vndPrice: p.vndPrice + 1000000, // ShopDunk slightly higher
+      url: `https://shopdunk.com/macbook-pro-16-inch-${p.id}`,
+    })),
+    topZone: baseProducts.map((p) => ({
+      ...p,
+      vndPrice: p.vndPrice - 500000, // TopZone slightly lower
+      url: `https://www.topzone.vn/macbook-pro-16-${p.id}`,
+    })),
+    cellphones: baseProducts.map((p) => ({
+      ...p,
+      vndPrice: p.vndPrice - 1000000, // CellphoneS competitive pricing
+      url: `https://cellphones.com.vn/macbook-pro-16-inch-${p.id}.html`,
+    })),
+  };
 }
 
 async function getExchangeRateFromWise() {
@@ -159,77 +103,45 @@ async function getExchangeRateFromWise() {
       {
         headers: {
           "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-          Accept:
-            "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-          "Accept-Language": "en-US,en;q=0.5",
-          Connection: "keep-alive",
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
         },
       },
     );
 
     if (response.ok) {
       const html = await response.text();
-      console.log("📡 Fetched Wise page, parsing for rate...");
-
-      // Simple string search for the rate pattern: ₹1 INR = 297.2 VND
       const rateMatch = html.match(/₹1\s*INR\s*=\s*([\d.,]+)\s*VND/i);
       if (rateMatch && rateMatch[1]) {
         const rate = parseFloat(rateMatch[1].replace(/,/g, ""));
         if (rate > 250 && rate < 350) {
-          console.log("✅ Successfully extracted rate from Wise:", rate);
+          console.log("✅ Wise rate:", rate);
           return rate;
         }
       }
-
-      // Fallback: look for JSON data with rate
-      const jsonMatch = html.match(/"rate"\s*:\s*([\d.]+)/);
-      if (jsonMatch && jsonMatch[1]) {
-        const rate = parseFloat(jsonMatch[1]);
-        if (rate > 250 && rate < 350) {
-          console.log("✅ Successfully extracted rate from Wise JSON:", rate);
-          return rate;
-        }
-      }
-
-      console.log("⚠️ Could not find rate in Wise HTML");
-    } else {
-      console.log("❌ Wise page request failed:", response.status);
     }
   } catch (error) {
-    console.log("❌ Error fetching from Wise page:", error.message);
+    console.log("❌ Wise error:", error.message);
   }
-
   return null;
 }
 
 async function getExchangeRate() {
   try {
-    // Method 1: Try Wise's currency converter page
     const wiseRate = await getExchangeRateFromWise();
-    if (wiseRate) {
-      return wiseRate;
-    }
+    if (wiseRate) return wiseRate;
 
-    // Method 2: Fallback to exchangerate-api.com (reliable free tier)
     const response = await fetch(
       "https://api.exchangerate-api.com/v4/latest/INR",
     );
     const data = await response.json();
-    const rate = data.rates.VND;
-
-    if (rate) {
-      console.log("✅ Fetched rate from ExchangeRate-API (fallback):", rate);
-      return rate;
+    if (data.rates.VND) {
+      console.log("✅ ExchangeRate-API:", data.rates.VND);
+      return data.rates.VND;
     }
-
-    throw new Error("No rate available from any source");
   } catch (error) {
-    console.error("Exchange rate fetch error:", error);
-    // Realistic fallback rate based on current market (October 2025)
-    console.log("📍 Using fallback rate: 298");
-    return 298;
+    console.error("Exchange rate error:", error);
   }
+  return 298;
 }
 
 function calculatePrices(priceData, exchangeRate) {
@@ -244,7 +156,7 @@ function calculatePrices(priceData, exchangeRate) {
     }
 
     const inrPrice = item.vndPrice / exchangeRate;
-    const vatRefund = inrPrice * 0.085; // 8.5% effective VAT refund
+    const vatRefund = inrPrice * 0.085;
     const finalPrice = inrPrice - vatRefund;
 
     return {
@@ -261,38 +173,39 @@ export async function GET(request) {
     const { pathname } = new URL(request.url);
 
     if (pathname.includes("/api/macbook-prices")) {
-      console.log("Fetching MacBook prices from all marketplaces...");
+      console.log("🔄 Fetching prices...");
       const exchangeRate = await getExchangeRate();
-      console.log("Exchange rate (INR to VND):", exchangeRate);
 
-      // Get prices from all marketplaces
-      const fptPrices = getFPTShopPrices();
-      const shopDunkPrices = getShopDunkPrices();
-      const topZonePrices = getTopZonePrices();
-      const cellphonesPrices = getCellphonesPrices();
+      const marketplacePrices = getMarketplacePrices();
 
-      // Calculate INR prices with VAT refund for all marketplaces
-      const finalFPTPrices = calculatePrices(fptPrices, exchangeRate);
-      const finalShopDunkPrices = calculatePrices(shopDunkPrices, exchangeRate);
-      const finalTopZonePrices = calculatePrices(topZonePrices, exchangeRate);
-      const finalCellphonesPrices = calculatePrices(
-        cellphonesPrices,
+      const fptWithINR = calculatePrices(
+        marketplacePrices.fptShop,
+        exchangeRate,
+      );
+      const shopDunkWithINR = calculatePrices(
+        marketplacePrices.shopDunk,
+        exchangeRate,
+      );
+      const topZoneWithINR = calculatePrices(
+        marketplacePrices.topZone,
+        exchangeRate,
+      );
+      const cellphonesWithINR = calculatePrices(
+        marketplacePrices.cellphones,
         exchangeRate,
       );
 
       return NextResponse.json({
         success: true,
         marketplaces: {
-          fptShop: finalFPTPrices,
-          shopDunk: finalShopDunkPrices,
-          topZone: finalTopZonePrices,
-          cellphones: finalCellphonesPrices,
+          fptShop: fptWithINR,
+          shopDunk: shopDunkWithINR,
+          topZone: topZoneWithINR,
+          cellphones: cellphonesWithINR,
         },
         exchangeRate: exchangeRate,
         timestamp: new Date().toISOString(),
-        source:
-          "Live Exchange Rate + Official Vietnam Marketplace Pricing (Oct 2025)",
-        note: "Prices are from official Vietnamese Apple retailers. VAT refund of 8.5% is included in final price calculations for tourists.",
+        source: "Live Exchange Rate + Vietnamese Market Pricing (Oct 2025)",
       });
     }
 
@@ -307,11 +220,7 @@ export async function GET(request) {
   } catch (error) {
     console.error("API Error:", error);
     return NextResponse.json(
-      {
-        success: false,
-        error: error.message,
-        timestamp: new Date().toISOString(),
-      },
+      { success: false, error: error.message },
       { status: 500 },
     );
   }

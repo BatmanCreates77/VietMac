@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  # Next.js Application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vietmac-app
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - MONGO_URL=${MONGO_URL:-mongodb://mongo:27017}
+      - DB_NAME=${DB_NAME:-vietmac_db}
+      - NEXT_PUBLIC_BASE_URL=${NEXT_PUBLIC_BASE_URL:-http://localhost:3000}
+      - CORS_ORIGINS=${CORS_ORIGINS:-*}
+    depends_on:
+      - mongo
+    networks:
+      - vietmac-network
+    restart: unless-stopped
+    volumes:
+      # Mount .env file for environment variables
+      - ./.env:/app/.env:ro
+
+  # MongoDB Database
+  mongo:
+    image: mongo:7.0
+    container_name: vietmac-mongo
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=vietmac_db
+    volumes:
+      - mongo-data:/data/db
+      - mongo-config:/data/configdb
+    networks:
+      - vietmac-network
+    restart: unless-stopped
+
+  # MongoDB Express (Web UI for MongoDB)
+  mongo-express:
+    image: mongo-express:latest
+    container_name: vietmac-mongo-express
+    ports:
+      - "8081:8081"
+    environment:
+      - ME_CONFIG_MONGODB_URL=mongodb://mongo:27017
+      - ME_CONFIG_BASICAUTH_USERNAME=admin
+      - ME_CONFIG_BASICAUTH_PASSWORD=admin123
+    depends_on:
+      - mongo
+    networks:
+      - vietmac-network
+    restart: unless-stopped
+
+networks:
+  vietmac-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
+    driver: local
+  mongo-config:
+    driver: local

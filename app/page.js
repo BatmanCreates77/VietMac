@@ -18,7 +18,15 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-import { RefreshCw, Smartphone, Globe, Calculator, Store } from "lucide-react";
+import {
+  RefreshCw,
+  Smartphone,
+  Globe,
+  Calculator,
+  Store,
+  Filter,
+  ArrowUpDown,
+} from "lucide-react";
 import { toast } from "sonner";
 
 export default function MacBookTracker() {
@@ -31,6 +39,8 @@ export default function MacBookTracker() {
   const [loading, setLoading] = useState(false);
   const [lastUpdate, setLastUpdate] = useState(null);
   const [exchangeRate, setExchangeRate] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [sortOrder, setSortOrder] = useState("default"); // default, low-to-high, high-to-low
 
   const fetchPrices = async () => {
     setLoading(true);
@@ -71,131 +81,163 @@ export default function MacBookTracker() {
     }).format(amount);
   };
 
-  const renderPriceTable = (prices, marketplaceName) => (
-    <Card className="bg-white/90 backdrop-blur-sm shadow-xl mb-8">
-      <CardHeader>
-        <div className="flex items-center gap-2">
-          <Store className="h-6 w-6 text-indigo-600" />
-          <CardTitle className="text-2xl text-gray-900">
-            {marketplaceName}
-          </CardTitle>
-        </div>
-        <CardDescription className="text-gray-600">
-          All prices converted to INR with 8.5% effective VAT refund for
-          tourists
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        {loading && prices.length === 0 ? (
-          <div className="flex justify-center items-center py-12">
-            <div className="text-center">
-              <RefreshCw className="h-8 w-8 animate-spin text-indigo-600 mx-auto mb-4" />
-              <p className="text-gray-600">
-                Fetching live prices from Vietnam...
-              </p>
-            </div>
+  const filterAndSortPrices = (prices) => {
+    // Filter by category
+    let filtered =
+      selectedCategory === "All"
+        ? prices
+        : prices.filter((item) => item.category === selectedCategory);
+
+    // Sort by price
+    if (sortOrder === "low-to-high") {
+      filtered = [...filtered].sort(
+        (a, b) => (a.finalPrice || 0) - (b.finalPrice || 0),
+      );
+    } else if (sortOrder === "high-to-low") {
+      filtered = [...filtered].sort(
+        (a, b) => (b.finalPrice || 0) - (a.finalPrice || 0),
+      );
+    }
+
+    return filtered;
+  };
+
+  const categories = ["All", "M4", "M4 Pro", "M4 Max", "M3 Max"];
+
+  const renderPriceTable = (prices, marketplaceName) => {
+    const filteredPrices = filterAndSortPrices(prices);
+
+    return (
+      <Card className="bg-white/90 backdrop-blur-sm shadow-xl mb-8">
+        <CardHeader>
+          <div className="flex items-center gap-2">
+            <Store className="h-6 w-6 text-indigo-600" />
+            <CardTitle className="text-2xl text-gray-900">
+              {marketplaceName}
+            </CardTitle>
           </div>
-        ) : (
-          <div className="overflow-x-auto">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="font-semibold">Model</TableHead>
-                  <TableHead className="font-semibold">Configuration</TableHead>
-                  <TableHead className="text-right font-semibold">
-                    Vietnam Price (VND)
-                  </TableHead>
-                  <TableHead className="text-right font-semibold">
-                    India Price (INR)
-                  </TableHead>
-                  <TableHead className="text-right font-semibold">
-                    VAT Refund (INR)
-                  </TableHead>
-                  <TableHead className="text-right font-semibold">
-                    Final Price (INR)
-                  </TableHead>
-                  <TableHead className="text-right font-semibold">
-                    Status
-                  </TableHead>
-                  <TableHead className="text-right font-semibold">
-                    Buy Now
-                  </TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {prices.length > 0 ? (
-                  prices.map((item, index) => (
-                    <TableRow key={index} className="hover:bg-gray-50">
-                      <TableCell className="font-medium">
-                        {item.model}
-                      </TableCell>
-                      <TableCell className="text-gray-600">
-                        {item.configuration}
-                      </TableCell>
-                      <TableCell className="text-right font-mono">
-                        {item.vndPrice
-                          ? formatCurrency(item.vndPrice, "VND")
-                          : "N/A"}
-                      </TableCell>
-                      <TableCell className="text-right font-mono">
-                        {item.inrPrice ? formatCurrency(item.inrPrice) : "N/A"}
-                      </TableCell>
-                      <TableCell className="text-right font-mono text-green-600">
-                        {item.vatRefund
-                          ? formatCurrency(item.vatRefund)
-                          : "N/A"}
-                      </TableCell>
-                      <TableCell className="text-right font-bold text-lg">
-                        {item.finalPrice
-                          ? formatCurrency(item.finalPrice)
-                          : "N/A"}
-                      </TableCell>
-                      <TableCell className="text-right">
-                        <Badge
-                          variant={item.available ? "default" : "secondary"}
-                          className={
-                            item.available
-                              ? "bg-green-100 text-green-800"
-                              : "bg-red-100 text-red-800"
-                          }
-                        >
-                          {item.available ? "In Stock" : "Out of Stock"}
-                        </Badge>
-                      </TableCell>
-                      <TableCell className="text-right">
-                        <a
-                          href={item.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Button
-                            size="sm"
-                            className="bg-indigo-600 hover:bg-indigo-700"
+          <CardDescription className="text-gray-600">
+            All prices converted to INR with 8.5% effective VAT refund for
+            tourists
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          {loading && prices.length === 0 ? (
+            <div className="flex justify-center items-center py-12">
+              <div className="text-center">
+                <RefreshCw className="h-8 w-8 animate-spin text-indigo-600 mx-auto mb-4" />
+                <p className="text-gray-600">
+                  Fetching live prices from Vietnam...
+                </p>
+              </div>
+            </div>
+          ) : (
+            <div className="overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="font-semibold">Chip</TableHead>
+                    <TableHead className="font-semibold">
+                      Configuration
+                    </TableHead>
+                    <TableHead className="text-right font-semibold">
+                      Vietnam Price (VND)
+                    </TableHead>
+                    <TableHead className="text-right font-semibold">
+                      India Price (INR)
+                    </TableHead>
+                    <TableHead className="text-right font-semibold">
+                      VAT Refund (INR)
+                    </TableHead>
+                    <TableHead className="text-right font-semibold">
+                      Final Price (INR)
+                    </TableHead>
+                    <TableHead className="text-right font-semibold">
+                      Status
+                    </TableHead>
+                    <TableHead className="text-right font-semibold">
+                      Buy
+                    </TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {filteredPrices.length > 0 ? (
+                    filteredPrices.map((item, index) => (
+                      <TableRow key={index} className="hover:bg-gray-50">
+                        <TableCell className="font-medium">
+                          <Badge variant="outline" className="font-mono">
+                            {item.category}
+                          </Badge>
+                        </TableCell>
+                        <TableCell className="text-gray-600 text-sm">
+                          {item.configuration}
+                        </TableCell>
+                        <TableCell className="text-right font-mono">
+                          {item.vndPrice
+                            ? formatCurrency(item.vndPrice, "VND")
+                            : "N/A"}
+                        </TableCell>
+                        <TableCell className="text-right font-mono">
+                          {item.inrPrice
+                            ? formatCurrency(item.inrPrice)
+                            : "N/A"}
+                        </TableCell>
+                        <TableCell className="text-right font-mono text-green-600">
+                          {item.vatRefund
+                            ? formatCurrency(item.vatRefund)
+                            : "N/A"}
+                        </TableCell>
+                        <TableCell className="text-right font-bold text-lg">
+                          {item.finalPrice
+                            ? formatCurrency(item.finalPrice)
+                            : "N/A"}
+                        </TableCell>
+                        <TableCell className="text-right">
+                          <Badge
+                            variant={item.available ? "default" : "secondary"}
+                            className={
+                              item.available
+                                ? "bg-green-100 text-green-800"
+                                : "bg-red-100 text-red-800"
+                            }
                           >
-                            Visit Store
-                          </Button>
-                        </a>
+                            {item.available ? "In Stock" : "Out of Stock"}
+                          </Badge>
+                        </TableCell>
+                        <TableCell className="text-right">
+                          <a
+                            href={item.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <Button
+                              size="sm"
+                              className="bg-indigo-600 hover:bg-indigo-700"
+                            >
+                              Visit
+                            </Button>
+                          </a>
+                        </TableCell>
+                      </TableRow>
+                    ))
+                  ) : (
+                    <TableRow>
+                      <TableCell
+                        colSpan={8}
+                        className="text-center py-8 text-gray-500"
+                      >
+                        No models match the selected filter
                       </TableCell>
                     </TableRow>
-                  ))
-                ) : (
-                  <TableRow>
-                    <TableCell
-                      colSpan={8}
-                      className="text-center py-8 text-gray-500"
-                    >
-                      No price data available. Click refresh to fetch latest
-                      prices.
-                    </TableCell>
-                  </TableRow>
-                )}
-              </TableBody>
-            </Table>
-          </div>
-        )}
-      </CardContent>
-    </Card>
-  );
+                  )}
+                </TableBody>
+              </Table>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    );
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
@@ -226,7 +268,7 @@ export default function MacBookTracker() {
         {exchangeRate && (
           <Card className="mb-6 bg-white/80 backdrop-blur-sm">
             <CardContent className="pt-6">
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between items-center flex-wrap gap-4">
                 <div className="text-sm text-gray-600">
                   Current Exchange Rate:{" "}
                   <span className="font-semibold">
@@ -256,6 +298,90 @@ export default function MacBookTracker() {
           </Card>
         )}
 
+        {/* Filter and Sort Controls */}
+        <Card className="mb-6 bg-white/80 backdrop-blur-sm">
+          <CardContent className="pt-6">
+            <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+              {/* Category Filter */}
+              <div className="flex flex-col gap-2 w-full md:w-auto">
+                <div className="flex items-center gap-2 text-sm font-semibold text-gray-700">
+                  <Filter className="h-4 w-4" />
+                  <span>Filter by Chip:</span>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {categories.map((category) => (
+                    <Button
+                      key={category}
+                      onClick={() => setSelectedCategory(category)}
+                      size="sm"
+                      variant={
+                        selectedCategory === category ? "default" : "outline"
+                      }
+                      className={
+                        selectedCategory === category
+                          ? "bg-indigo-600 hover:bg-indigo-700"
+                          : ""
+                      }
+                    >
+                      {category}
+                    </Button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Price Sort */}
+              <div className="flex flex-col gap-2 w-full md:w-auto">
+                <div className="flex items-center gap-2 text-sm font-semibold text-gray-700">
+                  <ArrowUpDown className="h-4 w-4" />
+                  <span>Sort by Price:</span>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <Button
+                    onClick={() => setSortOrder("default")}
+                    size="sm"
+                    variant={sortOrder === "default" ? "default" : "outline"}
+                    className={
+                      sortOrder === "default"
+                        ? "bg-indigo-600 hover:bg-indigo-700"
+                        : ""
+                    }
+                  >
+                    Default
+                  </Button>
+                  <Button
+                    onClick={() => setSortOrder("low-to-high")}
+                    size="sm"
+                    variant={
+                      sortOrder === "low-to-high" ? "default" : "outline"
+                    }
+                    className={
+                      sortOrder === "low-to-high"
+                        ? "bg-indigo-600 hover:bg-indigo-700"
+                        : ""
+                    }
+                  >
+                    Low to High
+                  </Button>
+                  <Button
+                    onClick={() => setSortOrder("high-to-low")}
+                    size="sm"
+                    variant={
+                      sortOrder === "high-to-low" ? "default" : "outline"
+                    }
+                    className={
+                      sortOrder === "high-to-low"
+                        ? "bg-indigo-600 hover:bg-indigo-700"
+                        : ""
+                    }
+                  >
+                    High to Low
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
         {renderPriceTable(
           marketplaceData.fptShop,
           "FPT Shop - Vietnam's Largest Electronics Retailer",
@@ -276,32 +402,40 @@ export default function MacBookTracker() {
         <Card className="mt-8 bg-white/90 backdrop-blur-sm shadow-xl">
           <CardHeader>
             <CardTitle className="text-2xl text-gray-900">
-              Official Apple Resellers in Vietnam
+              Tracked MacBook Pro Models
             </CardTitle>
             <CardDescription className="text-gray-600">
-              All stores offer VAT refund for tourists with valid documentation
+              Base and Top configurations for each chip variant
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="border rounded-lg p-4">
-                <h3 className="font-semibold text-lg mb-2">Hanoi Locations</h3>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li>• F.Studio by FPT - 269 P. Chùa Bộc, Đống Đa</li>
-                  <li>• ShopDunk - 76 Thái Hà, Đống Đa</li>
-                  <li>• TopZone - 291 Nguyen Van Cu, Long Bien</li>
-                  <li>• CellphoneS - 21 Thai Ha, Dong Da</li>
+                <h3 className="font-semibold text-lg mb-2">M4 Chip</h3>
+                <ul className="space-y-1 text-sm text-gray-600">
+                  <li>• Base: 10-core CPU, 10-core GPU, 16GB, 512GB</li>
+                  <li>• Top: 10-core CPU, 10-core GPU, 24GB, 1TB</li>
                 </ul>
               </div>
               <div className="border rounded-lg p-4">
-                <h3 className="font-semibold text-lg mb-2">
-                  Ho Chi Minh City Locations
-                </h3>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li>• F.Studio - Multiple locations across districts</li>
-                  <li>• ShopDunk - District 1, 3, and Binh Thanh</li>
-                  <li>• TopZone - District 1 and Tan Binh</li>
-                  <li>• CellphoneS - District 1 and 10</li>
+                <h3 className="font-semibold text-lg mb-2">M4 Pro Chip</h3>
+                <ul className="space-y-1 text-sm text-gray-600">
+                  <li>• Base: 14-core CPU, 20-core GPU, 24GB, 512GB</li>
+                  <li>• Top: 14-core CPU, 20-core GPU, 48GB, 1TB</li>
+                </ul>
+              </div>
+              <div className="border rounded-lg p-4">
+                <h3 className="font-semibold text-lg mb-2">M4 Max Chip</h3>
+                <ul className="space-y-1 text-sm text-gray-600">
+                  <li>• Base: 14-core CPU, 32-core GPU, 36GB, 1TB</li>
+                  <li>• Top: 16-core CPU, 40-core GPU, 128GB, 2TB</li>
+                </ul>
+              </div>
+              <div className="border rounded-lg p-4">
+                <h3 className="font-semibold text-lg mb-2">M3 Max Chip</h3>
+                <ul className="space-y-1 text-sm text-gray-600">
+                  <li>• Base: 14-core CPU, 30-core GPU, 36GB, 1TB</li>
+                  <li>• Top: 16-core CPU, 40-core GPU, 128GB, 2TB</li>
                 </ul>
               </div>
             </div>
@@ -349,8 +483,8 @@ export default function MacBookTracker() {
             </CardHeader>
             <CardContent className="text-sm text-gray-600">
               <p>
-                Prices and exchange rates are updated in real-time. Refresh for
-                the most current information before purchasing.
+                Prices and exchange rates are updated in real-time from
+                Vietnamese retailers. Click refresh for the latest data.
               </p>
             </CardContent>
           </Card>
@@ -358,8 +492,8 @@ export default function MacBookTracker() {
 
         <div className="text-center mt-8 text-sm text-gray-500">
           <p>
-            Prices are from official Vietnamese retailers (October 2025). Always
-            verify final prices at the store. Bring your passport for VAT
+            Prices scraped from official Vietnamese retailers (October 2025).
+            Always verify final prices at the store. Bring your passport for VAT
             refund.
           </p>
         </div>
