@@ -32,37 +32,50 @@ async function getExchangeRateFromWise() {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
         'Accept-Language': 'en-US,en;q=0.5',
-        'Accept-Encoding': 'gzip, deflate, br',
-        'Connection': 'keep-alive',
-        'Upgrade-Insecure-Requests': '1'
+        'Connection': 'keep-alive'
       }
     })
     
     if (response.ok) {
       const html = await response.text()
+      console.log('📡 Fetched Wise page, parsing...')
       
-      // Try to extract rate from HTML - Wise often embeds it in JSON or meta tags
+      // Enhanced patterns to extract rate from Wise HTML
       const ratePatterns = [
+        // Direct rate display pattern like "₹1 INR = 297.2 VND"
+        /₹1\\s*INR\\s*=\\s*([\\d.,]+)\\s*VND/i,
+        // Pattern in span with dir="ltr"
+        /<span dir="ltr"[^>]*>.*?₹1\\s*INR\\s*=\\s*([\\d.,]+)\\s*VND.*?<\\/span>/i,
+        // JSON rate pattern
         /"rate"\\s*:\\s*([\\d.]+)/,
+        // Alternative JSON patterns
         /"exchangeRate"\\s*:\\s*([\\d.]+)/,
+        /"midMarketRate"\\s*:\\s*([\\d.]+)/,
+        // Data attribute patterns
         /data-rate="([\\d.]+)"/,
-        /exchange-rate[^>]*>([\\d.,]+)/i,
-        /1\\s*INR\\s*=\\s*([\\d.,]+)\\s*VND/i
+        // Generic INR to VND patterns
+        /1\\s*INR\\s*=\\s*([\\d.,]+)\\s*VND/i,
+        /INR\\s*=\\s*([\\d.,]+)\\s*VND/i
       ]
       
       for (const pattern of ratePatterns) {
         const match = html.match(pattern)
         if (match && match[1]) {
-          const rate = parseFloat(match[1].replace(/,/g, ''))
-          if (rate > 200 && rate < 400) { // Sanity check for INR to VND range
-            console.log('✅ Fetched rate from Wise page:', rate)
+          const rateStr = match[1].replace(/,/g, '')
+          const rate = parseFloat(rateStr)
+          if (rate > 250 && rate < 350) { // Reasonable range for INR to VND
+            console.log('✅ Successfully extracted rate from Wise:', rate)
             return rate
           }
         }
       }
+      
+      console.log('⚠️ Could not find rate in Wise HTML with current patterns')
+    } else {
+      console.log('❌ Wise page request failed:', response.status)
     }
   } catch (error) {
-    console.log('Failed to fetch from Wise page:', error.message)
+    console.log('❌ Error fetching from Wise page:', error.message)
   }
   
   return null
