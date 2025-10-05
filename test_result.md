@@ -101,3 +101,112 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: "Test the VietMac Compare MacBook Pro price tracker backend API with core features including /api/macbook-prices endpoint, exchange rate integration, price calculations, data structure validation, and error handling for 4 MacBook Pro models."
+
+backend:
+  - task: "MacBook Prices API Endpoint"
+    implemented: true
+    working: true
+    file: "/app/app/api/[[...path]]/route.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "✅ /api/macbook-prices endpoint fully functional. Returns correct JSON structure with success=true, 4 MacBook models, live exchange rate (298.03 VND per INR), timestamp, and data source. All required fields present and properly formatted."
+
+  - task: "Exchange Rate Integration"
+    implemented: true
+    working: true
+    file: "/app/app/api/[[...path]]/route.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "✅ Exchange rate API integration with exchangerate-api.com working perfectly. Live rate (298.03) matches external API exactly. Fallback rate (300) properly configured for API failures."
+
+  - task: "Price Calculations"
+    implemented: true
+    working: true
+    file: "/app/app/api/[[...path]]/route.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "✅ All price calculations accurate. VND to INR conversion using live exchange rate, 8.5% VAT refund calculation precise, final price calculation (INR - VAT) correct. All mathematical operations validated with zero rounding errors."
+
+  - task: "MacBook Models Data Structure"
+    implemented: true
+    working: true
+    file: "/app/app/api/[[...path]]/route.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "✅ All 4 expected MacBook Pro models present and correctly structured: M3 Max 36GB/1TB, M4 Pro 24GB/512GB, M4 Max 36GB/1TB, M4 Max 48GB/1TB. All required fields (model, configuration, vndPrice, inrPrice, vatRefund, finalPrice, available, id) present with correct data types."
+
+  - task: "Error Handling"
+    implemented: true
+    working: true
+    file: "/app/app/api/[[...path]]/route.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "✅ Error handling robust. Returns proper 404 for invalid endpoints, 405 for unsupported methods (POST), 500 with error details for server errors. All error responses include proper JSON structure with error messages."
+
+  - task: "Health Check Endpoint"
+    implemented: true
+    working: true
+    file: "/app/app/api/[[...path]]/route.js"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "✅ /api/health endpoint working correctly. Returns status='healthy' and timestamp in proper JSON format."
+
+frontend:
+  - task: "Frontend UI Integration"
+    implemented: true
+    working: "NA"
+    file: "/app/app/page.js"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+        - working: "NA"
+          agent: "testing"
+          comment: "Frontend testing not performed as per testing agent limitations. Frontend code structure appears complete with proper API integration at /api/macbook-prices."
+
+metadata:
+  created_by: "testing_agent"
+  version: "1.0"
+  test_sequence: 1
+  run_ui: false
+
+test_plan:
+  current_focus:
+    - "MacBook Prices API Endpoint"
+    - "Exchange Rate Integration"
+    - "Price Calculations"
+    - "MacBook Models Data Structure"
+    - "Error Handling"
+  stuck_tasks: []
+  test_all: false
+  test_priority: "high_first"
+
+agent_communication:
+    - agent: "testing"
+      message: "Comprehensive backend testing completed successfully. All 6 core backend functionalities are working correctly. The VietMac Compare API is fully functional with live exchange rate integration, accurate price calculations, proper data structure, and robust error handling. All 4 MacBook Pro models are correctly configured and returning accurate pricing data. The API is ready for production use."
