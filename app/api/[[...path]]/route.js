@@ -43,19 +43,19 @@ async function getExchangeRateFromWise() {
       // Enhanced patterns to extract rate from Wise HTML
       const ratePatterns = [
         // Direct rate display pattern like "₹1 INR = 297.2 VND"
-        /₹1\\s*INR\\s*=\\s*([\\d.,]+)\\s*VND/i,
+        /₹1\s*INR\s*=\s*([\d.,]+)\s*VND/i,
         // Pattern in span with dir="ltr"
-        /<span dir="ltr"[^>]*>.*?₹1\\s*INR\\s*=\\s*([\\d.,]+)\\s*VND.*?<\\/span>/i,
+        /<span dir="ltr"[^>]*>.*?₹1\s*INR\s*=\s*([\d.,]+)\s*VND.*?<\/span>/i,
         // JSON rate pattern
-        /"rate"\\s*:\\s*([\\d.]+)/,
+        /"rate"\s*:\s*([\d.]+)/,
         // Alternative JSON patterns
-        /"exchangeRate"\\s*:\\s*([\\d.]+)/,
-        /"midMarketRate"\\s*:\\s*([\\d.]+)/,
+        /"exchangeRate"\s*:\s*([\d.]+)/,
+        /"midMarketRate"\s*:\s*([\d.]+)/,
         // Data attribute patterns
-        /data-rate="([\\d.]+)"/,
+        /data-rate="([\d.]+)"/,
         // Generic INR to VND patterns
-        /1\\s*INR\\s*=\\s*([\\d.,]+)\\s*VND/i,
-        /INR\\s*=\\s*([\\d.,]+)\\s*VND/i
+        /1\s*INR\s*=\s*([\d.,]+)\s*VND/i,
+        /INR\s*=\s*([\d.,]+)\s*VND/i
       ]
       
       for (const pattern of ratePatterns) {
