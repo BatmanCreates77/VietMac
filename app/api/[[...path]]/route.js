@@ -177,7 +177,7 @@ export async function GET(request) {
         prices: finalPrices,
         exchangeRate: exchangeRate,
         timestamp: new Date().toISOString(),
-        source: 'Estimated Pricing (Based on Apple Official Rates + Vietnam Market)'
+        source: 'Live Exchange Rate from Wise + Estimated Vietnam Pricing'
       })
     }
     
