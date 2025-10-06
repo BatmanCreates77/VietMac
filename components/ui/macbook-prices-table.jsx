@@ -23,9 +23,7 @@ import { useState, useEffect } from "react";
 const allColumns = [
   "Shop",
   "Model",
-  "Configuration",
-  "Category",
-  "Status",
+  "Config",
   "VND Price",
   "INR Price",
   "VAT Refund",
@@ -214,21 +212,9 @@ function MacBookPricesTable({ data }) {
                     >
                       {item.shop}
                     </Badge>
-                    <div className="flex gap-2">
-                      <Badge variant="outline" className="w-fit">
-                        {item.category}
-                      </Badge>
-                      <Badge
-                        className={cn(
-                          "w-fit",
-                          item.available
-                            ? "bg-green-100 text-green-700 border-green-200"
-                            : "bg-red-100 text-red-700 border-red-200",
-                        )}
-                      >
-                        {item.available ? "In Stock" : "Out of Stock"}
-                      </Badge>
-                    </div>
+                    <Badge variant="outline" className="w-fit">
+                      {item.category}
+                    </Badge>
                   </div>
                   <div className="text-right">
                     <div className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent">
@@ -293,14 +279,8 @@ function MacBookPricesTable({ data }) {
               {visibleColumns.includes("Model") && (
                 <TableHead className="w-[180px]">Model</TableHead>
               )}
-              {visibleColumns.includes("Configuration") && (
-                <TableHead className="w-[300px]">Configuration</TableHead>
-              )}
-              {visibleColumns.includes("Category") && (
-                <TableHead className="w-[120px]">Category</TableHead>
-              )}
-              {visibleColumns.includes("Status") && (
-                <TableHead className="w-[120px]">Status</TableHead>
+              {visibleColumns.includes("Config") && (
+                <TableHead className="w-[400px]">Config</TableHead>
               )}
               {visibleColumns.includes("VND Price") && (
                 <TableHead className="w-[130px]">VND Price</TableHead>
@@ -322,7 +302,7 @@ function MacBookPricesTable({ data }) {
                 <TableRow
                   key={`${item.shop}-${item.id}-${idx}`}
                   className={cn(
-                    "cursor-pointer hover:bg-gray-50/50",
+                    "cursor-pointer hover:bg-gray-100 transition-colors",
                     getPriceHighlightClass(item.finalPrice),
                   )}
                   onClick={() =>
@@ -351,27 +331,9 @@ function MacBookPricesTable({ data }) {
                       {item.model}
                     </TableCell>
                   )}
-                  {visibleColumns.includes("Configuration") && (
-                    <TableCell className="whitespace-nowrap text-xs">
+                  {visibleColumns.includes("Config") && (
+                    <TableCell className="whitespace-nowrap text-sm">
                       {item.configuration}
-                    </TableCell>
-                  )}
-                  {visibleColumns.includes("Category") && (
-                    <TableCell className="whitespace-nowrap">
-                      <Badge variant="outline">{item.category}</Badge>
-                    </TableCell>
-                  )}
-                  {visibleColumns.includes("Status") && (
-                    <TableCell className="whitespace-nowrap">
-                      <Badge
-                        className={cn(
-                          item.available
-                            ? "bg-green-100 text-green-700 border-green-200"
-                            : "bg-red-100 text-red-700 border-red-200",
-                        )}
-                      >
-                        {item.available ? "In Stock" : "Out of Stock"}
-                      </Badge>
                     </TableCell>
                   )}
                   {visibleColumns.includes("VND Price") && (
