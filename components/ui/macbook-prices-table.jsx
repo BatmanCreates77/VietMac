@@ -191,8 +191,9 @@ function MacBookPricesTable({ data }) {
               <div
                 key={`${item.shop}-${item.id}-${idx}`}
                 className={cn(
-                  "border rounded-lg p-4 space-y-3",
-                  getPriceHighlightClass(item.finalPrice) || "bg-white",
+                  "border-0 rounded-xl p-5 space-y-4 shadow-lg ring-1 ring-gray-200/50 hover:shadow-xl transition-all",
+                  getPriceHighlightClass(item.finalPrice) ||
+                    "bg-white/95 backdrop-blur-md",
                 )}
               >
                 <div className="flex justify-between items-start">
@@ -214,36 +215,46 @@ function MacBookPricesTable({ data }) {
                     </Badge>
                   </div>
                   <div className="text-right">
-                    <div className="text-2xl font-bold text-indigo-600">
+                    <div className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent">
                       ₹{item.finalPrice?.toLocaleString() || "N/A"}
                     </div>
-                    <div className="text-xs text-gray-500">Final Price</div>
+                    <div className="text-xs font-medium text-gray-500">
+                      Final Price
+                    </div>
                   </div>
                 </div>
 
-                <div className="border-t pt-3">
-                  <div className="font-medium text-sm">{item.model}</div>
-                  <div className="text-xs text-gray-600 mt-1">
+                <div className="border-t border-gray-200/50 pt-4">
+                  <div className="font-semibold text-base text-gray-900">
+                    {item.model}
+                  </div>
+                  <div className="text-sm text-gray-600 mt-1.5">
                     {item.configuration}
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3 text-sm border-t pt-3">
-                  <div>
-                    <div className="text-gray-500 text-xs">VND Price</div>
-                    <div className="font-medium">
+                <div className="grid grid-cols-2 gap-4 text-sm border-t border-gray-200/50 pt-4">
+                  <div className="bg-gray-50/50 rounded-lg p-3">
+                    <div className="text-gray-500 text-xs font-medium mb-1">
+                      VND Price
+                    </div>
+                    <div className="font-bold text-gray-900">
                       ₫{item.vndPrice?.toLocaleString() || "N/A"}
                     </div>
                   </div>
-                  <div>
-                    <div className="text-gray-500 text-xs">INR Price</div>
-                    <div className="font-medium">
+                  <div className="bg-blue-50/50 rounded-lg p-3">
+                    <div className="text-gray-500 text-xs font-medium mb-1">
+                      INR Price
+                    </div>
+                    <div className="font-bold text-blue-900">
                       ₹{item.inrPrice?.toLocaleString() || "N/A"}
                     </div>
                   </div>
-                  <div>
-                    <div className="text-gray-500 text-xs">VAT Refund</div>
-                    <div className="font-medium text-green-600">
+                  <div className="bg-green-50/50 rounded-lg p-3 col-span-2">
+                    <div className="text-gray-500 text-xs font-medium mb-1">
+                      VAT Refund (8.5%)
+                    </div>
+                    <div className="font-bold text-green-600 text-lg">
                       -₹{item.vatRefund?.toLocaleString() || "N/A"}
                     </div>
                   </div>
