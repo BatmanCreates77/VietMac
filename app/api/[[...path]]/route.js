@@ -59,22 +59,22 @@ function getMarketplacePrices() {
   return {
     fptShop: baseProducts.map((p) => ({
       ...p,
-      url: `https://fptshop.com.vn/may-tinh-xach-tay/macbook-pro-16-${p.id}`,
+      url: `https://fptshop.com.vn/may-tinh-xach-tay/apple-macbook`,
     })),
     shopDunk: baseProducts.map((p) => ({
       ...p,
       vndPrice: p.vndPrice + 1000000, // ShopDunk slightly higher
-      url: `https://shopdunk.com/macbook-pro-16-inch-${p.id}`,
+      url: `https://shopdunk.com/macbook.html`,
     })),
     topZone: baseProducts.map((p) => ({
       ...p,
       vndPrice: p.vndPrice - 500000, // TopZone slightly lower
-      url: `https://www.topzone.vn/macbook-pro-16-${p.id}`,
+      url: `https://www.topzone.vn/apple/macbook`,
     })),
     cellphones: baseProducts.map((p) => ({
       ...p,
       vndPrice: p.vndPrice - 1000000, // CellphoneS competitive pricing
-      url: `https://cellphones.com.vn/macbook-pro-16-inch-${p.id}.html`,
+      url: `https://cellphones.com.vn/apple/macbook.html`,
     })),
   };
 }
