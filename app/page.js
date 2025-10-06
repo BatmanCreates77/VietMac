@@ -19,10 +19,12 @@ export default function MacBookTracker() {
   const [exchangeRate, setExchangeRate] = useState(null);
   const [currency, setCurrency] = useState("INR");
 
-  const fetchPrices = async () => {
+  const fetchPrices = async (selectedCurrency) => {
     setLoading(true);
     try {
-      const response = await fetch("/api/macbook-prices");
+      const response = await fetch(
+        `/api/macbook-prices?currency=${selectedCurrency}`,
+      );
       const data = await response.json();
       if (data.success) {
         const combinedPrices = [
@@ -45,6 +47,7 @@ export default function MacBookTracker() {
         ];
         setAllPrices(combinedPrices);
         setExchangeRate(data.exchangeRate);
+        setCurrency(data.currency);
         toast.success("Prices updated successfully!");
       } else {
         toast.error(data.error || "Failed to fetch prices");
@@ -58,8 +61,8 @@ export default function MacBookTracker() {
   };
 
   useEffect(() => {
-    fetchPrices();
-  }, []);
+    fetchPrices(currency);
+  }, [currency]);
 
   return (
     <div className="min-h-screen bg-black">
@@ -72,7 +75,7 @@ export default function MacBookTracker() {
               <SelectTrigger className="w-[200px] bg-gray-900 border-gray-800 text-white">
                 <SelectValue placeholder="Select currency" />
               </SelectTrigger>
-              <SelectContent className="bg-gray-900 border-gray-800">
+              <SelectContent className="bg-gray-900 border-gray-800 text-white">
                 <SelectItem value="INR">🇮🇳 Home Currency: INR</SelectItem>
                 <SelectItem value="USD">🇺🇸 Home Currency: USD</SelectItem>
                 <SelectItem value="EUR">🇪🇺 Home Currency: EUR</SelectItem>
@@ -109,13 +112,13 @@ export default function MacBookTracker() {
             <div className="bg-gray-900 rounded-lg p-4 max-w-2xl mx-auto">
               <div className="flex justify-between items-center">
                 <div>
-                  <div className="text-xl font-bold mb-1">
-                    Exchange Rate: 1 INR = {exchangeRate.toFixed(2)} VND
+                  <div className="text-lg font-bold mb-1">
+                    Exchange Rate: 1 {currency} = {exchangeRate.toFixed(2)} VND
                   </div>
                   <div className="text-xs text-gray-400">Powered by Wise</div>
                 </div>
                 <Button
-                  onClick={fetchPrices}
+                  onClick={() => fetchPrices(currency)}
                   disabled={loading}
                   className="bg-blue-600 hover:bg-blue-700"
                 >
@@ -143,11 +146,11 @@ export default function MacBookTracker() {
               </div>
             </div>
           ) : (
-            <MacBookPricesTable data={allPrices} />
+            <MacBookPricesTable data={allPrices} currency={currency} />
           )}
 
           {/* Disclaimer */}
-          <div className="mt-8 text-sm text-gray-600 text-center">
+          <div className="mt-8 text-sm text-gray-600 text-left">
             <p>
               Disclaimer: The prices listed are indicative and subject to
               change. To qualify for a VAT refund, you must purchase the device

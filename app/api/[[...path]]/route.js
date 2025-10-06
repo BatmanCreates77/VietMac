@@ -270,42 +270,52 @@ function getMarketplacePrices() {
   };
 }
 
-async function getExchangeRateFromWise() {
+async function getExchangeRateFromWise(currency = "INR") {
+  const currencySymbols = {
+    INR: "₹",
+    USD: "$",
+    EUR: "€",
+  };
+  const symbol =
+    currencySymbols[currency.toUpperCase()] || currency.toUpperCase();
+  const url = `https://wise.com/in/currency-converter/${currency.toLowerCase()}-to-vnd-rate`;
+
   try {
-    const response = await fetch(
-      "https://wise.com/in/currency-converter/inr-to-vnd-rate",
-      {
-        headers: {
-          "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-        },
+    const response = await fetch(url, {
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
       },
-    );
+    });
 
     if (response.ok) {
       const html = await response.text();
-      const rateMatch = html.match(/₹1\s*INR\s*=\s*([\d.,]+)\s*VND/i);
+      const regex = new RegExp(
+        `${symbol}1\\s*${currency.toUpperCase()}\\s*=\\s*([\\d.,]+)\\s*VND`,
+        "i",
+      );
+      const rateMatch = html.match(regex);
       if (rateMatch && rateMatch[1]) {
         const rate = parseFloat(rateMatch[1].replace(/,/g, ""));
-        if (rate > 250 && rate < 350) {
+        if (rate > 0) {
           console.log("✅ Wise rate:", rate);
           return rate;
         }
       }
     }
   } catch (error) {
-    console.log("❌ Wise error:", error.message);
+    console.log(`❌ Wise error for ${currency}:`, error.message);
   }
   return null;
 }
 
-async function getExchangeRate() {
+async function getExchangeRate(currency = "INR") {
   try {
-    const wiseRate = await getExchangeRateFromWise();
+    const wiseRate = await getExchangeRateFromWise(currency);
     if (wiseRate) return wiseRate;
 
     const response = await fetch(
-      "https://api.exchangerate-api.com/v4/latest/INR",
+      `https://api.exchangerate-api.com/v4/latest/${currency.toUpperCase()}`,
     );
     const data = await response.json();
     if (data.rates.VND) {
@@ -315,7 +325,13 @@ async function getExchangeRate() {
   } catch (error) {
     console.error("Exchange rate error:", error);
   }
-  return 298;
+  // Fallback rates
+  const fallbackRates = {
+    INR: 298,
+    USD: 25000,
+    EUR: 27000,
+  };
+  return fallbackRates[currency.toUpperCase()] || fallbackRates.INR;
 }
 
 function calculatePrices(priceData, exchangeRate) {
@@ -323,19 +339,19 @@ function calculatePrices(priceData, exchangeRate) {
     if (!item.vndPrice) {
       return {
         ...item,
-        inrPrice: null,
+        convertedPrice: null,
         vatRefund: null,
         finalPrice: null,
       };
     }
 
-    const inrPrice = item.vndPrice / exchangeRate;
-    const vatRefund = inrPrice * 0.085;
-    const finalPrice = inrPrice - vatRefund;
+    const convertedPrice = item.vndPrice / exchangeRate;
+    const vatRefund = convertedPrice * 0.085;
+    const finalPrice = convertedPrice - vatRefund;
 
     return {
       ...item,
-      inrPrice: Math.round(inrPrice),
+      convertedPrice: Math.round(convertedPrice),
       vatRefund: Math.round(vatRefund),
       finalPrice: Math.round(finalPrice),
     };
@@ -344,27 +360,28 @@ function calculatePrices(priceData, exchangeRate) {
 
 export async function GET(request) {
   try {
-    const { pathname } = new URL(request.url);
+    const { pathname, searchParams } = new URL(request.url);
+    const currency = searchParams.get("currency") || "INR";
 
     if (pathname.includes("/api/macbook-prices")) {
-      console.log("🔄 Fetching prices...");
-      const exchangeRate = await getExchangeRate();
+      console.log(`🔄 Fetching prices for ${currency}...`);
+      const exchangeRate = await getExchangeRate(currency);
 
       const marketplacePrices = getMarketplacePrices();
 
-      const fptWithINR = calculatePrices(
+      const fptWithConverted = calculatePrices(
         marketplacePrices.fptShop,
         exchangeRate,
       );
-      const shopDunkWithINR = calculatePrices(
+      const shopDunkWithConverted = calculatePrices(
         marketplacePrices.shopDunk,
         exchangeRate,
       );
-      const topZoneWithINR = calculatePrices(
+      const topZoneWithConverted = calculatePrices(
         marketplacePrices.topZone,
         exchangeRate,
       );
-      const cellphonesWithINR = calculatePrices(
+      const cellphonesWithConverted = calculatePrices(
         marketplacePrices.cellphones,
         exchangeRate,
       );
@@ -372,12 +389,13 @@ export async function GET(request) {
       return NextResponse.json({
         success: true,
         marketplaces: {
-          fptShop: fptWithINR,
-          shopDunk: shopDunkWithINR,
-          topZone: topZoneWithINR,
-          cellphones: cellphonesWithINR,
+          fptShop: fptWithConverted,
+          shopDunk: shopDunkWithConverted,
+          topZone: topZoneWithConverted,
+          cellphones: cellphonesWithConverted,
         },
         exchangeRate: exchangeRate,
+        currency: currency.toUpperCase(),
         timestamp: new Date().toISOString(),
         source: "Live Exchange Rate + Vietnamese Market Pricing (Oct 2025)",
       });

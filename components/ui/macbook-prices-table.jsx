@@ -27,23 +27,21 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
 
-const allColumns = [
-  "Shop",
-  "Model",
-  "Config",
-  "VND Price",
-  "INR Price",
-  "VAT Refund",
-  "Final Price",
-];
-
-function MacBookPricesTable({ data }) {
-  const [visibleColumns, setVisibleColumns] = useState([...allColumns]);
+function MacBookPricesTable({ data, currency }) {
   const [selectedModel, setSelectedModel] = useState("All");
   const [selectedScreenSize, setSelectedScreenSize] = useState("All");
   const [selectedChipset, setSelectedChipset] = useState("All");
   const [sortOrder, setSortOrder] = useState("default");
   const [isMobile, setIsMobile] = useState(false);
+
+  const getCurrencySymbol = (currency) => {
+    const symbols = {
+      INR: "₹",
+      USD: "$",
+      EUR: "€",
+    };
+    return symbols[currency] || currency;
+  };
 
   const models = ["All", "MacBook Air", "MacBook Pro"];
   const screenSizes = ["All", '13"', '14"', '15"', '16"'];
@@ -99,15 +97,9 @@ function MacBookPricesTable({ data }) {
     return "";
   };
 
-  const toggleColumn = (col) => {
-    setVisibleColumns((prev) =>
-      prev.includes(col) ? prev.filter((c) => c !== col) : [...prev, col],
-    );
-  };
-
   return (
-    <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-      <div className="flex flex-col md:flex-row gap-4 items-start md:items-center p-4 bg-white border-b border-gray-200">
+    <div className="bg-white rounded-lg shadow-table-shadow overflow-hidden">
+      <div className="flex flex-col md:flex-row gap-4 items-start md:items-center p-4 bg-white border-b border-gray-200 justify-between">
         {/* Filter Dropdowns */}
         <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto">
           <div className="flex flex-col gap-2">
@@ -179,29 +171,6 @@ function MacBookPricesTable({ data }) {
               </SelectContent>
             </Select>
           </div>
-
-          {/* Column Visibility Toggle */}
-          <div className="flex flex-col gap-2">
-            <div className="text-sm font-semibold text-gray-700">Columns</div>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="default">
-                  Toggle
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-48">
-                {allColumns.map((col) => (
-                  <DropdownMenuCheckboxItem
-                    key={col}
-                    checked={visibleColumns.includes(col)}
-                    onCheckedChange={() => toggleColumn(col)}
-                  >
-                    {col}
-                  </DropdownMenuCheckboxItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
         </div>
       </div>
 
@@ -241,10 +210,11 @@ function MacBookPricesTable({ data }) {
                   </div>
                   <div className="text-right">
                     <div className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent">
-                      ₹{item.finalPrice?.toLocaleString() || "N/A"}
+                      {getCurrencySymbol(currency)}
+                      {item.finalPrice?.toLocaleString() || "N/A"}
                     </div>
                     <div className="text-xs font-medium text-gray-500">
-                      Final Price
+                      Est. Price
                     </div>
                   </div>
                 </div>
@@ -269,10 +239,11 @@ function MacBookPricesTable({ data }) {
                   </div>
                   <div className="bg-blue-50/50 rounded-lg p-3">
                     <div className="text-gray-500 text-xs font-medium mb-1">
-                      INR Price
+                      {currency} Price
                     </div>
                     <div className="font-bold text-blue-900">
-                      ₹{item.inrPrice?.toLocaleString() || "N/A"}
+                      {getCurrencySymbol(currency)}
+                      {item.convertedPrice?.toLocaleString() || "N/A"}
                     </div>
                   </div>
                   <div className="bg-green-50/50 rounded-lg p-3 col-span-2">
@@ -280,7 +251,8 @@ function MacBookPricesTable({ data }) {
                       VAT Refund (8.5%)
                     </div>
                     <div className="font-bold text-green-600 text-lg">
-                      -₹{item.vatRefund?.toLocaleString() || "N/A"}
+                      -{getCurrencySymbol(currency)}
+                      {item.vatRefund?.toLocaleString() || "N/A"}
                     </div>
                   </div>
                 </div>
@@ -296,41 +268,27 @@ function MacBookPricesTable({ data }) {
         <Table className="w-full">
           <TableHeader>
             <TableRow className="border-b border-gray-200 bg-white hover:bg-white">
-              {visibleColumns.includes("Shop") && (
-                <TableHead className="w-[150px] text-gray-900 font-semibold">
-                  Shop
-                </TableHead>
-              )}
-              {visibleColumns.includes("Model") && (
-                <TableHead className="w-[180px] text-gray-900 font-semibold">
-                  Model
-                </TableHead>
-              )}
-              {visibleColumns.includes("Config") && (
-                <TableHead className="w-[400px] text-gray-900 font-semibold">
-                  Config
-                </TableHead>
-              )}
-              {visibleColumns.includes("VND Price") && (
-                <TableHead className="w-[130px] text-gray-900 font-semibold">
-                  VND Price
-                </TableHead>
-              )}
-              {visibleColumns.includes("INR Price") && (
-                <TableHead className="w-[130px] text-gray-900 font-semibold">
-                  INR Price
-                </TableHead>
-              )}
-              {visibleColumns.includes("VAT Refund") && (
-                <TableHead className="w-[130px] text-gray-900 font-semibold">
-                  VAT Refund
-                </TableHead>
-              )}
-              {visibleColumns.includes("Final Price") && (
-                <TableHead className="w-[130px] text-gray-900 font-semibold">
-                  Final Price
-                </TableHead>
-              )}
+              <TableHead className="w-[150px] text-gray-900 font-semibold">
+                Shop
+              </TableHead>
+              <TableHead className="w-[180px] text-gray-900 font-semibold">
+                Model
+              </TableHead>
+              <TableHead className="w-[400px] text-gray-900 font-semibold">
+                Config
+              </TableHead>
+              <TableHead className="w-[130px] text-gray-900 font-semibold">
+                VND Price
+              </TableHead>
+              <TableHead className="w-[130px] text-gray-900 font-semibold">
+                {currency} Price
+              </TableHead>
+              <TableHead className="w-[130px] text-gray-900 font-semibold">
+                VAT Refund
+              </TableHead>
+              <TableHead className="w-[130px] text-gray-900 font-semibold">
+                Est. Price
+              </TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -346,49 +304,35 @@ function MacBookPricesTable({ data }) {
                     window.open(item.url, "_blank", "noopener,noreferrer")
                   }
                 >
-                  {visibleColumns.includes("Shop") && (
-                    <TableCell className="font-medium whitespace-nowrap text-gray-900">
-                      {item.shop}
-                    </TableCell>
-                  )}
-                  {visibleColumns.includes("Model") && (
-                    <TableCell className="font-medium whitespace-nowrap text-gray-900">
-                      {item.model}
-                    </TableCell>
-                  )}
-                  {visibleColumns.includes("Config") && (
-                    <TableCell className="whitespace-nowrap text-sm text-gray-700">
-                      {item.configuration}
-                    </TableCell>
-                  )}
-                  {visibleColumns.includes("VND Price") && (
-                    <TableCell className="whitespace-nowrap text-gray-900">
-                      ₫{item.vndPrice?.toLocaleString() || "N/A"}
-                    </TableCell>
-                  )}
-                  {visibleColumns.includes("INR Price") && (
-                    <TableCell className="whitespace-nowrap text-gray-900">
-                      ₹{item.inrPrice?.toLocaleString() || "N/A"}
-                    </TableCell>
-                  )}
-                  {visibleColumns.includes("VAT Refund") && (
-                    <TableCell className="whitespace-nowrap text-green-600 font-medium">
-                      -₹{item.vatRefund?.toLocaleString() || "N/A"}
-                    </TableCell>
-                  )}
-                  {visibleColumns.includes("Final Price") && (
-                    <TableCell className="whitespace-nowrap font-bold text-gray-900">
-                      ₹{item.finalPrice?.toLocaleString() || "N/A"}
-                    </TableCell>
-                  )}
+                  <TableCell className="font-medium whitespace-nowrap text-gray-900">
+                    {item.shop}
+                  </TableCell>
+                  <TableCell className="font-medium whitespace-nowrap text-gray-900">
+                    {item.model}
+                  </TableCell>
+                  <TableCell className="whitespace-nowrap text-sm text-gray-700">
+                    {item.configuration}
+                  </TableCell>
+                  <TableCell className="whitespace-nowrap text-gray-900">
+                    ₫{item.vndPrice?.toLocaleString() || "N/A"}
+                  </TableCell>
+                  <TableCell className="whitespace-nowrap text-gray-900">
+                    {getCurrencySymbol(currency)}
+                    {item.convertedPrice?.toLocaleString() || "N/A"}
+                  </TableCell>
+                  <TableCell className="whitespace-nowrap text-green-600 font-medium">
+                    -{getCurrencySymbol(currency)}
+                    {item.vatRefund?.toLocaleString() || "N/A"}
+                  </TableCell>
+                  <TableCell className="whitespace-nowrap font-bold text-gray-900">
+                    {getCurrencySymbol(currency)}
+                    {item.finalPrice?.toLocaleString() || "N/A"}
+                  </TableCell>
                 </TableRow>
               ))
             ) : (
               <TableRow>
-                <TableCell
-                  colSpan={visibleColumns.length}
-                  className="text-center py-6"
-                >
+                <TableCell colSpan={7} className="text-center py-6">
                   No results found.
                 </TableCell>
               </TableRow>
