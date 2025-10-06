@@ -188,10 +188,13 @@ function MacBookPricesTable({ data }) {
         <div className="space-y-4">
           {filteredData.length ? (
             filteredData.map((item, idx) => (
-              <div
+              <a
                 key={`${item.shop}-${item.id}-${idx}`}
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={cn(
-                  "border-0 rounded-xl p-5 space-y-4 shadow-lg ring-1 ring-gray-200/50 hover:shadow-xl transition-all",
+                  "block border-0 rounded-xl p-5 space-y-4 shadow-lg ring-1 ring-gray-200/50 hover:shadow-xl transition-all cursor-pointer",
                   getPriceHighlightClass(item.finalPrice) ||
                     "bg-white/95 backdrop-blur-md",
                 )}
@@ -259,7 +262,7 @@ function MacBookPricesTable({ data }) {
                     </div>
                   </div>
                 </div>
-              </div>
+              </a>
             ))
           ) : (
             <div className="text-center py-8 text-gray-500">
@@ -302,7 +305,13 @@ function MacBookPricesTable({ data }) {
               filteredData.map((item, idx) => (
                 <TableRow
                   key={`${item.shop}-${item.id}-${idx}`}
-                  className={cn(getPriceHighlightClass(item.finalPrice))}
+                  className={cn(
+                    "cursor-pointer hover:bg-gray-50/50",
+                    getPriceHighlightClass(item.finalPrice),
+                  )}
+                  onClick={() =>
+                    window.open(item.url, "_blank", "noopener,noreferrer")
+                  }
                 >
                   {visibleColumns.includes("Shop") && (
                     <TableCell className="font-medium whitespace-nowrap">
