@@ -64,10 +64,10 @@ export default function MacBookTracker() {
   return (
     <div className="min-h-screen bg-black">
       {/* Header Section */}
-      <div className="bg-black text-white py-12 px-4">
+      <div className="bg-black text-white py-6 px-4">
         <div className="container mx-auto max-w-7xl">
           {/* Currency Selector - Top Right */}
-          <div className="flex justify-end mb-8">
+          <div className="flex justify-end mb-4">
             <Select value={currency} onValueChange={setCurrency}>
               <SelectTrigger className="w-[200px] bg-gray-900 border-gray-800 text-white">
                 <SelectValue placeholder="Select currency" />
@@ -81,8 +81,8 @@ export default function MacBookTracker() {
           </div>
 
           {/* Title with Sparkles */}
-          <div className="relative mb-6">
-            <h1 className="text-5xl md:text-6xl text-center font-serif relative z-10">
+          <div className="relative mb-4">
+            <h1 className="text-3xl md:text-4xl text-center font-serif relative z-10">
               Why pay more for a mac
             </h1>
             <div className="absolute inset-0 h-full w-full">
@@ -99,20 +99,20 @@ export default function MacBookTracker() {
           </div>
 
           {/* Subtitle */}
-          <p className="text-center text-gray-400 text-lg mb-8">
+          <p className="text-center text-gray-400 text-base mb-4">
             Live MacBook prices from Vietnam's top Apple retailers with VAT
             refunds for tourists
           </p>
 
           {/* Exchange Rate Card */}
           {exchangeRate && (
-            <div className="bg-gray-900 rounded-lg p-6 max-w-2xl mx-auto">
-              <div className="flex justify-between items-center mb-4">
+            <div className="bg-gray-900 rounded-lg p-4 max-w-2xl mx-auto">
+              <div className="flex justify-between items-center">
                 <div>
-                  <div className="text-2xl font-bold mb-1">
+                  <div className="text-xl font-bold mb-1">
                     Exchange Rate: 1 INR = {exchangeRate.toFixed(2)} VND
                   </div>
-                  <div className="text-sm text-gray-400">Powered by Wise</div>
+                  <div className="text-xs text-gray-400">Powered by Wise</div>
                 </div>
                 <Button
                   onClick={fetchPrices}
