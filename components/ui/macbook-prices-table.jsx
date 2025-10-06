@@ -15,6 +15,13 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
@@ -32,11 +39,15 @@ const allColumns = [
 
 function MacBookPricesTable({ data }) {
   const [visibleColumns, setVisibleColumns] = useState([...allColumns]);
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedModel, setSelectedModel] = useState("All");
+  const [selectedScreenSize, setSelectedScreenSize] = useState("All");
+  const [selectedChipset, setSelectedChipset] = useState("All");
   const [sortOrder, setSortOrder] = useState("default");
   const [isMobile, setIsMobile] = useState(false);
 
-  const categories = ["All", "M4 Pro", "M4 Max", "M3 Max"];
+  const models = ["All", "MacBook Air", "MacBook Pro"];
+  const screenSizes = ["All", '13"', '14"', '15"', '16"'];
+  const chipsets = ["All", "M2", "M3", "M4", "M4 Pro", "M4 Max", "M3 Max"];
 
   // Detect mobile screen size
   useEffect(() => {
@@ -49,10 +60,15 @@ function MacBookPricesTable({ data }) {
   }, []);
 
   const filterAndSortData = () => {
-    let filtered =
-      selectedCategory === "All"
-        ? data
-        : data.filter((item) => item.category === selectedCategory);
+    let filtered = data.filter((item) => {
+      const modelMatch =
+        selectedModel === "All" || item.modelType === selectedModel;
+      const sizeMatch =
+        selectedScreenSize === "All" || item.screenSize === selectedScreenSize;
+      const chipMatch =
+        selectedChipset === "All" || item.category === selectedChipset;
+      return modelMatch && sizeMatch && chipMatch;
+    });
 
     if (sortOrder === "low-to-high") {
       filtered = [...filtered].sort(
@@ -90,101 +106,108 @@ function MacBookPricesTable({ data }) {
   };
 
   return (
-    <div className="container my-10 space-y-4 p-4 border border-border rounded-lg bg-background shadow-sm overflow-x-auto">
-      <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between mb-6">
-        {/* Category Filter Buttons */}
-        <div className="flex flex-col gap-2 w-full md:w-auto">
-          <div className="text-sm font-semibold text-gray-700">
-            Filter by Chip:
+    <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+      <div className="flex flex-col md:flex-row gap-4 items-start md:items-center p-4 bg-white border-b border-gray-200">
+        {/* Filter Dropdowns */}
+        <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto">
+          <div className="flex flex-col gap-2">
+            <div className="text-sm font-semibold text-gray-700">Model</div>
+            <Select value={selectedModel} onValueChange={setSelectedModel}>
+              <SelectTrigger className="w-full md:w-[180px]">
+                <SelectValue placeholder="Select model" />
+              </SelectTrigger>
+              <SelectContent>
+                {models.map((model) => (
+                  <SelectItem key={model} value={model}>
+                    {model}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
-          <div className="flex flex-wrap gap-2">
-            {categories.map((category) => (
-              <Button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                size="sm"
-                variant={selectedCategory === category ? "default" : "outline"}
-                className={
-                  selectedCategory === category
-                    ? "bg-indigo-600 hover:bg-indigo-700"
-                    : ""
-                }
-              >
-                {category}
-              </Button>
-            ))}
+
+          <div className="flex flex-col gap-2">
+            <div className="text-sm font-semibold text-gray-700">
+              Screen Size
+            </div>
+            <Select
+              value={selectedScreenSize}
+              onValueChange={setSelectedScreenSize}
+            >
+              <SelectTrigger className="w-full md:w-[140px]">
+                <SelectValue placeholder="Select size" />
+              </SelectTrigger>
+              <SelectContent>
+                {screenSizes.map((size) => (
+                  <SelectItem key={size} value={size}>
+                    {size}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <div className="text-sm font-semibold text-gray-700">Chipset</div>
+            <Select value={selectedChipset} onValueChange={setSelectedChipset}>
+              <SelectTrigger className="w-full md:w-[140px]">
+                <SelectValue placeholder="Select chip" />
+              </SelectTrigger>
+              <SelectContent>
+                {chipsets.map((chip) => (
+                  <SelectItem key={chip} value={chip}>
+                    {chip}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
         </div>
 
-        {/* Sort Buttons */}
-        <div className="flex flex-col gap-2 w-full md:w-auto">
-          <div className="text-sm font-semibold text-gray-700">
-            Sort by Price:
+        <div className="flex gap-3 w-full md:w-auto">
+          {/* Sort Dropdown */}
+          <div className="flex flex-col gap-2 w-full md:w-auto">
+            <div className="text-sm font-semibold text-gray-700">Sort</div>
+            <Select value={sortOrder} onValueChange={setSortOrder}>
+              <SelectTrigger className="w-full md:w-[180px]">
+                <SelectValue placeholder="Sort by price" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="default">Default</SelectItem>
+                <SelectItem value="low-to-high">Price: Low to High</SelectItem>
+                <SelectItem value="high-to-low">Price: High to Low</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
-          <div className="flex flex-wrap gap-2">
-            <Button
-              onClick={() => setSortOrder("default")}
-              size="sm"
-              variant={sortOrder === "default" ? "default" : "outline"}
-              className={
-                sortOrder === "default"
-                  ? "bg-indigo-600 hover:bg-indigo-700"
-                  : ""
-              }
-            >
-              Default
-            </Button>
-            <Button
-              onClick={() => setSortOrder("low-to-high")}
-              size="sm"
-              variant={sortOrder === "low-to-high" ? "default" : "outline"}
-              className={
-                sortOrder === "low-to-high"
-                  ? "bg-indigo-600 hover:bg-indigo-700"
-                  : ""
-              }
-            >
-              Low to High
-            </Button>
-            <Button
-              onClick={() => setSortOrder("high-to-low")}
-              size="sm"
-              variant={sortOrder === "high-to-low" ? "default" : "outline"}
-              className={
-                sortOrder === "high-to-low"
-                  ? "bg-indigo-600 hover:bg-indigo-700"
-                  : ""
-              }
-            >
-              High to Low
-            </Button>
+
+          {/* Column Visibility Toggle */}
+          <div className="flex flex-col gap-2">
+            <div className="text-sm font-semibold text-gray-700">Columns</div>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="default">
+                  Toggle
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-48">
+                {allColumns.map((col) => (
+                  <DropdownMenuCheckboxItem
+                    key={col}
+                    checked={visibleColumns.includes(col)}
+                    onCheckedChange={() => toggleColumn(col)}
+                  >
+                    {col}
+                  </DropdownMenuCheckboxItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
-
-        {/* Column Visibility Toggle */}
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" size="sm">
-              Columns
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-48">
-            {allColumns.map((col) => (
-              <DropdownMenuCheckboxItem
-                key={col}
-                checked={visibleColumns.includes(col)}
-                onCheckedChange={() => toggleColumn(col)}
-              >
-                {col}
-              </DropdownMenuCheckboxItem>
-            ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
       </div>
 
       {/* Mobile Card View */}
       {isMobile ? (
-        <div className="space-y-4">
+        <div className="space-y-4 p-4">
           {filteredData.length ? (
             filteredData.map((item, idx) => (
               <a
@@ -272,27 +295,41 @@ function MacBookPricesTable({ data }) {
       ) : (
         <Table className="w-full">
           <TableHeader>
-            <TableRow>
+            <TableRow className="border-b border-gray-200 bg-white hover:bg-white">
               {visibleColumns.includes("Shop") && (
-                <TableHead className="w-[150px]">Shop</TableHead>
+                <TableHead className="w-[150px] text-gray-900 font-semibold">
+                  Shop
+                </TableHead>
               )}
               {visibleColumns.includes("Model") && (
-                <TableHead className="w-[180px]">Model</TableHead>
+                <TableHead className="w-[180px] text-gray-900 font-semibold">
+                  Model
+                </TableHead>
               )}
               {visibleColumns.includes("Config") && (
-                <TableHead className="w-[400px]">Config</TableHead>
+                <TableHead className="w-[400px] text-gray-900 font-semibold">
+                  Config
+                </TableHead>
               )}
               {visibleColumns.includes("VND Price") && (
-                <TableHead className="w-[130px]">VND Price</TableHead>
+                <TableHead className="w-[130px] text-gray-900 font-semibold">
+                  VND Price
+                </TableHead>
               )}
               {visibleColumns.includes("INR Price") && (
-                <TableHead className="w-[130px]">INR Price</TableHead>
+                <TableHead className="w-[130px] text-gray-900 font-semibold">
+                  INR Price
+                </TableHead>
               )}
               {visibleColumns.includes("VAT Refund") && (
-                <TableHead className="w-[130px]">VAT Refund</TableHead>
+                <TableHead className="w-[130px] text-gray-900 font-semibold">
+                  VAT Refund
+                </TableHead>
               )}
               {visibleColumns.includes("Final Price") && (
-                <TableHead className="w-[130px]">Final Price</TableHead>
+                <TableHead className="w-[130px] text-gray-900 font-semibold">
+                  Final Price
+                </TableHead>
               )}
             </TableRow>
           </TableHeader>
@@ -302,7 +339,7 @@ function MacBookPricesTable({ data }) {
                 <TableRow
                   key={`${item.shop}-${item.id}-${idx}`}
                   className={cn(
-                    "cursor-pointer hover:bg-gray-100 transition-colors",
+                    "cursor-pointer hover:bg-gray-50 transition-colors border-b border-gray-100",
                     getPriceHighlightClass(item.finalPrice),
                   )}
                   onClick={() =>
@@ -310,49 +347,37 @@ function MacBookPricesTable({ data }) {
                   }
                 >
                   {visibleColumns.includes("Shop") && (
-                    <TableCell className="font-medium whitespace-nowrap">
-                      <Badge
-                        className={cn(
-                          "whitespace-nowrap",
-                          item.shop === "FPT Shop" && "bg-blue-500 text-white",
-                          item.shop === "ShopDunk" &&
-                            "bg-purple-500 text-white",
-                          item.shop === "TopZone" && "bg-green-500 text-white",
-                          item.shop === "CellphoneS" &&
-                            "bg-orange-500 text-white",
-                        )}
-                      >
-                        {item.shop}
-                      </Badge>
+                    <TableCell className="font-medium whitespace-nowrap text-gray-900">
+                      {item.shop}
                     </TableCell>
                   )}
                   {visibleColumns.includes("Model") && (
-                    <TableCell className="font-medium whitespace-nowrap">
+                    <TableCell className="font-medium whitespace-nowrap text-gray-900">
                       {item.model}
                     </TableCell>
                   )}
                   {visibleColumns.includes("Config") && (
-                    <TableCell className="whitespace-nowrap text-sm">
+                    <TableCell className="whitespace-nowrap text-sm text-gray-700">
                       {item.configuration}
                     </TableCell>
                   )}
                   {visibleColumns.includes("VND Price") && (
-                    <TableCell className="whitespace-nowrap">
+                    <TableCell className="whitespace-nowrap text-gray-900">
                       ₫{item.vndPrice?.toLocaleString() || "N/A"}
                     </TableCell>
                   )}
                   {visibleColumns.includes("INR Price") && (
-                    <TableCell className="whitespace-nowrap">
+                    <TableCell className="whitespace-nowrap text-gray-900">
                       ₹{item.inrPrice?.toLocaleString() || "N/A"}
                     </TableCell>
                   )}
                   {visibleColumns.includes("VAT Refund") && (
-                    <TableCell className="whitespace-nowrap text-green-600">
+                    <TableCell className="whitespace-nowrap text-green-600 font-medium">
                       -₹{item.vatRefund?.toLocaleString() || "N/A"}
                     </TableCell>
                   )}
                   {visibleColumns.includes("Final Price") && (
-                    <TableCell className="whitespace-nowrap font-bold text-primary">
+                    <TableCell className="whitespace-nowrap font-bold text-gray-900">
                       ₹{item.finalPrice?.toLocaleString() || "N/A"}
                     </TableCell>
                   )}
