@@ -25,6 +25,7 @@ const allColumns = [
   "Model",
   "Configuration",
   "Category",
+  "Status",
   "VND Price",
   "INR Price",
   "VAT Refund",
@@ -213,9 +214,21 @@ function MacBookPricesTable({ data }) {
                     >
                       {item.shop}
                     </Badge>
-                    <Badge variant="outline" className="w-fit">
-                      {item.category}
-                    </Badge>
+                    <div className="flex gap-2">
+                      <Badge variant="outline" className="w-fit">
+                        {item.category}
+                      </Badge>
+                      <Badge
+                        className={cn(
+                          "w-fit",
+                          item.available
+                            ? "bg-green-100 text-green-700 border-green-200"
+                            : "bg-red-100 text-red-700 border-red-200",
+                        )}
+                      >
+                        {item.available ? "In Stock" : "Out of Stock"}
+                      </Badge>
+                    </div>
                   </div>
                   <div className="text-right">
                     <div className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent">
@@ -286,6 +299,9 @@ function MacBookPricesTable({ data }) {
               {visibleColumns.includes("Category") && (
                 <TableHead className="w-[120px]">Category</TableHead>
               )}
+              {visibleColumns.includes("Status") && (
+                <TableHead className="w-[120px]">Status</TableHead>
+              )}
               {visibleColumns.includes("VND Price") && (
                 <TableHead className="w-[130px]">VND Price</TableHead>
               )}
@@ -343,6 +359,19 @@ function MacBookPricesTable({ data }) {
                   {visibleColumns.includes("Category") && (
                     <TableCell className="whitespace-nowrap">
                       <Badge variant="outline">{item.category}</Badge>
+                    </TableCell>
+                  )}
+                  {visibleColumns.includes("Status") && (
+                    <TableCell className="whitespace-nowrap">
+                      <Badge
+                        className={cn(
+                          item.available
+                            ? "bg-green-100 text-green-700 border-green-200"
+                            : "bg-red-100 text-red-700 border-red-200",
+                        )}
+                      >
+                        {item.available ? "In Stock" : "Out of Stock"}
+                      </Badge>
                     </TableCell>
                   )}
                   {visibleColumns.includes("VND Price") && (
