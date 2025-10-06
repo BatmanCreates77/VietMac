@@ -11,6 +11,7 @@ import {
 import { RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 import MacBookPricesTable from "@/components/ui/macbook-prices-table";
+import { SparklesCore } from "@/components/ui/sparkles";
 
 export default function MacBookTracker() {
   const [allPrices, setAllPrices] = useState([]);
@@ -79,10 +80,23 @@ export default function MacBookTracker() {
             </Select>
           </div>
 
-          {/* Title */}
-          <h1 className="text-5xl md:text-6xl text-center mb-6 font-serif">
-            Why pay more for a mac
-          </h1>
+          {/* Title with Sparkles */}
+          <div className="relative mb-6">
+            <h1 className="text-5xl md:text-6xl text-center font-serif relative z-10">
+              Why pay more for a mac
+            </h1>
+            <div className="absolute inset-0 h-full w-full">
+              <SparklesCore
+                id="tsparticlesfullpage"
+                background="transparent"
+                minSize={0.6}
+                maxSize={1.4}
+                particleDensity={100}
+                className="w-full h-full"
+                particleColor="#FFFFFF"
+              />
+            </div>
+          </div>
 
           {/* Subtitle */}
           <p className="text-center text-gray-400 text-lg mb-8">
