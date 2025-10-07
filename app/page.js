@@ -76,8 +76,8 @@ export default function MacBookTracker() {
       {/* Header Section */}
       <div className="bg-black text-white py-6 px-4">
         <div className="container mx-auto max-w-7xl flex flex-col items-center">
-          {/* Currency Selector - Top Right */}
-          <div className="w-full flex justify-center sm:justify-end mb-4">
+          {/* Currency Selector - Centered */}
+          <div className="w-full flex justify-center mb-4">
             <Select value={currency} onValueChange={setCurrency}>
               <SelectTrigger className="w-full sm:w-[200px] bg-gray-900 border-gray-800 text-white">
                 <SelectValue placeholder="Select currency" />

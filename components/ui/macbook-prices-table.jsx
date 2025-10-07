@@ -26,6 +26,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 function MacBookPricesTable({ data, currency }) {
   const [selectedModel, setSelectedModel] = useState("All");
@@ -35,6 +36,7 @@ function MacBookPricesTable({ data, currency }) {
   const [isMobile, setIsMobile] = useState(false);
   const [bargainDiscount, setBargainDiscount] = useState(0); // 0-10% typical bargaining discount
   const [showBargainSlider, setShowBargainSlider] = useState(false);
+  const [showFilters, setShowFilters] = useState(false);
 
   const getCurrencySymbol = (currency) => {
     const symbols = {
@@ -194,85 +196,114 @@ function MacBookPricesTable({ data, currency }) {
           </div>
         )}
 
-        {/* Filter Dropdowns */}
-        <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-          <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto">
-            <div className="flex flex-col gap-2">
-              <div className="text-sm font-semibold text-gray-700">Model</div>
-              <Select value={selectedModel} onValueChange={setSelectedModel}>
-                <SelectTrigger className="w-full md:w-[180px]">
-                  <SelectValue placeholder="Select model" />
-                </SelectTrigger>
-                <SelectContent>
-                  {models.map((model) => (
-                    <SelectItem key={model} value={model}>
-                      {model}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
+        {/* Filter Accordion */}
+        <div className="border border-gray-200 rounded-lg overflow-hidden">
+          {/* Accordion Header */}
+          <button
+            onClick={() => setShowFilters(!showFilters)}
+            className="w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 transition-colors"
+          >
+            <span className="text-sm font-semibold text-gray-700">Filters</span>
+            {showFilters ? (
+              <ChevronUp className="h-5 w-5 text-gray-600" />
+            ) : (
+              <ChevronDown className="h-5 w-5 text-gray-600" />
+            )}
+          </button>
 
-            <div className="flex flex-col gap-2">
-              <div className="text-sm font-semibold text-gray-700">
-                Screen Size
+          {/* Accordion Content */}
+          {showFilters && (
+            <div className="p-4 bg-white border-t border-gray-200">
+              <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+                <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto">
+                  <div className="flex flex-col gap-2">
+                    <div className="text-sm font-semibold text-gray-700">
+                      Model
+                    </div>
+                    <Select
+                      value={selectedModel}
+                      onValueChange={setSelectedModel}
+                    >
+                      <SelectTrigger className="w-full md:w-[180px]">
+                        <SelectValue placeholder="Select model" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {models.map((model) => (
+                          <SelectItem key={model} value={model}>
+                            {model}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="flex flex-col gap-2">
+                    <div className="text-sm font-semibold text-gray-700">
+                      Screen Size
+                    </div>
+                    <Select
+                      value={selectedScreenSize}
+                      onValueChange={setSelectedScreenSize}
+                    >
+                      <SelectTrigger className="w-full md:w-[140px]">
+                        <SelectValue placeholder="Select size" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {screenSizes.map((size) => (
+                          <SelectItem key={size} value={size}>
+                            {size}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="flex flex-col gap-2">
+                    <div className="text-sm font-semibold text-gray-700">
+                      Chipset
+                    </div>
+                    <Select
+                      value={selectedChipset}
+                      onValueChange={setSelectedChipset}
+                    >
+                      <SelectTrigger className="w-full md:w-[140px]">
+                        <SelectValue placeholder="Select chip" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {chipsets.map((chip) => (
+                          <SelectItem key={chip} value={chip}>
+                            {chip}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+
+                <div className="flex gap-3 w-full md:w-auto">
+                  {/* Sort Dropdown */}
+                  <div className="flex flex-col gap-2 w-full md:w-auto">
+                    <div className="text-sm font-semibold text-gray-700">
+                      Sort
+                    </div>
+                    <Select value={sortOrder} onValueChange={setSortOrder}>
+                      <SelectTrigger className="w-full md:w-[180px]">
+                        <SelectValue placeholder="Sort by price" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="low-to-high">
+                          Price: Low to High
+                        </SelectItem>
+                        <SelectItem value="high-to-low">
+                          Price: High to Low
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
               </div>
-              <Select
-                value={selectedScreenSize}
-                onValueChange={setSelectedScreenSize}
-              >
-                <SelectTrigger className="w-full md:w-[140px]">
-                  <SelectValue placeholder="Select size" />
-                </SelectTrigger>
-                <SelectContent>
-                  {screenSizes.map((size) => (
-                    <SelectItem key={size} value={size}>
-                      {size}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
             </div>
-
-            <div className="flex flex-col gap-2">
-              <div className="text-sm font-semibold text-gray-700">Chipset</div>
-              <Select
-                value={selectedChipset}
-                onValueChange={setSelectedChipset}
-              >
-                <SelectTrigger className="w-full md:w-[140px]">
-                  <SelectValue placeholder="Select chip" />
-                </SelectTrigger>
-                <SelectContent>
-                  {chipsets.map((chip) => (
-                    <SelectItem key={chip} value={chip}>
-                      {chip}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-
-          <div className="flex gap-3 w-full md:w-auto">
-            {/* Sort Dropdown */}
-            <div className="flex flex-col gap-2 w-full md:w-auto">
-              <div className="text-sm font-semibold text-gray-700">Sort</div>
-              <Select value={sortOrder} onValueChange={setSortOrder}>
-                <SelectTrigger className="w-full md:w-[180px]">
-                  <SelectValue placeholder="Sort by price" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="low-to-high">
-                    Price: Low to High
-                  </SelectItem>
-                  <SelectItem value="high-to-low">
-                    Price: High to Low
-                  </SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
+          )}
         </div>
       </div>
 
