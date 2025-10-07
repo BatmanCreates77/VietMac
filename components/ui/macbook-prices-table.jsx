@@ -378,94 +378,96 @@ function MacBookPricesTable({ data, currency }) {
           )}
         </div>
       ) : (
-        <Table className="w-full">
-          <TableHeader>
-            <TableRow className="border-b border-gray-200 bg-white hover:bg-white">
-              <TableHead className="w-[150px] text-gray-900 font-semibold">
-                Shop
-              </TableHead>
-              <TableHead className="w-[180px] text-gray-900 font-semibold">
-                Model
-              </TableHead>
-              <TableHead className="w-[400px] text-gray-900 font-semibold">
-                Config
-              </TableHead>
-              <TableHead className="w-[130px] text-gray-900 font-semibold">
-                VND Price
-              </TableHead>
-              <TableHead className="w-[130px] text-gray-900 font-semibold">
-                {currency} Price
-              </TableHead>
-              {bargainDiscount > 0 && (
-                <TableHead className="w-[130px] text-yellow-700 font-semibold">
-                  Bargain -{bargainDiscount}%
+        <div className="overflow-x-auto">
+          <Table className="w-full">
+            <TableHeader>
+              <TableRow className="border-b border-gray-200 bg-white hover:bg-white">
+                <TableHead className="w-[150px] text-gray-900 font-semibold">
+                  Shop
                 </TableHead>
-              )}
-              <TableHead className="w-[130px] text-gray-900 font-semibold">
-                VAT Refund
-              </TableHead>
-              <TableHead className="w-[130px] text-gray-900 font-semibold">
-                Est. Price
-              </TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {filteredData.length ? (
-              filteredData.map((item, idx) => (
-                <TableRow
-                  key={`${item.shop}-${item.id}-${idx}`}
-                  className={cn(
-                    "cursor-pointer hover:bg-gray-50 transition-colors border-b border-gray-100",
-                    getPriceHighlightClass(item.finalPrice),
-                  )}
-                  onClick={() =>
-                    window.open(item.url, "_blank", "noopener,noreferrer")
-                  }
-                >
-                  <TableCell className="font-medium whitespace-nowrap text-gray-900">
-                    {item.shop}
-                  </TableCell>
-                  <TableCell className="font-medium whitespace-nowrap text-gray-900">
-                    {item.model}
-                  </TableCell>
-                  <TableCell className="whitespace-nowrap text-sm text-gray-700">
-                    {item.configuration}
-                  </TableCell>
-                  <TableCell className="whitespace-nowrap text-gray-900">
-                    ₫{item.vndPrice?.toLocaleString() || "N/A"}
-                  </TableCell>
-                  <TableCell className="whitespace-nowrap text-gray-900">
-                    {getCurrencySymbol(currency)}
-                    {item.convertedPrice?.toLocaleString() || "N/A"}
-                  </TableCell>
-                  {bargainDiscount > 0 && (
-                    <TableCell className="whitespace-nowrap text-yellow-700 font-medium">
-                      -{getCurrencySymbol(currency)}
-                      {item.bargainDiscount?.toLocaleString() || "N/A"}
+                <TableHead className="w-[180px] text-gray-900 font-semibold">
+                  Model
+                </TableHead>
+                <TableHead className="w-[400px] text-gray-900 font-semibold">
+                  Config
+                </TableHead>
+                <TableHead className="w-[130px] text-gray-900 font-semibold">
+                  VND Price
+                </TableHead>
+                <TableHead className="w-[130px] text-gray-900 font-semibold">
+                  {currency} Price
+                </TableHead>
+                {bargainDiscount > 0 && (
+                  <TableHead className="w-[130px] text-yellow-700 font-semibold">
+                    Bargain -{bargainDiscount}%
+                  </TableHead>
+                )}
+                <TableHead className="w-[130px] text-gray-900 font-semibold">
+                  VAT Refund
+                </TableHead>
+                <TableHead className="w-[130px] text-gray-900 font-semibold">
+                  Est. Price
+                </TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {filteredData.length ? (
+                filteredData.map((item, idx) => (
+                  <TableRow
+                    key={`${item.shop}-${item.id}-${idx}`}
+                    className={cn(
+                      "cursor-pointer hover:bg-gray-50 transition-colors border-b border-gray-100",
+                      getPriceHighlightClass(item.finalPrice),
+                    )}
+                    onClick={() =>
+                      window.open(item.url, "_blank", "noopener,noreferrer")
+                    }
+                  >
+                    <TableCell className="font-medium whitespace-nowrap text-gray-900">
+                      {item.shop}
                     </TableCell>
-                  )}
-                  <TableCell className="whitespace-nowrap text-green-600 font-medium">
-                    -{getCurrencySymbol(currency)}
-                    {item.vatRefund?.toLocaleString() || "N/A"}
-                  </TableCell>
-                  <TableCell className="whitespace-nowrap font-bold text-gray-900">
-                    {getCurrencySymbol(currency)}
-                    {item.finalPrice?.toLocaleString() || "N/A"}
+                    <TableCell className="font-medium whitespace-nowrap text-gray-900">
+                      {item.model}
+                    </TableCell>
+                    <TableCell className="whitespace-nowrap text-sm text-gray-700">
+                      {item.configuration}
+                    </TableCell>
+                    <TableCell className="whitespace-nowrap text-gray-900">
+                      ₫{item.vndPrice?.toLocaleString() || "N/A"}
+                    </TableCell>
+                    <TableCell className="whitespace-nowrap text-gray-900">
+                      {getCurrencySymbol(currency)}
+                      {item.convertedPrice?.toLocaleString() || "N/A"}
+                    </TableCell>
+                    {bargainDiscount > 0 && (
+                      <TableCell className="whitespace-nowrap text-yellow-700 font-medium">
+                        -{getCurrencySymbol(currency)}
+                        {item.bargainDiscount?.toLocaleString() || "N/A"}
+                      </TableCell>
+                    )}
+                    <TableCell className="whitespace-nowrap text-green-600 font-medium">
+                      -{getCurrencySymbol(currency)}
+                      {item.vatRefund?.toLocaleString() || "N/A"}
+                    </TableCell>
+                    <TableCell className="whitespace-nowrap font-bold text-gray-900">
+                      {getCurrencySymbol(currency)}
+                      {item.finalPrice?.toLocaleString() || "N/A"}
+                    </TableCell>
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell
+                    colSpan={bargainDiscount > 0 ? 8 : 7}
+                    className="text-center py-6"
+                  >
+                    No results found.
                   </TableCell>
                 </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell
-                  colSpan={bargainDiscount > 0 ? 8 : 7}
-                  className="text-center py-6"
-                >
-                  No results found.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
+              )}
+            </TableBody>
+          </Table>
+        </div>
       )}
     </div>
   );
