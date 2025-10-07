@@ -31,8 +31,10 @@ function MacBookPricesTable({ data, currency }) {
   const [selectedModel, setSelectedModel] = useState("All");
   const [selectedScreenSize, setSelectedScreenSize] = useState("All");
   const [selectedChipset, setSelectedChipset] = useState("All");
-  const [sortOrder, setSortOrder] = useState("default");
+  const [sortOrder, setSortOrder] = useState("low-to-high");
   const [isMobile, setIsMobile] = useState(false);
+  const [bargainDiscount, setBargainDiscount] = useState(0); // 0-10% typical bargaining discount
+  const [showBargainSlider, setShowBargainSlider] = useState(false);
 
   const getCurrencySymbol = (currency) => {
     const symbols = {
@@ -68,6 +70,24 @@ function MacBookPricesTable({ data, currency }) {
       return modelMatch && sizeMatch && chipMatch;
     });
 
+    // Apply bargaining discount to prices
+    filtered = filtered.map((item) => {
+      if (!item.convertedPrice) return item;
+
+      const discountAmount = item.convertedPrice * (bargainDiscount / 100);
+      const bargainedPrice = item.convertedPrice - discountAmount;
+      const vatRefund = ((bargainedPrice * 8.5) / 108.5) * 0.78; // Recalculate VAT on bargained price
+      const finalPrice = bargainedPrice - vatRefund;
+
+      return {
+        ...item,
+        bargainedPrice: Math.round(bargainedPrice),
+        bargainDiscount: Math.round(discountAmount),
+        vatRefund: Math.round(vatRefund),
+        finalPrice: Math.round(finalPrice),
+      };
+    });
+
     if (sortOrder === "low-to-high") {
       filtered = [...filtered].sort(
         (a, b) => (a.finalPrice || 0) - (b.finalPrice || 0),
@@ -99,77 +119,159 @@ function MacBookPricesTable({ data, currency }) {
 
   return (
     <div className="bg-white rounded-lg shadow-table-shadow overflow-hidden">
-      <div className="flex flex-col md:flex-row gap-4 items-start md:items-center p-4 bg-white border-b border-gray-200 justify-between">
-        {/* Filter Dropdowns */}
-        <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto">
-          <div className="flex flex-col gap-2">
-            <div className="text-sm font-semibold text-gray-700">Model</div>
-            <Select value={selectedModel} onValueChange={setSelectedModel}>
-              <SelectTrigger className="w-full md:w-[180px]">
-                <SelectValue placeholder="Select model" />
-              </SelectTrigger>
-              <SelectContent>
-                {models.map((model) => (
-                  <SelectItem key={model} value={model}>
-                    {model}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+      <div className="flex flex-col gap-4 p-4 bg-white border-b border-gray-200">
+        {/* Bargaining Toggle */}
+        <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-center gap-3">
+            <span className="text-sm font-medium text-gray-700">
+              💰 Did you bargain at the store?
+            </span>
+            {showBargainSlider && bargainDiscount > 0 && (
+              <Badge
+                variant="outline"
+                className="bg-yellow-100 text-yellow-800 border-yellow-300"
+              >
+                -{bargainDiscount}% OFF
+              </Badge>
+            )}
           </div>
-
-          <div className="flex flex-col gap-2">
-            <div className="text-sm font-semibold text-gray-700">
-              Screen Size
-            </div>
-            <Select
-              value={selectedScreenSize}
-              onValueChange={setSelectedScreenSize}
-            >
-              <SelectTrigger className="w-full md:w-[140px]">
-                <SelectValue placeholder="Select size" />
-              </SelectTrigger>
-              <SelectContent>
-                {screenSizes.map((size) => (
-                  <SelectItem key={size} value={size}>
-                    {size}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <div className="text-sm font-semibold text-gray-700">Chipset</div>
-            <Select value={selectedChipset} onValueChange={setSelectedChipset}>
-              <SelectTrigger className="w-full md:w-[140px]">
-                <SelectValue placeholder="Select chip" />
-              </SelectTrigger>
-              <SelectContent>
-                {chipsets.map((chip) => (
-                  <SelectItem key={chip} value={chip}>
-                    {chip}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
+          <button
+            onClick={() => {
+              setShowBargainSlider(!showBargainSlider);
+              if (showBargainSlider) {
+                setBargainDiscount(0);
+              }
+            }}
+            className={cn(
+              "relative inline-flex h-6 w-11 items-center rounded-full transition-colors",
+              showBargainSlider ? "bg-blue-600" : "bg-gray-300",
+            )}
+          >
+            <span
+              className={cn(
+                "inline-block h-4 w-4 transform rounded-full bg-white transition-transform",
+                showBargainSlider ? "translate-x-6" : "translate-x-1",
+              )}
+            />
+          </button>
         </div>
 
-        <div className="flex gap-3 w-full md:w-auto">
-          {/* Sort Dropdown */}
-          <div className="flex flex-col gap-2 w-full md:w-auto">
-            <div className="text-sm font-semibold text-gray-700">Sort</div>
-            <Select value={sortOrder} onValueChange={setSortOrder}>
-              <SelectTrigger className="w-full md:w-[180px]">
-                <SelectValue placeholder="Sort by price" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="default">Default</SelectItem>
-                <SelectItem value="low-to-high">Price: Low to High</SelectItem>
-                <SelectItem value="high-to-low">Price: High to Low</SelectItem>
-              </SelectContent>
-            </Select>
+        {/* Bargaining Discount Slider - Collapsible */}
+        {showBargainSlider && (
+          <div className="w-full bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-4 border border-blue-200">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-sm font-semibold text-gray-900">
+                    Adjust Your Bargaining Discount
+                  </span>
+                </div>
+                <p className="text-xs text-gray-600">
+                  Typical discounts: 2-5% (average negotiation) or 5-10%
+                  (skilled bargaining)
+                </p>
+              </div>
+              <div className="flex items-center gap-4 md:min-w-[300px]">
+                <input
+                  type="range"
+                  min="0"
+                  max="10"
+                  step="0.5"
+                  value={bargainDiscount}
+                  onChange={(e) =>
+                    setBargainDiscount(parseFloat(e.target.value))
+                  }
+                  className="flex-1 h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                />
+                <div className="text-right min-w-[60px]">
+                  <div className="text-lg font-bold text-blue-600">
+                    {bargainDiscount}%
+                  </div>
+                  <div className="text-xs text-gray-500">discount</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Filter Dropdowns */}
+        <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+          <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto">
+            <div className="flex flex-col gap-2">
+              <div className="text-sm font-semibold text-gray-700">Model</div>
+              <Select value={selectedModel} onValueChange={setSelectedModel}>
+                <SelectTrigger className="w-full md:w-[180px]">
+                  <SelectValue placeholder="Select model" />
+                </SelectTrigger>
+                <SelectContent>
+                  {models.map((model) => (
+                    <SelectItem key={model} value={model}>
+                      {model}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <div className="text-sm font-semibold text-gray-700">
+                Screen Size
+              </div>
+              <Select
+                value={selectedScreenSize}
+                onValueChange={setSelectedScreenSize}
+              >
+                <SelectTrigger className="w-full md:w-[140px]">
+                  <SelectValue placeholder="Select size" />
+                </SelectTrigger>
+                <SelectContent>
+                  {screenSizes.map((size) => (
+                    <SelectItem key={size} value={size}>
+                      {size}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <div className="text-sm font-semibold text-gray-700">Chipset</div>
+              <Select
+                value={selectedChipset}
+                onValueChange={setSelectedChipset}
+              >
+                <SelectTrigger className="w-full md:w-[140px]">
+                  <SelectValue placeholder="Select chip" />
+                </SelectTrigger>
+                <SelectContent>
+                  {chipsets.map((chip) => (
+                    <SelectItem key={chip} value={chip}>
+                      {chip}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+
+          <div className="flex gap-3 w-full md:w-auto">
+            {/* Sort Dropdown */}
+            <div className="flex flex-col gap-2 w-full md:w-auto">
+              <div className="text-sm font-semibold text-gray-700">Sort</div>
+              <Select value={sortOrder} onValueChange={setSortOrder}>
+                <SelectTrigger className="w-full md:w-[180px]">
+                  <SelectValue placeholder="Sort by price" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="low-to-high">
+                    Price: Low to High
+                  </SelectItem>
+                  <SelectItem value="high-to-low">
+                    Price: High to Low
+                  </SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
         </div>
       </div>
@@ -246,9 +348,20 @@ function MacBookPricesTable({ data, currency }) {
                       {item.convertedPrice?.toLocaleString() || "N/A"}
                     </div>
                   </div>
+                  {bargainDiscount > 0 && item.bargainDiscount && (
+                    <div className="bg-yellow-50/50 rounded-lg p-3 col-span-2">
+                      <div className="text-gray-500 text-xs font-medium mb-1">
+                        Bargaining Discount ({bargainDiscount}%)
+                      </div>
+                      <div className="font-bold text-yellow-700">
+                        -{getCurrencySymbol(currency)}
+                        {item.bargainDiscount?.toLocaleString()}
+                      </div>
+                    </div>
+                  )}
                   <div className="bg-green-50/50 rounded-lg p-3 col-span-2">
                     <div className="text-gray-500 text-xs font-medium mb-1">
-                      VAT Refund (8.5%)
+                      VAT Refund (8.5% with fees)
                     </div>
                     <div className="font-bold text-green-600 text-lg">
                       -{getCurrencySymbol(currency)}
@@ -283,6 +396,11 @@ function MacBookPricesTable({ data, currency }) {
               <TableHead className="w-[130px] text-gray-900 font-semibold">
                 {currency} Price
               </TableHead>
+              {bargainDiscount > 0 && (
+                <TableHead className="w-[130px] text-yellow-700 font-semibold">
+                  Bargain -{bargainDiscount}%
+                </TableHead>
+              )}
               <TableHead className="w-[130px] text-gray-900 font-semibold">
                 VAT Refund
               </TableHead>
@@ -320,6 +438,12 @@ function MacBookPricesTable({ data, currency }) {
                     {getCurrencySymbol(currency)}
                     {item.convertedPrice?.toLocaleString() || "N/A"}
                   </TableCell>
+                  {bargainDiscount > 0 && (
+                    <TableCell className="whitespace-nowrap text-yellow-700 font-medium">
+                      -{getCurrencySymbol(currency)}
+                      {item.bargainDiscount?.toLocaleString() || "N/A"}
+                    </TableCell>
+                  )}
                   <TableCell className="whitespace-nowrap text-green-600 font-medium">
                     -{getCurrencySymbol(currency)}
                     {item.vatRefund?.toLocaleString() || "N/A"}
@@ -332,7 +456,10 @@ function MacBookPricesTable({ data, currency }) {
               ))
             ) : (
               <TableRow>
-                <TableCell colSpan={7} className="text-center py-6">
+                <TableCell
+                  colSpan={bargainDiscount > 0 ? 8 : 7}
+                  className="text-center py-6"
+                >
                   No results found.
                 </TableCell>
               </TableRow>

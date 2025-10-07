@@ -1,4 +1,6 @@
 "use client";
+
+import { Instrument_Serif } from "next/font/google";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,6 +14,11 @@ import { RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 import MacBookPricesTable from "@/components/ui/macbook-prices-table";
 import { SparklesCore } from "@/components/ui/sparkles";
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 export default function MacBookTracker() {
   const [allPrices, setAllPrices] = useState([]);
@@ -68,9 +75,9 @@ export default function MacBookTracker() {
     <div className="min-h-screen bg-black">
       {/* Header Section */}
       <div className="bg-black text-white py-6 px-4">
-        <div className="container mx-auto max-w-7xl">
+        <div className="container mx-auto max-w-7xl flex flex-col items-center">
           {/* Currency Selector - Top Right */}
-          <div className="flex justify-end mb-4">
+          <div className="w-full flex justify-end mb-4">
             <Select value={currency} onValueChange={setCurrency}>
               <SelectTrigger className="w-[200px] bg-gray-900 border-gray-800 text-white">
                 <SelectValue placeholder="Select currency" />
@@ -84,8 +91,10 @@ export default function MacBookTracker() {
           </div>
 
           {/* Title with Sparkles */}
-          <div className="relative mb-4">
-            <h1 className="text-3xl md:text-4xl text-center font-serif relative z-10">
+          <div className="relative mb-4 text-center">
+            <h1
+              className={`text-[42px] text-white not-italic whitespace-pre leading-normal relative z-10 ${instrumentSerif.className}`}
+            >
               Why pay more for a mac
             </h1>
             <div className="absolute inset-0 h-full w-full">
@@ -109,7 +118,7 @@ export default function MacBookTracker() {
 
           {/* Exchange Rate Card */}
           {exchangeRate && (
-            <div className="bg-gray-900 rounded-lg p-4 max-w-2xl mx-auto">
+            <div className="bg-gray-900 rounded-lg p-4 max-w-2xl w-full">
               <div className="flex justify-between items-center">
                 <div>
                   <div className="text-lg font-bold mb-1">
@@ -150,13 +159,29 @@ export default function MacBookTracker() {
           )}
 
           {/* Disclaimer */}
-          <div className="mt-8 text-sm text-gray-600 text-left">
-            <p>
-              Disclaimer: The prices listed are indicative and subject to
-              change. To qualify for a VAT refund, you must purchase the device
-              from authorized retail locations. Please note that these prices
-              are sourced from online store.
+          <div className="mt-8 text-sm text-gray-600 text-left bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <p className="font-semibold text-gray-900 mb-2">
+              💡 Important Notes:
             </p>
+            <ul className="space-y-2 list-disc list-inside">
+              <li>
+                <strong>Online vs Physical Store:</strong> Prices shown are from
+                online stores. Physical stores often allow bargaining -
+                typically 2-5% discount for average negotiation, or 5-10% for
+                skilled bargaining. Use the slider above to estimate savings.
+              </li>
+              <li>
+                <strong>VAT Refund:</strong> To qualify for 8.5% VAT refund,
+                purchase from authorized retail locations and ask for VAT refund
+                documents. Refunds are processed at the airport (minus ~22%
+                processing fee).
+              </li>
+              <li>
+                <strong>Price Accuracy:</strong> Prices are indicative and
+                subject to change. Always verify current prices at the store
+                before purchasing.
+              </li>
+            </ul>
           </div>
         </div>
       </div>

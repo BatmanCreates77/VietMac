@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-// Get all marketplace prices with realistic Vietnamese market prices (Oct 2025)
+// Get all marketplace prices with current FPT Shop Vietnam prices (Jan 2025)
 function getMarketplacePrices() {
   const baseProducts = [
     // MacBook Air M2 - 13"
@@ -11,7 +11,9 @@ function getMarketplacePrices() {
       category: "M2",
       configuration: "M2, 8-core CPU, 8-core GPU, 8GB, 256GB",
       id: "m2-air-13-8-256",
-      vndPrice: 25990000,
+      vndPrice: 24990000,
+      fptUrl:
+        "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-m2-2022-13-inch",
       available: true,
     },
     {
@@ -21,7 +23,9 @@ function getMarketplacePrices() {
       category: "M2",
       configuration: "M2, 8-core CPU, 10-core GPU, 16GB, 512GB",
       id: "m2-air-13-16-512",
-      vndPrice: 34990000,
+      vndPrice: 28990000,
+      fptUrl:
+        "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-m2-13-inch-2022-8cpu-10gpu-16gb-512gb",
       available: true,
     },
     // MacBook Air M2 - 15"
@@ -32,7 +36,9 @@ function getMarketplacePrices() {
       category: "M2",
       configuration: "M2, 8-core CPU, 10-core GPU, 8GB, 256GB",
       id: "m2-air-15-8-256",
-      vndPrice: 31990000,
+      vndPrice: 30990000,
+      fptUrl:
+        "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-m2-2023-15-inch",
       available: true,
     },
     {
@@ -53,7 +59,9 @@ function getMarketplacePrices() {
       category: "M3",
       configuration: "M3, 8-core CPU, 8-core GPU, 8GB, 256GB",
       id: "m3-air-13-8-256",
-      vndPrice: 28990000,
+      vndPrice: 26990000,
+      fptUrl:
+        "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-m3-13-2024-8cpu-8gpu-8gb-256gb",
       available: true,
     },
     {
@@ -116,7 +124,9 @@ function getMarketplacePrices() {
       category: "M4 Pro",
       configuration: "M4 Pro, 12-core CPU, 16-core GPU, 24GB, 512GB",
       id: "m4pro-pro-14-24-512",
-      vndPrice: 54990000,
+      vndPrice: 56990000,
+      fptUrl:
+        "https://fptshop.com.vn/may-tinh-xach-tay/macbook-pro-m4-pro-14-2024-12cpu-16gpu-24gb-512gb",
       available: true,
     },
     {
@@ -158,7 +168,9 @@ function getMarketplacePrices() {
       category: "M4 Max",
       configuration: "M4 Max, 14-core CPU, 32-core GPU, 36GB, 1TB",
       id: "m4max-pro-14-36-1tb",
-      vndPrice: 84990000,
+      vndPrice: 79990000,
+      fptUrl:
+        "https://fptshop.com.vn/may-tinh-xach-tay/macbook-pro-m4-max-14-2024-14cpu-32gpu-36gb-1tb",
       available: true,
     },
     {
@@ -168,7 +180,9 @@ function getMarketplacePrices() {
       category: "M4 Max",
       configuration: "M4 Max, 16-core CPU, 40-core GPU, 48GB, 1TB",
       id: "m4max-pro-14-48-1tb",
-      vndPrice: 99990000,
+      vndPrice: 102490000,
+      fptUrl:
+        "https://fptshop.com.vn/may-tinh-xach-tay/macbook-pro-m4-max-14-2024-16cpu-40gpu-48gb-1tb",
       available: true,
     },
     // MacBook Pro M4 Max - 16"
@@ -211,6 +225,8 @@ function getMarketplacePrices() {
       configuration: "M3, 8-core CPU, 10-core GPU, 16GB, 1TB",
       id: "m3-pro-14-16-1tb",
       vndPrice: 49990000,
+      fptUrl:
+        "https://fptshop.com.vn/may-tinh-xach-tay/macbook-pro-m3-14-2024-8cpu-10gpu-16gb-1tb",
       available: true,
     },
     // MacBook Pro M3 Max - 14"
@@ -247,26 +263,144 @@ function getMarketplacePrices() {
     },
   ];
 
+  // Generate product-specific URLs
+  const generateUrl = (product, shop) => {
+    const modelSlug = product.model.toLowerCase().replace(/["\s]+/g, "-");
+    const chipSlug = product.category.toLowerCase().replace(/\s+/g, "-");
+
+    switch (shop) {
+      case "fptShop":
+        return `https://fptshop.com.vn/may-tinh-xach-tay?product=${modelSlug}-${chipSlug}`;
+      case "shopDunk":
+        return `https://shopdunk.com/${modelSlug}-${chipSlug}`;
+      case "topZone":
+        return `https://www.topzone.vn/${modelSlug}-${chipSlug}`;
+      case "cellphones":
+        return `https://cellphones.com.vn/apple/${modelSlug}-${chipSlug}.html`;
+      default:
+        return "#";
+    }
+  };
+
   return {
     fptShop: baseProducts.map((p) => ({
       ...p,
-      url: `https://fptshop.com.vn/may-tinh-xach-tay/apple-macbook`,
+      url: p.fptUrl || "https://fptshop.com.vn/may-tinh-xach-tay/apple-macbook",
     })),
-    shopDunk: baseProducts.map((p) => ({
-      ...p,
-      vndPrice: p.vndPrice + 1000000, // ShopDunk slightly higher
-      url: `https://shopdunk.com/macbook.html`,
-    })),
+    shopDunk: baseProducts.map((p) => {
+      // ShopDunk actual prices and URLs (scraped Oct 2025)
+      const shopDunkData = {
+        "m2-air-13-8-256": {
+          price: 16890000,
+          url: "https://shopdunk.com/macbook-air-m1-2020",
+        },
+        "m2-air-13-16-256": {
+          price: 24090000,
+          url: "https://shopdunk.com/macbook-air-m2-13-inch-10-core-gpu-16gb-ram-256gb-ssd",
+        },
+        "m4-air-13-16-256": {
+          price: 25090000,
+          url: "https://shopdunk.com/macbook-air-m4-13-inch-8-core-gpu-16gb-ram-256gb-ssd",
+        },
+        "m4-air-13-16-512": {
+          price: 29790000,
+          url: "https://shopdunk.com/macbook-air-m4-13-inch-10-core-gpu-16gb-ram-512gb-ssd",
+        },
+        "m4-air-13-24-512": {
+          price: 36990000,
+          url: "https://shopdunk.com/macbook-air-m4-13-inch-10-core-gpu-24gb-ram-512gb-ssd",
+        },
+        "m4-air-15-16-256": {
+          price: 29290000,
+          url: "https://shopdunk.com/macbook-air-m4-15-inch-10-core-gpu-16gb-ram-256gb-ssd",
+        },
+        "m4-air-15-16-512": {
+          price: 33990000,
+          url: "https://shopdunk.com/macbook-air-m4-15-inch-10-core-gpu-16gb-ram-512gb-ssd",
+        },
+        "m4-air-15-24-512": {
+          price: 41990000,
+          url: "https://shopdunk.com/macbook-air-m4-15-inch-10-core-gpu-24gb-ram-512gb-ssd",
+        },
+        "m3-pro-16-18-512": {
+          price: 63490000,
+          url: "https://shopdunk.com/mac",
+        },
+      };
+
+      const data = shopDunkData[p.id];
+      return {
+        ...p,
+        vndPrice: data?.price || p.vndPrice + 1000000,
+        url: data?.url || "https://shopdunk.com/mac",
+      };
+    }),
     topZone: baseProducts.map((p) => ({
       ...p,
       vndPrice: p.vndPrice - 500000, // TopZone slightly lower
-      url: `https://www.topzone.vn/apple/macbook`,
+      url: "https://www.topzone.vn/apple/macbook",
     })),
-    cellphones: baseProducts.map((p) => ({
-      ...p,
-      vndPrice: p.vndPrice - 1000000, // CellphoneS competitive pricing
-      url: `https://cellphones.com.vn/apple/macbook.html`,
-    })),
+    cellphones: baseProducts.map((p) => {
+      // CellphoneS actual prices and URLs (scraped Oct 2025)
+      const cellphonesData = {
+        "m4-pro-14-16-512": {
+          price: 38090000,
+          url: "https://cellphones.com.vn/macbook-pro-14-inch-m4-16gb-512gb.html",
+        },
+        "m4-pro-14-24-1tb": {
+          price: 48390000,
+          url: "https://cellphones.com.vn/macbook-pro-14-inch-m4-24gb-1tb.html",
+        },
+        "m4pro-pro-14-24-512": {
+          price: 47590000,
+          url: "https://cellphones.com.vn/macbook-pro-14-inch-m4-pro-24gb-512gb.html",
+        },
+        "m4pro-pro-14-24-1tb": {
+          price: 57490000,
+          url: "https://cellphones.com.vn/laptop/mac/macbook-pro.html",
+        },
+        "m4pro-base-24-512gb": {
+          price: 63990000,
+          url: "https://cellphones.com.vn/laptop/mac/macbook-pro.html",
+        },
+        "m4pro-top-48-1tb": {
+          price: 73990000,
+          url: "https://cellphones.com.vn/laptop/mac/macbook-pro.html",
+        },
+        "m4max-pro-14-36-1tb": {
+          price: 79990000,
+          url: "https://cellphones.com.vn/laptop/mac/macbook-pro.html",
+        },
+        "m4max-pro-14-48-1tb": {
+          price: 95990000,
+          url: "https://cellphones.com.vn/macbook-pro-16-inch-m4-max-48gb-1tb.html",
+        },
+        "m4max-base-36-1tb": {
+          price: 87990000,
+          url: "https://cellphones.com.vn/laptop/mac/macbook-pro.html",
+        },
+        "m2-air-13-8-256": {
+          price: 19890000,
+          url: "https://cellphones.com.vn/laptop/mac/macbook-air.html",
+        },
+        "m3-pro-14-16-1tb": {
+          price: 48390000,
+          url: "https://cellphones.com.vn/laptop/mac/macbook-pro.html",
+        },
+        "m3max-base-36-1tb": {
+          price: 73990000,
+          url: "https://cellphones.com.vn/laptop/mac/macbook-pro.html",
+        },
+      };
+
+      const data = cellphonesData[p.id];
+      return {
+        ...p,
+        vndPrice: data?.price || p.vndPrice - 1000000,
+        url:
+          data?.url || "https://cellphones.com.vn/laptop/mac/macbook-pro.html",
+      };
+    }),
   };
 }
 
@@ -346,7 +480,11 @@ function calculatePrices(priceData, exchangeRate) {
     }
 
     const convertedPrice = item.vndPrice / exchangeRate;
-    const vatRefund = convertedPrice * 0.085;
+    // Correct VAT calculation: extract 8.5% tax from the total price
+    // If price includes VAT: tax = (price × 8.5) / 108.5
+    const vatRefundGross = (convertedPrice * 8.5) / 108.5;
+    // Airport processing fee is ~22% of the refund (based on real user data)
+    const vatRefund = vatRefundGross * 0.78;
     const finalPrice = convertedPrice - vatRefund;
 
     return {
