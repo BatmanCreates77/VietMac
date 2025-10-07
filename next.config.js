@@ -4,10 +4,8 @@ const nextConfig = {
   },
   // Enable standalone output for Docker
   output: "standalone",
-  experimental: {
-    // Remove if not using Server Components
-    serverComponentsExternalPackages: ["mongodb"],
-  },
+  // External packages for Server Components (moved from experimental)
+  serverExternalPackages: ["mongodb"],
   webpack(config, { dev }) {
     if (dev) {
       // Reduce CPU/memory from file watching

@@ -2,6 +2,7 @@
 
 import { Instrument_Serif } from "next/font/google";
 import { useState, useEffect } from "react";
+import { usePostHog } from "posthog-js/react";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -22,6 +23,7 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export default function MacBookTracker() {
+  const posthog = usePostHog();
   const [allPrices, setAllPrices] = useState([]);
   const [loading, setLoading] = useState(false);
   const [exchangeRate, setExchangeRate] = useState(null);
@@ -90,7 +92,16 @@ export default function MacBookTracker() {
         <div className="container mx-auto max-w-7xl flex flex-col items-center relative z-10">
           {/* Currency Selector - Centered */}
           <div className="w-full flex justify-center mb-4 animate-in fade-in slide-in-from-top duration-500">
-            <Select value={currency} onValueChange={setCurrency}>
+            <Select
+              value={currency}
+              onValueChange={(newCurrency) => {
+                posthog?.capture("currency_changed", {
+                  from: currency,
+                  to: newCurrency,
+                });
+                setCurrency(newCurrency);
+              }}
+            >
               <SelectTrigger className="w-full sm:w-[200px] bg-gray-900 border-gray-800 text-white hover:bg-gray-800 transition-all duration-200">
                 <SelectValue placeholder="Select currency" />
               </SelectTrigger>
@@ -139,7 +150,10 @@ export default function MacBookTracker() {
                   <div className="text-xs text-gray-400">Powered by Wise</div>
                 </div>
                 <Button
-                  onClick={() => fetchPrices(currency)}
+                  onClick={() => {
+                    posthog?.capture("refresh_prices_clicked", { currency });
+                    fetchPrices(currency);
+                  }}
                   disabled={loading}
                   className="bg-blue-600 hover:bg-blue-700 w-full sm:w-auto hover:scale-105 transition-all duration-200 active:scale-95"
                 >
@@ -167,7 +181,11 @@ export default function MacBookTracker() {
               </div>
             </div>
           ) : (
-            <MacBookPricesTable data={allPrices} currency={currency} />
+            <MacBookPricesTable
+              data={allPrices}
+              currency={currency}
+              posthog={posthog}
+            />
           )}
 
           {/* Disclaimer */}

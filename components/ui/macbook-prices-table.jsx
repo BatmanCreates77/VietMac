@@ -28,7 +28,7 @@ import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
-function MacBookPricesTable({ data, currency }) {
+function MacBookPricesTable({ data, currency, posthog }) {
   const [selectedModel, setSelectedModel] = useState("All");
   const [selectedScreenSize, setSelectedScreenSize] = useState("All");
   const [selectedChipset, setSelectedChipset] = useState("All");
@@ -139,7 +139,11 @@ function MacBookPricesTable({ data, currency }) {
           </div>
           <button
             onClick={() => {
-              setShowBargainSlider(!showBargainSlider);
+              const newState = !showBargainSlider;
+              posthog?.capture("bargain_toggle_clicked", {
+                enabled: newState,
+              });
+              setShowBargainSlider(newState);
               if (showBargainSlider) {
                 setBargainDiscount(0);
               }
@@ -528,9 +532,17 @@ function MacBookPricesTable({ data, currency }) {
                       "cursor-pointer hover:bg-gray-50 hover:shadow-md transition-all duration-200 border-b border-gray-100",
                       getPriceHighlightClass(item.finalPrice),
                     )}
-                    onClick={() =>
-                      window.open(item.url, "_blank", "noopener,noreferrer")
-                    }
+                    onClick={() => {
+                      posthog?.capture("macbook_listing_clicked", {
+                        shop: item.shop,
+                        model: item.model,
+                        category: item.category,
+                        price_vnd: item.vndPrice,
+                        final_price: item.finalPrice,
+                        currency: currency,
+                      });
+                      window.open(item.url, "_blank", "noopener,noreferrer");
+                    }}
                   >
                     <TableCell className="font-medium whitespace-nowrap text-gray-900">
                       {item.shop}
