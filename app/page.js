@@ -77,9 +77,9 @@ export default function MacBookTracker() {
       <div className="bg-black text-white py-6 px-4">
         <div className="container mx-auto max-w-7xl flex flex-col items-center">
           {/* Currency Selector - Centered */}
-          <div className="w-full flex justify-center mb-4">
+          <div className="w-full flex justify-center mb-4 animate-in fade-in slide-in-from-top duration-500">
             <Select value={currency} onValueChange={setCurrency}>
-              <SelectTrigger className="w-full sm:w-[200px] bg-gray-900 border-gray-800 text-white">
+              <SelectTrigger className="w-full sm:w-[200px] bg-gray-900 border-gray-800 text-white hover:bg-gray-800 transition-all duration-200">
                 <SelectValue placeholder="Select currency" />
               </SelectTrigger>
               <SelectContent className="bg-gray-900 border-gray-800 text-white">
@@ -91,7 +91,7 @@ export default function MacBookTracker() {
           </div>
 
           {/* Title with Sparkles */}
-          <div className="relative mb-4 text-center">
+          <div className="relative mb-4 text-center animate-in fade-in zoom-in-95 duration-700 delay-100">
             <h1
               className={`text-3xl md:text-[42px] text-white not-italic whitespace-pre-wrap md:whitespace-pre leading-tight md:leading-normal relative z-10 ${instrumentSerif.className}`}
             >
@@ -111,14 +111,14 @@ export default function MacBookTracker() {
           </div>
 
           {/* Subtitle */}
-          <p className="text-center text-gray-400 text-sm md:text-base mb-4 px-4">
+          <p className="text-center text-gray-400 text-sm md:text-base mb-4 px-4 animate-in fade-in slide-in-from-bottom duration-700 delay-200">
             Live MacBook prices from Vietnam's top Apple retailers with VAT
             refunds for tourists
           </p>
 
           {/* Exchange Rate Card */}
           {exchangeRate && (
-            <div className="bg-gray-900 rounded-lg p-4 max-w-2xl w-full">
+            <div className="bg-gray-900 rounded-lg p-4 max-w-2xl w-full animate-in fade-in slide-in-from-bottom duration-700 delay-300 hover:scale-[1.02] transition-transform">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div className="flex-1">
                   <div className="text-base sm:text-lg font-bold mb-1">
@@ -129,7 +129,7 @@ export default function MacBookTracker() {
                 <Button
                   onClick={() => fetchPrices(currency)}
                   disabled={loading}
-                  className="bg-blue-600 hover:bg-blue-700 w-full sm:w-auto"
+                  className="bg-blue-600 hover:bg-blue-700 w-full sm:w-auto hover:scale-105 transition-all duration-200 active:scale-95"
                 >
                   <RefreshCw
                     className={`h-4 w-4 mr-2 ${loading ? "animate-spin" : ""}`}

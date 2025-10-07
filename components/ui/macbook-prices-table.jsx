@@ -145,13 +145,13 @@ function MacBookPricesTable({ data, currency }) {
               }
             }}
             className={cn(
-              "relative inline-flex h-6 w-11 items-center rounded-full transition-colors",
+              "relative inline-flex h-6 w-11 items-center rounded-full transition-all duration-300 hover:scale-110",
               showBargainSlider ? "bg-blue-600" : "bg-gray-300",
             )}
           >
             <span
               className={cn(
-                "inline-block h-4 w-4 transform rounded-full bg-white transition-transform",
+                "inline-block h-4 w-4 transform rounded-full bg-white transition-all duration-300 shadow-md",
                 showBargainSlider ? "translate-x-6" : "translate-x-1",
               )}
             />
@@ -213,7 +213,7 @@ function MacBookPricesTable({ data, currency }) {
 
           {/* Accordion Content */}
           {showFilters && (
-            <div className="p-4 bg-white border-t border-gray-200">
+            <div className="p-4 bg-white border-t border-gray-200 animate-in fade-in slide-in-from-top-2 duration-300">
               <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
                 <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto">
                   <div className="flex flex-col gap-2">
@@ -393,7 +393,7 @@ function MacBookPricesTable({ data, currency }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(
-                  "block border-0 rounded-xl p-5 space-y-4 shadow-lg ring-1 ring-gray-200/50 hover:shadow-xl transition-all cursor-pointer",
+                  "block border-0 rounded-xl p-5 space-y-4 shadow-lg ring-1 ring-gray-200/50 hover:shadow-xl hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300 cursor-pointer",
                   getPriceHighlightClass(item.finalPrice) ||
                     "bg-white/95 backdrop-blur-md",
                 )}
@@ -402,7 +402,7 @@ function MacBookPricesTable({ data, currency }) {
                   <div className="flex flex-col gap-2">
                     <Badge
                       className={cn(
-                        "w-fit",
+                        "w-fit transition-all duration-200 hover:scale-105",
                         item.shop === "FPT Shop" && "bg-blue-500 text-white",
                         item.shop === "ShopDunk" && "bg-purple-500 text-white",
                         item.shop === "TopZone" && "bg-green-500 text-white",
@@ -412,12 +412,15 @@ function MacBookPricesTable({ data, currency }) {
                     >
                       {item.shop}
                     </Badge>
-                    <Badge variant="outline" className="w-fit">
+                    <Badge
+                      variant="outline"
+                      className="w-fit transition-all duration-200 hover:scale-105"
+                    >
                       {item.category}
                     </Badge>
                   </div>
                   <div className="text-right">
-                    <div className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent">
+                    <div className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent animate-in fade-in zoom-in-50 duration-500">
                       {getCurrencySymbol(currency)}
                       {item.finalPrice?.toLocaleString() || "N/A"}
                     </div>
@@ -522,7 +525,7 @@ function MacBookPricesTable({ data, currency }) {
                   <TableRow
                     key={`${item.shop}-${item.id}-${idx}`}
                     className={cn(
-                      "cursor-pointer hover:bg-gray-50 transition-colors border-b border-gray-100",
+                      "cursor-pointer hover:bg-gray-50 hover:shadow-md transition-all duration-200 border-b border-gray-100",
                       getPriceHighlightClass(item.finalPrice),
                     )}
                     onClick={() =>
