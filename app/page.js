@@ -14,6 +14,7 @@ import { RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 import MacBookPricesTable from "@/components/ui/macbook-prices-table";
 import { SparklesCore } from "@/components/ui/sparkles";
+import { Squares } from "@/components/ui/squares-background";
 
 const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
@@ -74,8 +75,19 @@ export default function MacBookTracker() {
   return (
     <div className="min-h-screen bg-black">
       {/* Header Section */}
-      <div className="bg-black text-white py-6 px-4">
-        <div className="container mx-auto max-w-7xl flex flex-col items-center">
+      <div className="relative bg-black text-white py-6 px-4 pb-32 overflow-hidden">
+        {/* Squares Background */}
+        <div className="absolute inset-0 w-full h-full -z-0">
+          <Squares
+            direction="diagonal"
+            speed={0.5}
+            borderColor="#1a1a1a"
+            squareSize={40}
+            hoverFillColor="#1a1a1a"
+          />
+        </div>
+
+        <div className="container mx-auto max-w-7xl flex flex-col items-center relative z-10">
           {/* Currency Selector - Centered */}
           <div className="w-full flex justify-center mb-4 animate-in fade-in slide-in-from-top duration-500">
             <Select value={currency} onValueChange={setCurrency}>
@@ -143,8 +155,8 @@ export default function MacBookTracker() {
       </div>
 
       {/* Filters and Table Section */}
-      <div className="bg-gray-50 py-8 px-4">
-        <div className="container mx-auto max-w-7xl">
+      <div className="bg-gray-50 py-8 px-4 -mt-24 relative">
+        <div className="container mx-auto max-w-7xl bg-white rounded-t-3xl shadow-2xl p-6 relative z-20">
           {loading && allPrices.length === 0 ? (
             <div className="flex justify-center items-center py-12">
               <div className="text-center">
