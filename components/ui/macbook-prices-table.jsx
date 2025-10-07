@@ -32,6 +32,37 @@ function MacBookPricesTable({ data, currency, posthog }) {
   const [selectedModel, setSelectedModel] = useState("All");
   const [selectedScreenSize, setSelectedScreenSize] = useState("All");
   const [selectedChipset, setSelectedChipset] = useState("All");
+
+  // Track filter changes
+  useEffect(() => {
+    if (selectedModel !== "All") {
+      posthog?.capture("filter_model_selected", {
+        model: selectedModel,
+        screen_size: selectedScreenSize,
+        chipset: selectedChipset,
+      });
+    }
+  }, [selectedModel]);
+
+  useEffect(() => {
+    if (selectedScreenSize !== "All") {
+      posthog?.capture("filter_screen_size_selected", {
+        screen_size: selectedScreenSize,
+        model: selectedModel,
+        chipset: selectedChipset,
+      });
+    }
+  }, [selectedScreenSize]);
+
+  useEffect(() => {
+    if (selectedChipset !== "All") {
+      posthog?.capture("filter_chipset_selected", {
+        chipset: selectedChipset,
+        model: selectedModel,
+        screen_size: selectedScreenSize,
+      });
+    }
+  }, [selectedChipset]);
   const [sortOrder, setSortOrder] = useState("low-to-high");
   const [isMobile, setIsMobile] = useState(false);
   const [bargainDiscount, setBargainDiscount] = useState(0); // 0-10% typical bargaining discount
@@ -396,6 +427,24 @@ function MacBookPricesTable({ data, currency, posthog }) {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => {
+                  posthog?.capture("macbook_listing_clicked", {
+                    shop: item.shop,
+                    model: item.model,
+                    model_type: item.modelType,
+                    screen_size: item.screenSize,
+                    category: item.category,
+                    chipset: item.category,
+                    configuration: item.configuration,
+                    price_vnd: item.vndPrice,
+                    price_converted: item.convertedPrice,
+                    final_price: item.finalPrice,
+                    vat_refund: item.vatRefund,
+                    bargain_discount: bargainDiscount,
+                    currency: currency,
+                    device: "mobile",
+                  });
+                }}
                 className={cn(
                   "block border-0 rounded-xl p-5 space-y-4 shadow-lg ring-1 ring-gray-200/50 hover:shadow-xl hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300 cursor-pointer",
                   getPriceHighlightClass(item.finalPrice) ||
@@ -536,10 +585,18 @@ function MacBookPricesTable({ data, currency, posthog }) {
                       posthog?.capture("macbook_listing_clicked", {
                         shop: item.shop,
                         model: item.model,
+                        model_type: item.modelType,
+                        screen_size: item.screenSize,
                         category: item.category,
+                        chipset: item.category,
+                        configuration: item.configuration,
                         price_vnd: item.vndPrice,
+                        price_converted: item.convertedPrice,
                         final_price: item.finalPrice,
+                        vat_refund: item.vatRefund,
+                        bargain_discount: bargainDiscount,
                         currency: currency,
+                        device: "desktop",
                       });
                       window.open(item.url, "_blank", "noopener,noreferrer");
                     }}
