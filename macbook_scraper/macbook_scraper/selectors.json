@@ -1,0 +1,8 @@
+{
+  "shopdunk": {
+    "product_container": ".product-item-group",
+    "model": ".product-name",
+    "price": ".product-price",
+    "configuration": ".product-short-description"
+  }
+}

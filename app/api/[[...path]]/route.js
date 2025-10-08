@@ -3,6 +3,18 @@ import { NextResponse } from "next/server";
 // Get all marketplace prices with current FPT Shop Vietnam prices (Jan 2025)
 function getMarketplacePrices() {
   const baseProducts = [
+    // MacBook Air M1 - 13" (Budget option)
+    {
+      model: 'MacBook Air 13"',
+      modelType: "MacBook Air",
+      screenSize: '13"',
+      category: "M1",
+      configuration: "M1, 8-core CPU, 7-core GPU, 8GB, 256GB",
+      id: "m1-air-13-8-256",
+      vndPrice: 16890000,
+      fptUrl: "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-m1-2020",
+      available: true,
+    },
     // MacBook Air M2 - 13"
     {
       model: 'MacBook Air 13"',
@@ -11,6 +23,18 @@ function getMarketplacePrices() {
       category: "M2",
       configuration: "M2, 8-core CPU, 8-core GPU, 8GB, 256GB",
       id: "m2-air-13-8-256",
+      vndPrice: 24990000,
+      fptUrl:
+        "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-m2-2022-13-inch",
+      available: true,
+    },
+    {
+      model: 'MacBook Air 13"',
+      modelType: "MacBook Air",
+      screenSize: '13"',
+      category: "M2",
+      configuration: "M2, 8-core CPU, 8-core GPU, 16GB, 256GB",
+      id: "m2-air-13-16-256",
       vndPrice: 24990000,
       fptUrl:
         "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-m2-2022-13-inch",
@@ -93,6 +117,74 @@ function getMarketplacePrices() {
       configuration: "M3, 8-core CPU, 10-core GPU, 16GB, 512GB",
       id: "m3-air-15-16-512",
       vndPrice: 43990000,
+      available: true,
+    },
+    // MacBook Air M4 - 13" (New 2025)
+    {
+      model: 'MacBook Air 13"',
+      modelType: "MacBook Air",
+      screenSize: '13"',
+      category: "M4",
+      configuration: "M4, 10-core CPU, 8-core GPU, 16GB, 256GB",
+      id: "m4-air-13-16-256",
+      vndPrice: 25090000,
+      fptUrl: "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-m4-13-2025",
+      available: true,
+    },
+    {
+      model: 'MacBook Air 13"',
+      modelType: "MacBook Air",
+      screenSize: '13"',
+      category: "M4",
+      configuration: "M4, 10-core CPU, 10-core GPU, 16GB, 512GB",
+      id: "m4-air-13-16-512",
+      vndPrice: 30790000,
+      fptUrl: "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-m4-13-2025",
+      available: true,
+    },
+    {
+      model: 'MacBook Air 13"',
+      modelType: "MacBook Air",
+      screenSize: '13"',
+      category: "M4",
+      configuration: "M4, 10-core CPU, 10-core GPU, 24GB, 512GB",
+      id: "m4-air-13-24-512",
+      vndPrice: 36990000,
+      fptUrl: "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-m4-13-2025",
+      available: true,
+    },
+    // MacBook Air M4 - 15" (New 2025)
+    {
+      model: 'MacBook Air 15"',
+      modelType: "MacBook Air",
+      screenSize: '15"',
+      category: "M4",
+      configuration: "M4, 10-core CPU, 10-core GPU, 16GB, 256GB",
+      id: "m4-air-15-16-256",
+      vndPrice: 29290000,
+      fptUrl: "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-m4-15-2025",
+      available: true,
+    },
+    {
+      model: 'MacBook Air 15"',
+      modelType: "MacBook Air",
+      screenSize: '15"',
+      category: "M4",
+      configuration: "M4, 10-core CPU, 10-core GPU, 16GB, 512GB",
+      id: "m4-air-15-16-512",
+      vndPrice: 33990000,
+      fptUrl: "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-m4-15-2025",
+      available: true,
+    },
+    {
+      model: 'MacBook Air 15"',
+      modelType: "MacBook Air",
+      screenSize: '15"',
+      category: "M4",
+      configuration: "M4, 10-core CPU, 10-core GPU, 24GB, 512GB",
+      id: "m4-air-15-24-512",
+      vndPrice: 41990000,
+      fptUrl: "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-m4-15-2025",
       available: true,
     },
     // MacBook Pro M4 - 14"
@@ -288,11 +380,15 @@ function getMarketplacePrices() {
       url: p.fptUrl || "https://fptshop.com.vn/may-tinh-xach-tay/apple-macbook",
     })),
     shopDunk: baseProducts.map((p) => {
-      // ShopDunk actual prices and URLs (scraped Oct 2025)
+      // ShopDunk actual prices and URLs (scraped Jan 2025)
       const shopDunkData = {
-        "m2-air-13-8-256": {
+        "m1-air-13-8-256": {
           price: 16890000,
           url: "https://shopdunk.com/macbook-air-m1-2020",
+        },
+        "m2-air-13-8-256": {
+          price: 17190000,
+          url: "https://shopdunk.com/macbook-air-m2-13-inch",
         },
         "m2-air-13-16-256": {
           price: 24090000,
@@ -425,7 +521,7 @@ async function getExchangeRateFromWise(currency = "INR") {
     if (response.ok) {
       const html = await response.text();
       const regex = new RegExp(
-        `${symbol}1\\s*${currency.toUpperCase()}\\s*=\\s*([\\d.,]+)\\s*VND`,
+        `${symbol}1\s*${currency.toUpperCase()}\s*=\s*([\d.,]+)\s*VND`,
         "i",
       );
       const rateMatch = html.match(regex);

@@ -1,0 +1,780 @@
+{
+  "timestamp": "2025-10-08T22:29:02.995275",
+  "total_count": 81,
+  "shops": [
+    "cellphones",
+    "shopdunk"
+  ],
+  "products": [
+    {
+      "model": "MacBook Pro 14 M4 10CPU 10GPU 16GB 512GB",
+      "raw_name": "MacBook Pro 14 M4 10CPU 10GPU 16GB 512GB | Chính hãng Apple Việt Nam",
+      "price_vnd": 37690000,
+      "price_text": "37.690.000đ",
+      "url": "https://cellphones.com.vn/macbook-pro-14-inch-m4-16gb-512gb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_4__7.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Pro 14 M4 Pro 12CPU 16GPU 24GB 512GB",
+      "raw_name": "MacBook Pro 14 M4 Pro 12CPU 16GPU 24GB 512GB | Chính hãng Apple Việt Nam",
+      "price_vnd": 47590000,
+      "price_text": "47.590.000đ",
+      "url": "https://cellphones.com.vn/macbook-pro-14-inch-m4-pro-24gb-512gb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_9__4.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Pro 14 M4 10CPU 10GPU 24GB 1TB",
+      "raw_name": "MacBook Pro 14 M4 10CPU 10GPU 24GB 1TB | Chính hãng Apple Việt Nam",
+      "price_vnd": 48390000,
+      "price_text": "48.390.000đ",
+      "url": "https://cellphones.com.vn/macbook-pro-14-inch-m4-24gb-1tb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_6__6.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Pro 16 M4 Max 16CPU 40GPU 48GB 1TB",
+      "raw_name": "MacBook Pro 16 M4 Max 16CPU 40GPU 48GB 1TB | Chính hãng Apple Việt Nam",
+      "price_vnd": 95990000,
+      "price_text": "95.990.000đ",
+      "url": "https://cellphones.com.vn/macbook-pro-16-inch-m4-max-48gb-1tb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_3__8.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Pro 14 M4 10CPU 10GPU 24GB 512GB",
+      "raw_name": "MacBook Pro 14 M4 10CPU 10GPU 24GB 512GB | Chính hãng Apple Việt Nam",
+      "price_vnd": 43990000,
+      "price_text": "43.990.000đ",
+      "url": "https://cellphones.com.vn/macbook-pro-m4-14-inch-10cpu-10gpu-24gb-512gb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_8.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Pro 14 M4 10CPU 10GPU 16GB 512GB Sạc 96W",
+      "raw_name": "MacBook Pro 14 M4 10CPU 10GPU 16GB 512GB Sạc 96W | Chính hãng Apple Việt Nam",
+      "price_vnd": 38590000,
+      "price_text": "38.590.000đ",
+      "url": "https://cellphones.com.vn/macbook-pro-14-inch-m4-10-cpu-10-gpu-16gb-512gb-sac-96w.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_4__7_2.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Pro 14 M4 Pro 12CPU 16GPU 24GB 512GB Sạc 96W",
+      "raw_name": "MacBook Pro 14 M4 Pro 12CPU 16GPU 24GB 512GB Sạc 96W | Chính hãng Apple Việt Nam",
+      "price_vnd": 48390000,
+      "price_text": "48.390.000đ",
+      "url": "https://cellphones.com.vn/macbook-pro-14-inch-m4-pro-12-cpu-16-gpu-24gb-512gb-sac-96w.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_9__4_6.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Pro 16 M4 Pro 14CPU 20GPU 24GB 512GB",
+      "raw_name": "MacBook Pro 16 M4 Pro 14CPU 20GPU 24GB 512GB | Chính hãng Apple Việt Nam",
+      "price_vnd": 61990000,
+      "price_text": "61.990.000đ",
+      "url": "https://cellphones.com.vn/macbook-pro-16-inch-m4-pro-24gb-512gb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_7_2.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Pro 16 M4 Pro 14CPU 20GPU 48GB 512GB",
+      "raw_name": "MacBook Pro 16 M4 Pro 14CPU 20GPU 48GB 512GB | Chính hãng Apple Việt Nam",
+      "price_vnd": 73990000,
+      "price_text": "73.990.000đ",
+      "url": "https://cellphones.com.vn/macbook-pro-16-inch-m4-pro-48gb-512gb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_1__2_4.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Pro 14 M4 10CPU 10GPU 16GB 512GB Nano Sạc 70W",
+      "raw_name": "MacBook Pro 14 M4 10CPU 10GPU 16GB 512GB Nano Sạc 70W | Chính hãng Apple Việt Nam",
+      "price_vnd": 41990000,
+      "price_text": "41.990.000đ",
+      "url": "https://cellphones.com.vn/apple-macbook-pro-14-m4-10-cpu-10-gpu-16gb-512gb-2024-nano.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_8_6.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Pro 14 M3 8GB - 512GB",
+      "raw_name": "MacBook Pro 14 M3 8GB - 512GB | Chính hãng Apple Việt Nam",
+      "price_vnd": 35390000,
+      "price_text": "35.390.000đ",
+      "url": "https://cellphones.com.vn/macbook-pro-14-inch-m3-2023-8gb-512gb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/r/group_560_1.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Pro 14 M4 Pro 14CPU 20GPU 24GB 512GB Nano",
+      "raw_name": "MacBook Pro 14 M4 Pro 14CPU 20GPU 24GB 512GB Nano | Chính hãng Apple Việt Nam",
+      "price_vnd": 57490000,
+      "price_text": "57.490.000đ",
+      "url": "https://cellphones.com.vn/macbook-pro-m4-pro-14-inch-14cpu-20gpu-24gb-512gb-nano.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_1__2_11.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Pro 14 inch M3 Max 96GB - 512GB Sạc 96W",
+      "raw_name": "MacBook Pro 14 inch M3 Max 96GB - 512GB Sạc 96W | Chính hãng Apple Việt Nam",
+      "price_vnd": 89990000,
+      "price_text": "89.990.000đ",
+      "url": "https://cellphones.com.vn/macbook-pro-14-inch-m3-max-96gb-512gb-sac-96w.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/r/group_560_13_.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Pro 16 inch M3 Pro 2023 (12 CPU - 18 GPU 36GB 512GB)",
+      "raw_name": "MacBook Pro 16 inch M3 Pro 2023 (12 CPU - 18 GPU 36GB 512GB)",
+      "price_vnd": null,
+      "price_text": "Giá Liên Hệ",
+      "url": "https://cellphones.com.vn/macbook-pro-16-inch-m3-pro-36gb-512gb-2023.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/r/group_562_7_.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Pro 14 M4 10CPU 10GPU 16GB 1TB",
+      "raw_name": "MacBook Pro 14 M4 10CPU 10GPU 16GB 1TB | Chính hãng Apple Việt Nam",
+      "price_vnd": 44090000,
+      "price_text": "44.090.000đ",
+      "url": "https://cellphones.com.vn/macbook-pro-14-inch-m4-16gb-1tb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_5__5.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Pro 14 M4 Max 14CPU 32GPU 36GB 1TB",
+      "raw_name": "MacBook Pro 14 M4 Max 14CPU 32GPU 36GB 1TB | Chính hãng Apple Việt Nam",
+      "price_vnd": 76990000,
+      "price_text": "76.990.000đ",
+      "url": "https://cellphones.com.vn/macbook-pro-14-inch-m4-max-36gb-1tb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_10__3.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Pro 16 inch M3 Pro 2023 36GB 1TB",
+      "raw_name": "MacBook Pro 16 inch M3 Pro 2023 36GB 1TB | Chính hãng Apple Việt Nam",
+      "price_vnd": 69990000,
+      "price_text": "69.990.000đ",
+      "url": "https://cellphones.com.vn/macbook-pro-16-inch-m3-pro-2023-36gb-1tb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/r/group_562_6_.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Pro 16 M4 Max 14CPU 32GPU 36GB 1TB Nano",
+      "raw_name": "MacBook Pro 16 M4 Max 14CPU 32GPU 36GB 1TB Nano | Chính hãng Apple Việt Nam",
+      "price_vnd": 91990000,
+      "price_text": "91.990.000đ",
+      "url": "https://cellphones.com.vn/macbook-pro-m4-max-16-inch-14cpu-32gpu-36gb-1tb-nano.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_5__7.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Pro 14 inch 2021",
+      "raw_name": "MacBook Pro 14 inch 2021 | Chính hãng Apple Việt Nam",
+      "price_vnd": 39990000,
+      "price_text": "39.990.000đ",
+      "url": "https://cellphones.com.vn/macbook-pro-14-inch-2021.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/p/r/pro_2021.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Pro 16 M4 Pro 14CPU 20GPU 24GB 1TB Sạc 140W",
+      "raw_name": "MacBook Pro 16 M4 Pro 14CPU 20GPU 24GB 1TB Sạc 140W | Chính hãng Apple Việt Nam",
+      "price_vnd": 65990000,
+      "price_text": "65.990.000đ",
+      "url": "https://cellphones.com.vn/macbook-pro-16-m4-pro-14-cpu-20-gpu-24gb-1tb-2024-sac-140w.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_1__7_1.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "Apple MacBook Air M2 2024 8CPU 8GPU 16GB 256GB I",
+      "raw_name": "Apple MacBook Air M2 2024 8CPU 8GPU 16GB 256GB I Chính hãng Apple Việt Nam",
+      "price_vnd": 20090000,
+      "price_text": "20.090.000đ",
+      "url": "https://cellphones.com.vn/macbook-air-m2-2022-16gb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/m/image_1396_1.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Air M4 13 inch 2025 10CPU 8GPU 16GB 256GB",
+      "raw_name": "MacBook Air M4 13 inch 2025 10CPU 8GPU 16GB 256GB | Chính hãng Apple Việt Nam",
+      "price_vnd": 25090000,
+      "price_text": "25.090.000đ",
+      "url": "https://cellphones.com.vn/apple-macbook-air-13-m4-10cpu-8gpu-16gb-256gb-2025.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_11_1.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Air M4 13 inch 2025 10CPU 10GPU 16GB 512GB",
+      "raw_name": "MacBook Air M4 13 inch 2025 10CPU 10GPU 16GB 512GB | Chính hãng Apple Việt Nam",
+      "price_vnd": 30890000,
+      "price_text": "30.890.000đ",
+      "url": "https://cellphones.com.vn/apple-macbook-air-13-m4-10cpu-10gpu-16gb-512gb-2025.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_1__4_1.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Air M4 13 inch 2025 10CPU 8GPU 16GB 256GB Sạc 70W",
+      "raw_name": "MacBook Air M4 13 inch 2025 10CPU 8GPU 16GB 256GB Sạc 70W | Chính hãng Apple Việt Nam",
+      "price_vnd": 25790000,
+      "price_text": "25.790.000đ",
+      "url": "https://cellphones.com.vn/apple-macbook-air-13-m4-10cpu-8gpu-16gb-256gb-2025-sac-70w.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_11_1_2.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Air M4 13 inch 2025 10CPU 10GPU 16GB 512GB Sạc 70W",
+      "raw_name": "MacBook Air M4 13 inch 2025 10CPU 10GPU 16GB 512GB Sạc 70W | Chính hãng Apple Việt Nam",
+      "price_vnd": 31290000,
+      "price_text": "31.290.000đ",
+      "url": "https://cellphones.com.vn/apple-macbook-air-13-m4-10cpu-10gpu-16gb-512gb-2025-sac-70w.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_1__4_1_2.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Air M3 13 inch 2024 8GB - 256GB",
+      "raw_name": "MacBook Air M3 13 inch 2024 8GB - 256GB | Chính hãng Apple Việt Nam",
+      "price_vnd": 24190000,
+      "price_text": "24.190.000đ",
+      "url": "https://cellphones.com.vn/macbook-air-m3-13-inch-2024.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_2__5.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Air M4 15 inch 2025 10CPU 10GPU 16GB 256GB",
+      "raw_name": "MacBook Air M4 15 inch 2025 10CPU 10GPU 16GB 256GB | Chính hãng Apple Việt Nam",
+      "price_vnd": 29590000,
+      "price_text": "29.590.000đ",
+      "url": "https://cellphones.com.vn/apple-macbook-air-15-m4-10cpu-10gpu-16gb-256gb-2025.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_3__15.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Air M4 13 inch 2025 10CPU 10GPU 24GB 512GB",
+      "raw_name": "MacBook Air M4 13 inch 2025 10CPU 10GPU 24GB 512GB | Chính hãng Apple Việt Nam",
+      "price_vnd": 34990000,
+      "price_text": "34.990.000đ",
+      "url": "https://cellphones.com.vn/apple-macbook-air-13-m4-10cpu-10gpu-24gb-512gb-2025.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_2__21.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Air M4 13 inch 2025 10CPU 10GPU 24GB 512GB Sạc 70W",
+      "raw_name": "MacBook Air M4 13 inch 2025 10CPU 10GPU 24GB 512GB Sạc 70W | Chính hãng Apple Việt Nam",
+      "price_vnd": 35490000,
+      "price_text": "35.490.000đ",
+      "url": "https://cellphones.com.vn/apple-macbook-air-13-m4-10cpu-10gpu-24gb-512gb-2025-sac-70w.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_2__21_1.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Air M4 15 inch 2025 10CPU 10GPU 16GB 512GB",
+      "raw_name": "MacBook Air M4 15 inch 2025 10CPU 10GPU 16GB 512GB | Chính hãng Apple Việt Nam",
+      "price_vnd": 34090000,
+      "price_text": "34.090.000đ",
+      "url": "https://cellphones.com.vn/apple-macbook-air-15-m4-10cpu-10gpu-16gb-512gb-2025.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_4__1_3.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Air M4 15 inch 2025 10CPU 10GPU 16GB 512GB Sạc 70W",
+      "raw_name": "MacBook Air M4 15 inch 2025 10CPU 10GPU 16GB 512GB Sạc 70W | Chính hãng Apple Việt Nam",
+      "price_vnd": 34690000,
+      "price_text": "34.690.000đ",
+      "url": "https://cellphones.com.vn/apple-macbook-air-15-m4-10cpu-10gpu-16gb-512gb-2025-sac-70w.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_4__1_3_2.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Air M3 13 inch 2024 8CPU 8GPU 16GB - 256GB sạc 30W",
+      "raw_name": "MacBook Air M3 13 inch 2024 8CPU 8GPU 16GB - 256GB sạc 30W | Chính hãng Apple Việt Nam",
+      "price_vnd": 24190000,
+      "price_text": "24.190.000đ",
+      "url": "https://cellphones.com.vn/macbook-air-m3-13-inch-2024-16gb-256gb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_1__2_5.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Air M4 15 inch 2025 10CPU 10GPU 16GB 256GB Sạc 70W",
+      "raw_name": "MacBook Air M4 15 inch 2025 10CPU 10GPU 16GB 256GB Sạc 70W | Chính hãng Apple Việt Nam",
+      "price_vnd": 30590000,
+      "price_text": "30.590.000đ",
+      "url": "https://cellphones.com.vn/apple-macbook-air-15-m4-10cpu-10gpu-16gb-256gb-2025-sac-70w.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_3__15_2.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Air M3 15 inch 2024 8CPU 10GPU 24GB 512GB Sạc 35W",
+      "raw_name": "MacBook Air M3 15 inch 2024 8CPU 10GPU 24GB 512GB Sạc 35W | Chính hãng Apple Việt Nam",
+      "price_vnd": 31490000,
+      "price_text": "31.490.000đ",
+      "url": "https://cellphones.com.vn/macbook-air-15-m3-24gb-512gb-2024-35w.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_1__2_7.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Air M3 13 inch 2024 8CPU 10GPU 16GB - 256GB sạc 30W",
+      "raw_name": "MacBook Air M3 13 inch 2024 8CPU 10GPU 16GB - 256GB sạc 30W | Chính hãng Apple Việt Nam",
+      "price_vnd": 24490000,
+      "price_text": "24.490.000đ",
+      "url": "https://cellphones.com.vn/macbook-air-m3-13-inch-2024-16gb-256gb-10gpu.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_8__1_2.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "Apple MacBook Air M2 2024 8CPU 8GPU 8GB 256GB I",
+      "raw_name": "Apple MacBook Air M2 2024 8CPU 8GPU 8GB 256GB I Chính hãng Apple Việt Nam",
+      "price_vnd": 22690000,
+      "price_text": "22.690.000đ",
+      "url": "https://cellphones.com.vn/macbook-air-m2-2022.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_1__1_8.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "Apple MacBook Air M1 256GB 2020 I",
+      "raw_name": "Apple MacBook Air M1 256GB 2020 I Chính hãng Apple Việt Nam",
+      "price_vnd": 15990000,
+      "price_text": "15.990.000đ",
+      "url": "https://cellphones.com.vn/macbook-air-2020-m1.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_5_1.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "Apple MacBook Air M2 2024 8CPU 10GPU 16GB 512GB Sạc 70W I",
+      "raw_name": "Apple MacBook Air M2 2024 8CPU 10GPU 16GB 512GB Sạc 70W I Chính hãng Apple Việt Nam",
+      "price_vnd": 26990000,
+      "price_text": "26.990.000đ",
+      "url": "https://cellphones.com.vn/macbook-air-m2-2022-16gb-512gb-sac-70w.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/r/group_524_2_.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Air M3 13 inch 2024 8CPU 10GPU 24GB - 512GB Sạc 35W",
+      "raw_name": "MacBook Air M3 13 inch 2024 8CPU 10GPU 24GB - 512GB Sạc 35W | Chính hãng Apple Việt Nam",
+      "price_vnd": 28490000,
+      "price_text": "28.490.000đ",
+      "url": "https://cellphones.com.vn/macbook-air-13-m3-24gb-512gb-2024-sac-35w.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_7_5.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Air M4 15 inch 2025 10CPU 10GPU 24GB 512GB Sạc 70W",
+      "raw_name": "MacBook Air M4 15 inch 2025 10CPU 10GPU 24GB 512GB Sạc 70W | Chính hãng Apple Việt Nam",
+      "price_vnd": 39590000,
+      "price_text": "39.590.000đ",
+      "url": "https://cellphones.com.vn/apple-macbook-air-15-m4-10cpu-10gpu-24gb-512gb-2025-sac-70w.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_5__8_1.png",
+      "shop": "cellphones"
+    },
+    {
+      "model": "MacBook Air 13.6 inch M3 | 8 core CPU | 8 core GPU | 8GB RAM | SSD 256GB | Cũ đẹp",
+      "raw_name": "MacBook Air 13.6 inch M3 | 8 core CPU | 8 core GPU | 8GB RAM | SSD 256GB | Cũ đẹp (Đủ hộp, PK)",
+      "price_vnd": 43,
+      "price_text": "Giảm 43%",
+      "url": "https://shopdunk.com/macbook-air-136-inch-m3-8-core-cpu-8-core-gpu-8gb-ram-ssd-256gb-cu-%C4%91ep-%C4%91u-h%C3%B4p-pk",
+      "product_id": "4677",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Air 13.6 inch M3 | 8 core CPU | 8 core GPU | 16GB RAM | SSD 256GB | Cũ đẹp",
+      "raw_name": "MacBook Air 13.6 inch M3 | 8 core CPU | 8 core GPU | 16GB RAM | SSD 256GB | Cũ đẹp (Đủ hộp, PK)",
+      "price_vnd": 38,
+      "price_text": "Giảm 38%",
+      "url": "https://shopdunk.com/macbook-air-136-inch-m3-8-core-cpu-8-core-gpu-16gb-ram-ssd-256gb-cu-%C4%91ep-%C4%91u-h%C3%B4p-pk",
+      "product_id": "4685",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Air 15 inch M3 | 8 core CPU | 10 core GPU | 8GB RAM | SSD 256GB | Cũ đẹp 99%",
+      "raw_name": "MacBook Air 15 inch M3 | 8 core CPU | 10 core GPU | 8GB RAM | SSD 256GB | Cũ đẹp 99%",
+      "price_vnd": 37,
+      "price_text": "Giảm 37%",
+      "url": "https://shopdunk.com/macbook-air-15-inch-m3-8-core-cpu-10-core-gpu-8gb-ram-ssd-256gb-cu-%C4%91ep-99",
+      "product_id": "4700",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Air 15 inch M2 | 8 core CPU | 10 core GPU | 8GB RAM | SSD 256GB | Cũ đẹp",
+      "raw_name": "MacBook Air 15 inch M2 | 8 core CPU | 10 core GPU | 8GB RAM | SSD 256GB | Cũ đẹp (Đủ hộp, PK)",
+      "price_vnd": 41,
+      "price_text": "Giảm 41%",
+      "url": "https://shopdunk.com/macbook-air-15-inch-m2-8-core-cpu-10-core-gpu-8gb-ram-ssd-256gb-cu-%C4%91ep-%C4%91u-h%C3%B4p-pk",
+      "product_id": "4660",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Air 15 inch M3 | 8 core CPU | 10 core GPU | 8GB RAM | SSD 256GB | Cũ đẹp",
+      "raw_name": "MacBook Air 15 inch M3 | 8 core CPU | 10 core GPU | 8GB RAM | SSD 256GB | Cũ đẹp (Đủ hộp, PK)",
+      "price_vnd": 35,
+      "price_text": "Giảm 35%",
+      "url": "https://shopdunk.com/macbook-air-15-inch-m3-8-core-cpu-10-core-gpu-8gb-ram-ssd-256gb-cu-%C4%91ep-%C4%91u-h%C3%B4p-pk",
+      "product_id": "4701",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Pro 14 inch M4 | 10 core CPU | 10 core GPU | 16GB RAM | SSD 512GB |",
+      "raw_name": "MacBook Pro 14 inch M4 | 10 core CPU | 10 core GPU | 16GB RAM | SSD 512GB | Cũ đẹp (Đủ hộp, PK)",
+      "price_vnd": 35490000,
+      "price_text": "35.490.000₫",
+      "url": "https://shopdunk.com/macbook-pro-14-inch-m4-10-core-cpu-10-core-gpu-16gb-ram-ssd-512gb-c%C5%A9-%C4%91%E1%BA%B9p-%C4%91%E1%BB%A7-h%E1%BB%99p-pk",
+      "product_id": "4790",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Pro 14 inch M3 Pro | 11 core CPU | 14 core GPU | 18GB RAM | SSD 512GB |",
+      "raw_name": "MacBook Pro 14 inch M3 Pro | 11 core CPU | 14 core GPU | 18GB RAM | SSD 512GB | Cũ đẹp (Đủ hộp, PK)",
+      "price_vnd": 36590000,
+      "price_text": "36.590.000₫",
+      "url": "https://shopdunk.com/macbook-pro-14-inch-m3-pro-11-core-cpu-14-core-gpu-18gb-ram-ssd-512gb-c%C5%A9-%C4%91%E1%BA%B9p-%C4%91%E1%BB%A7-h%E1%BB%99p-pk",
+      "product_id": "4777",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Air 13.6 inch M2 | 8 core CPU | 8 core GPU | 8GB RAM | SSD 512GB | Trôi BH",
+      "raw_name": "MacBook Air 13.6 inch M2 | 8 core CPU | 8 core GPU | 8GB RAM | SSD 512GB | Trôi BH",
+      "price_vnd": 39,
+      "price_text": "Giảm 39%",
+      "url": "https://shopdunk.com/macbook-air-136-inch-m2-8-core-cpu-8-core-gpu-8gb-ram-ssd-512gb-tr%C3%B4i-bh",
+      "product_id": "4636",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Air 13.6 inch M3 | 8 core CPU | 8 core GPU | 16GB RAM | SSD 256GB | Trôi BH",
+      "raw_name": "MacBook Air 13.6 inch M3 | 8 core CPU | 8 core GPU | 16GB RAM | SSD 256GB | Trôi BH",
+      "price_vnd": 34,
+      "price_text": "Giảm 34%",
+      "url": "https://shopdunk.com/macbook-air-136-inch-m3-8-core-cpu-8-core-gpu-16gb-ram-ssd-256gb-tr%C3%B4i-bh",
+      "product_id": "4686",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Air 13.6 inch M3 | 8 core CPU | 10 core GPU | 24GB RAM | SSD 512GB | Trôi BH",
+      "raw_name": "MacBook Air 13.6 inch M3 | 8 core CPU | 10 core GPU | 24GB RAM | SSD 512GB | Trôi BH",
+      "price_vnd": 16,
+      "price_text": "Giảm 16%",
+      "url": "https://shopdunk.com/macbook-air-136-inch-m3-8-core-cpu-10-core-gpu-24gb-ram-ssd-512gb-tr%C3%B4i-bh",
+      "product_id": "4698",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Pro 16 inch M3 Pro | 12 core CPU | 18 core GPU | 18GB RAM | SSD 512GB |",
+      "raw_name": "MacBook Pro 16 inch M3 Pro | 12 core CPU | 18 core GPU | 18GB RAM | SSD 512GB | Cũ đẹp (Đủ hộp, PK)",
+      "price_vnd": 40590000,
+      "price_text": "40.590.000₫",
+      "url": "https://shopdunk.com/macbook-pro-16-inch-m3-pro-12-core-cpu-18-core-gpu-18gb-ram-ssd-512gb-c%C5%A9-%C4%91%E1%BA%B9p-%C4%91%E1%BB%A7-h%E1%BB%99p-pk",
+      "product_id": "4781",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Pro 14 inch M4 Pro | 12 core CPU | 16 core GPU | 24GB RAM | SSD 512GB | Trôi BH",
+      "raw_name": "MacBook Pro 14 inch M4 Pro | 12 core CPU | 16 core GPU | 24GB RAM | SSD 512GB | Trôi BH",
+      "price_vnd": 43990000,
+      "price_text": "43.990.000₫",
+      "url": "https://shopdunk.com/macbook-pro-14-inch-m4-pro-12-core-cpu-16-core-gpu-24gb-ram-ssd-512gb-tr%C3%B4i-bh",
+      "product_id": "4787",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Air 13 inch M1 | 8 core CPU | 7 core GPU | SSD 256GB | RAM 8GB | Cũ đẹp 99%",
+      "raw_name": "MacBook Air 13 inch M1 | 8 core CPU | 7 core GPU | SSD 256GB | RAM 8GB | Cũ đẹp 99%",
+      "price_vnd": 55,
+      "price_text": "Giảm 55%",
+      "url": "https://shopdunk.com/macbook-air-13-inch-m1-8-core-cpu-7-core-gpu-ssd-256gb-ram-8gb-cu-%C4%91ep-99",
+      "product_id": "4543",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Air 13 inch M1 | 8 core CPU | 8 core GPU | SSD 256GB | RAM 8GB | Cũ đẹp 99%",
+      "raw_name": "MacBook Air 13 inch M1 | 8 core CPU | 8 core GPU | SSD 256GB | RAM 8GB | Cũ đẹp 99%",
+      "price_vnd": 54,
+      "price_text": "Giảm 54%",
+      "url": "https://shopdunk.com/macbook-air-13-inch-m1-8-core-cpu-8-core-gpu-ssd-256gb-ram-8gb-cu-%C4%91ep-99",
+      "product_id": "4559",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Air 13 inch M1 | 8 core CPU | 8 core GPU | SSD 256GB | RAM 8GB | Cũ đẹp",
+      "raw_name": "MacBook Air 13 inch M1 | 8 core CPU | 8 core GPU | SSD 256GB | RAM 8GB | Cũ đẹp (Đủ hộp,PK)",
+      "price_vnd": 51,
+      "price_text": "Giảm 51%",
+      "url": "https://shopdunk.com/macbook-air-13-inch-m1-8-core-cpu-8-core-gpu-ssd-256gb-ram-8gb-cu-%C4%91ep-%C4%91u-h%C3%B4ppk",
+      "product_id": "4560",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Air 13.6 inch M2 | 8 core CPU | 8 core GPU | 8GB RAM | SSD 256GB | Trôi BH",
+      "raw_name": "MacBook Air 13.6 inch M2 | 8 core CPU | 8 core GPU | 8GB RAM | SSD 256GB | Trôi BH",
+      "price_vnd": 46,
+      "price_text": "Giảm 46%",
+      "url": "https://shopdunk.com/macbook-air-136-inch-m2-8-core-cpu-8-core-gpu-8gb-ram-ssd-256gb-tr%C3%B4i-bh",
+      "product_id": "4648",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Air 13.6 inch M3 | 8 core CPU | 8 core GPU | 8GB RAM | SSD 256GB | Cũ đẹp 99%",
+      "raw_name": "MacBook Air 13.6 inch M3 | 8 core CPU | 8 core GPU | 8GB RAM | SSD 256GB | Cũ đẹp 99%",
+      "price_vnd": 45,
+      "price_text": "Giảm 45%",
+      "url": "https://shopdunk.com/macbook-air-136-inch-m3-8-core-cpu-8-core-gpu-8gb-ram-ssd-256gb-cu-%C4%91ep-99",
+      "product_id": "4676",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Air 13.6 inch M2 | 8 core CPU | 8 core GPU | 16GB RAM | SSD 256GB | Trôi BH",
+      "raw_name": "MacBook Air 13.6 inch M2 | 8 core CPU | 8 core GPU | 16GB RAM | SSD 256GB | Trôi BH",
+      "price_vnd": 42,
+      "price_text": "Giảm 42%",
+      "url": "https://shopdunk.com/macbook-air-136-inch-m2-8-core-cpu-8-core-gpu-16gb-ram-ssd-256gb-tr%C3%B4i-bh",
+      "product_id": "4652",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Air 13.6 inch M3 | 8 core CPU | 8 core GPU | 8GB RAM | SSD 256GB | Trôi BH",
+      "raw_name": "MacBook Air 13.6 inch M3 | 8 core CPU | 8 core GPU | 8GB RAM | SSD 256GB | Trôi BH",
+      "price_vnd": 34,
+      "price_text": "Giảm 34%",
+      "url": "https://shopdunk.com/macbook-air-136-inch-m3-8-core-cpu-8-core-gpu-8gb-ram-ssd-256gb-tr%C3%B4i-bh",
+      "product_id": "4678",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Air 13.6 inch M3 | 8 core CPU | 10 core GPU | 16GB RAM | SSD 256GB | Trôi BH",
+      "raw_name": "MacBook Air 13.6 inch M3 | 8 core CPU | 10 core GPU | 16GB RAM | SSD 256GB | Trôi BH",
+      "price_vnd": 28,
+      "price_text": "Giảm 28%",
+      "url": "https://shopdunk.com/macbook-air-136-inch-m3-8-core-cpu-10-core-gpu-16gb-ram-ssd-256gb-tr%C3%B4i-bh",
+      "product_id": "4690",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Air 13.6 inch M3 | 8 core CPU | 10 core GPU | 16GB RAM | SSD 512GB | Cũ đẹp",
+      "raw_name": "MacBook Air 13.6 inch M3 | 8 core CPU | 10 core GPU | 16GB RAM | SSD 512GB | Cũ đẹp (Đủ hộp, PK)",
+      "price_vnd": 24,
+      "price_text": "Giảm 24%",
+      "url": "https://shopdunk.com/macbook-air-136-inch-m3-8-core-cpu-10-core-gpu-16gb-ram-ssd-512gb-cu-%C4%91ep-%C4%91u-h%C3%B4p-pk",
+      "product_id": "4693",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Pro 14 inch M3 Pro | 11 core CPU | 14 core GPU | 18GB RAM | SSD 512GB |",
+      "raw_name": "MacBook Pro 14 inch M3 Pro | 11 core CPU | 14 core GPU | 18GB RAM | SSD 512GB | Cũ đẹp 99%",
+      "price_vnd": 35890000,
+      "price_text": "35.890.000₫",
+      "url": "https://shopdunk.com/macbook-pro-14-inch-m3-pro-11-core-cpu-14-core-gpu-18gb-ram-ssd-512gb-c%C5%A9-%C4%91%E1%BA%B9p-99",
+      "product_id": "4776",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Pro 14 inch M4 | 10 core CPU | 10 core GPU | 16GB RAM | SSD 512GB | Trôi BH",
+      "raw_name": "MacBook Pro 14 inch M4 | 10 core CPU | 10 core GPU | 16GB RAM | SSD 512GB | Trôi BH",
+      "price_vnd": 36990000,
+      "price_text": "36.990.000₫",
+      "url": "https://shopdunk.com/macbook-pro-14-inch-m4-10-core-cpu-10-core-gpu-16gb-ram-ssd-512gb-tr%C3%B4i-bh",
+      "product_id": "4791",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Pro 14 inch M3 Pro | 11 core CPU | 14 core GPU | 18GB RAM | SSD 512GB | Trôi BH",
+      "raw_name": "MacBook Pro 14 inch M3 Pro | 11 core CPU | 14 core GPU | 18GB RAM | SSD 512GB | Trôi BH",
+      "price_vnd": 41090000,
+      "price_text": "41.090.000₫",
+      "url": "https://shopdunk.com/macbook-pro-14-inch-m3-pro-11-core-cpu-14-core-gpu-18gb-ram-ssd-512gb-tr%C3%B4i-bh",
+      "product_id": "4778",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Air 13 inch core i5 1.6GHz Ram 8GB SSD 128GB ( 2018) MREE2",
+      "raw_name": "MacBook Air 13 inch core i5 1.6GHz Ram 8GB SSD 128GB ( 2018) MREE2",
+      "price_vnd": 79,
+      "price_text": "Giảm 79%",
+      "url": "https://shopdunk.com/macbook-air-13-inch-core-i5-16ghz-ram-8gb-ssd-128gb-2018-mree2",
+      "product_id": "5463",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Air 13 inch intel core i3 Ram 8GB SSD 256GB",
+      "raw_name": "MacBook Air 13 inch intel core i3 Ram 8GB SSD 256GB",
+      "price_vnd": 66,
+      "price_text": "Giảm 66%",
+      "url": "https://shopdunk.com/macbook-air-13-inch-intel-core-i3-ram-8gb-ssd-256gb",
+      "product_id": "5464",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Pro 13 inch core i5 2.4 GHz Ram 8GB SSD 512GB (2019) MV972",
+      "raw_name": "MacBook Pro 13 inch core i5 2.4 GHz Ram 8GB SSD 512GB (2019) MV972",
+      "price_vnd": 58,
+      "price_text": "Giảm 58%",
+      "url": "https://shopdunk.com/macbook-pro-13-inch-core-i5-24-ghz-ram-8gb-ssd-512gb-2019-mv972",
+      "product_id": "5465",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Air 13 inch M1 | 8 core CPU | 7 core GPU | SSD 256GB | RAM 8GB | Cũ đẹp",
+      "raw_name": "MacBook Air 13 inch M1 | 8 core CPU | 7 core GPU | SSD 256GB | RAM 8GB | Cũ đẹp (Đủ hộp,PK)",
+      "price_vnd": 53,
+      "price_text": "Giảm 53%",
+      "url": "https://shopdunk.com/macbook-air-13-inch-m1-8-core-cpu-7-core-gpu-ssd-256gb-ram-8gb-cu-%C4%91ep-%C4%91u-h%C3%B4ppk",
+      "product_id": "4544",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Air 13 inch M1 | 8 core CPU | 7 core GPU | SSD 256GB | RAM 8GB | Trôi BH",
+      "raw_name": "MacBook Air 13 inch M1 | 8 core CPU | 7 core GPU | SSD 256GB | RAM 8GB | Trôi BH",
+      "price_vnd": 49,
+      "price_text": "Giảm 49%",
+      "url": "https://shopdunk.com/macbook-air-13-inch-m1-8-core-cpu-7-core-gpu-ssd-256gb-ram-8gb-tr%C3%B4i-bh",
+      "product_id": "4545",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Air 13.6 inch M2 | 8 core CPU | 8 core GPU | 16GB RAM | SSD 256GB | Cũ đẹp",
+      "raw_name": "MacBook Air 13.6 inch M2 | 8 core CPU | 8 core GPU | 16GB RAM | SSD 256GB | Cũ đẹp (Đủ hộp,PK)",
+      "price_vnd": 46,
+      "price_text": "Giảm 46%",
+      "url": "https://shopdunk.com/macbook-air-136-inch-m2-8-core-cpu-8-core-gpu-16gb-ram-ssd-256gb-cu-%C4%91ep-%C4%91u-h%C3%B4ppk",
+      "product_id": "4651",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Air 15 inch M2 | 8 core CPU | 10 core GPU | 8GB RAM | SSD 256GB | Cũ đẹp 99%",
+      "raw_name": "MacBook Air 15 inch M2 | 8 core CPU | 10 core GPU | 8GB RAM | SSD 256GB | Cũ đẹp 99%",
+      "price_vnd": 43,
+      "price_text": "Giảm 43%",
+      "url": "https://shopdunk.com/macbook-air-15-inch-m2-8-core-cpu-10-core-gpu-8gb-ram-ssd-256gb-cu-%C4%91ep-99",
+      "product_id": "4659",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Air 13.6 inch M2 | 8 core CPU | 10 core GPU | 16GB RAM | SSD 256GB | Trôi BH",
+      "raw_name": "MacBook Air 13.6 inch M2 | 8 core CPU | 10 core GPU | 16GB RAM | SSD 256GB | Trôi BH",
+      "price_vnd": 36,
+      "price_text": "Giảm 36%",
+      "url": "https://shopdunk.com/macbook-air-136-inch-m2-8-core-cpu-10-core-gpu-16gb-ram-ssd-256gb-tr%C3%B4i-bh",
+      "product_id": "4656",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Air 15 inch M3 | 8 core CPU | 10 core GPU | 8GB RAM | SSD 256GB | Trôi BH",
+      "raw_name": "MacBook Air 15 inch M3 | 8 core CPU | 10 core GPU | 8GB RAM | SSD 256GB | Trôi BH",
+      "price_vnd": 31,
+      "price_text": "Giảm 31%",
+      "url": "https://shopdunk.com/macbook-air-15-inch-m3-8-core-cpu-10-core-gpu-8gb-ram-ssd-256gb-tr%C3%B4i-bh",
+      "product_id": "4702",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Air 15 inch M3 | 8 core CPU | 10 core GPU | 8GB RAM | SSD 512GB | Trôi BH",
+      "raw_name": "MacBook Air 15 inch M3 | 8 core CPU | 10 core GPU | 8GB RAM | SSD 512GB | Trôi BH",
+      "price_vnd": 25,
+      "price_text": "Giảm 25%",
+      "url": "https://shopdunk.com/macbook-air-15-inch-m3-8-core-cpu-10-core-gpu-8gb-ram-ssd-512gb-tr%C3%B4i-bh",
+      "product_id": "4706",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Air 13.6 inch M3 | 8 core CPU | 10 core GPU | 16GB RAM | SSD 512GB | Trôi BH",
+      "raw_name": "MacBook Air 13.6 inch M3 | 8 core CPU | 10 core GPU | 16GB RAM | SSD 512GB | Trôi BH",
+      "price_vnd": 20,
+      "price_text": "Giảm 20%",
+      "url": "https://shopdunk.com/macbook-air-136-inch-m3-8-core-cpu-10-core-gpu-16gb-ram-ssd-512gb-tr%C3%B4i-bh",
+      "product_id": "4694",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Pro 14 inch M3 | 8 core CPU | 10 core GPU | 8GB RAM | SSD 512GB |",
+      "raw_name": "MacBook Pro 14 inch M3 | 8 core CPU | 10 core GPU | 8GB RAM | SSD 512GB | Cũ đẹp (Đủ hộp, PK)",
+      "price_vnd": 26190000,
+      "price_text": "26.190.000₫",
+      "url": "https://shopdunk.com/macbook-pro-14-inch-m3-8-core-cpu-10-core-gpu-8gb-ram-ssd-512gb-c%C5%A9-%C4%91%E1%BA%B9p-%C4%91%E1%BB%A7-h%E1%BB%99p-pk",
+      "product_id": "4769",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Pro 16 inch M1 Pro | 10 core CPU | 16 core GPU | 16GB RAM | SSD 1TB |",
+      "raw_name": "MacBook Pro 16 inch M1 Pro | 10 core CPU | 16 core GPU | 16GB RAM | SSD 1TB | Cũ đẹp (Đủ hộp, PK)",
+      "price_vnd": 29990000,
+      "price_text": "29.990.000₫",
+      "url": "https://shopdunk.com/macbook-pro-16-inch-m1-pro-10-core-cpu-16-core-gpu-16gb-ram-ssd-1tb-c%C5%A9-%C4%91%E1%BA%B9p-%C4%91%E1%BB%A7-h%E1%BB%99p-pk",
+      "product_id": "4733",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Pro 14 inch M3 | 8 core CPU | 10 core GPU | 8GB RAM | SSD 512GB | Trôi BH",
+      "raw_name": "MacBook Pro 14 inch M3 | 8 core CPU | 10 core GPU | 8GB RAM | SSD 512GB | Trôi BH",
+      "price_vnd": 29890000,
+      "price_text": "29.890.000₫",
+      "url": "https://shopdunk.com/macbook-pro-14-inch-m3-8-core-cpu-10-core-gpu-8gb-ram-ssd-512gb-tr%C3%B4i-bh",
+      "product_id": "4770",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Pro 14 inch M3 | 8 core CPU | 10 core GPU | 16GB RAM | SSD 512GB |",
+      "raw_name": "MacBook Pro 14 inch M3 | 8 core CPU | 10 core GPU | 16GB RAM | SSD 512GB | Cũ đẹp (Đủ hộp, PK)",
+      "price_vnd": 31790000,
+      "price_text": "31.790.000₫",
+      "url": "https://shopdunk.com/macbook-pro-14-inch-m3-8-core-cpu-10-core-gpu-16gb-ram-ssd-512gb-c%C5%A9-%C4%91%E1%BA%B9p-%C4%91%E1%BB%A7-h%E1%BB%99p-pk",
+      "product_id": "4773",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Pro 14 inch M4 Pro | 12 core CPU | 16 core GPU | 24GB RAM | SSD 512GB |",
+      "raw_name": "MacBook Pro 14 inch M4 Pro | 12 core CPU | 16 core GPU | 24GB RAM | SSD 512GB | Cũ đẹp (Đủ hộp, PK)",
+      "price_vnd": 41690000,
+      "price_text": "41.690.000₫",
+      "url": "https://shopdunk.com/macbook-pro-14-inch-m4-pro-12-core-cpu-16-core-gpu-24gb-ram-ssd-512gb-c%C5%A9-%C4%91%E1%BA%B9p-%C4%91%E1%BB%A7-h%E1%BB%99p-pk",
+      "product_id": "4785",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    },
+    {
+      "model": "MacBook Pro 16 inch M3 Pro | 12 core CPU | 18 core GPU | 18GB RAM | SSD 512GB | Trôi BH",
+      "raw_name": "MacBook Pro 16 inch M3 Pro | 12 core CPU | 18 core GPU | 18GB RAM | SSD 512GB | Trôi BH",
+      "price_vnd": 43590000,
+      "price_text": "43.590.000₫",
+      "url": "https://shopdunk.com/macbook-pro-16-inch-m3-pro-12-core-cpu-18-core-gpu-18gb-ram-ssd-512gb-tr%C3%B4i-bh",
+      "product_id": "4782",
+      "image_url": "/images/uploaded/icon/bhmr12t.png",
+      "shop": "shopdunk"
+    }
+  ]
+}

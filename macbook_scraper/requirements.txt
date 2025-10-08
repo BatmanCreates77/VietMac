@@ -1,0 +1,16 @@
+# Core scraping libraries
+requests==2.31.0
+beautifulsoup4==4.12.3
+lxml==5.1.0
+
+# Browser automation
+playwright==1.44.0
+playwright-stealth==1.0.6
+seleniumbase==4.26.0
+
+# Data handling
+python-dotenv==1.0.1
+
+# Optional: Database (for later)
+# motor==3.4.0
+# pymongo==4.6.3

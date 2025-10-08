@@ -1,0 +1,44 @@
+{
+  "fptshop": {
+    "status": "http_error_403",
+    "models_found": 0,
+    "data_available": []
+  },
+  "shopdunk": {
+    "status": "success",
+    "models_found": 1,
+    "data_available": [
+      {
+        "selector": ".product-item",
+        "html_sample": "<div class=\"product-item\" data-productid=\"4677\"><div class=\"product_tag\"><script data-cf-settings=\"0f9bc206624497a41f52fb14-|49\" src=\"/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js\"></script><img alt=\"\" onerror='this.src!=\"/images/uploaded/icon/img_emty.png\"&amp;&amp;(this.src=\"/images/uploaded/icon/img_emty.png\")' src=\"/images/uploaded/icon/bhmr12t.png\"/></div><div class=\"picture\"><a href=\"/macbook-air-136-inch-m3-8-core-cpu-8-core-gpu-8gb-ram-ssd-256gb-cu-%C4%91ep-%C4%91u-h%C...",
+        "name": "MacBook Air 13.6 inch M3 | 8 core CPU | 8 core GPU | 8GB RAM | SSD 256GB | Cũ đẹp (Đủ hộp, PK)",
+        "price": "Giảm 43%"
+      }
+    ]
+  },
+  "topzone": {
+    "status": "error: HTTPSConnectionPool(host='www.topzone.vn', port=443): Max retries exceeded with url: /apple/macbook (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x111bc2850>, 'Connection to www.topzone.vn timed out. (connect timeout=10)'))",
+    "models_found": 0,
+    "data_available": []
+  },
+  "cellphones": {
+    "status": "success",
+    "models_found": 3,
+    "data_available": [
+      {
+        "selector": ".product-item",
+        "html_sample": "<div class=\"product-info-container product-item\"><div class=\"product-info\"><a class=\"product__link button__link\" href=\"https://cellphones.com.vn/macbook-pro-14-inch-m4-16gb-512gb.html\" rel=\"\"><div class=\"product__image\"><img alt=\"MacBook Pro 14 M4 10CPU 10GPU 16GB 512GB | Chính hãng Apple Việt Nam\" class=\"product__img\" height=\"358\" src=\"https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_4__7.png\" width=\"358\"/></div> <div...",
+        "name": "MacBook Pro 14 M4 10CPU 10GPU 16GB 512GB | Chính hãng Apple Việt Nam"
+      },
+      {
+        "selector": ".product-info",
+        "html_sample": "<div class=\"product-info\"><a class=\"product__link button__link\" href=\"https://cellphones.com.vn/macbook-pro-14-inch-m4-16gb-512gb.html\" rel=\"\"><div class=\"product__image\"><img alt=\"MacBook Pro 14 M4 10CPU 10GPU 16GB 512GB | Chính hãng Apple Việt Nam\" class=\"product__img\" height=\"358\" src=\"https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_4__7.png\" width=\"358\"/></div> <div class=\"product__name\"><h3>MacBook Pro 14 M4 10CP...",
+        "name": "MacBook Pro 14 M4 10CPU 10GPU 16GB 512GB | Chính hãng Apple Việt Nam"
+      },
+      {
+        "selector": ".item",
+        "html_sample": "<span class=\"item\"><span><a href=\"https://cellphones.com.vn/mobile/apple/iphone-air.html\" rel=\"noopener\" target=\"_blank\"><span>iPhone Air</span></a> <span> | </span></span></span>"
+      }
+    ]
+  }
+}
