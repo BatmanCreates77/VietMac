@@ -1,7 +1,103 @@
 import { NextResponse } from "next/server";
 
-// Get all marketplace prices with current FPT Shop Vietnam prices (Jan 2025)
+import { readFileSync } from "fs";
+import { join } from "path";
+
+// Load scraped data from the scraper output
+function loadScrapedData() {
+  try {
+    const filePath = join(
+      process.cwd(),
+      "macbook_scraper",
+      "output",
+      "latest_products.json",
+    );
+    const jsonData = readFileSync(filePath, "utf-8");
+    const data = JSON.parse(jsonData);
+    return data.products || [];
+  } catch (error) {
+    console.error("Error loading scraped data:", error.message);
+    return [];
+  }
+}
+
+// Transform scraped product to marketplace product format
+function transformScrapedProduct(product) {
+  const specs = product.specs || {};
+
+  // Determine model type and screen size
+  const modelType = specs.model_type || "MacBook";
+  const screenSize = specs.screen_size || "";
+
+  // Build configuration string
+  const configParts = [];
+  if (specs.chip) {
+    let chipStr = specs.chip;
+    if (specs.chip_variant) chipStr += ` ${specs.chip_variant}`;
+    configParts.push(chipStr);
+  }
+  if (specs.cpu_cores) configParts.push(`${specs.cpu_cores}-core CPU`);
+  if (specs.gpu_cores) configParts.push(`${specs.gpu_cores}-core GPU`);
+  if (specs.ram_gb) configParts.push(`${specs.ram_gb}GB`);
+  if (specs.storage_display) configParts.push(specs.storage_display);
+
+  const configuration = configParts.join(", ");
+
+  // Determine category (chip name)
+  let category = specs.chip || "Unknown";
+  if (specs.chip_variant) category += ` ${specs.chip_variant}`;
+
+  return {
+    model: screenSize
+      ? `${modelType} ${screenSize}`
+      : modelType || product.model,
+    modelType: modelType,
+    screenSize: screenSize,
+    category: category,
+    configuration: configuration,
+    id: specs.id || product.model.toLowerCase().replace(/\s+/g, "-"),
+    vndPrice: product.price_vnd,
+    url: product.url,
+    available: true,
+  };
+}
+
+// Filter out used/refurbished products and invalid prices
+function filterValidProducts(products) {
+  return products.filter((p) => {
+    // Filter out used MacBooks (keywords: Cũ, Trôi BH, Like New, Refurbished)
+    const modelLower = (p.model || "").toLowerCase();
+    const rawNameLower = (p.raw_name || "").toLowerCase();
+    const isUsed =
+      modelLower.includes("cũ") ||
+      modelLower.includes("trôi bh") ||
+      modelLower.includes("like new") ||
+      modelLower.includes("refurbished") ||
+      rawNameLower.includes("cũ") ||
+      rawNameLower.includes("trôi bh");
+
+    // Filter out invalid prices (less than 1 million VND)
+    const hasValidPrice = p.price_vnd && p.price_vnd >= 1000000;
+
+    return !isUsed && hasValidPrice;
+  });
+}
+
+// Get all marketplace prices from scraped data + hardcoded fallbacks
 function getMarketplacePrices() {
+  const scrapedProducts = loadScrapedData();
+  const validProducts = filterValidProducts(scrapedProducts);
+
+  // Group scraped products by shop
+  const cellphonesProducts = validProducts
+    .filter((p) => p.shop === "cellphones")
+    .map(transformScrapedProduct);
+
+  const shopDunkProducts = validProducts
+    .filter((p) => p.shop === "shopdunk")
+    .map(transformScrapedProduct);
+
+  // Hardcoded fallback products for FPT Shop and TopZone (not scraped)
   const baseProducts = [
     // MacBook Air M1 - 13" (Budget option)
     {
@@ -374,129 +470,62 @@ function getMarketplacePrices() {
     }
   };
 
+  // Merge scraped data with baseProducts (prefer scraped prices)
+  const mergeProducts = (scraped, base) => {
+    const scrapedMap = new Map(scraped.map((p) => [p.id, p]));
+    const merged = [];
+
+    // Add base products with scraped prices if available
+    base.forEach((bp) => {
+      const scrapedProduct = scrapedMap.get(bp.id);
+      if (scrapedProduct) {
+        merged.push(scrapedProduct);
+        scrapedMap.delete(bp.id);
+      } else {
+        merged.push(bp);
+      }
+    });
+
+    // Add remaining scraped products not in base
+    scrapedMap.forEach((p) => merged.push(p));
+
+    return merged;
+  };
+
+  const fptShop = baseProducts.map((p) => ({
+    ...p,
+    url: p.fptUrl || "https://fptshop.com.vn/may-tinh-xach-tay/apple-macbook",
+  }));
+
+  const shopDunk = mergeProducts(
+    shopDunkProducts,
+    baseProducts.map((p) => ({
+      ...p,
+      vndPrice: p.vndPrice + 1000000,
+      url: "https://shopdunk.com/mac",
+    })),
+  );
+
+  const topZone = baseProducts.map((p) => ({
+    ...p,
+    vndPrice: p.vndPrice - 500000,
+    url: "https://www.topzone.vn/apple/macbook",
+  }));
+
+  const cellphones = mergeProducts(
+    cellphonesProducts,
+    baseProducts.map((p) => ({
+      ...p,
+      vndPrice: p.vndPrice - 1000000,
+      url: "https://cellphones.com.vn/laptop/mac/macbook-pro.html",
+    })),
+  );
+
   return {
-    fptShop: baseProducts.map((p) => ({
-      ...p,
-      url: p.fptUrl || "https://fptshop.com.vn/may-tinh-xach-tay/apple-macbook",
-    })),
-    shopDunk: baseProducts.map((p) => {
-      // ShopDunk actual prices and URLs (scraped Jan 2025)
-      const shopDunkData = {
-        "m1-air-13-8-256": {
-          price: 16890000,
-          url: "https://shopdunk.com/macbook-air-m1-2020",
-        },
-        "m2-air-13-8-256": {
-          price: 17190000,
-          url: "https://shopdunk.com/macbook-air-m2-13-inch",
-        },
-        "m2-air-13-16-256": {
-          price: 24090000,
-          url: "https://shopdunk.com/macbook-air-m2-13-inch-10-core-gpu-16gb-ram-256gb-ssd",
-        },
-        "m4-air-13-16-256": {
-          price: 25090000,
-          url: "https://shopdunk.com/macbook-air-m4-13-inch-8-core-gpu-16gb-ram-256gb-ssd",
-        },
-        "m4-air-13-16-512": {
-          price: 29790000,
-          url: "https://shopdunk.com/macbook-air-m4-13-inch-10-core-gpu-16gb-ram-512gb-ssd",
-        },
-        "m4-air-13-24-512": {
-          price: 36990000,
-          url: "https://shopdunk.com/macbook-air-m4-13-inch-10-core-gpu-24gb-ram-512gb-ssd",
-        },
-        "m4-air-15-16-256": {
-          price: 29290000,
-          url: "https://shopdunk.com/macbook-air-m4-15-inch-10-core-gpu-16gb-ram-256gb-ssd",
-        },
-        "m4-air-15-16-512": {
-          price: 33990000,
-          url: "https://shopdunk.com/macbook-air-m4-15-inch-10-core-gpu-16gb-ram-512gb-ssd",
-        },
-        "m4-air-15-24-512": {
-          price: 41990000,
-          url: "https://shopdunk.com/macbook-air-m4-15-inch-10-core-gpu-24gb-ram-512gb-ssd",
-        },
-        "m3-pro-16-18-512": {
-          price: 63490000,
-          url: "https://shopdunk.com/mac",
-        },
-      };
-
-      const data = shopDunkData[p.id];
-      return {
-        ...p,
-        vndPrice: data?.price || p.vndPrice + 1000000,
-        url: data?.url || "https://shopdunk.com/mac",
-      };
-    }),
-    topZone: baseProducts.map((p) => ({
-      ...p,
-      vndPrice: p.vndPrice - 500000, // TopZone slightly lower
-      url: "https://www.topzone.vn/apple/macbook",
-    })),
-    cellphones: baseProducts.map((p) => {
-      // CellphoneS actual prices and URLs (scraped Oct 2025)
-      const cellphonesData = {
-        "m4-pro-14-16-512": {
-          price: 38090000,
-          url: "https://cellphones.com.vn/macbook-pro-14-inch-m4-16gb-512gb.html",
-        },
-        "m4-pro-14-24-1tb": {
-          price: 48390000,
-          url: "https://cellphones.com.vn/macbook-pro-14-inch-m4-24gb-1tb.html",
-        },
-        "m4pro-pro-14-24-512": {
-          price: 47590000,
-          url: "https://cellphones.com.vn/macbook-pro-14-inch-m4-pro-24gb-512gb.html",
-        },
-        "m4pro-pro-14-24-1tb": {
-          price: 57490000,
-          url: "https://cellphones.com.vn/laptop/mac/macbook-pro.html",
-        },
-        "m4pro-base-24-512gb": {
-          price: 63990000,
-          url: "https://cellphones.com.vn/laptop/mac/macbook-pro.html",
-        },
-        "m4pro-top-48-1tb": {
-          price: 73990000,
-          url: "https://cellphones.com.vn/laptop/mac/macbook-pro.html",
-        },
-        "m4max-pro-14-36-1tb": {
-          price: 79990000,
-          url: "https://cellphones.com.vn/laptop/mac/macbook-pro.html",
-        },
-        "m4max-pro-14-48-1tb": {
-          price: 95990000,
-          url: "https://cellphones.com.vn/macbook-pro-16-inch-m4-max-48gb-1tb.html",
-        },
-        "m4max-base-36-1tb": {
-          price: 87990000,
-          url: "https://cellphones.com.vn/laptop/mac/macbook-pro.html",
-        },
-        "m2-air-13-8-256": {
-          price: 19890000,
-          url: "https://cellphones.com.vn/laptop/mac/macbook-air.html",
-        },
-        "m3-pro-14-16-1tb": {
-          price: 48390000,
-          url: "https://cellphones.com.vn/laptop/mac/macbook-pro.html",
-        },
-        "m3max-base-36-1tb": {
-          price: 73990000,
-          url: "https://cellphones.com.vn/laptop/mac/macbook-pro.html",
-        },
-      };
-
-      const data = cellphonesData[p.id];
-      return {
-        ...p,
-        vndPrice: data?.price || p.vndPrice - 1000000,
-        url:
-          data?.url || "https://cellphones.com.vn/laptop/mac/macbook-pro.html",
-      };
-    }),
+    fptShop,
+    shopDunk,
+    topZone,
+    cellphones,
   };
 }
 
