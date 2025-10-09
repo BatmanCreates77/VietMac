@@ -23,42 +23,46 @@ function loadScrapedData() {
 
 // Transform scraped product to marketplace product format
 function transformScrapedProduct(product) {
-  const specs = product.specs || {};
+  // Parse basic info from model name
+  const modelName = product.model || "";
+  const modelLower = modelName.toLowerCase();
 
-  // Determine model type and screen size
-  const modelType = specs.model_type || "MacBook";
-  const screenSize = specs.screen_size || "";
-
-  // Build configuration string
-  const configParts = [];
-  if (specs.chip) {
-    let chipStr = specs.chip;
-    if (specs.chip_variant) chipStr += ` ${specs.chip_variant}`;
-    configParts.push(chipStr);
+  // Extract model type
+  let modelType = "MacBook";
+  let screenSize = "";
+  if (modelLower.includes("air")) {
+    modelType = "MacBook Air";
+    if (modelLower.includes("13")) screenSize = '13"';
+    else if (modelLower.includes("15")) screenSize = '15"';
+  } else if (modelLower.includes("pro")) {
+    modelType = "MacBook Pro";
+    if (modelLower.includes("14")) screenSize = '14"';
+    else if (modelLower.includes("16")) screenSize = '16"';
   }
-  if (specs.cpu_cores) configParts.push(`${specs.cpu_cores}-core CPU`);
-  if (specs.gpu_cores) configParts.push(`${specs.gpu_cores}-core GPU`);
-  if (specs.ram_gb) configParts.push(`${specs.ram_gb}GB`);
-  if (specs.storage_display) configParts.push(specs.storage_display);
 
-  const configuration = configParts.join(", ");
-
-  // Determine category (chip name)
-  let category = specs.chip || "Unknown";
-  if (specs.chip_variant) category += ` ${specs.chip_variant}`;
+  // Extract chip/category
+  let category = "Unknown";
+  if (modelLower.includes("m4 max")) category = "M4 Max";
+  else if (modelLower.includes("m4 pro")) category = "M4 Pro";
+  else if (modelLower.includes("m4")) category = "M4";
+  else if (modelLower.includes("m3 max")) category = "M3 Max";
+  else if (modelLower.includes("m3 pro")) category = "M3 Pro";
+  else if (modelLower.includes("m3")) category = "M3";
+  else if (modelLower.includes("m2")) category = "M2";
+  else if (modelLower.includes("m1")) category = "M1";
 
   return {
-    model: screenSize
-      ? `${modelType} ${screenSize}`
-      : modelType || product.model,
+    model: screenSize ? `${modelType} ${screenSize}` : modelType,
     modelType: modelType,
     screenSize: screenSize,
     category: category,
-    configuration: configuration,
-    id: specs.id || product.model.toLowerCase().replace(/\s+/g, "-"),
+    configuration: modelName, // Use full original name as configuration
+    id: modelName.toLowerCase().replace(/\s+/g, "-").substring(0, 100),
     vndPrice: product.price_vnd,
     url: product.url,
     available: true,
+    scraped: true, // Mark as live price
+    shop: product.shop, // Keep shop info
   };
 }
 
@@ -88,6 +92,9 @@ function getMarketplacePrices() {
   const scrapedProducts = loadScrapedData();
   const validProducts = filterValidProducts(scrapedProducts);
 
+  console.log("🔍 Debug - Scraped products:", scrapedProducts.length);
+  console.log("🔍 Debug - Valid products:", validProducts.length);
+
   // Group scraped products by shop
   const cellphonesProducts = validProducts
     .filter((p) => p.shop === "cellphones")
@@ -96,6 +103,9 @@ function getMarketplacePrices() {
   const shopDunkProducts = validProducts
     .filter((p) => p.shop === "shopdunk")
     .map(transformScrapedProduct);
+
+  console.log("🔍 Debug - CellphoneS products:", cellphonesProducts.length);
+  console.log("🔍 Debug - ShopDunk products:", shopDunkProducts.length);
 
   // Hardcoded fallback products for FPT Shop and TopZone (not scraped)
   const baseProducts = [
@@ -472,24 +482,12 @@ function getMarketplacePrices() {
 
   // Merge scraped data with baseProducts (prefer scraped prices)
   const mergeProducts = (scraped, base) => {
-    const scrapedMap = new Map(scraped.map((p) => [p.id, p]));
-    const merged = [];
-
-    // Add base products with scraped prices if available
-    base.forEach((bp) => {
-      const scrapedProduct = scrapedMap.get(bp.id);
-      if (scrapedProduct) {
-        merged.push(scrapedProduct);
-        scrapedMap.delete(bp.id);
-      } else {
-        merged.push(bp);
-      }
-    });
-
-    // Add remaining scraped products not in base
-    scrapedMap.forEach((p) => merged.push(p));
-
-    return merged;
+    // For shops with scraped data, ONLY show scraped products (live prices)
+    if (scraped.length > 0) {
+      return scraped;
+    }
+    // For shops without scraped data, show fallback estimates
+    return base.map((bp) => ({ ...bp, scraped: false }));
   };
 
   const fptShop = baseProducts.map((p) => ({
@@ -649,6 +647,16 @@ export async function GET(request) {
         exchangeRate,
       );
 
+      // Count scraped vs fallback products
+      const scrapedCount = [
+        ...marketplacePrices.cellphones.filter((p) => p.scraped),
+        ...marketplacePrices.shopDunk.filter((p) => p.scraped),
+      ].length;
+
+      const scrapedData = loadScrapedData();
+      const lastUpdate =
+        scrapedData && scrapedData.length > 0 ? new Date().toISOString() : null;
+
       return NextResponse.json({
         success: true,
         marketplaces: {
@@ -660,7 +668,9 @@ export async function GET(request) {
         exchangeRate: exchangeRate,
         currency: currency.toUpperCase(),
         timestamp: new Date().toISOString(),
-        source: "Live Exchange Rate + Vietnamese Market Pricing (Oct 2025)",
+        source: `🔴 LIVE Prices (${scrapedCount} products) + Market Estimates`,
+        scrapedProductsCount: scrapedCount,
+        lastScraped: lastUpdate,
       });
     }
 

@@ -453,18 +453,26 @@ function MacBookPricesTable({ data, currency, posthog }) {
               >
                 <div className="flex justify-between items-start">
                   <div className="flex flex-col gap-2">
-                    <Badge
-                      className={cn(
-                        "w-fit transition-all duration-200 hover:scale-105",
-                        item.shop === "FPT Shop" && "bg-blue-500 text-white",
-                        item.shop === "ShopDunk" && "bg-purple-500 text-white",
-                        item.shop === "TopZone" && "bg-green-500 text-white",
-                        item.shop === "CellphoneS" &&
-                          "bg-orange-500 text-white",
+                    <div className="flex gap-2 items-center flex-wrap">
+                      <Badge
+                        className={cn(
+                          "w-fit transition-all duration-200 hover:scale-105",
+                          item.shop === "FPT Shop" && "bg-blue-500 text-white",
+                          item.shop === "ShopDunk" &&
+                            "bg-purple-500 text-white",
+                          item.shop === "TopZone" && "bg-green-500 text-white",
+                          item.shop === "CellphoneS" &&
+                            "bg-orange-500 text-white",
+                        )}
+                      >
+                        {item.shop}
+                      </Badge>
+                      {item.scraped && (
+                        <Badge className="bg-red-500 text-white animate-pulse">
+                          🔴 LIVE
+                        </Badge>
                       )}
-                    >
-                      {item.shop}
-                    </Badge>
+                    </div>
                     <Badge
                       variant="outline"
                       className="w-fit transition-all duration-200 hover:scale-105"
@@ -477,8 +485,15 @@ function MacBookPricesTable({ data, currency, posthog }) {
                       {getCurrencySymbol(currency)}
                       {item.finalPrice?.toLocaleString() || "N/A"}
                     </div>
-                    <div className="text-xs font-medium text-gray-500">
-                      Est. Price
+                    <div
+                      className={cn(
+                        "text-xs font-medium",
+                        item.scraped
+                          ? "text-red-600 font-bold"
+                          : "text-gray-500",
+                      )}
+                    >
+                      {item.scraped ? "🔴 Live Price" : "Est. Price"}
                     </div>
                   </div>
                 </div>

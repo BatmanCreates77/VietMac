@@ -166,7 +166,7 @@ class SpecParser:
 
     def _extract_storage(self, name: str) -> Dict:
         """Extract storage (GB or TB)"""
-        # Look for storage patterns
+        # Look for storage patterns with SSD keyword first
         patterns = [
             r'(\d+)\s*TB(?:\s*SSD)?',
             r'(\d+)\s*GB\s*SSD',
@@ -189,6 +189,25 @@ class SpecParser:
                         'gb': value,
                         'display': f"{value}GB"
                     }
+
+        # Fallback: Find all GB/TB mentions and assume last one (after RAM) is storage
+        # This handles formats like "16GB 512GB" where first is RAM, second is storage
+        all_storage_matches = list(re.finditer(r'(\d+)\s*(GB|TB)(?!\s*RAM)', name, re.IGNORECASE))
+        if len(all_storage_matches) >= 2:
+            # If we have 2+ matches, the last one is likely storage
+            last_match = all_storage_matches[-1]
+            value = int(last_match.group(1))
+            unit = last_match.group(2).upper()
+            if unit == 'TB':
+                return {
+                    'gb': value * 1024,
+                    'display': f"{value}TB"
+                }
+            else:
+                return {
+                    'gb': value,
+                    'display': f"{value}GB"
+                }
 
         return {'gb': None, 'display': None}
 

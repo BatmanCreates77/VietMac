@@ -10,6 +10,12 @@ import re
 import time
 import random
 import logging
+import sys
+from pathlib import Path
+
+# Add utils directory to path for spec parser
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from utils.spec_parser import SpecParser
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -24,6 +30,7 @@ class CellphonesScraper:
             'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         ]
         self.session = requests.Session()
+        self.spec_parser = SpecParser()
 
     def _get_headers(self):
         """Generate random headers to avoid detection"""
@@ -82,6 +89,28 @@ class CellphonesScraper:
 
         return None
 
+    def _get_product_details(self, product_url):
+        """Fetch product detail page to get more specs."""
+        html = self.scrape_page(product_url)
+        if not html:
+            return {}
+
+        soup = BeautifulSoup(html, 'html.parser')
+        details = {}
+
+        # Find screen size from spec table
+        spec_table = soup.select_one('.technical-content')
+        if spec_table:
+            for row in spec_table.select('tr'):
+                cells = row.select('td')
+                if len(cells) == 2:
+                    spec_name = cells[0].get_text(strip=True).lower()
+                    spec_value = cells[1].get_text(strip=True)
+                    if 'kích thước màn hình' in spec_name:
+                        details['screen_size'] = spec_value
+                        break
+        return details
+
     def parse_products(self, html):
         """Parse products from HTML"""
         soup = BeautifulSoup(html, 'html.parser')
@@ -117,9 +146,22 @@ class CellphonesScraper:
                 if url and not url.startswith('http'):
                     url = self.base_url + url if url.startswith('/') else self.base_url + '/' + url
 
+                # Get additional details from product page
+                details = {}
+                if url:
+                    details = self._get_product_details(url)
+                    time.sleep(1) # Polite delay
+
+                # Add screen size to model name if not present
+                if details.get('screen_size') and details['screen_size'].replace(' inch','') not in model_name:
+                    model_name = f"{model_name} {details['screen_size'].replace(' inch','')}"
+
                 # Extract image
                 img_elem = item.select_one('.product__image img')
                 image_url = img_elem.get('src') if img_elem else None
+
+                # Parse specs using spec parser
+                parsed_specs = self.spec_parser.parse(model_name)
 
                 product = {
                     'model': model_name,
@@ -129,6 +171,21 @@ class CellphonesScraper:
                     'url': url,
                     'image_url': image_url,
                     'shop': 'cellphones',
+                    # Add parsed specs
+                    'specs': {
+                        'model_type': parsed_specs.get('model_type'),
+                        'chip': parsed_specs.get('chip'),
+                        'chip_variant': parsed_specs.get('chip_variant'),
+                        'screen_size': parsed_specs.get('screen_size'),
+                        'cpu_cores': parsed_specs.get('cpu_cores'),
+                        'gpu_cores': parsed_specs.get('gpu_cores'),
+                        'ram_gb': parsed_specs.get('ram_gb'),
+                        'storage_gb': parsed_specs.get('storage_gb'),
+                        'storage_display': parsed_specs.get('storage_display'),
+                        'year': parsed_specs.get('year'),
+                    },
+                    'product_id': parsed_specs.get('id'),
+                    'clean_name': parsed_specs.get('clean_name'),
                 }
 
                 products.append(product)
@@ -148,17 +205,23 @@ class CellphonesScraper:
 
         all_products = []
 
-        # Pages to scrape
+        # All CellphoneS MacBook URLs
         pages = [
             {
-                'name': 'MacBook Pro',
-                'url': 'https://cellphones.com.vn/laptop/mac/macbook-pro.html'
+                'name': 'All Mac',
+                'url': 'https://cellphones.com.vn/laptop/mac.html'
             },
             {
                 'name': 'MacBook Air',
                 'url': 'https://cellphones.com.vn/laptop/mac/macbook-air.html'
             },
+            {
+                'name': 'MacBook Pro',
+                'url': 'https://cellphones.com.vn/laptop/mac/macbook-pro.html'
+            },
         ]
+
+        seen_urls = set()  # Avoid duplicates
 
         for page_info in pages:
             logger.info(f"\nScraping {page_info['name']}...")
@@ -166,8 +229,13 @@ class CellphonesScraper:
 
             if html:
                 products = self.parse_products(html)
-                all_products.extend(products)
-                logger.info(f"Found {len(products)} {page_info['name']} models")
+                # Filter out duplicates based on product URL
+                for product in products:
+                    product_url = product.get('url')
+                    if product_url and product_url not in seen_urls:
+                        seen_urls.add(product_url)
+                        all_products.append(product)
+                logger.info(f"Found {len(products)} {page_info['name']} models ({len(all_products)} unique total)")
             else:
                 logger.error(f"Failed to scrape {page_info['name']}")
 

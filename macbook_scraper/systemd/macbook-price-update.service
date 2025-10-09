@@ -1,0 +1,14 @@
+[Unit]
+Description=MacBook Price Update Service
+After=network.target
+
+[Service]
+Type=oneshot
+User=YOUR_USERNAME
+WorkingDirectory=/path/to/VietMac/macbook_scraper
+ExecStart=/usr/bin/python3 /path/to/VietMac/macbook_scraper/update_prices.py
+StandardOutput=append:/path/to/VietMac/macbook_scraper/logs/systemd_update.log
+StandardError=append:/path/to/VietMac/macbook_scraper/logs/systemd_error.log
+
+[Install]
+WantedBy=multi-user.target

@@ -9,6 +9,12 @@ from bs4 import BeautifulSoup
 import re
 import time
 import logging
+import sys
+from pathlib import Path
+
+# Add utils directory to path for spec parser
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from utils.spec_parser import SpecParser
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -17,6 +23,7 @@ logger = logging.getLogger(__name__)
 class ShopDunkScraper:
     def __init__(self):
         self.base_url = "https://shopdunk.com"
+        self.spec_parser = SpecParser()
 
     def _clean_price(self, price_text):
         """Extract numeric price from text"""
@@ -67,7 +74,8 @@ class ShopDunkScraper:
 
                     # Wait for products to load
                     logger.info("  Waiting for products to load...")
-                    time.sleep(5)
+                    page.wait_for_selector('.product-item', timeout=30000) # Wait for the product grid
+                    time.sleep(2) # Extra wait for any lazy-loaded images or prices
 
                     # Scroll to load lazy-loaded content
                     logger.info("  Scrolling to load all products...")
@@ -120,20 +128,10 @@ class ShopDunkScraper:
 
                 model_name = self._parse_model_name(raw_name)
 
-                # Extract price - ShopDunk has multiple price classes
-                price_elem = (item.select_one('.special-price .price') or
-                             item.select_one('.price') or
-                             item.select_one('.product-price'))
-
+                # Extract price - ShopDunk uses .actual-price for the final price
+                price_elem = item.select_one('.actual-price')
                 price_text = price_elem.get_text(strip=True) if price_elem else None
                 price_vnd = self._clean_price(price_text)
-
-                # Sometimes price shows as "Giảm X%" - skip those or try old-price
-                if not price_vnd or 'Giảm' in price_text:
-                    old_price_elem = item.select_one('.old-price .price')
-                    if old_price_elem:
-                        price_text = old_price_elem.get_text(strip=True)
-                        price_vnd = self._clean_price(price_text)
 
                 # Extract URL
                 link_elem = item.select_one('a')
@@ -148,6 +146,9 @@ class ShopDunkScraper:
                 img_elem = item.select_one('img')
                 image_url = img_elem.get('src') or img_elem.get('data-src') if img_elem else None
 
+                # Parse specs using spec parser
+                parsed_specs = self.spec_parser.parse(raw_name)
+
                 product = {
                     'model': model_name,
                     'raw_name': raw_name,
@@ -157,6 +158,20 @@ class ShopDunkScraper:
                     'product_id': product_id,
                     'image_url': image_url,
                     'shop': 'shopdunk',
+                    # Add parsed specs
+                    'specs': {
+                        'model_type': parsed_specs.get('model_type'),
+                        'chip': parsed_specs.get('chip'),
+                        'chip_variant': parsed_specs.get('chip_variant'),
+                        'screen_size': parsed_specs.get('screen_size'),
+                        'cpu_cores': parsed_specs.get('cpu_cores'),
+                        'gpu_cores': parsed_specs.get('gpu_cores'),
+                        'ram_gb': parsed_specs.get('ram_gb'),
+                        'storage_gb': parsed_specs.get('storage_gb'),
+                        'storage_display': parsed_specs.get('storage_display'),
+                        'year': parsed_specs.get('year'),
+                    },
+                    'clean_name': parsed_specs.get('clean_name'),
                 }
 
                 products.append(product)
@@ -174,31 +189,53 @@ class ShopDunkScraper:
         logger.info("Starting ShopDunk scraper...")
         logger.info("="*80)
 
-        url = "https://shopdunk.com/macbook"
+        # All ShopDunk MacBook URLs
+        urls = [
+            "https://shopdunk.com/mac",
+            "https://shopdunk.com/macbook-pro-m4",
+            "https://shopdunk.com/macbook-air-m4",
+            "https://shopdunk.com/macbook-air",
+            "https://shopdunk.com/macbook-pro-2",
+        ]
 
-        logger.info(f"\nScraping: {url}")
-        html = self.scrape_with_playwright(url)
+        all_products = []
+        seen_urls = set()  # Avoid duplicates
 
-        if html:
-            products = self.parse_products(html)
-            logger.info(f"Found {len(products)} MacBook models")
+        for url in urls:
+            logger.info(f"\nScraping: {url}")
+            html = self.scrape_with_playwright(url)
 
-            logger.info("="*80)
-            logger.info(f"ShopDunk scraping complete: {len(products)} total products")
-            logger.info("="*80)
+            if html:
+                products = self.parse_products(html)
+                # Filter out duplicates based on product URL
+                for product in products:
+                    if product['url'] and product['url'] not in seen_urls:
+                        seen_urls.add(product['url'])
+                        all_products.append(product)
+                logger.info(f"Found {len(products)} MacBook models from this page ({len(all_products)} unique total)")
+            else:
+                logger.warning(f"Failed to scrape {url}")
 
+            # Polite delay between pages
+            time.sleep(5)
+
+        logger.info("="*80)
+        logger.info(f"ShopDunk scraping complete: {len(all_products)} total unique products")
+        logger.info("="*80)
+
+        if all_products:
             return {
                 'success': True,
                 'shop': 'shopdunk',
-                'products': products,
-                'count': len(products),
+                'products': all_products,
+                'count': len(all_products),
             }
         else:
-            logger.error("Failed to scrape ShopDunk")
+            logger.error("Failed to scrape ShopDunk - no products found")
             return {
                 'success': False,
                 'shop': 'shopdunk',
-                'error': 'Failed to load page',
+                'error': 'No products found',
                 'products': [],
                 'count': 0,
             }

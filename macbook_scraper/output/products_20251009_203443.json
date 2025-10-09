@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-10-09T23:18:03.190045",
+  "timestamp": "2025-10-09T20:32:55.944299",
   "products": [
     {
       "model": "Apple MacBook Air M2 2024 8CPU 8GPU 16GB 256GB I 13.6es",
@@ -8,21 +8,7 @@
       "price_text": "20.090.000đ",
       "url": "https://cellphones.com.vn/macbook-air-m2-2022-16gb.html",
       "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/m/image_1396_1.png",
-      "shop": "cellphones",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M2",
-        "chip_variant": null,
-        "screen_size": null,
-        "cpu_cores": 8,
-        "gpu_cores": 8,
-        "ram_gb": 16,
-        "storage_gb": null,
-        "storage_display": null,
-        "year": 2024
-      },
-      "product_id": "m2-air-16",
-      "clean_name": "MacBook Air M2 8C 8G 16GB"
+      "shop": "cellphones"
     },
     {
       "model": "MacBook Air M4 13 inch 2025 10CPU 8GPU 16GB 256GB 13.6es",
@@ -31,21 +17,7 @@
       "price_text": "25.090.000đ",
       "url": "https://cellphones.com.vn/apple-macbook-air-13-m4-10cpu-8gpu-16gb-256gb-2025.html",
       "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_11_1.png",
-      "shop": "cellphones",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M4",
-        "chip_variant": null,
-        "screen_size": "13\"",
-        "cpu_cores": 10,
-        "gpu_cores": 8,
-        "ram_gb": 16,
-        "storage_gb": null,
-        "storage_display": null,
-        "year": 2025
-      },
-      "product_id": "m4-air-13-16",
-      "clean_name": "MacBook Air 13\" M4 10C 8G 16GB"
+      "shop": "cellphones"
     },
     {
       "model": "MacBook Pro 14 M4 10CPU 10GPU 16GB 512GB 14.2es",
@@ -54,21 +26,7 @@
       "price_text": "37.690.000đ",
       "url": "https://cellphones.com.vn/macbook-pro-14-inch-m4-16gb-512gb.html",
       "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_4__7.png",
-      "shop": "cellphones",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M4",
-        "chip_variant": null,
-        "screen_size": null,
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 16,
-        "storage_gb": null,
-        "storage_display": null,
-        "year": null
-      },
-      "product_id": "m4-pro-16",
-      "clean_name": "MacBook Pro M4 10C 10G 16GB"
+      "shop": "cellphones"
     },
     {
       "model": "MacBook Air M4 13 inch 2025 10CPU 10GPU 16GB 512GB 13.6es",
@@ -77,21 +35,7 @@
       "price_text": "30.890.000đ",
       "url": "https://cellphones.com.vn/apple-macbook-air-13-m4-10cpu-10gpu-16gb-512gb-2025.html",
       "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_1__4_1.png",
-      "shop": "cellphones",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M4",
-        "chip_variant": null,
-        "screen_size": "13\"",
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 16,
-        "storage_gb": null,
-        "storage_display": null,
-        "year": 2025
-      },
-      "product_id": "m4-air-13-16",
-      "clean_name": "MacBook Air 13\" M4 10C 10G 16GB"
+      "shop": "cellphones"
     },
     {
       "model": "MacBook Air M4 13 inch 2025 10CPU 8GPU 16GB 256GB Sạc 70W 13.6es",
@@ -100,21 +44,7 @@
       "price_text": "25.790.000đ",
       "url": "https://cellphones.com.vn/apple-macbook-air-13-m4-10cpu-8gpu-16gb-256gb-2025-sac-70w.html",
       "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_11_1_2.png",
-      "shop": "cellphones",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M4",
-        "chip_variant": null,
-        "screen_size": "13\"",
-        "cpu_cores": 10,
-        "gpu_cores": 8,
-        "ram_gb": 16,
-        "storage_gb": null,
-        "storage_display": null,
-        "year": 2025
-      },
-      "product_id": "m4-air-13-16",
-      "clean_name": "MacBook Air 13\" M4 10C 8G 16GB"
+      "shop": "cellphones"
     },
     {
       "model": "MacBook Pro 14 M4 Pro 12CPU 16GPU 24GB 512GB 14.2es",
@@ -123,21 +53,7 @@
       "price_text": "47.590.000đ",
       "url": "https://cellphones.com.vn/macbook-pro-14-inch-m4-pro-24gb-512gb.html",
       "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_9__4.png",
-      "shop": "cellphones",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M4",
-        "chip_variant": "Pro",
-        "screen_size": null,
-        "cpu_cores": 12,
-        "gpu_cores": 16,
-        "ram_gb": 24,
-        "storage_gb": null,
-        "storage_display": null,
-        "year": null
-      },
-      "product_id": "m4-pro-pro-24",
-      "clean_name": "MacBook Pro M4 Pro 12C 16G 24GB"
+      "shop": "cellphones"
     },
     {
       "model": "MacBook Air M4 13 inch 2025 10CPU 10GPU 16GB 512GB Sạc 70W 13.6es",
@@ -146,21 +62,7 @@
       "price_text": "31.290.000đ",
       "url": "https://cellphones.com.vn/apple-macbook-air-13-m4-10cpu-10gpu-16gb-512gb-2025-sac-70w.html",
       "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_1__4_1_2.png",
-      "shop": "cellphones",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M4",
-        "chip_variant": null,
-        "screen_size": "13\"",
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 16,
-        "storage_gb": null,
-        "storage_display": null,
-        "year": 2025
-      },
-      "product_id": "m4-air-13-16",
-      "clean_name": "MacBook Air 13\" M4 10C 10G 16GB"
+      "shop": "cellphones"
     },
     {
       "model": "MacBook Air M3 13 inch 2024 8GB - 256GB 13.6es",
@@ -169,21 +71,7 @@
       "price_text": "24.190.000đ",
       "url": "https://cellphones.com.vn/macbook-air-m3-13-inch-2024.html",
       "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_2__5.png",
-      "shop": "cellphones",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M3",
-        "chip_variant": null,
-        "screen_size": "13\"",
-        "cpu_cores": null,
-        "gpu_cores": null,
-        "ram_gb": 8,
-        "storage_gb": null,
-        "storage_display": null,
-        "year": 2024
-      },
-      "product_id": "m3-air-13-8",
-      "clean_name": "MacBook Air 13\" M3 8GB"
+      "shop": "cellphones"
     },
     {
       "model": "MacBook Air M4 15 inch 2025 10CPU 10GPU 16GB 256GB 15.3es",
@@ -192,21 +80,7 @@
       "price_text": "29.590.000đ",
       "url": "https://cellphones.com.vn/apple-macbook-air-15-m4-10cpu-10gpu-16gb-256gb-2025.html",
       "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_3__15.png",
-      "shop": "cellphones",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M4",
-        "chip_variant": null,
-        "screen_size": "15\"",
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 16,
-        "storage_gb": null,
-        "storage_display": null,
-        "year": 2025
-      },
-      "product_id": "m4-air-15-16",
-      "clean_name": "MacBook Air 15\" M4 10C 10G 16GB"
+      "shop": "cellphones"
     },
     {
       "model": "MacBook Air M4 13 inch 2025 10CPU 10GPU 24GB 512GB 13.6es",
@@ -215,21 +89,7 @@
       "price_text": "34.990.000đ",
       "url": "https://cellphones.com.vn/apple-macbook-air-13-m4-10cpu-10gpu-24gb-512gb-2025.html",
       "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_2__21.png",
-      "shop": "cellphones",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M4",
-        "chip_variant": null,
-        "screen_size": "13\"",
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 24,
-        "storage_gb": null,
-        "storage_display": null,
-        "year": 2025
-      },
-      "product_id": "m4-air-13-24",
-      "clean_name": "MacBook Air 13\" M4 10C 10G 24GB"
+      "shop": "cellphones"
     },
     {
       "model": "MacBook Air M4 13 inch 2025 10CPU 10GPU 24GB 512GB Sạc 70W 13.6es",
@@ -238,90 +98,34 @@
       "price_text": "35.490.000đ",
       "url": "https://cellphones.com.vn/apple-macbook-air-13-m4-10cpu-10gpu-24gb-512gb-2025-sac-70w.html",
       "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_2__21_1.png",
-      "shop": "cellphones",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M4",
-        "chip_variant": null,
-        "screen_size": "13\"",
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 24,
-        "storage_gb": null,
-        "storage_display": null,
-        "year": 2025
-      },
-      "product_id": "m4-air-13-24",
-      "clean_name": "MacBook Air 13\" M4 10C 10G 24GB"
+      "shop": "cellphones"
     },
     {
-      "model": "MacBook Pro 14 M4 10CPU 10GPU 24GB 1TB",
+      "model": "MacBook Pro 14 M4 10CPU 10GPU 24GB 1TB 14.2es",
       "raw_name": "MacBook Pro 14 M4 10CPU 10GPU 24GB 1TB | Chính hãng Apple Việt Nam",
       "price_vnd": 48390000,
       "price_text": "48.390.000đ",
       "url": "https://cellphones.com.vn/macbook-pro-14-inch-m4-24gb-1tb.html",
       "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_6__6.png",
-      "shop": "cellphones",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M4",
-        "chip_variant": null,
-        "screen_size": null,
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 24,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": null
-      },
-      "product_id": "m4-pro-24-1tb",
-      "clean_name": "MacBook Pro M4 10C 10G 24GB 1TB"
+      "shop": "cellphones"
     },
     {
-      "model": "MacBook Pro 14 M4 10CPU 10GPU 24GB 512GB",
+      "model": "MacBook Pro 14 M4 10CPU 10GPU 24GB 512GB 14.2es",
       "raw_name": "MacBook Pro 14 M4 10CPU 10GPU 24GB 512GB | Chính hãng Apple Việt Nam",
       "price_vnd": 43990000,
       "price_text": "43.990.000đ",
       "url": "https://cellphones.com.vn/macbook-pro-m4-14-inch-10cpu-10gpu-24gb-512gb.html",
       "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_8.png",
-      "shop": "cellphones",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M4",
-        "chip_variant": null,
-        "screen_size": null,
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 24,
-        "storage_gb": null,
-        "storage_display": null,
-        "year": null
-      },
-      "product_id": "m4-pro-24",
-      "clean_name": "MacBook Pro M4 10C 10G 24GB"
+      "shop": "cellphones"
     },
     {
-      "model": "MacBook Pro 16 M4 Max 16CPU 40GPU 48GB 1TB",
+      "model": "MacBook Pro 16 M4 Max 16CPU 40GPU 48GB 1TB 16.2es",
       "raw_name": "MacBook Pro 16 M4 Max 16CPU 40GPU 48GB 1TB | Chính hãng Apple Việt Nam",
       "price_vnd": 95990000,
       "price_text": "95.990.000đ",
       "url": "https://cellphones.com.vn/macbook-pro-16-inch-m4-max-48gb-1tb.html",
       "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_3__8.png",
-      "shop": "cellphones",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M4",
-        "chip_variant": "Max",
-        "screen_size": null,
-        "cpu_cores": 16,
-        "gpu_cores": 40,
-        "ram_gb": 48,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": null
-      },
-      "product_id": "m4-max-pro-48-1tb",
-      "clean_name": "MacBook Pro M4 Max 16C 40G 48GB 1TB"
+      "shop": "cellphones"
     },
     {
       "model": "MacBook Air M4 15 inch 2025 10CPU 10GPU 16GB 512GB",
@@ -330,21 +134,7 @@
       "price_text": "34.090.000đ",
       "url": "https://cellphones.com.vn/apple-macbook-air-15-m4-10cpu-10gpu-16gb-512gb-2025.html",
       "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_4__1_3.png",
-      "shop": "cellphones",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M4",
-        "chip_variant": null,
-        "screen_size": "15\"",
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 16,
-        "storage_gb": null,
-        "storage_display": null,
-        "year": 2025
-      },
-      "product_id": "m4-air-15-16",
-      "clean_name": "MacBook Air 15\" M4 10C 10G 16GB"
+      "shop": "cellphones"
     },
     {
       "model": "MacBook Pro 14 M4 10CPU 10GPU 16GB 512GB Sạc 96W",
@@ -353,21 +143,7 @@
       "price_text": "38.590.000đ",
       "url": "https://cellphones.com.vn/macbook-pro-14-inch-m4-10-cpu-10-gpu-16gb-512gb-sac-96w.html",
       "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_4__7_2.png",
-      "shop": "cellphones",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M4",
-        "chip_variant": null,
-        "screen_size": null,
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 16,
-        "storage_gb": null,
-        "storage_display": null,
-        "year": null
-      },
-      "product_id": "m4-pro-16",
-      "clean_name": "MacBook Pro M4 10C 10G 16GB"
+      "shop": "cellphones"
     },
     {
       "model": "MacBook Air M1 2020",
@@ -377,20 +153,7 @@
       "url": "https://shopdunk.com/macbook-air-m1-2020",
       "product_id": "94",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M1",
-        "chip_variant": null,
-        "screen_size": null,
-        "cpu_cores": null,
-        "gpu_cores": null,
-        "ram_gb": 8,
-        "storage_gb": 256,
-        "storage_display": "256GB",
-        "year": 2020
-      },
-      "clean_name": "MacBook Air M1 8GB 256GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Pro 16 inch M3 Pro 2023",
@@ -400,20 +163,7 @@
       "url": "https://shopdunk.com/macbook-pro-14-inch-m3-2023-8gb-ram-512gb-ssd-2",
       "product_id": "3079",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M3",
-        "chip_variant": "Pro",
-        "screen_size": "16\"",
-        "cpu_cores": null,
-        "gpu_cores": 18,
-        "ram_gb": 18,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": 2023
-      },
-      "clean_name": "MacBook Pro 16\" M3 Pro 18G 18GB 512GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Air M4 13 inch",
@@ -423,20 +173,7 @@
       "url": "https://shopdunk.com/macbook-air-m4-13-inch-8-core-gpu-16gb-ram-256gb-ssd",
       "product_id": "4052",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M4",
-        "chip_variant": null,
-        "screen_size": "13\"",
-        "cpu_cores": null,
-        "gpu_cores": 8,
-        "ram_gb": 16,
-        "storage_gb": 256,
-        "storage_display": "256GB",
-        "year": null
-      },
-      "clean_name": "MacBook Air 13\" M4 8G 16GB 256GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Air M4 13 inch",
@@ -446,20 +183,7 @@
       "url": "https://shopdunk.com/macbook-air-m4-13-inch-10-core-gpu-16gb-ram-512gb-ssd",
       "product_id": "4053",
       "image_url": "/images/uploaded/icon/moi_mo_ban_2.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M4",
-        "chip_variant": null,
-        "screen_size": "13\"",
-        "cpu_cores": null,
-        "gpu_cores": 10,
-        "ram_gb": 16,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": null
-      },
-      "clean_name": "MacBook Air 13\" M4 10G 16GB 512GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Air M4 13 inch",
@@ -469,20 +193,7 @@
       "url": "https://shopdunk.com/macbook-air-m4-13-inch-10-core-gpu-24gb-ram-512gb-ssd",
       "product_id": "4054",
       "image_url": "/images/uploaded/icon/moi_mo_ban_2.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M4",
-        "chip_variant": null,
-        "screen_size": "13\"",
-        "cpu_cores": null,
-        "gpu_cores": 10,
-        "ram_gb": 24,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": null
-      },
-      "clean_name": "MacBook Air 13\" M4 10G 24GB 512GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Air M4 15 inch",
@@ -492,20 +203,7 @@
       "url": "https://shopdunk.com/macbook-air-m4-15-inch-10-core-gpu-16gb-ram-256gb-ssd",
       "product_id": "4055",
       "image_url": "/images/uploaded/icon/moi_mo_ban_2.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M4",
-        "chip_variant": null,
-        "screen_size": "15\"",
-        "cpu_cores": null,
-        "gpu_cores": 10,
-        "ram_gb": 16,
-        "storage_gb": 256,
-        "storage_display": "256GB",
-        "year": null
-      },
-      "clean_name": "MacBook Air 15\" M4 10G 16GB 256GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Air M4 15 inch",
@@ -515,20 +213,7 @@
       "url": "https://shopdunk.com/macbook-air-m4-15-inch-10-core-gpu-16gb-ram-512gb-ssd",
       "product_id": "4056",
       "image_url": "/images/uploaded/icon/moi_mo_ban_2.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M4",
-        "chip_variant": null,
-        "screen_size": "15\"",
-        "cpu_cores": null,
-        "gpu_cores": 10,
-        "ram_gb": 16,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": null
-      },
-      "clean_name": "MacBook Air 15\" M4 10G 16GB 512GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Air M4 15 inch",
@@ -538,20 +223,7 @@
       "url": "https://shopdunk.com/macbook-air-m4-15-inch-10-core-gpu-24gb-ram-512gb-ssd",
       "product_id": "4057",
       "image_url": "/images/uploaded/icon/moi_mo_ban_2.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M4",
-        "chip_variant": null,
-        "screen_size": "15\"",
-        "cpu_cores": null,
-        "gpu_cores": 10,
-        "ram_gb": 24,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": null
-      },
-      "clean_name": "MacBook Air 15\" M4 10G 24GB 512GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Air M2 13 inch",
@@ -561,20 +233,7 @@
       "url": "https://shopdunk.com/macbook-air-m2-13-inch-10-core-gpu-16gb-ram-256gb-ssd",
       "product_id": "3726",
       "image_url": "/images/uploaded/icon/ban-chay-new-xanh.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M2",
-        "chip_variant": null,
-        "screen_size": "13\"",
-        "cpu_cores": null,
-        "gpu_cores": 10,
-        "ram_gb": 16,
-        "storage_gb": 256,
-        "storage_display": "256GB",
-        "year": null
-      },
-      "clean_name": "MacBook Air 13\" M2 10G 16GB 256GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Pro 14 inch M4 2024",
@@ -584,20 +243,7 @@
       "url": "https://shopdunk.com/macbook-pro-14-inch-m4-2024-16gb-ram-10-core-gpu-512gb-ssd",
       "product_id": "3589",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M4",
-        "chip_variant": null,
-        "screen_size": "14\"",
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 16,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": 2024
-      },
-      "clean_name": "MacBook Pro 14\" M4 10C 10G 16GB 512GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Air 15 inch M2",
@@ -607,20 +253,7 @@
       "url": "https://shopdunk.com/macbook-air-15-inch-m2-16gb-ram-256gb-ssd",
       "product_id": "2618",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M2",
-        "chip_variant": null,
-        "screen_size": "15\"",
-        "cpu_cores": null,
-        "gpu_cores": null,
-        "ram_gb": 16,
-        "storage_gb": 256,
-        "storage_display": "256GB",
-        "year": null
-      },
-      "clean_name": "MacBook Air 15\" M2 16GB 256GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Air 15 inch M2",
@@ -630,20 +263,7 @@
       "url": "https://shopdunk.com/macbook-air-15-inch-m2-16gb-ram-512gb-ssd-2",
       "product_id": "2757",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M2",
-        "chip_variant": null,
-        "screen_size": "15\"",
-        "cpu_cores": null,
-        "gpu_cores": null,
-        "ram_gb": 16,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": null
-      },
-      "clean_name": "MacBook Air 15\" M2 16GB 512GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Pro 14 inch M3 2023",
@@ -653,20 +273,7 @@
       "url": "https://shopdunk.com/macbook-pro-14-inch-m3-2023-8gb-ram-1tb-ssd",
       "product_id": "3078",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M3",
-        "chip_variant": null,
-        "screen_size": "14\"",
-        "cpu_cores": null,
-        "gpu_cores": 10,
-        "ram_gb": 8,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": 2023
-      },
-      "clean_name": "MacBook Pro 14\" M3 10G 8GB 1TB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Air M2 13 inch",
@@ -676,20 +283,7 @@
       "url": "https://shopdunk.com/macbook-air-m2-13-inch-8gb-ram-256gb-ssd",
       "product_id": "1820",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M2",
-        "chip_variant": null,
-        "screen_size": "13\"",
-        "cpu_cores": null,
-        "gpu_cores": null,
-        "ram_gb": 8,
-        "storage_gb": 256,
-        "storage_display": "256GB",
-        "year": null
-      },
-      "clean_name": "MacBook Air 13\" M2 8GB 256GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Pro 14 inch M3 Pro 2023",
@@ -699,20 +293,7 @@
       "url": "https://shopdunk.com/macbook-pro-14-inch-m3-pro-2023-18gb-ram-512gb-ssd",
       "product_id": "3080",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M3",
-        "chip_variant": "Pro",
-        "screen_size": "14\"",
-        "cpu_cores": null,
-        "gpu_cores": 14,
-        "ram_gb": 18,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": 2023
-      },
-      "clean_name": "MacBook Pro 14\" M3 Pro 14G 18GB 512GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Pro 14 inch M3 Max 2023",
@@ -722,20 +303,7 @@
       "url": "https://shopdunk.com/macbook-pro-14-inch-m3-max-2023",
       "product_id": "3081",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M3",
-        "chip_variant": "Max",
-        "screen_size": "14\"",
-        "cpu_cores": null,
-        "gpu_cores": 30,
-        "ram_gb": 36,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": 2023
-      },
-      "clean_name": "MacBook Pro 14\" M3 Max 30G 36GB 1TB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Pro 16 inch M3 Pro 2023",
@@ -745,20 +313,7 @@
       "url": "https://shopdunk.com/macbook-pro-16-inch-m3-pro-2023-36gb-ram-512gb-ssd",
       "product_id": "3082",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M3",
-        "chip_variant": "Pro",
-        "screen_size": "16\"",
-        "cpu_cores": null,
-        "gpu_cores": 18,
-        "ram_gb": 36,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": 2023
-      },
-      "clean_name": "MacBook Pro 16\" M3 Pro 18G 36GB 512GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Pro 16 inch M3 Max 2023",
@@ -768,20 +323,7 @@
       "url": "https://shopdunk.com/macbook-pro-16-inch-m3-max-2023-36gb-ram-1tb-ssd",
       "product_id": "3083",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M3",
-        "chip_variant": "Max",
-        "screen_size": "16\"",
-        "cpu_cores": null,
-        "gpu_cores": 30,
-        "ram_gb": 36,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": 2023
-      },
-      "clean_name": "MacBook Pro 16\" M3 Max 30G 36GB 1TB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Pro 14 inch M3 Pro 2023",
@@ -791,20 +333,7 @@
       "url": "https://shopdunk.com/macbook-pro-14-inch-m3-pro-2023-18gb-ram-1tb-ssd",
       "product_id": "3084",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M3",
-        "chip_variant": "Pro",
-        "screen_size": "14\"",
-        "cpu_cores": null,
-        "gpu_cores": 18,
-        "ram_gb": 18,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": 2023
-      },
-      "clean_name": "MacBook Pro 14\" M3 Pro 18G 18GB 1TB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Pro 16 inch M3 Max 2023",
@@ -814,20 +343,7 @@
       "url": "https://shopdunk.com/macbook-pro-16-inch-m3-max-2023-48gb-ram-1tb-ssd",
       "product_id": "3085",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M3",
-        "chip_variant": "Max",
-        "screen_size": "16\"",
-        "cpu_cores": null,
-        "gpu_cores": 40,
-        "ram_gb": 48,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": 2023
-      },
-      "clean_name": "MacBook Pro 16\" M3 Max 40G 48GB 1TB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Air M3 13 inch",
@@ -837,20 +353,7 @@
       "url": "https://shopdunk.com/macbook-air-m3-13-inch",
       "product_id": "3216",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M3",
-        "chip_variant": null,
-        "screen_size": "13\"",
-        "cpu_cores": null,
-        "gpu_cores": null,
-        "ram_gb": 8,
-        "storage_gb": 256,
-        "storage_display": "256GB",
-        "year": null
-      },
-      "clean_name": "MacBook Air 13\" M3 8GB 256GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Pro 14 inch M4 2024",
@@ -860,20 +363,7 @@
       "url": "https://shopdunk.com/macbook-pro-14-inch-m4-2024-16gb-ram-10-core-gpu-1tb-ssd",
       "product_id": "3590",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M4",
-        "chip_variant": null,
-        "screen_size": "14\"",
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 16,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": 2024
-      },
-      "clean_name": "MacBook Pro 14\" M4 10C 10G 16GB 1TB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Pro 14 inch M4 2024",
@@ -883,20 +373,7 @@
       "url": "https://shopdunk.com/macbook-pro-14-inch-m4-2024-24gb-ram-10-core-gpu-1tb-ssd",
       "product_id": "3591",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M4",
-        "chip_variant": null,
-        "screen_size": "14\"",
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 24,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": 2024
-      },
-      "clean_name": "MacBook Pro 14\" M4 10C 10G 24GB 1TB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Pro 14 inch M4 Pro 2024",
@@ -906,20 +383,7 @@
       "url": "https://shopdunk.com/macbook-pro-14-inch-m4-pro-2024-24gb-ram-16-core-gpu-512gb-ssd",
       "product_id": "3592",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M4",
-        "chip_variant": "Pro",
-        "screen_size": "14\"",
-        "cpu_cores": 12,
-        "gpu_cores": 16,
-        "ram_gb": 24,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": 2024
-      },
-      "clean_name": "MacBook Pro 14\" M4 Pro 12C 16G 24GB 512GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Pro 14 inch M4 Pro 2024",
@@ -929,20 +393,7 @@
       "url": "https://shopdunk.com/macbook-pro-14-inch-m4-pro-2024-24gb-ram-20-core-gpu-1tb-ssd",
       "product_id": "3593",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M4",
-        "chip_variant": "Pro",
-        "screen_size": "14\"",
-        "cpu_cores": 14,
-        "gpu_cores": 20,
-        "ram_gb": 24,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": 2024
-      },
-      "clean_name": "MacBook Pro 14\" M4 Pro 14C 20G 24GB 1TB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Pro 14 inch M4 Max 2024",
@@ -952,20 +403,7 @@
       "url": "https://shopdunk.com/macbook-pro-14-inch-m4-max-2024-36gb-ram-32-core-gpu-1tb-ssd",
       "product_id": "3594",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M4",
-        "chip_variant": "Max",
-        "screen_size": "14\"",
-        "cpu_cores": 14,
-        "gpu_cores": 32,
-        "ram_gb": 36,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": 2024
-      },
-      "clean_name": "MacBook Pro 14\" M4 Max 14C 32G 36GB 1TB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Pro 16 inch M4 Pro 2024",
@@ -975,20 +413,7 @@
       "url": "https://shopdunk.com/macbook-pro-16-inch-m4-pro-2024-24gb-ram-20-core-gpu-512gb-ssd",
       "product_id": "3595",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M4",
-        "chip_variant": "Pro",
-        "screen_size": "16\"",
-        "cpu_cores": 14,
-        "gpu_cores": 20,
-        "ram_gb": 24,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": 2024
-      },
-      "clean_name": "MacBook Pro 16\" M4 Pro 14C 20G 24GB 512GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Pro 16 inch M4 Pro 2024",
@@ -998,20 +423,7 @@
       "url": "https://shopdunk.com/macbook-pro-16-inch-m4-pro-2024-48gb-ram-20-core-gpu-512gb-ssd",
       "product_id": "3596",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M4",
-        "chip_variant": "Pro",
-        "screen_size": "16\"",
-        "cpu_cores": 14,
-        "gpu_cores": 20,
-        "ram_gb": 48,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": 2024
-      },
-      "clean_name": "MacBook Pro 16\" M4 Pro 14C 20G 48GB 512GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Pro 16 inch M4 Max 2024",
@@ -1021,20 +433,7 @@
       "url": "https://shopdunk.com/macbook-pro-16-inch-m4-max-2024-36gb-ram-32-core-gpu-1tb-ssd",
       "product_id": "3597",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M4",
-        "chip_variant": "Max",
-        "screen_size": "16\"",
-        "cpu_cores": 14,
-        "gpu_cores": 32,
-        "ram_gb": 36,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": 2024
-      },
-      "clean_name": "MacBook Pro 16\" M4 Max 14C 32G 36GB 1TB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Pro 16 inch M4 Max 2024",
@@ -1044,20 +443,7 @@
       "url": "https://shopdunk.com/macbook-pro-16-inch-m4-max-2024-48gb-ram-40-core-gpu-1tb-ssd",
       "product_id": "3598",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M4",
-        "chip_variant": "Max",
-        "screen_size": "16\"",
-        "cpu_cores": 16,
-        "gpu_cores": 40,
-        "ram_gb": 48,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": 2024
-      },
-      "clean_name": "MacBook Pro 16\" M4 Max 16C 40G 48GB 1TB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Air M2 13 inch",
@@ -1067,20 +453,7 @@
       "url": "https://shopdunk.com/macbook-air-m2-16gb-256gb",
       "product_id": "1822",
       "image_url": "/images/uploaded/icon/new.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M2",
-        "chip_variant": null,
-        "screen_size": "13\"",
-        "cpu_cores": null,
-        "gpu_cores": 8,
-        "ram_gb": 16,
-        "storage_gb": 256,
-        "storage_display": "256GB",
-        "year": null
-      },
-      "clean_name": "MacBook Air 13\" M2 8G 16GB 256GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Air M3 15 inch",
@@ -1090,20 +463,7 @@
       "url": "https://shopdunk.com/macbook-air-m3-15-inch",
       "product_id": "3217",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M3",
-        "chip_variant": null,
-        "screen_size": "15\"",
-        "cpu_cores": null,
-        "gpu_cores": null,
-        "ram_gb": 8,
-        "storage_gb": 256,
-        "storage_display": "256GB",
-        "year": null
-      },
-      "clean_name": "MacBook Air 15\" M3 8GB 256GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Air M3 13 inch",
@@ -1113,20 +473,7 @@
       "url": "https://shopdunk.com/macbook-air-m3-13-inch-16gb-ram-256gb-ssd",
       "product_id": "3620",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M3",
-        "chip_variant": null,
-        "screen_size": "13\"",
-        "cpu_cores": null,
-        "gpu_cores": null,
-        "ram_gb": 16,
-        "storage_gb": 256,
-        "storage_display": "256GB",
-        "year": null
-      },
-      "clean_name": "MacBook Air 13\" M3 16GB 256GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Air M3 15 inch 2024",
@@ -1136,20 +483,7 @@
       "url": "https://shopdunk.com/macbook-air-m3-15-inch-16gb-ram-256gb-ssd",
       "product_id": "3621",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M3",
-        "chip_variant": null,
-        "screen_size": "15\"",
-        "cpu_cores": null,
-        "gpu_cores": null,
-        "ram_gb": 16,
-        "storage_gb": 256,
-        "storage_display": "256GB",
-        "year": 2024
-      },
-      "clean_name": "MacBook Air 15\" M3 16GB 256GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Air M3 15 inch",
@@ -1159,20 +493,7 @@
       "url": "https://shopdunk.com/macbook-air-m3-15-inch-16gb-ram-512gb-ssd",
       "product_id": "3622",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M3",
-        "chip_variant": null,
-        "screen_size": "15\"",
-        "cpu_cores": null,
-        "gpu_cores": null,
-        "ram_gb": 16,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": null
-      },
-      "clean_name": "MacBook Air 15\" M3 16GB 512GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Air M3 15 inch",
@@ -1182,20 +503,7 @@
       "url": "https://shopdunk.com/macbook-air-m3-15-inch-8gb-ram-512gb-ssd",
       "product_id": "3623",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M3",
-        "chip_variant": null,
-        "screen_size": "15\"",
-        "cpu_cores": null,
-        "gpu_cores": null,
-        "ram_gb": 8,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": null
-      },
-      "clean_name": "MacBook Air 15\" M3 8GB 512GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Air M3 13 inch",
@@ -1205,20 +513,7 @@
       "url": "https://shopdunk.com/macbook-air-m3-13-inch-16gb-ram-512gb-ssd",
       "product_id": "3624",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M3",
-        "chip_variant": null,
-        "screen_size": "13\"",
-        "cpu_cores": null,
-        "gpu_cores": null,
-        "ram_gb": 16,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": null
-      },
-      "clean_name": "MacBook Air 13\" M3 16GB 512GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Air M3 13 inch",
@@ -1228,20 +523,7 @@
       "url": "https://shopdunk.com/macbook-air-m3-13-inch-8gb-ram-512gb-ssd-2",
       "product_id": "3625",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M3",
-        "chip_variant": null,
-        "screen_size": "13\"",
-        "cpu_cores": null,
-        "gpu_cores": null,
-        "ram_gb": 8,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": null
-      },
-      "clean_name": "MacBook Air 13\" M3 8GB 512GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Air M3 13 inch",
@@ -1251,20 +533,7 @@
       "url": "https://shopdunk.com/macbook-air-m3-13-inch-24gb-ram-512gb-ssd",
       "product_id": "3626",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M3",
-        "chip_variant": null,
-        "screen_size": "13\"",
-        "cpu_cores": null,
-        "gpu_cores": null,
-        "ram_gb": 24,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": null
-      },
-      "clean_name": "MacBook Air 13\" M3 24GB 512GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Air M3 15 inch 2024",
@@ -1274,20 +543,7 @@
       "url": "https://shopdunk.com/macbook-air-m3-15-inch-2024-24gb-ram-512gb-ssd",
       "product_id": "3777",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M3",
-        "chip_variant": null,
-        "screen_size": "15\"",
-        "cpu_cores": null,
-        "gpu_cores": null,
-        "ram_gb": 24,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": 2024
-      },
-      "clean_name": "MacBook Air 15\" M3 24GB 512GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Air M2 2022",
@@ -1297,20 +553,7 @@
       "url": "https://shopdunk.com/macbook-air-m2-2022-8gb-ram-512gb-ssd",
       "product_id": "1821",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M2",
-        "chip_variant": null,
-        "screen_size": null,
-        "cpu_cores": null,
-        "gpu_cores": null,
-        "ram_gb": 8,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": 2022
-      },
-      "clean_name": "MacBook Air M2 8GB 512GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Air M2 2022",
@@ -1320,20 +563,7 @@
       "url": "https://shopdunk.com/macbook-air-m2-2022-16gb-ram-512gb-ssd",
       "product_id": "1823",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M2",
-        "chip_variant": null,
-        "screen_size": null,
-        "cpu_cores": null,
-        "gpu_cores": null,
-        "ram_gb": 16,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": 2022
-      },
-      "clean_name": "MacBook Air M2 16GB 512GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Air 15 inch M2",
@@ -1343,20 +573,7 @@
       "url": "https://shopdunk.com/macbook-air-15-inch-m2",
       "product_id": "2616",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M2",
-        "chip_variant": null,
-        "screen_size": "15\"",
-        "cpu_cores": null,
-        "gpu_cores": null,
-        "ram_gb": 8,
-        "storage_gb": 256,
-        "storage_display": "256GB",
-        "year": null
-      },
-      "clean_name": "MacBook Air 15\" M2 8GB 256GB"
+      "shop": "shopdunk"
     },
     {
       "model": "MacBook Air 15 inch M2",
@@ -1366,20 +583,7 @@
       "url": "https://shopdunk.com/macbook-air-15-inch-m2-8gb-ram-512gb-ssd",
       "product_id": "2617",
       "image_url": "/images/uploaded/icon/tra-gop-0.png",
-      "shop": "shopdunk",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M2",
-        "chip_variant": null,
-        "screen_size": "15\"",
-        "cpu_cores": null,
-        "gpu_cores": null,
-        "ram_gb": 8,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": null
-      },
-      "clean_name": "MacBook Air 15\" M2 8GB 512GB"
+      "shop": "shopdunk"
     }
   ],
   "summary": {
