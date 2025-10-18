@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-CellphoneS Scraper - Simple HTTP-based scraper
-No anti-bot protection, works with requests + BeautifulSoup
+CellphoneS Scraper - Hybrid HTTP + Playwright scraper
+Uses simple HTTP for most pages, Playwright for JavaScript-heavy pages (M5)
 """
 
 import requests
@@ -12,6 +12,7 @@ import random
 import logging
 import sys
 from pathlib import Path
+from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
 
 # Add utils directory to path for spec parser
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -86,6 +87,64 @@ class CellphonesScraper:
                     sleep_time = (attempt + 1) * 5
                     logger.info(f"Retrying in {sleep_time}s...")
                     time.sleep(sleep_time)
+
+        return None
+
+    def scrape_page_with_playwright(self, url, retry=3):
+        """Scrape JavaScript-heavy pages using Playwright"""
+        for attempt in range(retry):
+            try:
+                logger.info(f"Fetching with Playwright: {url} (attempt {attempt + 1}/{retry})")
+                with sync_playwright() as p:
+                    # Launch browser
+                    browser = p.chromium.launch(
+                        headless=True,
+                        args=['--disable-blink-features=AutomationControlled']
+                    )
+                    # Create context with realistic settings
+                    context = browser.new_context(
+                        user_agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                        viewport={'width': 1920, 'height': 1080},
+                        locale='vi-VN',
+                    )
+                    page = context.new_page()
+
+                    # Navigate to page
+                    logger.info("  Navigating to page...")
+                    page.goto(url, wait_until='domcontentloaded', timeout=60000)
+
+                    # Wait for products to load
+                    logger.info("  Waiting for products to load...")
+                    try:
+                        page.wait_for_selector('.product-item, .product, .item-product', timeout=15000)
+                    except:
+                        logger.warning("  Product selector not found, continuing anyway...")
+
+                    time.sleep(2)  # Extra wait for lazy-loaded content
+
+                    # Scroll to load lazy-loaded content
+                    logger.info("  Scrolling to load all products...")
+                    page.evaluate('window.scrollTo(0, document.body.scrollHeight)')
+                    time.sleep(2)
+
+                    # Get HTML content
+                    content = page.content()
+
+                    # Close browser
+                    browser.close()
+
+                    return content.encode('utf-8')
+
+            except PlaywrightTimeout as e:
+                logger.error(f"Timeout error: {e}")
+                if attempt < retry - 1:
+                    wait_time = (attempt + 1) * 30
+                    logger.info(f"Retrying in {wait_time}s...")
+                    time.sleep(wait_time)
+            except Exception as e:
+                logger.error(f"Error with Playwright: {e}")
+                if attempt < retry - 1:
+                    time.sleep(20)
 
         return None
 
@@ -212,6 +271,10 @@ class CellphonesScraper:
                 'url': 'https://cellphones.com.vn/laptop/mac.html'
             },
             {
+                'name': 'MacBook Pro 2025 (M5)',
+                'url': 'https://cellphones.com.vn/laptop/mac/macbook-pro/macbook-pro-2025.html'
+            },
+            {
                 'name': 'MacBook Air',
                 'url': 'https://cellphones.com.vn/laptop/mac/macbook-air.html'
             },
@@ -225,7 +288,13 @@ class CellphonesScraper:
 
         for page_info in pages:
             logger.info(f"\nScraping {page_info['name']}...")
-            html = self.scrape_page(page_info['url'])
+
+            # Use Playwright for M5 page (JavaScript-heavy, has anti-bot protection)
+            if 'M5' in page_info['name'] or 'macbook-pro-2025' in page_info['url']:
+                logger.info("  Using Playwright for JavaScript-rendered page...")
+                html = self.scrape_page_with_playwright(page_info['url'])
+            else:
+                html = self.scrape_page(page_info['url'])
 
             if html:
                 products = self.parse_products(html)

@@ -40,16 +40,32 @@ function transformScrapedProduct(product) {
     else if (modelLower.includes("16")) screenSize = '16"';
   }
 
-  // Extract chip/category
+  // Extract chip/category - prefer specs.chip if available
   let category = "Unknown";
-  if (modelLower.includes("m4 max")) category = "M4 Max";
-  else if (modelLower.includes("m4 pro")) category = "M4 Pro";
-  else if (modelLower.includes("m4")) category = "M4";
-  else if (modelLower.includes("m3 max")) category = "M3 Max";
-  else if (modelLower.includes("m3 pro")) category = "M3 Pro";
-  else if (modelLower.includes("m3")) category = "M3";
-  else if (modelLower.includes("m2")) category = "M2";
-  else if (modelLower.includes("m1")) category = "M1";
+
+  // First try to use the parsed chip from specs
+  if (product.specs && product.specs.chip) {
+    const chip = product.specs.chip;
+    const variant = product.specs.chip_variant;
+    if (variant) {
+      category = `${chip} ${variant}`; // e.g., "M5 Pro", "M4 Max"
+    } else {
+      category = chip; // e.g., "M5", "M4"
+    }
+  } else {
+    // Fallback to parsing from model name
+    if (modelLower.includes("m5 max")) category = "M5 Max";
+    else if (modelLower.includes("m5 pro")) category = "M5 Pro";
+    else if (modelLower.includes("m5")) category = "M5";
+    else if (modelLower.includes("m4 max")) category = "M4 Max";
+    else if (modelLower.includes("m4 pro")) category = "M4 Pro";
+    else if (modelLower.includes("m4")) category = "M4";
+    else if (modelLower.includes("m3 max")) category = "M3 Max";
+    else if (modelLower.includes("m3 pro")) category = "M3 Pro";
+    else if (modelLower.includes("m3")) category = "M3";
+    else if (modelLower.includes("m2")) category = "M2";
+    else if (modelLower.includes("m1")) category = "M1";
+  }
 
   return {
     model: screenSize ? `${modelType} ${screenSize}` : modelType,
@@ -61,7 +77,6 @@ function transformScrapedProduct(product) {
     vndPrice: product.price_vnd,
     url: product.url,
     available: true,
-    scraped: true, // Mark as live price
     shop: product.shop, // Keep shop info
   };
 }
@@ -98,7 +113,16 @@ function getMarketplacePrices() {
   // Group scraped products by shop
   const cellphonesProducts = validProducts
     .filter((p) => p.shop === "cellphones")
-    .map(transformScrapedProduct);
+    .map((p) => {
+      // Debug ALL cellphones products
+      console.log("📱 CellphoneS product:", {
+        model: p.model?.substring(0, 50),
+        hasSpecs: !!p.specs,
+        chip: p.specs?.chip,
+        shop: p.shop,
+      });
+      return transformScrapedProduct(p);
+    });
 
   const shopDunkProducts = validProducts
     .filter((p) => p.shop === "shopdunk")
@@ -668,7 +692,7 @@ export async function GET(request) {
         exchangeRate: exchangeRate,
         currency: currency.toUpperCase(),
         timestamp: new Date().toISOString(),
-        source: `🔴 LIVE Prices (${scrapedCount} products) + Market Estimates`,
+        source: `Market Estimates`,
         scrapedProductsCount: scrapedCount,
         lastScraped: lastUpdate,
       });

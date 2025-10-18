@@ -192,6 +192,7 @@ class ShopDunkScraper:
         # All ShopDunk MacBook URLs
         urls = [
             "https://shopdunk.com/mac",
+            "https://shopdunk.com/macbook-pro-m5",
             "https://shopdunk.com/macbook-pro-m4",
             "https://shopdunk.com/macbook-air-m4",
             "https://shopdunk.com/macbook-air",

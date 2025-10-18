@@ -80,7 +80,16 @@ function MacBookPricesTable({ data, currency, posthog }) {
 
   const models = ["All", "MacBook Air", "MacBook Pro"];
   const screenSizes = ["All", '13"', '14"', '15"', '16"'];
-  const chipsets = ["All", "M2", "M3", "M4", "M4 Pro", "M4 Max", "M3 Max"];
+  const chipsets = [
+    "All",
+    "M2",
+    "M3",
+    "M4",
+    "M4 Pro",
+    "M4 Max",
+    "M5",
+    "M3 Max",
+  ];
 
   // Detect mobile screen size
   useEffect(() => {
@@ -105,17 +114,20 @@ function MacBookPricesTable({ data, currency, posthog }) {
 
     // Apply bargaining discount to prices
     filtered = filtered.map((item) => {
-      if (!item.convertedPrice) return item;
+      if (!item.vndPrice) return item;
 
-      const discountAmount = item.convertedPrice * (bargainDiscount / 100);
-      const bargainedPrice = item.convertedPrice - discountAmount;
-      const vatRefund = ((bargainedPrice * 8.5) / 108.5) * 0.78; // Recalculate VAT on bargained price
-      const finalPrice = bargainedPrice - vatRefund;
+      // Calculate bargain discount in VND (not converted currency)
+      const discountAmountVND = item.vndPrice * (bargainDiscount / 100);
+      const bargainedPriceVND = item.vndPrice - discountAmountVND;
+
+      // VAT refund calculation (this should still be in the selected currency)
+      const vatRefund = ((item.convertedPrice * 8.5) / 108.5) * 0.78;
+      const finalPrice = item.convertedPrice - vatRefund;
 
       return {
         ...item,
-        bargainedPrice: Math.round(bargainedPrice),
-        bargainDiscount: Math.round(discountAmount),
+        bargainedPriceVND: Math.round(bargainedPriceVND),
+        bargainDiscountVND: Math.round(discountAmountVND),
         vatRefund: Math.round(vatRefund),
         finalPrice: Math.round(finalPrice),
       };
@@ -307,7 +319,14 @@ function MacBookPricesTable({ data, currency, posthog }) {
                       <SelectContent>
                         {chipsets.map((chip) => (
                           <SelectItem key={chip} value={chip}>
-                            {chip}
+                            <span className="flex items-center gap-2">
+                              {chip}
+                              {chip === "M5" && (
+                                <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
+                                  New
+                                </span>
+                              )}
+                            </span>
                           </SelectItem>
                         ))}
                       </SelectContent>
@@ -393,7 +412,14 @@ function MacBookPricesTable({ data, currency, posthog }) {
                 <SelectContent>
                   {chipsets.map((chip) => (
                     <SelectItem key={chip} value={chip}>
-                      {chip}
+                      <span className="flex items-center gap-2">
+                        {chip}
+                        {chip === "M5" && (
+                          <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
+                            New
+                          </span>
+                        )}
+                      </span>
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -467,11 +493,6 @@ function MacBookPricesTable({ data, currency, posthog }) {
                       >
                         {item.shop}
                       </Badge>
-                      {item.scraped && (
-                        <Badge className="bg-red-500 text-white animate-pulse">
-                          🔴 LIVE
-                        </Badge>
-                      )}
                     </div>
                     <Badge
                       variant="outline"
@@ -485,15 +506,8 @@ function MacBookPricesTable({ data, currency, posthog }) {
                       {getCurrencySymbol(currency)}
                       {item.finalPrice?.toLocaleString() || "N/A"}
                     </div>
-                    <div
-                      className={cn(
-                        "text-xs font-medium",
-                        item.scraped
-                          ? "text-red-600 font-bold"
-                          : "text-gray-500",
-                      )}
-                    >
-                      {item.scraped ? "🔴 Live Price" : "Est. Price"}
+                    <div className={cn("text-xs font-medium", "text-gray-500")}>
+                      Est. Price
                     </div>
                   </div>
                 </div>
@@ -525,14 +539,13 @@ function MacBookPricesTable({ data, currency, posthog }) {
                       {item.convertedPrice?.toLocaleString() || "N/A"}
                     </div>
                   </div>
-                  {bargainDiscount > 0 && item.bargainDiscount && (
+                  {bargainDiscount > 0 && item.bargainDiscountVND && (
                     <div className="bg-yellow-50/50 rounded-lg p-3 col-span-2">
                       <div className="text-gray-500 text-xs font-medium mb-1">
                         Bargaining Discount ({bargainDiscount}%)
                       </div>
                       <div className="font-bold text-yellow-700">
-                        -{getCurrencySymbol(currency)}
-                        {item.bargainDiscount?.toLocaleString()}
+                        -₫{item.bargainDiscountVND?.toLocaleString()}
                       </div>
                     </div>
                   )}
@@ -634,8 +647,7 @@ function MacBookPricesTable({ data, currency, posthog }) {
                     </TableCell>
                     {bargainDiscount > 0 && (
                       <TableCell className="whitespace-nowrap text-yellow-700 font-medium">
-                        -{getCurrencySymbol(currency)}
-                        {item.bargainDiscount?.toLocaleString() || "N/A"}
+                        -₫{item.bargainDiscountVND?.toLocaleString() || "N/A"}
                       </TableCell>
                     )}
                     <TableCell className="whitespace-nowrap text-green-600 font-medium">

@@ -13,7 +13,7 @@ class SpecParser:
     def __init__(self):
         # Regex patterns for extracting specs
         self.patterns = {
-            'chip': r'(M1|M2|M3|M4)(?:\s*(Pro|Max))?',
+            'chip': r'(M1|M2|M3|M4|M5)(?:\s*(Pro|Max))?',
             'screen': r'(\d+(?:\.\d+)?)\s*(?:inch|"|\'\')',
             'cpu': r'(\d+)\s*(?:CPU|core\s*CPU|C)',
             'gpu': r'(\d+)\s*(?:GPU|core\s*GPU|G)',
@@ -96,7 +96,7 @@ class SpecParser:
         return 'MacBook'
 
     def _extract_chip(self, name: str) -> Dict:
-        """Extract chip (M1, M2, M3, M4) and variant (Pro, Max)"""
+        """Extract chip (M1, M2, M3, M4, M5) and variant (Pro, Max)"""
         match = re.search(self.patterns['chip'], name, re.IGNORECASE)
         if match:
             chip = match.group(1).upper()
