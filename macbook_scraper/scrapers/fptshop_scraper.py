@@ -6,6 +6,7 @@ Bypasses Cloudflare WAF protection
 
 from seleniumbase import Driver
 from bs4 import BeautifulSoup
+import requests
 import re
 import time
 import logging
@@ -14,6 +15,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from scrapers.base_scraper import BaseScraper
+from utils import session_cache
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -43,7 +45,44 @@ class FPTShopScraper(BaseScraper):
         ]
 
     def fetch_html(self, url, retry=3):
-        """Scrape using SeleniumBase UC mode"""
+        """Try a cached, already-Cloudflare-cleared cookie jar first (free,
+        no browser launch) before paying the cost of a full UC-mode solve.
+        The cache is populated by _fetch_with_uc_mode() on a successful
+        solve and reused by every call until it expires or gets rejected."""
+        cached_html = self._fetch_with_cached_session(url)
+        if cached_html is not None:
+            return cached_html
+
+        return self._fetch_with_uc_mode(url, retry=retry)
+
+    def _fetch_with_cached_session(self, url):
+        session = session_cache.load_session(self.shop_name)
+        if not session:
+            return None
+
+        try:
+            logger.info("  Trying cached Cloudflare-cleared session (no browser)...")
+            response = requests.get(
+                url,
+                cookies=session['cookies'],
+                headers={'User-Agent': session['user_agent']},
+                timeout=15,
+            )
+        except Exception as e:
+            logger.warning(f"  Cached-session request failed: {e}")
+            return None
+
+        if session_cache.is_challenge_response(response.status_code, response.text):
+            logger.warning("  Cached session was rejected (expired/invalidated) — falling back to full solve")
+            session_cache.invalidate_session(self.shop_name)
+            return None
+
+        logger.info("  Cached session accepted — skipped browser entirely")
+        return response.text
+
+    def _fetch_with_uc_mode(self, url, retry=3):
+        """Full SeleniumBase UC mode solve. Expensive and the highest-risk
+        step, so a successful solve's cookies get cached for reuse."""
         for attempt in range(retry):
             driver = None
             try:
@@ -75,7 +114,13 @@ class FPTShopScraper(BaseScraper):
                 time.sleep(3)
 
                 html = driver.page_source
+                user_agent = driver.execute_script("return navigator.userAgent;")
+                cookies = driver.get_cookies()
                 driver.quit()
+
+                if not session_cache.is_challenge_response(200, html):
+                    session_cache.save_session(self.shop_name, cookies, user_agent)
+                    logger.info("  Cached this session's cookies for reuse on future runs")
 
                 return html
 
