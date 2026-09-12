@@ -11,6 +11,9 @@ seleniumbase==4.26.0
 # Data handling
 python-dotenv==1.0.1
 
+# Testing
+pytest==8.3.4
+
 # Optional: Database (for later)
 # motor==3.4.0
 # pymongo==4.6.3

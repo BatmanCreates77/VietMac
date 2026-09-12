@@ -1,0 +1,24 @@
+{
+  "captured_at": "2026-09-12",
+  "note": "Fixtures capture LIVE HTML at capture time. Used to verify parse_products() is byte-for-byte behavior-preserving across the BaseScraper refactor (Phase 2). Expected counts below are what parse_products() currently returns against these exact files — re-run this check after any parser change; a mismatch means the refactor changed behavior, not that the site changed (the HTML is frozen).",
+  "fixtures": [
+    {
+      "shop": "shopdunk",
+      "file": "raw/shopdunk/https_shopdunk_com_mac.html",
+      "source_url": "https://shopdunk.com/mac",
+      "expected_product_count": 20
+    },
+    {
+      "shop": "shopdunk",
+      "file": "raw/shopdunk/https_shopdunk_com_macbook_air.html",
+      "source_url": "https://shopdunk.com/macbook-air",
+      "expected_product_count": 8
+    },
+    {
+      "shop": "cellphones",
+      "file": "raw/cellphones/all_mac.html",
+      "source_url": "https://cellphones.com.vn/laptop/mac.html",
+      "expected_product_count": 13
+    }
+  ]
+}
