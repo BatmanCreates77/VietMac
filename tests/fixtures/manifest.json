@@ -1,24 +1,41 @@
 {
   "captured_at": "2026-09-12",
-  "note": "Fixtures capture LIVE HTML at capture time. Used to verify parse_products() is byte-for-byte behavior-preserving across the BaseScraper refactor (Phase 2). Expected counts below are what parse_products() currently returns against these exact files — re-run this check after any parser change; a mismatch means the refactor changed behavior, not that the site changed (the HTML is frozen).",
+  "note": "shopdunk/cellphones fixtures capture LIVE HTML at capture time. fptshop/topzone fixtures are hand-written synthetic HTML (both shops are Cloudflare-blocked/rate-limited today, so no live fixture was capturable) exercising each shop's selector fallback chain and non-MacBook filtering. All fixtures verify parse_products() is byte-for-byte behavior-preserving across the BaseScraper refactor (Phase 2) — expected counts are what parse_products() returns against these exact frozen files; a mismatch means the refactor changed behavior, not that the site changed.",
   "fixtures": [
     {
       "shop": "shopdunk",
       "file": "raw/shopdunk/https_shopdunk_com_mac.html",
       "source_url": "https://shopdunk.com/mac",
+      "type": "live",
       "expected_product_count": 20
     },
     {
       "shop": "shopdunk",
       "file": "raw/shopdunk/https_shopdunk_com_macbook_air.html",
       "source_url": "https://shopdunk.com/macbook-air",
+      "type": "live",
       "expected_product_count": 8
     },
     {
       "shop": "cellphones",
       "file": "raw/cellphones/all_mac.html",
       "source_url": "https://cellphones.com.vn/laptop/mac.html",
+      "type": "live",
       "expected_product_count": 13
+    },
+    {
+      "shop": "fptshop",
+      "file": "raw/fptshop/synthetic_listing.html",
+      "source_url": null,
+      "type": "synthetic",
+      "expected_product_count": 2
+    },
+    {
+      "shop": "topzone",
+      "file": "raw/topzone/synthetic_listing.html",
+      "source_url": null,
+      "type": "synthetic",
+      "expected_product_count": 2
     }
   ]
 }
