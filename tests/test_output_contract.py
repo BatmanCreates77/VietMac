@@ -10,6 +10,7 @@ macbook_scraper/output/ (production data).
 """
 import json
 import sys
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import pytest
@@ -17,7 +18,10 @@ import pytest
 REPO_ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(REPO_ROOT / "macbook_scraper"))
 
-from update_prices import PriceUpdater, ValidationFailure, MIN_PRODUCTS_PER_SHOP, MAX_DROP_RATIO
+from update_prices import (
+    PriceUpdater, ValidationFailure, MIN_PRODUCTS_PER_SHOP, MAX_DROP_RATIO,
+    STALE_THRESHOLD_HOURS,
+)
 
 
 def make_product(shop, model="MacBook Air M5", price_vnd=25000000, url="https://example.com/p1"):
@@ -35,8 +39,10 @@ def make_product(shop, model="MacBook Air M5", price_vnd=25000000, url="https://
     }
 
 
-def seed_previous(output_dir, by_shop_counts):
-    """Write a pre-existing latest_products.json, simulating last-known-good."""
+def seed_previous(output_dir, by_shop_counts, timestamp=None):
+    """Write a pre-existing latest_products.json, simulating last-known-good.
+    Defaults to "just now" so the relative-drop check actually runs in tests
+    that exercise it — pass an explicit old `timestamp` to test staleness."""
     products = []
     summary_by_shop = {}
     for shop, count in by_shop_counts.items():
@@ -45,7 +51,7 @@ def seed_previous(output_dir, by_shop_counts):
         summary_by_shop[shop] = {'count': count, 'success': True}
 
     payload = {
-        'timestamp': '2026-01-01T00:00:00',
+        'timestamp': timestamp or datetime.now().isoformat(),
         'products': products,
         'summary': {'total_products': len(products), 'by_shop': summary_by_shop, 'errors': []},
     }
@@ -147,6 +153,42 @@ def test_normal_drop_within_threshold_passes(tmp_path):
 
     latest = json.loads((tmp_path / "latest_products.json").read_text())
     assert latest['summary']['by_shop']['shopdunk']['count'] == new_count
+
+
+def test_stale_previous_data_skips_drop_check(tmp_path):
+    """Real scenario hit during Phase 5: production had been stale for
+    months, so the committed latest_products.json's counts (e.g. shopdunk
+    47 from a redesign-era listing) don't reflect current reality (23,
+    reproduced across multiple fresh live runs) — comparing against them
+    would reject every legitimate run indefinitely. Old last-known-good
+    data must not trigger the relative-drop check; the absolute floor
+    still applies."""
+    old_timestamp = (datetime.now() - timedelta(hours=STALE_THRESHOLD_HOURS + 1)).isoformat()
+    seed_previous(tmp_path, {'shopdunk': 47}, timestamp=old_timestamp)
+
+    floor = MIN_PRODUCTS_PER_SHOP['shopdunk']
+    new_count = floor + 3  # clears the floor but would be a huge "drop" from 47
+    assert (1 - new_count / 47) > MAX_DROP_RATIO, "test setup must exceed the drop threshold"
+
+    updater = make_updater_with_results(tmp_path, {'shopdunk': new_count})
+    updater.save_results()  # must NOT raise — previous data is stale
+
+    latest = json.loads((tmp_path / "latest_products.json").read_text())
+    assert latest['summary']['by_shop']['shopdunk']['count'] == new_count
+
+
+def test_fresh_previous_data_still_enforces_drop_check(tmp_path):
+    """Sanity check that staleness-skipping doesn't quietly disable the
+    drop check for the normal case — only genuinely old data skips it."""
+    seed_previous(tmp_path, {'shopdunk': 30})  # defaults to "just now"
+    floor = MIN_PRODUCTS_PER_SHOP['shopdunk']
+    new_count = floor + 2
+    assert (1 - new_count / 30) > MAX_DROP_RATIO, "test setup must exceed the drop threshold"
+
+    updater = make_updater_with_results(tmp_path, {'shopdunk': new_count})
+
+    with pytest.raises(ValidationFailure):
+        updater.save_results()
 
 
 def test_rejected_run_preserves_last_known_good_exactly(tmp_path):

@@ -25,6 +25,9 @@ class FPTShopScraper(BaseScraper):
     shop_name = 'fptshop'
     base_url = 'https://fptshop.com.vn'
 
+    CHALLENGE_POLL_INTERVAL_SECONDS = 5
+    CHALLENGE_MAX_WAIT_SECONDS = 30
+
     def _parse_model_name(self, name):
         """Parse and clean MacBook model name"""
         if not name:
@@ -80,6 +83,28 @@ class FPTShopScraper(BaseScraper):
         logger.info("  Cached session accepted — skipped browser entirely")
         return response.text
 
+    def _wait_for_challenge_to_clear(self, driver):
+        """Poll for Cloudflare's managed challenge to resolve instead of a
+        single fixed-wait check. Verified live 2026-09-12: the challenge
+        cleared in ~5s on one run but the previous fixed 10s-wait-then-
+        check design had already logged two straight 'Got 403 Forbidden'
+        failures — a single early check was catching the page mid-
+        challenge and declaring it a hard failure, when waiting longer
+        would have let it clear on its own (Cloudflare's managed
+        challenge appears to vary in how long it takes per visit).
+        Returns the cleared page_source, or None if it never clears
+        within CHALLENGE_MAX_WAIT_SECONDS."""
+        elapsed = 0
+        while elapsed <= self.CHALLENGE_MAX_WAIT_SECONDS:
+            time.sleep(self.CHALLENGE_POLL_INTERVAL_SECONDS)
+            elapsed += self.CHALLENGE_POLL_INTERVAL_SECONDS
+            page_source = driver.page_source
+            if not session_cache.is_challenge_response(200, page_source):
+                logger.info(f"  Challenge cleared after ~{elapsed}s")
+                return page_source
+            logger.info(f"  Still on challenge page at {elapsed}s, continuing to wait...")
+        return None
+
     def _fetch_with_uc_mode(self, url, retry=3):
         """Full SeleniumBase UC mode solve. Expensive and the highest-risk
         step, so a successful solve's cookies get cached for reuse."""
@@ -97,17 +122,13 @@ class FPTShopScraper(BaseScraper):
                 logger.info("  Navigating to page...")
                 driver.get(url)
 
-                logger.info("  Waiting for page to load (checking for Cloudflare)...")
-                time.sleep(10)
-
-                page_source = driver.page_source
-                if '403' in page_source or 'Forbidden' in driver.title:
-                    raise Exception('Got 403 Forbidden')
-
-                if 'Cloudflare' in driver.title or 'Just a moment' in page_source:
-                    logger.warning("  Cloudflare challenge detected, waiting longer...")
-                    time.sleep(15)
-                    page_source = driver.page_source
+                logger.info("  Waiting for Cloudflare challenge to clear...")
+                page_source = self._wait_for_challenge_to_clear(driver)
+                if page_source is None:
+                    raise Exception(
+                        f"Cloudflare challenge did not clear within "
+                        f"{self.CHALLENGE_MAX_WAIT_SECONDS}s"
+                    )
 
                 logger.info("  Scrolling to load all products...")
                 driver.execute_script('window.scrollTo(0, document.body.scrollHeight)')
@@ -139,15 +160,50 @@ class FPTShopScraper(BaseScraper):
 
         return None
 
+    def _extract_price_text(self, item):
+        """
+        The card shows two prices when discounted: the original price in a
+        <span class="line-through"> and the actual selling price as its
+        parent <p>'s next-sibling <p> — e.g.
+            <p><span class="line-through">21.990.000đ</span></p>
+            <p class="...b1-semibold">21.290.000đ</p>   <- this one
+            <p>Giảm 700.000đ</p>
+        Structural (tag position), not exact Tailwind class names, since
+        those are auto-generated utility classes prone to churn. Falls
+        back to the first non-strikethrough, non-discount-label price text
+        when there's no discount at all (untested live — no product on the
+        page during verification lacked a discount — but kept as the
+        honest fallback for when that happens).
+        """
+        strikethrough = item.select_one('span.line-through')
+        if strikethrough:
+            old_price_p = strikethrough.find_parent('p')
+            current_price_p = old_price_p.find_next_sibling('p') if old_price_p else None
+            if current_price_p:
+                return current_price_p.get_text(strip=True)
+
+        for el in item.select('p, span'):
+            text = el.get_text(strip=True)
+            css_classes = el.get('class') or []
+            if (('đ' in text or '₫' in text)
+                    and not text.startswith('Giảm')
+                    and 'line-through' not in css_classes):
+                return text
+
+        return None
+
     def parse_products(self, html):
         """Parse products from HTML. Pure function, no network I/O."""
         soup = BeautifulSoup(html, 'html.parser')
         products = []
 
         selectors = [
-            '.cdt-product',
-            '.product-item',
-            '[data-product]',
+            '.cardInfo',       # current live selector — verified 2026-09-12 against
+                               # the real Next.js-rendered card (Tailwind utility
+                               # classes, no semantic product-* class exists anymore)
+            '.cdt-product',    # legacy selectors — none matched during the same
+            '.product-item',   # verification, kept as harmless fallback in case
+            '[data-product]',  # of A/B testing or a partial rollback
             '.product-card',
         ]
 
@@ -179,13 +235,7 @@ class FPTShopScraper(BaseScraper):
 
                 model_name = self._parse_model_name(raw_name)
 
-                price_elem = (item.select_one('.price') or
-                             item.select_one('.product-price') or
-                             item.select_one('[data-price]'))
-
-                price_text = None
-                if price_elem:
-                    price_text = price_elem.get('data-price') or price_elem.get_text(strip=True)
+                price_text = self._extract_price_text(item)
 
                 link_elem = item.select_one('a')
                 url = link_elem.get('href') if link_elem else None

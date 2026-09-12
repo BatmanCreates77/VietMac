@@ -1,6 +1,6 @@
 {
   "captured_at": "2026-09-12",
-  "note": "shopdunk/cellphones fixtures capture LIVE HTML at capture time. fptshop/topzone fixtures are hand-written synthetic HTML (both shops are Cloudflare-blocked/rate-limited today, so no live fixture was capturable) exercising each shop's selector fallback chain and non-MacBook filtering. All fixtures verify parse_products() is byte-for-byte behavior-preserving across the BaseScraper refactor (Phase 2) — expected counts are what parse_products() returns against these exact frozen files; a mismatch means the refactor changed behavior, not that the site changed.",
+  "note": "shopdunk/cellphones/fptshop 'live' fixtures capture real HTML at capture time (fptshop's captured after fixing the Cloudflare-challenge wait logic and the stale .cardInfo selector — see fptshop_scraper.py history). topzone's fixture and fptshop's second entry are hand-written synthetic HTML exercising each shop's selector fallback chain, non-MacBook filtering, and (for fptshop) the no-discount price-extraction fallback that no real product on the live page exercised. All fixtures verify parse_products() is byte-for-byte behavior-preserving — expected counts are what parse_products() returns against these exact frozen files; a mismatch means the code changed behavior, not that the site changed.",
   "fixtures": [
     {
       "shop": "shopdunk",
@@ -22,6 +22,13 @@
       "source_url": "https://cellphones.com.vn/laptop/mac.html",
       "type": "live",
       "expected_product_count": 13
+    },
+    {
+      "shop": "fptshop",
+      "file": "raw/fptshop/live_macbook_listing.html",
+      "source_url": "https://fptshop.com.vn/may-tinh-xach-tay/apple-macbook",
+      "type": "live",
+      "expected_product_count": 24
     },
     {
       "shop": "fptshop",
