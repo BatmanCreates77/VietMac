@@ -7,7 +7,7 @@
 
     <key>ProgramArguments</key>
     <array>
-        <string>/Users/gaurav/Documents/VietMac/macbook_scraper/auto-update-prices.sh</string>
+        <string>/Users/gaurav/Documents/VietMac/VietMac/macbook_scraper/auto-update-prices.sh</string>
     </array>
 
     <key>StartCalendarInterval</key>
@@ -40,13 +40,13 @@
     </array>
 
     <key>StandardOutPath</key>
-    <string>/Users/gaurav/Documents/VietMac/macbook_scraper/logs/launchd-stdout.log</string>
+    <string>/Users/gaurav/Documents/VietMac/VietMac/macbook_scraper/logs/launchd-stdout.log</string>
 
     <key>StandardErrorPath</key>
-    <string>/Users/gaurav/Documents/VietMac/macbook_scraper/logs/launchd-stderr.log</string>
+    <string>/Users/gaurav/Documents/VietMac/VietMac/macbook_scraper/logs/launchd-stderr.log</string>
 
     <key>WorkingDirectory</key>
-    <string>/Users/gaurav/Documents/VietMac/macbook_scraper</string>
+    <string>/Users/gaurav/Documents/VietMac/VietMac/macbook_scraper</string>
 
     <key>RunAtLoad</key>
     <false/>
@@ -54,7 +54,14 @@
     <key>EnvironmentVariables</key>
     <dict>
         <key>PATH</key>
-        <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        <!-- miniforge bin listed first: update_prices.py's dependencies
+             (playwright, seleniumbase, beautifulsoup4, requests, pytest)
+             are installed there, NOT in the bare system python3. launchd
+             does not inherit the interactive shell's PATH/profile, so
+             this has to be explicit or `command -v python3` in
+             auto-update-prices.sh silently resolves to the wrong,
+             dependency-less interpreter. -->
+        <string>/opt/homebrew/Caskroom/miniforge/base/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
     </dict>
 </dict>
 </plist>

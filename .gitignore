@@ -51,6 +51,10 @@ __pycache__/
 venv/
 .venv/
 
+# Scraper operational artifacts (debug output, not source)
+# (session cache already covered by the .cache/ rule below)
+macbook_scraper/output/failed/
+
 # Development tools
 chainlit.md
 .chainlit

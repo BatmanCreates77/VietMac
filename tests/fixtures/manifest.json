@@ -1,0 +1,48 @@
+{
+  "captured_at": "2026-09-12",
+  "note": "shopdunk/cellphones/fptshop 'live' fixtures capture real HTML at capture time (fptshop's captured after fixing the Cloudflare-challenge wait logic and the stale .cardInfo selector — see fptshop_scraper.py history). topzone's fixture and fptshop's second entry are hand-written synthetic HTML exercising each shop's selector fallback chain, non-MacBook filtering, and (for fptshop) the no-discount price-extraction fallback that no real product on the live page exercised. All fixtures verify parse_products() is byte-for-byte behavior-preserving — expected counts are what parse_products() returns against these exact frozen files; a mismatch means the code changed behavior, not that the site changed.",
+  "fixtures": [
+    {
+      "shop": "shopdunk",
+      "file": "raw/shopdunk/https_shopdunk_com_mac.html",
+      "source_url": "https://shopdunk.com/mac",
+      "type": "live",
+      "expected_product_count": 20
+    },
+    {
+      "shop": "shopdunk",
+      "file": "raw/shopdunk/https_shopdunk_com_macbook_air.html",
+      "source_url": "https://shopdunk.com/macbook-air",
+      "type": "live",
+      "expected_product_count": 8
+    },
+    {
+      "shop": "cellphones",
+      "file": "raw/cellphones/all_mac.html",
+      "source_url": "https://cellphones.com.vn/laptop/mac.html",
+      "type": "live",
+      "expected_product_count": 13
+    },
+    {
+      "shop": "fptshop",
+      "file": "raw/fptshop/live_macbook_listing.html",
+      "source_url": "https://fptshop.com.vn/may-tinh-xach-tay/apple-macbook",
+      "type": "live",
+      "expected_product_count": 24
+    },
+    {
+      "shop": "fptshop",
+      "file": "raw/fptshop/synthetic_listing.html",
+      "source_url": null,
+      "type": "synthetic",
+      "expected_product_count": 2
+    },
+    {
+      "shop": "topzone",
+      "file": "raw/topzone/synthetic_listing.html",
+      "source_url": null,
+      "type": "synthetic",
+      "expected_product_count": 2
+    }
+  ]
+}

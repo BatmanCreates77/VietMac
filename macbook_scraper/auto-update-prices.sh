@@ -46,8 +46,28 @@ if [ $EXIT_CODE -eq 0 ]; then
 
     # Check if latest_products.json was updated
     if [ -f "output/latest_products.json" ]; then
-        PRODUCT_COUNT=$(grep -o '"total_products":[0-9]*' output/latest_products.json | grep -o '[0-9]*')
+        PRODUCT_COUNT=$(grep -o '"total_products":[[:space:]]*[0-9]*' output/latest_products.json | grep -o '[0-9]*')
         log "📊 Total products scraped: $PRODUCT_COUNT"
+    fi
+
+    # Commit and push the new data so the live site picks it up on the
+    # next Vercel deploy. update_prices.py's validation gate already
+    # rejected this run (non-zero exit, caught above) if the data looked
+    # bad, so a successful exit here means latest_products.json genuinely
+    # changed to something validated — safe to publish.
+    REPO_ROOT="$( cd "$SCRIPT_DIR/.." && pwd )"
+    if git -C "$REPO_ROOT" diff --quiet -- macbook_scraper/output/latest_products.json; then
+        log "ℹ️  No change to latest_products.json — nothing to commit"
+    else
+        log "Committing updated prices..."
+        if git -C "$REPO_ROOT" add macbook_scraper/output/latest_products.json \
+            && git -C "$REPO_ROOT" commit -m "chore: automated price update $(date '+%Y-%m-%d %H:%M')" \
+            && git -C "$REPO_ROOT" push; then
+            log "✅ Committed and pushed updated prices"
+        else
+            log "❌ git commit/push failed — new prices are on disk but NOT live"
+            EXIT_CODE=1
+        fi
     fi
 else
     log "❌ Price update failed with exit code: $EXIT_CODE"

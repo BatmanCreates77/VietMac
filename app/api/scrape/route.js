@@ -1,10 +1,15 @@
 /**
  * API Route: /api/scrape
- * Triggers the MacBook price scraper and updates latest_products.json
+ * Manual/dev-trigger for the MacBook price scraper. NOT wired to any
+ * production schedule — the real automation is a local launchd job
+ * (macbook_scraper/com.vietmac.price-update.plist) that runs Python +
+ * a real browser directly on a machine that has them installed, then
+ * commits + pushes the result. Vercel's serverless runtime has neither
+ * Python nor browser binaries, so this route can never actually
+ * succeed when called in production; it exists for local dev only.
  *
  * Usage:
- * - Manual: GET/POST to /api/scrape
- * - Cron: Automated calls from Vercel Cron or system cron
+ * - Local dev: GET/POST to /api/scrape with `Authorization: Bearer <CRON_SECRET>`
  */
 
 import { exec } from 'child_process';
@@ -30,12 +35,22 @@ async function handleScrape(request) {
   const startTime = Date.now();
 
   try {
-    // Verify authorization (optional but recommended)
+    // Fail closed: this endpoint requires CRON_SECRET to be configured.
+    // It used to fail OPEN (no auth check at all) when the env var was
+    // unset, meaning any unauthenticated caller could trigger a scraper
+    // run — harmless on Vercel today only because Python isn't present
+    // there, but that's an accident of environment, not a real control.
     const authHeader = request.headers.get('authorization');
     const cronSecret = process.env.CRON_SECRET;
 
-    // Only check auth if CRON_SECRET is set
-    if (cronSecret && authHeader !== `Bearer ${cronSecret}`) {
+    if (!cronSecret) {
+      return NextResponse.json(
+        { error: 'Scrape trigger not configured (CRON_SECRET unset)' },
+        { status: 503 }
+      );
+    }
+
+    if (authHeader !== `Bearer ${cronSecret}`) {
       return NextResponse.json(
         { error: 'Unauthorized' },
         { status: 401 }
