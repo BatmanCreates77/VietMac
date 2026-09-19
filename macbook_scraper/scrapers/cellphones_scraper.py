@@ -131,7 +131,17 @@ class CellphonesScraper(BaseScraper):
                     content = page.content()
                     browser.close()
 
-                    return content.encode('utf-8')
+                    # page.content() is already a correctly-decoded str.
+                    # Re-encoding to bytes here made BeautifulSoup guess the
+                    # encoding when parsing (no charset sniffing needed for
+                    # str input) — it guessed wrong for Vietnamese text,
+                    # producing mojibake ("Chính hãng" -> "Ch√≠nh h√£ng") and,
+                    # worse, silently swallowing the price element entirely
+                    # on affected products (caught live by the validation
+                    # gate: 2026-09-19, 4/17 cellphones products rejected
+                    # for null price_vnd). Returning the str directly skips
+                    # that guess altogether.
+                    return content
 
             except PlaywrightTimeout as e:
                 logger.error(f"Timeout error: {e}")
