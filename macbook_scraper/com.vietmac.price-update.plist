@@ -5,9 +5,14 @@
     <key>Label</key>
     <string>com.vietmac.price-update</string>
 
+    <!-- Points at a dedicated clone used only by this job, deliberately
+         outside ~/Documents: that folder is macOS privacy-protected (TCC),
+         and a launchd-spawned bash has no permission to read it — every
+         scheduled run from ~/Documents failed with "Operation not
+         permitted" (47/47, Sept 19 - Oct 1 2026). -->
     <key>ProgramArguments</key>
     <array>
-        <string>/Users/gaurav/Documents/VietMac/VietMac/macbook_scraper/auto-update-prices.sh</string>
+        <string>/Users/gaurav/vietmac-automation/macbook_scraper/auto-update-prices.sh</string>
     </array>
 
     <key>StartCalendarInterval</key>
@@ -40,13 +45,13 @@
     </array>
 
     <key>StandardOutPath</key>
-    <string>/Users/gaurav/Documents/VietMac/VietMac/macbook_scraper/logs/launchd-stdout.log</string>
+    <string>/Users/gaurav/vietmac-automation/macbook_scraper/logs/launchd-stdout.log</string>
 
     <key>StandardErrorPath</key>
-    <string>/Users/gaurav/Documents/VietMac/VietMac/macbook_scraper/logs/launchd-stderr.log</string>
+    <string>/Users/gaurav/vietmac-automation/macbook_scraper/logs/launchd-stderr.log</string>
 
     <key>WorkingDirectory</key>
-    <string>/Users/gaurav/Documents/VietMac/VietMac/macbook_scraper</string>
+    <string>/Users/gaurav/vietmac-automation/macbook_scraper</string>
 
     <key>RunAtLoad</key>
     <false/>

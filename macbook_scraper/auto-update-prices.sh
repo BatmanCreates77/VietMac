@@ -36,6 +36,17 @@ fi
 
 log "Using Python: $PYTHON_CMD"
 
+# Sync with origin before scraping. This job runs in a dedicated clone, so
+# without this it would scrape with stale code and push on top of a stale
+# base (rejected as non-fast-forward). --ff-only refuses to run on a
+# diverged or dirty clone rather than guessing how to reconcile it.
+REPO_ROOT="$( cd "$SCRIPT_DIR/.." && pwd )"
+log "Pulling latest main..."
+if ! git -C "$REPO_ROOT" pull --ff-only >> "$LOG_FILE" 2>&1; then
+    log "❌ git pull --ff-only failed — clone is diverged or dirty, not scraping"
+    exit 1
+fi
+
 # Run the scraper
 log "Running price scraper..."
 $PYTHON_CMD update_prices.py >> "$LOG_FILE" 2>&1
@@ -55,7 +66,6 @@ if [ $EXIT_CODE -eq 0 ]; then
     # rejected this run (non-zero exit, caught above) if the data looked
     # bad, so a successful exit here means latest_products.json genuinely
     # changed to something validated — safe to publish.
-    REPO_ROOT="$( cd "$SCRIPT_DIR/.." && pwd )"
     if git -C "$REPO_ROOT" diff --quiet -- macbook_scraper/output/latest_products.json; then
         log "ℹ️  No change to latest_products.json — nothing to commit"
     else
