@@ -337,3 +337,37 @@ def test_fptshop_variants_absent_returns_empty():
 ])
 def test_is_iphone(raw_name, expected):
     assert CellphonesScraper._is_iphone(raw_name) is expected
+
+
+def _variant_page(skus):
+    payload = '7:{"variantResult":' + json.dumps({"skus": skus}) + '}'
+    return f'<script>self.__next_f.push([1,{json.dumps(payload)}])</script>'
+
+
+def _sku(size, colour, price, inventory, kind="Normal"):
+    return {"displayName": f"iPhone 16e {size}", "name": f"iPhone 16e {size} {colour}",
+            "type": kind, "price": price, "inventory": inventory,
+            "slug": f"dien-thoai/iphone-16e?sku={size}-{colour}"}
+
+
+def test_fptshop_variants_treat_negative_inventory_as_sold_out():
+    """Real case 2026-10-02: the 16e 256GB's two colours had inventory 0 and
+    -1, priced 16.49M — below the in-stock 128GB at 17.99M. It is sold out
+    and must not appear as the cheapest 16e."""
+    html = _variant_page([
+        _sku("128GB", "White", 17990000, 266),
+        _sku("256GB", "Black", 16490000, 0),
+        _sku("256GB", "White", 16490000, -1),
+        _sku("512GB", "White", 18990000, 3),
+    ])
+    sizes = {p['specs']['storage_display']: p['price_vnd'] for p in FPTShopIphoneScraper().parse_variants(html)}
+    assert sizes == {'128GB': 17990000, '512GB': 18990000}
+
+
+def test_fptshop_variants_ignore_non_retail_skus():
+    html = _variant_page([
+        _sku("128GB", "White", 17990000, 10),
+        _sku("128GB", "Black SIM Viettel", 13690000, 50),
+        _sku("128GB", "Black", 12000000, 5, kind="Combo"),
+    ])
+    assert [p['price_vnd'] for p in FPTShopIphoneScraper().parse_variants(html)] == [17990000]

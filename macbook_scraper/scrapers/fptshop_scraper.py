@@ -290,9 +290,16 @@ class FPTShopIphoneScraper(FPTShopScraper):
         cheapest = {}
         for sku in skus:
             size, price = sku.get('displayName'), sku.get('price')
-            if not size or not price or not sku.get('inventory') or not sku.get('slug'):
+            if not size or not price or not sku.get('slug'):
                 continue
-            if not self._is_wanted(size):
+            # Sold-out SKUs carry inventory 0 or -1 (iPhone 16e 256GB,
+            # 2026-10-02, still priced below the 128GB) — only > 0 counts.
+            if not isinstance(sku.get('inventory'), int) or sku['inventory'] <= 0:
+                continue
+            # Plain retail units only, never a bundle sharing the size's name.
+            if sku.get('type', 'Normal') != 'Normal':
+                continue
+            if not self._is_wanted(size) or not self._is_wanted(sku.get('name') or size):
                 continue
             if size not in cheapest or price < cheapest[size]['price']:
                 cheapest[size] = sku
