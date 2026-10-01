@@ -17,28 +17,18 @@
 
     <key>StartCalendarInterval</key>
     <array>
-        <!-- Run every 6 hours: 00:00, 06:00, 12:00, 18:00 -->
+        <!-- Checks at 00:00 and 12:00; auto-update-prices.sh only scrapes
+             when the last data is ~2 days old (MIN_AGE_HOURS), so this
+             means "every other day, retried 12h later if a run is missed". -->
         <dict>
             <key>Hour</key>
             <integer>0</integer>
-            <key>Minute</key>
-            <integer>0</integer>
-        </dict>
-        <dict>
-            <key>Hour</key>
-            <integer>6</integer>
             <key>Minute</key>
             <integer>0</integer>
         </dict>
         <dict>
             <key>Hour</key>
             <integer>12</integer>
-            <key>Minute</key>
-            <integer>0</integer>
-        </dict>
-        <dict>
-            <key>Hour</key>
-            <integer>18</integer>
             <key>Minute</key>
             <integer>0</integer>
         </dict>

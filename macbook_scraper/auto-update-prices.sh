@@ -86,6 +86,32 @@ if ! git -C "$REPO_ROOT" pull -q --ff-only >> "$LOG_FILE" 2>&1; then
     fi
 fi
 
+# Scrape every other day. launchd wakes this script twice a day (see the
+# plist); it only scrapes once the last published data is MIN_AGE_HOURS
+# old, so a missed or failed run is retried 12h later instead of 2 days
+# later. Set VIETMAC_FORCE=1 to scrape now regardless.
+MIN_AGE_HOURS=44
+if [ "${VIETMAC_FORCE:-0}" != "1" ]; then
+    AGE_HOURS=$($PYTHON_CMD -c '
+import json, sys
+from datetime import datetime
+try:
+    ts = json.load(open("output/latest_products.json"))["timestamp"]
+    print(int((datetime.now() - datetime.fromisoformat(ts)).total_seconds() // 3600))
+except Exception:
+    print(-1)
+')
+    if [ "$AGE_HOURS" -ge 0 ] && [ "$AGE_HOURS" -lt "$MIN_AGE_HOURS" ]; then
+        log "⏭️  Last scrape was ${AGE_HOURS}h ago (< ${MIN_AGE_HOURS}h) — skipping this run"
+        exit 0
+    fi
+    if [ "$AGE_HOURS" -ge 0 ]; then
+        log "Last scrape was ${AGE_HOURS}h ago — scraping"
+    else
+        log "No readable previous scrape — scraping"
+    fi
+fi
+
 # Run the scraper
 log "Running price scraper..."
 $PYTHON_CMD update_prices.py >> "$LOG_FILE" 2>&1
