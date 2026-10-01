@@ -55,7 +55,9 @@ MAX_DROP_RATIO = 0.4
 # just break," it's "did the site's real listings change over months,"
 # which the absolute floor is the right tool for, not a drop-ratio built
 # for catching regressions between adjacent runs.
-STALE_THRESHOLD_HOURS = 24
+# Scrapes run every other day (auto-update-prices.sh), so the previous
+# shop data is normally ~48h old and must still count as recent here.
+STALE_THRESHOLD_HOURS = 72
 
 REQUIRED_PRODUCT_FIELDS = ('model', 'price_vnd', 'shop')
 
