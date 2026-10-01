@@ -132,7 +132,7 @@ class ShopDunkScraper(BaseScraper):
 
                 raw_name = name_elem.get_text(strip=True)
 
-                if not self._is_mac(raw_name):
+                if not self._is_wanted(raw_name):
                     continue
 
                 model_name = self._parse_model_name(raw_name)
@@ -174,6 +174,19 @@ class ShopDunkScraper(BaseScraper):
 
     def failure_message(self):
         return 'No products found'
+
+
+class ShopDunkIphoneScraper(ShopDunkScraper):
+    product_line = 'iphone'
+
+    def page_urls(self):
+        # One card per storage size; a "featured" strip repeats some of them
+        # (duplicates are dropped by URL).
+        return ["https://shopdunk.com/iphone"]
+
+    def _parse_model_name(self, name):
+        name = super()._parse_model_name(name)
+        return re.sub(r'^(?:Điện thoại|Apple)\s+', '', name) if name else name
 
 
 if __name__ == '__main__':

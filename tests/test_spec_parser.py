@@ -66,3 +66,26 @@ def test_desktop_specs_and_id():
     assert specs['screen_size'] is None
     assert specs['id'] == 'm5-ultra-studio-96-1tb'
     assert SpecParser().parse("iMac M4 2024 24 inch 8CPU 8GPU 16GB 256GB")['screen_size'] == '24"'
+
+
+@pytest.mark.parametrize("name, model_type, storage", [
+    ("iPhone 18 Pro Max 256GB", 'iPhone 18 Pro Max', '256GB'),
+    ("iPhone 17 Pro 256GB | Chính hãng", 'iPhone 17 Pro', '256GB'),
+    ("Điện thoại iPhone 16 Pro Max 256GB", 'iPhone 16 Pro Max', '256GB'),
+    ("iPhone 17e 512 GB", 'iPhone 17e', '512GB'),
+    ("iPhone 16e 128GB | Chính hãng VN/A", 'iPhone 16e', '128GB'),
+    ("iPhone Air 1TB", 'iPhone Air', '1TB'),
+    ("iPhone Duo 2TB", 'iPhone Duo', '2TB'),
+    ("iPhone 16 Plus 128GB", 'iPhone 16 Plus', '128GB'),
+    ("iPhone 13 mini 128GB", 'iPhone 13 mini', '128GB'),
+    ("iPhone 18 Pro 256GB Đen MJRP4X/A", 'iPhone 18 Pro', '256GB'),
+])
+def test_iphone_model_and_storage(name, model_type, storage):
+    specs = SpecParser().parse_iphone(name)
+    assert (specs['model_type'], specs['storage_display']) == (model_type, storage)
+    assert specs['chip'] is None and specs['screen_size'] is None
+
+
+def test_iphone_id_and_storage_gb():
+    specs = SpecParser().parse_iphone("iPhone 17 Pro Max 2TB")
+    assert (specs['id'], specs['storage_gb'], specs['generation']) == ('iphone-17-pro-max-2tb', 2048, 17)

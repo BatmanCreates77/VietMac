@@ -18,9 +18,9 @@ import pytest
 REPO_ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(REPO_ROOT / "macbook_scraper"))
 
-from scrapers.cellphones_scraper import CellphonesScraper
-from scrapers.shopdunk_scraper import ShopDunkScraper
-from scrapers.fptshop_scraper import FPTShopScraper
+from scrapers.cellphones_scraper import CellphonesScraper, CellphonesIphoneScraper
+from scrapers.shopdunk_scraper import ShopDunkScraper, ShopDunkIphoneScraper
+from scrapers.fptshop_scraper import FPTShopScraper, FPTShopIphoneScraper
 from scrapers.topzone_scraper import TopZoneScraper
 
 SCRAPER_CLASSES = {
@@ -28,7 +28,16 @@ SCRAPER_CLASSES = {
     'shopdunk': ShopDunkScraper,
     'fptshop': FPTShopScraper,
     'topzone': TopZoneScraper,
+    'cellphones-iphone': CellphonesIphoneScraper,
+    'shopdunk-iphone': ShopDunkIphoneScraper,
+    'fptshop-iphone': FPTShopIphoneScraper,
 }
+
+
+def scraper_key(fixture):
+    """Which scraper parses a fixture: the shop's Mac scraper unless the
+    manifest names another (its iPhone scraper)."""
+    return fixture.get("scraper", fixture["shop"])
 
 MANIFEST = json.loads((Path(__file__).parent / "fixtures" / "manifest.json").read_text())
 
@@ -48,10 +57,10 @@ def _block_network(monkeypatch):
 @pytest.mark.parametrize(
     "fixture",
     MANIFEST["fixtures"],
-    ids=[f"{f['shop']}:{Path(f['file']).name}" for f in MANIFEST["fixtures"]],
+    ids=[f"{scraper_key(f)}:{Path(f['file']).name}" for f in MANIFEST["fixtures"]],
 )
 def test_parse_products_matches_manifest_count(fixture, monkeypatch):
-    scraper_cls = SCRAPER_CLASSES[fixture["shop"]]
+    scraper_cls = SCRAPER_CLASSES[scraper_key(fixture)]
     scraper = scraper_cls()
 
     fixture_path = Path(__file__).parent / "fixtures" / fixture["file"]
@@ -70,7 +79,7 @@ def test_parse_products_matches_manifest_count(fixture, monkeypatch):
 def test_product_schema_shape(shop, scraper_cls):
     """Every product dict must carry the full formalized schema, regardless
     of shop — this is what route.js's loadScrapedData() relies on."""
-    matching_fixtures = [f for f in MANIFEST["fixtures"] if f["shop"] == shop]
+    matching_fixtures = [f for f in MANIFEST["fixtures"] if scraper_key(f) == shop]
     assert matching_fixtures, f"no fixture registered for {shop}"
 
     scraper = scraper_cls()
@@ -86,7 +95,9 @@ def test_product_schema_shape(shop, scraper_cls):
     for product in products:
         missing = required_keys - product.keys()
         assert not missing, f"{shop} product missing keys: {missing}"
-        assert product['shop'] == shop
+        assert product['shop'] == scraper_cls.shop_name
+        assert product['source'] == shop
+        assert product['product_line'] == scraper_cls.product_line
 
 
 def test_cellphones_playwright_fetch_preserves_encoding():
@@ -264,3 +275,99 @@ def test_fptshop_gives_up_with_fresh_browser_per_attempt(no_sleep):
 ])
 def test_is_mac(raw_name, expected):
     assert CellphonesScraper._is_mac(raw_name) is expected
+
+
+IPHONE_FIXTURES = Path(__file__).parent / "fixtures" / "raw"
+
+
+@pytest.mark.parametrize("scraper_cls, fixture", [
+    (CellphonesIphoneScraper, "cellphones/iphone_listing.html"),
+    (ShopDunkIphoneScraper, "shopdunk/iphone_listing.html"),
+    (FPTShopIphoneScraper, "fptshop/iphone_listing.html"),
+])
+def test_iphone_listings_parse_model_and_storage(scraper_cls, fixture):
+    products = scraper_cls().parse_products((IPHONE_FIXTURES / fixture).read_text(encoding="utf-8"))
+    for p in products:
+        assert p['specs']['model_type'].startswith('iPhone ') and p['specs']['storage_display'], p['model']
+        assert not p['model'].startswith(('Điện thoại', 'Apple')), p['model']
+    unique = {p['url']: p for p in products}.values()
+    pairs = [(p['specs']['model_type'], p['specs']['storage_display']) for p in unique]
+    assert len(pairs) == len(set(pairs)), "same model + storage listed twice"
+
+
+def test_fptshop_iphone_carrier_bundle_is_excluded():
+    html = (IPHONE_FIXTURES / "fptshop/iphone_listing.html").read_text(encoding="utf-8")
+    names = [p['model'] for p in FPTShopIphoneScraper().parse_products(html)]
+    assert "iPhone 16e 128GB" in names
+    assert not any("SIM" in n for n in names)
+
+
+def test_fptshop_variants_one_product_per_storage_at_cheapest_in_stock_colour():
+    """Real iPhone 18 Pro page data (2026-10-02): 4 sizes x 4 colours. The
+    1TB tier has a colour with inventory 0, which must not set the price."""
+    html = (IPHONE_FIXTURES / "fptshop/iphone_product_page.html").read_text(encoding="utf-8")
+    products = FPTShopIphoneScraper().parse_variants(html)
+    by_size = {p['specs']['storage_display']: p for p in products}
+    assert sorted(by_size) == ['1TB', '256GB', '2TB', '512GB']
+    assert {s: p['price_vnd'] for s, p in by_size.items()} == {
+        '256GB': 38990000, '512GB': 45490000, '1TB': 58490000, '2TB': 77990000,
+    }
+    assert len({p['url'] for p in products}) == 4, "each size needs its own ?sku= URL"
+    assert all('?sku=' in p['url'] and p['specs']['model_type'] == 'iPhone 18 Pro' for p in products)
+
+
+def test_fptshop_variants_skip_sizes_with_nothing_in_stock():
+    html = (IPHONE_FIXTURES / "fptshop/iphone_product_page.html").read_text(encoding="utf-8")
+    html = html.replace('\\"inventory\\":', '\\"inventory\\":0,\\"was\\":')
+    assert FPTShopIphoneScraper().parse_variants(html) == []
+
+
+def test_fptshop_variants_absent_returns_empty():
+    assert FPTShopIphoneScraper().parse_variants("<html><body>nothing</body></html>") == []
+
+
+@pytest.mark.parametrize("raw_name, expected", [
+    ("iPhone 17 Pro Max 256GB | Chính hãng", True),
+    ("Điện thoại iPhone 16 Pro Max 256GB", True),
+    ("iPhone 16e 128GB SIM Viettel", False),
+    ("Ốp lưng iPhone 17 Pro Max MagSafe", False),
+    ("Cáp sạc USB-C cho iPhone", False),
+    ("iPhone 15 Pro Max 256GB cũ đẹp", False),
+    ("MacBook Air M5 13 inch", False),
+])
+def test_is_iphone(raw_name, expected):
+    assert CellphonesScraper._is_iphone(raw_name) is expected
+
+
+def _variant_page(skus):
+    payload = '7:{"variantResult":' + json.dumps({"skus": skus}) + '}'
+    return f'<script>self.__next_f.push([1,{json.dumps(payload)}])</script>'
+
+
+def _sku(size, colour, price, inventory, kind="Normal"):
+    return {"displayName": f"iPhone 16e {size}", "name": f"iPhone 16e {size} {colour}",
+            "type": kind, "price": price, "inventory": inventory,
+            "slug": f"dien-thoai/iphone-16e?sku={size}-{colour}"}
+
+
+def test_fptshop_variants_treat_negative_inventory_as_sold_out():
+    """Real case 2026-10-02: the 16e 256GB's two colours had inventory 0 and
+    -1, priced 16.49M — below the in-stock 128GB at 17.99M. It is sold out
+    and must not appear as the cheapest 16e."""
+    html = _variant_page([
+        _sku("128GB", "White", 17990000, 266),
+        _sku("256GB", "Black", 16490000, 0),
+        _sku("256GB", "White", 16490000, -1),
+        _sku("512GB", "White", 18990000, 3),
+    ])
+    sizes = {p['specs']['storage_display']: p['price_vnd'] for p in FPTShopIphoneScraper().parse_variants(html)}
+    assert sizes == {'128GB': 17990000, '512GB': 18990000}
+
+
+def test_fptshop_variants_ignore_non_retail_skus():
+    html = _variant_page([
+        _sku("128GB", "White", 17990000, 10),
+        _sku("128GB", "Black SIM Viettel", 13690000, 50),
+        _sku("128GB", "Black", 12000000, 5, kind="Combo"),
+    ])
+    assert [p['price_vnd'] for p in FPTShopIphoneScraper().parse_variants(html)] == [17990000]

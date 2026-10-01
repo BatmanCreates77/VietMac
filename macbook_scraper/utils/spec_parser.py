@@ -94,6 +94,62 @@ class SpecParser:
             'raw_name': product_name,
         }
 
+    # "Pro Max" before "Pro"; the generation may carry an "e" (16e, 17e)
+    # or an "s" (5s), or be a name (Air, Duo, SE).
+    IPHONE_MODEL_PATTERN = re.compile(
+        r'\biPhone\s+(\d{1,2}[es]?|Air|Duo|SE|XR|XS|X)(?:\s+(Pro\s*Max|Pro|Plus|mini))?\b',
+        re.IGNORECASE,
+    )
+    IPHONE_NAMED_MODELS = {'air': 'Air', 'duo': 'Duo', 'se': 'SE', 'xr': 'XR', 'xs': 'XS', 'x': 'X'}
+    IPHONE_VARIANTS = {'pro max': 'Pro Max', 'promax': 'Pro Max', 'pro': 'Pro', 'plus': 'Plus', 'mini': 'mini'}
+
+    def parse_iphone(self, product_name: str) -> Dict:
+        """Parse an iPhone listing name ("Điện thoại iPhone 17 Pro Max 256GB
+        | Chính hãng") into the same specs shape parse() returns. iPhones
+        have no chip, RAM or screen choice to compare, so those stay None."""
+        if not product_name:
+            return {}
+        name = product_name.strip()
+
+        model_type = 'iPhone'
+        generation = None
+        match = self.IPHONE_MODEL_PATTERN.search(name)
+        if match:
+            base = match.group(1).lower()
+            base = self.IPHONE_NAMED_MODELS.get(base, base)
+            model_type = f"iPhone {base}"
+            if match.group(2):
+                model_type += ' ' + self.IPHONE_VARIANTS[re.sub(r'\s+', ' ', match.group(2).lower())]
+            digits = re.match(r'\d+', base)
+            generation = int(digits.group()) if digits else None
+
+        # The last size in the name is the storage ("iPhone 17e 512 GB").
+        storage = {'gb': None, 'display': None}
+        sizes = re.findall(r'(\d+)\s*(GB|TB)\b', name, re.IGNORECASE)
+        if sizes:
+            value, unit = int(sizes[-1][0]), sizes[-1][1].upper()
+            storage = {'gb': value * 1024 if unit == 'TB' else value, 'display': f"{value}{unit}"}
+
+        slug = re.sub(r'[^a-z0-9]+', '-', model_type.lower()).strip('-')
+        product_id = f"{slug}-{storage['display'].lower()}" if storage['display'] else slug
+
+        return {
+            'id': product_id,
+            'model_type': model_type,
+            'generation': generation,
+            'chip': None,
+            'chip_variant': None,
+            'screen_size': None,
+            'cpu_cores': None,
+            'gpu_cores': None,
+            'ram_gb': None,
+            'storage_gb': storage['gb'],
+            'storage_display': storage['display'],
+            'year': None,
+            'clean_name': f"{model_type} {storage['display']}" if storage['display'] else model_type,
+            'raw_name': product_name,
+        }
+
     def _extract_model_type(self, name: str) -> str:
         """Extract the product line: MacBook Air/Pro/Neo, Mac mini, iMac,
         Mac Studio."""

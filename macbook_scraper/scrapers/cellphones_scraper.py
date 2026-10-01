@@ -54,6 +54,7 @@ class CellphonesScraper(BaseScraper):
     # button: laptop/mac.html held 75 products behind 3 clicks (2026-10-01).
     # Clicked from JS because a newsletter overlay intercepts real clicks.
     MAX_SHOW_MORE_CLICKS = 10
+    SHOW_MORE_ATTEMPTS = 3
     CLICK_SHOW_MORE_JS = """() => {
         const button = document.querySelector('a.button__show-more-product');
         if (!button || !/\\d/.test(button.textContent)) return false;
@@ -72,17 +73,27 @@ class CellphonesScraper(BaseScraper):
     def _expand_listing(self, page):
         for _ in range(self.MAX_SHOW_MORE_CLICKS):
             before = page.locator('.product-info').count()
-            if not page.evaluate(self.CLICK_SHOW_MORE_JS):
+            if not self._click_show_more(page, before):
                 return
+            logger.info(f"  Expanded listing: {before} -> {page.locator('.product-info').count()} products")
+
+    def _click_show_more(self, page, before):
+        """True once a click has added products. A click that lands before
+        the page's scripts are ready does nothing (seen 2026-10-02: the
+        iPhone listing stayed at 20 of 38), so it is retried."""
+        for attempt in range(self.SHOW_MORE_ATTEMPTS):
+            if not page.evaluate(self.CLICK_SHOW_MORE_JS):
+                return False
             try:
                 page.wait_for_function(
                     f"() => document.querySelectorAll('.product-info').length > {before}",
-                    timeout=10000,
+                    timeout=5000,
                 )
+                return True
             except PlaywrightTimeout:
-                logger.warning("  'Show more' clicked but no new products appeared")
-                return
-            logger.info(f"  Expanded listing: {before} -> {page.locator('.product-info').count()} products")
+                continue
+        logger.warning(f"  'Show more' clicked {self.SHOW_MORE_ATTEMPTS}x but no new products appeared")
+        return False
 
     def _wait_for_prices(self, page):
         for _ in range(self.PRICE_WAIT_SECONDS):
@@ -169,7 +180,7 @@ class CellphonesScraper(BaseScraper):
 
                 raw_name = name_elem.get_text(strip=True)
 
-                if not self._is_mac(raw_name):
+                if not self._is_wanted(raw_name):
                     continue
 
                 model_name = self._parse_model_name(raw_name)
@@ -208,6 +219,26 @@ class CellphonesScraper(BaseScraper):
 
     def failure_message(self):
         return 'No products found'
+
+
+class CellphonesIphoneScraper(CellphonesScraper):
+    product_line = 'iphone'
+
+    def page_urls(self):
+        # apple.html lists every iPhone behind "show more"; the series pages
+        # are a backstop for listings it misses (duplicates are dropped).
+        return [
+            'https://cellphones.com.vn/mobile/apple.html',
+            'https://cellphones.com.vn/mobile/apple/iphone-18.html',
+            'https://cellphones.com.vn/mobile/apple/iphone-duo.html',
+            'https://cellphones.com.vn/mobile/apple/iphone-air.html',
+            'https://cellphones.com.vn/mobile/apple/iphone-17.html',
+            'https://cellphones.com.vn/mobile/apple/iphone-16.html',
+        ]
+
+    def _parse_model_name(self, name):
+        name = super()._parse_model_name(name)
+        return re.sub(r'^(?:Điện thoại|Apple)\s+', '', name) if name else name
 
 
 if __name__ == '__main__':

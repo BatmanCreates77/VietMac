@@ -13,6 +13,7 @@ upgrade. CDP mode uses no chromedriver at all, so it runs natively.
 
 from seleniumbase import sb_cdp
 from bs4 import BeautifulSoup
+import json
 import re
 import time
 import logging
@@ -30,6 +31,12 @@ CHALLENGE_MARKER = 'Just a moment'
 # just for the challenge to clear — matters: the page can be past the
 # challenge with the product grid not yet rendered, which parses as 0.
 PRODUCT_READY_MARKER = 'cardInfo'
+# A product page is ready once its variant list (every storage/colour SKU
+# with price and stock) has been streamed in.
+VARIANTS_READY_MARKER = 'variantResult'
+# Next.js streams page data as self.__next_f.push([1, "<JSON string>"])
+# chunks; joined, they hold the product's variantResult object.
+NEXT_FLIGHT_CHUNK = re.compile(r'self\.__next_f\.push\(\[1,\s*("(?:[^"\\]|\\.)*")\]\)')
 
 
 class FPTShopScraper(BaseScraper):
@@ -83,7 +90,7 @@ class FPTShopScraper(BaseScraper):
                 logger.warning(f"  Error closing browser: {e}")
             self._browser = None
 
-    def fetch_html(self, url, retry=3):
+    def fetch_html(self, url, retry=3, ready_marker=PRODUCT_READY_MARKER):
         for attempt in range(retry):
             try:
                 if self._browser is None:
@@ -92,11 +99,11 @@ class FPTShopScraper(BaseScraper):
                 logger.info(f"  Opening: {url} (attempt {attempt + 1}/{retry})")
                 self._browser.open(url)
 
-                html = self._wait_for_products(self._browser)
+                html = self._wait_for_products(self._browser, ready_marker)
                 if html is not None:
                     return html
                 raise Exception(
-                    f"product grid not ready within {self.PAGE_READY_TIMEOUT_SECONDS}s"
+                    f"page not ready ({ready_marker!r} missing) within {self.PAGE_READY_TIMEOUT_SECONDS}s"
                 )
             except Exception as e:
                 logger.error(f"  Error fetching {url}: {e}")
@@ -108,7 +115,7 @@ class FPTShopScraper(BaseScraper):
                     time.sleep(self.RETRY_BACKOFF_SECONDS)
         return None
 
-    def _wait_for_products(self, browser):
+    def _wait_for_products(self, browser, ready_marker=PRODUCT_READY_MARKER):
         """Poll until Cloudflare's challenge has cleared AND the product grid
         has rendered. Cloudflare's managed challenge takes a variable time
         per visit (a single fixed wait was the cause of the original false
@@ -116,7 +123,7 @@ class FPTShopScraper(BaseScraper):
         elapsed = 0
         while elapsed <= self.PAGE_READY_TIMEOUT_SECONDS:
             html = browser.get_page_source()
-            if CHALLENGE_MARKER not in html and PRODUCT_READY_MARKER in html:
+            if CHALLENGE_MARKER not in html and ready_marker in html:
                 logger.info(f"  Products ready after ~{elapsed}s")
                 browser.scroll_to_bottom()
                 time.sleep(2)
@@ -195,7 +202,7 @@ class FPTShopScraper(BaseScraper):
 
                 raw_name = name_elem.get('title') or name_elem.get_text(strip=True)
 
-                if not self._is_mac(raw_name):
+                if not self._is_wanted(raw_name):
                     continue
 
                 model_name = self._parse_model_name(raw_name)
@@ -229,6 +236,103 @@ class FPTShopScraper(BaseScraper):
 
     def failure_message(self):
         return 'Cloudflare block or timeout'
+
+
+class FPTShopIphoneScraper(FPTShopScraper):
+    """The iPhone listing has one card per model at its base storage; every
+    storage size is on the model's own page. So: listing -> one product page
+    per model -> one product per storage size."""
+    product_line = 'iphone'
+    VARIANT_PAGE_DELAY_SECONDS = 3
+
+    def page_urls(self):
+        return ["https://fptshop.com.vn/dien-thoai/apple-iphone"]
+
+    def _parse_model_name(self, name):
+        name = super()._parse_model_name(name)
+        return re.sub(r'^(?:Điện thoại|Apple)\s+', '', name) if name else name
+
+    def scrape(self):
+        # BaseScraper.scrape, not FPTShopScraper.scrape: that one closes the
+        # browser after the listing, and the product pages reuse it.
+        try:
+            listing = BaseScraper.scrape(self)
+            if not listing['success']:
+                return listing
+            products, seen_urls = [], set()
+            for model in listing['products']:
+                for product in self._storage_variants(model):
+                    if product['url'] not in seen_urls:
+                        seen_urls.add(product['url'])
+                        products.append(product)
+            listing.update(products=products, count=len(products))
+            return listing
+        finally:
+            self._close_browser()
+
+    def _storage_variants(self, model):
+        """All storage sizes for one listing card. If the product page fails,
+        the card's own base-storage product is kept rather than losing the
+        model."""
+        html = self.fetch_html(model['url'], retry=2, ready_marker=VARIANTS_READY_MARKER)
+        variants = self.parse_variants(html) if html else []
+        if not variants:
+            logger.warning(f"  No storage variants for {model['model']}; keeping the listing price")
+            return [model]
+        time.sleep(self.VARIANT_PAGE_DELAY_SECONDS)
+        return variants
+
+    def parse_variants(self, html):
+        """Pure: a product page's SKUs -> one product per storage size, priced
+        at its cheapest in-stock colour. A size with no colour in stock is
+        left out: the site lists every row as available."""
+        skus = self._variant_skus(html)
+        cheapest = {}
+        for sku in skus:
+            size, price = sku.get('displayName'), sku.get('price')
+            if not size or not price or not sku.get('slug'):
+                continue
+            # Sold-out SKUs carry inventory 0 or -1 (iPhone 16e 256GB,
+            # 2026-10-02, still priced below the 128GB) — only > 0 counts.
+            if not isinstance(sku.get('inventory'), int) or sku['inventory'] <= 0:
+                continue
+            # Plain retail units only, never a bundle sharing the size's name.
+            if sku.get('type', 'Normal') != 'Normal':
+                continue
+            if not self._is_wanted(size) or not self._is_wanted(sku.get('name') or size):
+                continue
+            if size not in cheapest or price < cheapest[size]['price']:
+                cheapest[size] = sku
+        products = []
+        for size, sku in cheapest.items():
+            products.append(self._build_product(
+                model_name=self._parse_model_name(size),
+                raw_name=sku.get('name') or size,
+                price_text=str(sku['price']),
+                url=f"{self.base_url}/{sku['slug'].lstrip('/')}",
+                extra_specs_source=size,
+            ))
+        return products
+
+    @staticmethod
+    def _variant_skus(html):
+        chunks = []
+        for match in NEXT_FLIGHT_CHUNK.finditer(html):
+            try:
+                chunks.append(json.loads(match.group(1)))
+            except json.JSONDecodeError:
+                continue
+        flight = ''.join(chunks)
+        key = '"variantResult":'
+        start = flight.find(key)
+        if start < 0:
+            return []
+        try:
+            variant_result, _ = json.JSONDecoder().raw_decode(flight, start + len(key))
+        except json.JSONDecodeError:
+            return []
+        skus = variant_result.get('skus') if isinstance(variant_result, dict) else None
+        return skus if isinstance(skus, list) else []
 
 
 if __name__ == '__main__':

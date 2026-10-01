@@ -79,6 +79,11 @@
 
   <div class="toolbar">
     <input id="search" type="search" placeholder="Search model, chip, URL…">
+    <select id="lineFilter">
+      <option value="">Mac &amp; iPhone</option>
+      <option value="mac">Mac</option>
+      <option value="iphone">iPhone</option>
+    </select>
     <select id="shopFilter"><option value="">All shops</option></select>
     <select id="verdictFilter">
       <option value="">All link results</option>
@@ -191,9 +196,11 @@ function renderCards(data) {
 function filtered() {
   const q = document.getElementById('search').value.trim().toLowerCase();
   const shop = document.getElementById('shopFilter').value;
+  const line = document.getElementById('lineFilter').value;
   const verdict = document.getElementById('verdictFilter').value;
   return products.filter(({ p, index }) => {
     if (shop && p.shop !== shop) return false;
+    if (line && (p.product_line || 'mac') !== line) return false;
     const r = results.get(index);
     if (verdict === 'unchecked' && r) return false;
     if (verdict && verdict !== 'unchecked' && r?.verdict !== verdict) return false;
@@ -316,7 +323,7 @@ async function load() {
   }
 }
 
-for (const id of ['search', 'shopFilter', 'verdictFilter']) {
+for (const id of ['search', 'lineFilter', 'shopFilter', 'verdictFilter']) {
   document.getElementById(id).addEventListener('input', renderRows);
 }
 document.getElementById('checkAll').addEventListener('click', checkVisible);

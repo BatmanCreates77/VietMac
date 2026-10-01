@@ -9,9 +9,9 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "VietMac Compare - Best MacBook Prices in Vietnam",
+  title: "VietMac Compare - Best MacBook & iPhone Prices in Vietnam",
   description:
-    "Compare live MacBook Pro prices from Vietnam's top retailers with VAT refunds for Indian tourists",
+    "Compare live MacBook, Mac and iPhone prices from Vietnam's top Apple retailers with VAT refunds for tourists",
 };
 
 export default function RootLayout({ children }) {

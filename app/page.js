@@ -11,9 +11,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { RefreshCw } from "lucide-react";
+import { Laptop, RefreshCw, Smartphone } from "lucide-react";
 import { toast } from "sonner";
 import MacBookPricesTable from "@/components/ui/macbook-prices-table";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { Squares } from "@/components/ui/squares-background";
 
@@ -22,12 +23,39 @@ const instrumentSerif = Instrument_Serif({
   weight: "400",
 });
 
+const PRODUCT_TABS = [
+  { value: "mac", label: "Mac", icon: Laptop, headline: "a mac" },
+  { value: "iphone", label: "iPhone", icon: Smartphone, headline: "an iPhone" },
+];
+
 export default function MacBookTracker() {
   const posthog = usePostHog();
   const [allPrices, setAllPrices] = useState([]);
   const [loading, setLoading] = useState(false);
   const [exchangeRate, setExchangeRate] = useState(null);
   const [currency, setCurrency] = useState("INR");
+  const [productLine, setProductLine] = useState("mac");
+
+  // The tab lives in the URL (?tab=iphone) so it can be shared/bookmarked.
+  // Read on mount rather than via useSearchParams, which would need a
+  // Suspense boundary on this statically rendered page.
+  useEffect(() => {
+    const tab = new URLSearchParams(window.location.search).get("tab");
+    if (PRODUCT_TABS.some((t) => t.value === tab)) setProductLine(tab);
+  }, []);
+
+  const selectProductLine = (tab) => {
+    posthog?.capture("product_tab_selected", { product_line: tab });
+    setProductLine(tab);
+    const url = new URL(window.location.href);
+    if (tab === "mac") url.searchParams.delete("tab");
+    else url.searchParams.set("tab", tab);
+    window.history.replaceState(null, "", url);
+  };
+
+  const activeTab = PRODUCT_TABS.find((t) => t.value === productLine);
+  const countFor = (tab) =>
+    allPrices.filter((item) => (item.productLine || "mac") === tab).length;
 
   const fetchPrices = async (selectedCurrency) => {
     setLoading(true);
@@ -118,7 +146,7 @@ export default function MacBookTracker() {
             <h1
               className={`text-3xl md:text-[42px] text-white not-italic whitespace-pre-wrap md:whitespace-pre leading-tight md:leading-normal relative z-10 ${instrumentSerif.className}`}
             >
-              Why pay more for a mac
+              Why pay more for {activeTab.headline}
             </h1>
             <div className="absolute inset-0 h-full w-full">
               <SparklesCore
@@ -135,8 +163,8 @@ export default function MacBookTracker() {
 
           {/* Subtitle */}
           <p className="text-center text-gray-400 text-sm md:text-base mb-4 px-4 animate-in fade-in slide-in-from-bottom duration-700 delay-200">
-            Live MacBook, Mac mini, iMac and Mac Studio prices from Vietnam's
-            top Apple retailers with VAT refunds for tourists
+            Live Mac and iPhone prices from Vietnam's top Apple retailers
+            with VAT refunds for tourists
           </p>
 
           {/* Exchange Rate Card */}
@@ -181,11 +209,37 @@ export default function MacBookTracker() {
               </div>
             </div>
           ) : (
-            <MacBookPricesTable
-              data={allPrices}
-              currency={currency}
-              posthog={posthog}
-            />
+            <>
+              <Tabs value={productLine} onValueChange={selectProductLine}>
+                <TabsList
+                  aria-label="Product"
+                  className="mb-6 h-12 w-full gap-1 rounded-full bg-gray-100 p-1 sm:w-auto"
+                >
+                  {PRODUCT_TABS.map(({ value, label, icon: Icon }) => (
+                    <TabsTrigger
+                      key={value}
+                      value={value}
+                      className="h-10 flex-1 gap-2 rounded-full px-6 text-base text-gray-600 data-[state=active]:bg-white data-[state=active]:text-gray-900 sm:flex-none"
+                    >
+                      <Icon className="h-4 w-4" aria-hidden="true" />
+                      {label}
+                      <span className="text-xs font-normal text-gray-400">
+                        {countFor(value)}
+                      </span>
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+              </Tabs>
+              <MacBookPricesTable
+                key={productLine}
+                productLine={productLine}
+                data={allPrices.filter(
+                  (item) => (item.productLine || "mac") === productLine,
+                )}
+                currency={currency}
+                posthog={posthog}
+              />
+            </>
           )}
 
           {/* Disclaimer */}
