@@ -28,41 +28,135 @@ import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
-function MacBookPricesTable({ data, currency, posthog }) {
-  const [selectedModel, setSelectedModel] = useState("All");
-  const [selectedScreenSize, setSelectedScreenSize] = useState("All");
-  const [selectedChipset, setSelectedChipset] = useState("All");
+// Filter option ordering.
+const MAC_MODEL_ORDER = [
+  "MacBook Neo",
+  "MacBook Air",
+  "MacBook Pro",
+  "Mac mini",
+  "iMac",
+  "Mac Studio",
+];
+const rankIn = (order, value) =>
+  order.includes(value) ? order.indexOf(value) : order.length;
+const CHIP_VARIANT_ORDER = ["", "Pro", "Max", "Ultra"];
+// "M5 Pro" -> [5, 1]; non-M chips (A18 Pro) sort after every M chip.
+const chipSortKey = (chip) => {
+  const match = chip.match(/^M(\d+)\s*(\w*)$/);
+  if (!match) return [Infinity, 0];
+  return [Number(match[1]), rankIn(CHIP_VARIANT_ORDER, match[2])];
+};
+const compareChips = (a, b) => {
+  const [genA, variantA] = chipSortKey(a);
+  const [genB, variantB] = chipSortKey(b);
+  return genA - genB || variantA - variantB || a.localeCompare(b);
+};
+// "1TB" -> 1024, so storage sorts by size rather than as text.
+const storageGb = (size) => {
+  const match = size.match(/^(\d+)\s*(GB|TB)$/i);
+  if (!match) return Infinity;
+  return Number(match[1]) * (match[2].toUpperCase() === "TB" ? 1024 : 1);
+};
+// Newest first: "iPhone 18 Pro Max" before "iPhone 18 Pro" before
+// "iPhone 17". Named models sit next to the generation they launched with.
+const IPHONE_NAMED_GENERATION = { Duo: 18.5, Air: 17.5, SE: 0 };
+const IPHONE_VARIANT_ORDER = ["Pro Max", "Pro", "Plus", "", "e", "mini"];
+const iphoneSortKey = (model) => {
+  const match = model.match(/^iPhone\s+(\d+)(e?)\s*(.*)$/);
+  if (match) {
+    const variant = match[2] || match[3];
+    return [Number(match[1]), rankIn(IPHONE_VARIANT_ORDER, variant)];
+  }
+  const named = model.replace(/^iPhone\s+/, "");
+  return [IPHONE_NAMED_GENERATION[named] ?? -1, 0];
+};
+const compareIphones = (a, b) => {
+  const [genA, variantA] = iphoneSortKey(a);
+  const [genB, variantB] = iphoneSortKey(b);
+  return genB - genA || variantA - variantB || a.localeCompare(b);
+};
 
-  // Track filter changes
-  useEffect(() => {
-    if (selectedModel !== "All") {
-      posthog?.capture("filter_model_selected", {
-        model: selectedModel,
-        screen_size: selectedScreenSize,
-        chipset: selectedChipset,
-      });
-    }
-  }, [selectedModel]);
+// Filters per product line. `field` is the row property filtered on;
+// `event`/`prop` keep the PostHog names analytics already records.
+const FILTERS = {
+  mac: [
+    {
+      field: "modelType",
+      label: "Model",
+      prop: "model",
+      event: "filter_model_selected",
+      width: "md:w-[180px]",
+      compare: (a, b) =>
+        rankIn(MAC_MODEL_ORDER, a) - rankIn(MAC_MODEL_ORDER, b),
+    },
+    {
+      field: "screenSize",
+      label: "Screen Size",
+      prop: "screen_size",
+      event: "filter_screen_size_selected",
+      width: "md:w-[140px]",
+      compare: (a, b) => parseFloat(a) - parseFloat(b),
+    },
+    {
+      field: "category",
+      label: "Chipset",
+      prop: "chipset",
+      event: "filter_chipset_selected",
+      width: "md:w-[140px]",
+      compare: compareChips,
+      // "New" badge on the latest base M chip.
+      isNew: (value, options) =>
+        value === options.filter((chip) => /^M\d+$/.test(chip)).at(-1),
+    },
+  ],
+  iphone: [
+    {
+      field: "modelType",
+      label: "Model",
+      prop: "model",
+      event: "filter_model_selected",
+      width: "md:w-[200px]",
+      compare: compareIphones,
+    },
+    {
+      field: "storage",
+      label: "Storage",
+      prop: "storage",
+      event: "filter_storage_selected",
+      width: "md:w-[140px]",
+      compare: (a, b) => storageGb(a) - storageGb(b),
+    },
+  ],
+};
 
-  useEffect(() => {
-    if (selectedScreenSize !== "All") {
-      posthog?.capture("filter_screen_size_selected", {
-        screen_size: selectedScreenSize,
-        model: selectedModel,
-        chipset: selectedChipset,
-      });
-    }
-  }, [selectedScreenSize]);
+function MacBookPricesTable({ data, currency, posthog, productLine = "mac" }) {
+  const filters = FILTERS[productLine] || FILTERS.mac;
+  // { field: selected value }; a missing field means "All". Reset by the
+  // parent remounting this table (key) when the product tab changes.
+  const [selected, setSelected] = useState({});
+  const valueOf = (field) => selected[field] || "All";
 
-  useEffect(() => {
-    if (selectedChipset !== "All") {
-      posthog?.capture("filter_chipset_selected", {
-        chipset: selectedChipset,
-        model: selectedModel,
-        screen_size: selectedScreenSize,
-      });
+  const selectFilter = (filter, value) => {
+    const next = { ...selected, [filter.field]: value };
+    setSelected(next);
+    if (value !== "All") {
+      const properties = { product_line: productLine };
+      for (const f of filters) properties[f.prop] = next[f.field] || "All";
+      posthog?.capture(filter.event, properties);
     }
-  }, [selectedChipset]);
+  };
+
+  // Options are built from the data, so a new model, chip or storage size
+  // shows up without a code change.
+  const optionsFor = (filter) => {
+    const values = new Set(
+      data
+        .map((item) => item[filter.field])
+        .filter((v) => v && v !== "Unknown"),
+    );
+    return ["All", ...[...values].sort(filter.compare)];
+  };
+
   const [sortOrder, setSortOrder] = useState("low-to-high");
   const [isMobile, setIsMobile] = useState(false);
   const [bargainDiscount, setBargainDiscount] = useState(0); // 0-10% typical bargaining discount
@@ -78,48 +172,6 @@ function MacBookPricesTable({ data, currency, posthog }) {
     return symbols[currency] || currency;
   };
 
-  // Filter options are built from the data, so a new product line or chip
-  // (Mac mini, M6, ...) shows up without a code change.
-  const optionsFrom = (key, compare) => {
-    const values = new Set(
-      data.map((item) => item[key]).filter((v) => v && v !== "Unknown"),
-    );
-    return ["All", ...[...values].sort(compare)];
-  };
-  const MODEL_ORDER = [
-    "MacBook Neo",
-    "MacBook Air",
-    "MacBook Pro",
-    "Mac mini",
-    "iMac",
-    "Mac Studio",
-  ];
-  const rankIn = (order, value) =>
-    order.includes(value) ? order.indexOf(value) : order.length;
-  const CHIP_VARIANT_ORDER = ["", "Pro", "Max", "Ultra"];
-  // "M5 Pro" -> [5, 1]; non-M chips (A18 Pro) sort after every M chip.
-  const chipSortKey = (chip) => {
-    const match = chip.match(/^M(\d+)\s*(\w*)$/);
-    if (!match) return [Infinity, 0];
-    return [Number(match[1]), rankIn(CHIP_VARIANT_ORDER, match[2])];
-  };
-
-  const models = optionsFrom(
-    "modelType",
-    (a, b) => rankIn(MODEL_ORDER, a) - rankIn(MODEL_ORDER, b),
-  );
-  const screenSizes = optionsFrom(
-    "screenSize",
-    (a, b) => parseFloat(a) - parseFloat(b),
-  );
-  const chipsets = optionsFrom("category", (a, b) => {
-    const [genA, variantA] = chipSortKey(a);
-    const [genB, variantB] = chipSortKey(b);
-    return genA - genB || variantA - variantB || a.localeCompare(b);
-  });
-  // "New" badge goes on the latest base M chip (sorted last).
-  const newestChip = chipsets.filter((chip) => /^M\d+$/.test(chip)).at(-1);
-
   // Detect mobile screen size
   useEffect(() => {
     const checkMobile = () => {
@@ -131,15 +183,11 @@ function MacBookPricesTable({ data, currency, posthog }) {
   }, []);
 
   const filterAndSortData = () => {
-    let filtered = data.filter((item) => {
-      const modelMatch =
-        selectedModel === "All" || item.modelType === selectedModel;
-      const sizeMatch =
-        selectedScreenSize === "All" || item.screenSize === selectedScreenSize;
-      const chipMatch =
-        selectedChipset === "All" || item.category === selectedChipset;
-      return modelMatch && sizeMatch && chipMatch;
-    });
+    let filtered = data.filter((item) =>
+      filters.every(
+        (f) => valueOf(f.field) === "All" || item[f.field] === valueOf(f.field),
+      ),
+    );
 
     // Apply bargaining discount to prices
     filtered = filtered.map((item) => {
@@ -292,75 +340,15 @@ function MacBookPricesTable({ data, currency, posthog }) {
             <div className="p-4 bg-white border-t border-gray-200 animate-in fade-in slide-in-from-top-2 duration-300">
               <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
                 <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto">
-                  <div className="flex flex-col gap-2">
-                    <div className="text-sm font-semibold text-gray-700">
-                      Model
-                    </div>
-                    <Select
-                      value={selectedModel}
-                      onValueChange={setSelectedModel}
-                    >
-                      <SelectTrigger className="w-full md:w-[180px]">
-                        <SelectValue placeholder="Select model" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {models.map((model) => (
-                          <SelectItem key={model} value={model}>
-                            {model}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  <div className="flex flex-col gap-2">
-                    <div className="text-sm font-semibold text-gray-700">
-                      Screen Size
-                    </div>
-                    <Select
-                      value={selectedScreenSize}
-                      onValueChange={setSelectedScreenSize}
-                    >
-                      <SelectTrigger className="w-full md:w-[140px]">
-                        <SelectValue placeholder="Select size" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {screenSizes.map((size) => (
-                          <SelectItem key={size} value={size}>
-                            {size}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  <div className="flex flex-col gap-2">
-                    <div className="text-sm font-semibold text-gray-700">
-                      Chipset
-                    </div>
-                    <Select
-                      value={selectedChipset}
-                      onValueChange={setSelectedChipset}
-                    >
-                      <SelectTrigger className="w-full md:w-[140px]">
-                        <SelectValue placeholder="Select chip" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {chipsets.map((chip) => (
-                          <SelectItem key={chip} value={chip}>
-                            <span className="flex items-center gap-2">
-                              {chip}
-                              {chip === newestChip && (
-                                <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
-                                  New
-                                </span>
-                              )}
-                            </span>
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
+                  {filters.map((filter) => (
+                    <FilterSelect
+                      key={filter.field}
+                      filter={filter}
+                      value={valueOf(filter.field)}
+                      options={optionsFor(filter)}
+                      onChange={(value) => selectFilter(filter, value)}
+                    />
+                  ))}
                 </div>
 
                 <div className="flex gap-3 w-full md:w-auto">
@@ -392,68 +380,15 @@ function MacBookPricesTable({ data, currency, posthog }) {
         {/* Filter Dropdowns - Desktop Only */}
         <div className="hidden md:flex flex-row gap-4 items-center justify-between">
           <div className="flex flex-row gap-3">
-            <div className="flex flex-col gap-2">
-              <div className="text-sm font-semibold text-gray-700">Model</div>
-              <Select value={selectedModel} onValueChange={setSelectedModel}>
-                <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder="Select model" />
-                </SelectTrigger>
-                <SelectContent>
-                  {models.map((model) => (
-                    <SelectItem key={model} value={model}>
-                      {model}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <div className="text-sm font-semibold text-gray-700">
-                Screen Size
-              </div>
-              <Select
-                value={selectedScreenSize}
-                onValueChange={setSelectedScreenSize}
-              >
-                <SelectTrigger className="w-[140px]">
-                  <SelectValue placeholder="Select size" />
-                </SelectTrigger>
-                <SelectContent>
-                  {screenSizes.map((size) => (
-                    <SelectItem key={size} value={size}>
-                      {size}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <div className="text-sm font-semibold text-gray-700">Chipset</div>
-              <Select
-                value={selectedChipset}
-                onValueChange={setSelectedChipset}
-              >
-                <SelectTrigger className="w-[140px]">
-                  <SelectValue placeholder="Select chip" />
-                </SelectTrigger>
-                <SelectContent>
-                  {chipsets.map((chip) => (
-                    <SelectItem key={chip} value={chip}>
-                      <span className="flex items-center gap-2">
-                        {chip}
-                        {chip === newestChip && (
-                          <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
-                            New
-                          </span>
-                        )}
-                      </span>
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
+            {filters.map((filter) => (
+              <FilterSelect
+                key={filter.field}
+                filter={filter}
+                value={valueOf(filter.field)}
+                options={optionsFor(filter)}
+                onChange={(value) => selectFilter(filter, value)}
+              />
+            ))}
           </div>
 
           {/* Sort Dropdown */}
@@ -491,6 +426,7 @@ function MacBookPricesTable({ data, currency, posthog }) {
                     category: item.category,
                     chipset: item.category,
                     configuration: item.configuration,
+                    product_line: item.productLine,
                     price_vnd: item.vndPrice,
                     price_converted: item.convertedPrice,
                     final_price: item.finalPrice,
@@ -527,7 +463,9 @@ function MacBookPricesTable({ data, currency, posthog }) {
                       variant="outline"
                       className="w-fit transition-all duration-200 hover:scale-105"
                     >
-                      {item.category}
+                      {item.productLine === "iphone"
+                        ? item.storage
+                        : item.category}
                     </Badge>
                   </div>
                   <div className="text-right">
@@ -647,6 +585,7 @@ function MacBookPricesTable({ data, currency, posthog }) {
                         category: item.category,
                         chipset: item.category,
                         configuration: item.configuration,
+                        product_line: item.productLine,
                         price_vnd: item.vndPrice,
                         price_converted: item.convertedPrice,
                         final_price: item.finalPrice,
@@ -703,6 +642,33 @@ function MacBookPricesTable({ data, currency, posthog }) {
           </Table>
         </div>
       )}
+    </div>
+  );
+}
+
+function FilterSelect({ filter, value, options, onChange }) {
+  return (
+    <div className="flex flex-col gap-2">
+      <div className="text-sm font-semibold text-gray-700">{filter.label}</div>
+      <Select value={value} onValueChange={onChange}>
+        <SelectTrigger className={cn("w-full", filter.width)}>
+          <SelectValue placeholder={`Select ${filter.label.toLowerCase()}`} />
+        </SelectTrigger>
+        <SelectContent>
+          {options.map((option) => (
+            <SelectItem key={option} value={option}>
+              <span className="flex items-center gap-2">
+                {option}
+                {filter.isNew?.(option, options) && (
+                  <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
+                    New
+                  </span>
+                )}
+              </span>
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
     </div>
   );
 }

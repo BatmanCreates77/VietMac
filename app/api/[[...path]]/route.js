@@ -25,6 +25,34 @@ function transformScrapedProduct(product) {
   const modelName = product.model || "";
   const modelLower = modelName.toLowerCase();
   const specs = product.specs || {};
+  // Data written before iPhones were added has no product_line: all Macs.
+  const productLine = product.product_line || "mac";
+  const common = {
+    productLine,
+    configuration: modelName, // Use full original name as configuration
+    id: modelName.toLowerCase().replace(/\s+/g, "-").substring(0, 100),
+    vndPrice: product.price_vnd,
+    url: product.url,
+    available: true,
+    shop: product.shop,
+    storage: specs.storage_display || "",
+    storageGb: specs.storage_gb || null,
+    scrapedAt: product.scraped_at || null,
+    // True when this shop's latest scrape failed and these are its
+    // last-known-good prices carried forward by the scraper.
+    stale: Boolean(product.stale),
+  };
+
+  if (productLine === "iphone") {
+    const modelType = specs.model_type || "iPhone";
+    return {
+      ...common,
+      model: modelType,
+      modelType,
+      screenSize: "",
+      category: "",
+    };
+  }
 
   // Prefer the scraper's parsed specs; the name-based guesses below are only
   // a fallback (a bare "pro" check misfiles "MacBook Neo ... A18 Pro").
@@ -65,20 +93,11 @@ function transformScrapedProduct(product) {
   }
 
   return {
+    ...common,
     model: screenSize ? `${modelType} ${screenSize}` : modelType,
     modelType: modelType,
     screenSize: screenSize,
     category: category,
-    configuration: modelName, // Use full original name as configuration
-    id: modelName.toLowerCase().replace(/\s+/g, "-").substring(0, 100),
-    vndPrice: product.price_vnd,
-    url: product.url,
-    available: true,
-    shop: product.shop,
-    scrapedAt: product.scraped_at || null,
-    // True when this shop's latest scrape failed and these are its
-    // last-known-good prices carried forward by the scraper.
-    stale: Boolean(product.stale),
   };
 }
 

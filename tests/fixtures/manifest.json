@@ -1,6 +1,6 @@
 {
   "captured_at": "2026-09-12",
-  "note": "shopdunk/cellphones/fptshop 'live' fixtures capture real HTML at capture time (fptshop's captured after fixing the Cloudflare-challenge wait logic and the stale .cardInfo selector — see fptshop_scraper.py history). topzone's fixture and fptshop's second entry are hand-written synthetic HTML exercising each shop's selector fallback chain, non-MacBook filtering, and (for fptshop) the no-discount price-extraction fallback that no real product on the live page exercised. All fixtures verify parse_products() is byte-for-byte behavior-preserving — expected counts are what parse_products() returns against these exact frozen files; a mismatch means the code changed behavior, not that the site changed. Counts updated 2026-10-01 when the MacBook-only name filter became a Mac filter (MacBook, Mac mini, iMac, Mac Studio; case-insensitive): every added product was diffed and is either a desktop Mac or a ShopDunk 'Macbook ...' listing the case-sensitive filter had been silently dropping.",
+  "note": "shopdunk/cellphones/fptshop 'live' fixtures capture real HTML at capture time (fptshop's captured after fixing the Cloudflare-challenge wait logic and the stale .cardInfo selector — see fptshop_scraper.py history). topzone's fixture and fptshop's second entry are hand-written synthetic HTML exercising each shop's selector fallback chain, non-MacBook filtering, and (for fptshop) the no-discount price-extraction fallback that no real product on the live page exercised. All fixtures verify parse_products() is byte-for-byte behavior-preserving — expected counts are what parse_products() returns against these exact frozen files; a mismatch means the code changed behavior, not that the site changed. Counts updated 2026-10-01 when the MacBook-only name filter became a Mac filter (MacBook, Mac mini, iMac, Mac Studio; case-insensitive): every added product was diffed and is either a desktop Mac or a ShopDunk 'Macbook ...' listing the case-sensitive filter had been silently dropping. iPhone listings (captured 2026-10-02) are parsed by the scraper named in 'scraper'. CellphoneS's was saved after clicking 'show more'; ShopDunk's 42 includes 4 cards repeated in its featured strip (deduplicated by URL in scrape(), not in parse_products()).",
   "fixtures": [
     {
       "shop": "shopdunk",
@@ -43,6 +43,33 @@
       "source_url": null,
       "type": "synthetic",
       "expected_product_count": 2
+    },
+    {
+      "shop": "cellphones",
+      "scraper": "cellphones-iphone",
+      "file": "raw/cellphones/iphone_listing.html",
+      "source_url": "https://cellphones.com.vn/mobile/apple.html",
+      "type": "live",
+      "captured_at": "2026-10-02",
+      "expected_product_count": 36
+    },
+    {
+      "shop": "shopdunk",
+      "scraper": "shopdunk-iphone",
+      "file": "raw/shopdunk/iphone_listing.html",
+      "source_url": "https://shopdunk.com/iphone",
+      "type": "live",
+      "captured_at": "2026-10-02",
+      "expected_product_count": 42
+    },
+    {
+      "shop": "fptshop",
+      "scraper": "fptshop-iphone",
+      "file": "raw/fptshop/iphone_listing.html",
+      "source_url": "https://fptshop.com.vn/dien-thoai/apple-iphone",
+      "type": "live",
+      "captured_at": "2026-10-02",
+      "expected_product_count": 12
     }
   ]
 }

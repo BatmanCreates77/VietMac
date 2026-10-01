@@ -286,3 +286,65 @@ def test_failed_shop_with_no_history_is_reported_missing(tmp_path):
     fpt = load_latest(tmp_path)['summary']['by_shop']['fptshop']
     assert fpt['status'] == 'missing'
     assert fpt['count'] == 0
+
+
+def make_iphone(shop, i, prefix='new'):
+    p = make_product(shop, model=f"iPhone 17 {i}GB", url=f"https://example.com/{shop}/iphone/{prefix}/{i}")
+    p.update(source=f"{shop}-iphone", product_line='iphone')
+    return p
+
+
+def test_iphone_failure_carries_forward_only_iphones(tmp_path):
+    """A shop's Macs and iPhones are separate validation units: broken
+    iPhone pages must not stale that shop's freshly scraped Macs."""
+    previous = seed_previous(tmp_path, {'shopdunk': 30})
+    previous['products'] += [make_iphone('shopdunk', i, 'old') for i in range(20)]
+    previous['summary']['by_shop']['shopdunk-iphone'] = {'count': 20, 'success': True}
+    (tmp_path / "latest_products.json").write_text(json.dumps(previous), encoding='utf-8')
+
+    updater = make_updater_with_results(tmp_path, {'shopdunk': 30})
+    mark_failed(updater, 'shopdunk-iphone')
+    updater.save_results()
+
+    latest = load_latest(tmp_path)
+    assert latest['summary']['by_shop']['shopdunk']['status'] == 'fresh'
+    assert latest['summary']['by_shop']['shopdunk-iphone']['status'] == 'carried_forward'
+    iphones = [p for p in latest['products'] if p.get('source') == 'shopdunk-iphone']
+    macs = [p for p in latest['products'] if p.get('source', p['shop']) == 'shopdunk']
+    assert len(iphones) == 20 and all(p['stale'] for p in iphones)
+    assert len(macs) == 30 and not any(p['stale'] for p in macs)
+
+
+def test_iphone_drop_is_judged_against_iphones_only(tmp_path):
+    """A shop's iPhone count halving must be caught even though, added to
+    its Macs, the shop's total would barely move."""
+    previous = seed_previous(tmp_path, {'shopdunk': 60})
+    previous['products'] += [make_iphone('shopdunk', i, 'old') for i in range(40)]
+    previous['summary']['by_shop']['shopdunk-iphone'] = {'count': 40, 'success': True}
+    (tmp_path / "latest_products.json").write_text(json.dumps(previous), encoding='utf-8')
+
+    updater = make_updater_with_results(tmp_path, {'shopdunk': 60})
+    updater.results['products'] += [make_iphone('shopdunk', i) for i in range(15)]
+    updater.results['summary']['by_shop']['shopdunk-iphone'] = {'count': 15, 'success': True}
+    updater.save_results()
+
+    summary = load_latest(tmp_path)['summary']['by_shop']
+    assert summary['shopdunk']['status'] == 'fresh'
+    assert summary['shopdunk-iphone']['status'] == 'carried_forward'
+    assert 'dropped' in summary['shopdunk-iphone']['error']
+
+
+def test_mac_data_written_before_sources_existed_is_still_last_known_good(tmp_path):
+    """latest_products.json files from before iPhones were added have no
+    'source' on products; their Macs must still count as each shop's
+    last-known-good (here: a 30 -> 10 drop is caught)."""
+    seed_previous(tmp_path, {'shopdunk': 30, 'cellphones': 20})
+    updater = make_updater_with_results(tmp_path, {'shopdunk': 10, 'cellphones': 20})
+    for p in updater.results['products']:
+        p['source'] = p['shop']
+    updater.save_results()
+
+    summary = load_latest(tmp_path)['summary']['by_shop']
+    assert summary['shopdunk']['status'] == 'carried_forward'
+    assert summary['shopdunk']['count'] == 30
+    assert summary['cellphones']['status'] == 'fresh'

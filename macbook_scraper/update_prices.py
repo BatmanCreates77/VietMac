@@ -12,12 +12,12 @@ from pathlib import Path
 # Add scrapers directory to path
 sys.path.insert(0, str(Path(__file__).parent))
 
-from scrapers.cellphones_scraper import CellphonesScraper
-from scrapers.shopdunk_scraper import ShopDunkScraper
+from scrapers.cellphones_scraper import CellphonesScraper, CellphonesIphoneScraper
+from scrapers.shopdunk_scraper import ShopDunkScraper, ShopDunkIphoneScraper
 
 # Optional: Try to import FPT and TopZone (may fail due to blocks)
 try:
-    from scrapers.fptshop_scraper import FPTShopScraper
+    from scrapers.fptshop_scraper import FPTShopScraper, FPTShopIphoneScraper
     FPTSHOP_AVAILABLE = True
 except:
     FPTSHOP_AVAILABLE = False
@@ -39,11 +39,18 @@ except:
 #     challenge-wait logic and stale selectors (see fptshop_scraper.py)
 # topzone has no confirmed-good live run yet (still timeout-blocked);
 # its floor is a conservative placeholder pending its own fix.
+# iPhone sources (2026-10-02 live run, about a third of each count):
+#   cellphones-iphone=34, shopdunk-iphone=37, fptshop-iphone=12 models
+# Keyed by source (see BaseScraper.source): each shop's Macs and iPhones
+# are validated, published and carried forward independently.
 MIN_PRODUCTS_PER_SHOP = {
     'cellphones': 8,
     'shopdunk': 10,
     'fptshop': 20,
     'topzone': 3,
+    'cellphones-iphone': 10,
+    'shopdunk-iphone': 10,
+    'fptshop-iphone': 10,
 }
 
 # Reject a shop's new count if it dropped more than this fraction versus its
@@ -60,6 +67,12 @@ MAX_DROP_RATIO = 0.4
 STALE_THRESHOLD_HOURS = 72
 
 REQUIRED_PRODUCT_FIELDS = ('model', 'price_vnd', 'shop')
+
+
+def source_of(product):
+    """Validation unit a product belongs to. Products written before iPhones
+    were added have no 'source'; they are all Macs, keyed by shop."""
+    return product.get('source') or product.get('shop')
 
 # A few listings with no price (out of stock, "contact for price") are normal
 # and get dropped individually. Above this fraction it's a broken selector,
@@ -229,11 +242,11 @@ class PriceUpdater:
         previous_summary = previous.get('summary', {}).get('by_shop', {})
         previous_by_shop = {}
         for product in previous.get('products', []):
-            previous_by_shop.setdefault(product.get('shop'), []).append(product)
+            previous_by_shop.setdefault(source_of(product), []).append(product)
 
         fresh_by_shop = {}
         for product in self.results['products']:
-            fresh_by_shop.setdefault(product.get('shop'), []).append(product)
+            fresh_by_shop.setdefault(source_of(product), []).append(product)
 
         attempted = self.results['summary']['by_shop']
         run_timestamp = self.results['timestamp']
@@ -356,9 +369,12 @@ class PriceUpdater:
         print("\n🚀 Starting automated price update...")
         print(f"Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
-        # Always run the reliable scrapers
+        # Always run the reliable scrapers. Names are validation sources
+        # (BaseScraper.source): a shop's Macs and iPhones are separate units.
         self.run_scraper(CellphonesScraper, 'cellphones')
         self.run_scraper(ShopDunkScraper, 'shopdunk')
+        self.run_scraper(CellphonesIphoneScraper, 'cellphones-iphone')
+        self.run_scraper(ShopDunkIphoneScraper, 'shopdunk-iphone')
 
         # FPTShop: fixed 2026-09-12 (see fptshop_scraper.py) — the challenge-
         # wait logic was declaring a still-resolving Cloudflare challenge a
@@ -368,6 +384,7 @@ class PriceUpdater:
         # No longer gated behind --all.
         if FPTSHOP_AVAILABLE:
             self.run_scraper(FPTShopScraper, 'fptshop')
+            self.run_scraper(FPTShopIphoneScraper, 'fptshop-iphone')
 
         # TopZone: still gated behind --all, not yet fixed (Phase 5 continues).
         if include_all:
@@ -399,7 +416,7 @@ def main():
     """Main entry point"""
     import argparse
 
-    parser = argparse.ArgumentParser(description='Update MacBook prices from Vietnamese retailers')
+    parser = argparse.ArgumentParser(description='Update Mac and iPhone prices from Vietnamese retailers')
     parser.add_argument('--all', action='store_true',
                        help='Include FPTShop and TopZone (usually blocked/timeout)')
     parser.add_argument('--quiet', action='store_true',
