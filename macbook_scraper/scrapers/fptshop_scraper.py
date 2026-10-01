@@ -1,12 +1,18 @@
 #!/usr/bin/env python3
 """
-FPT Shop Scraper - SeleniumBase UC (Undetected Chrome) mode
-Bypasses Cloudflare WAF protection
+FPT Shop Scraper - SeleniumBase pure CDP mode
+Gets past FPTShop's Cloudflare managed challenge by driving a real Chrome
+directly over the DevTools protocol.
+
+Pure CDP mode rather than UC mode: on Apple Silicon, SeleniumBase's UC mode
+always uses the Intel chromedriver build (`intel_for_uc = True` in its
+sb_install.py), so it silently depends on Rosetta 2 — the 2026-10-01 06:00
+scheduled run failed outright when Rosetta was unavailable after a macOS
+upgrade. CDP mode uses no chromedriver at all, so it runs natively.
 """
 
-from seleniumbase import Driver
+from seleniumbase import sb_cdp
 from bs4 import BeautifulSoup
-import requests
 import re
 import time
 import logging
@@ -15,18 +21,28 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from scrapers.base_scraper import BaseScraper
-from utils import session_cache
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+CHALLENGE_MARKER = 'Just a moment'
+# The product card class parse_products() selects on. Waiting for it — not
+# just for the challenge to clear — matters: the page can be past the
+# challenge with the product grid not yet rendered, which parses as 0.
+PRODUCT_READY_MARKER = 'cardInfo'
 
 
 class FPTShopScraper(BaseScraper):
     shop_name = 'fptshop'
     base_url = 'https://fptshop.com.vn'
 
-    CHALLENGE_POLL_INTERVAL_SECONDS = 5
-    CHALLENGE_MAX_WAIT_SECONDS = 30
+    POLL_INTERVAL_SECONDS = 3
+    PAGE_READY_TIMEOUT_SECONDS = 30
+    RETRY_BACKOFF_SECONDS = 30
+
+    def __init__(self):
+        super().__init__()
+        self._browser = None
 
     def _parse_model_name(self, name):
         """Parse and clean MacBook model name"""
@@ -47,117 +63,64 @@ class FPTShopScraper(BaseScraper):
             "https://fptshop.com.vn/may-tinh-xach-tay/macbook-pro?kich-thuoc-man-hinh=16-inch&sort=noi-bat",
         ]
 
-    def fetch_html(self, url, retry=3):
-        """Try a cached, already-Cloudflare-cleared cookie jar first (free,
-        no browser launch) before paying the cost of a full UC-mode solve.
-        The cache is populated by _fetch_with_uc_mode() on a successful
-        solve and reused by every call until it expires or gets rejected."""
-        cached_html = self._fetch_with_cached_session(url)
-        if cached_html is not None:
-            return cached_html
-
-        return self._fetch_with_uc_mode(url, retry=retry)
-
-    def _fetch_with_cached_session(self, url):
-        session = session_cache.load_session(self.shop_name)
-        if not session:
-            return None
-
+    def scrape(self):
+        """One browser for the whole run: Cloudflare is solved on the first
+        page and the session's clearance carries over to the rest (verified
+        live 2026-10-01: 3 pages in 12s total). Always closed afterwards so
+        a scheduled run can never leave a stray Chrome behind."""
         try:
-            logger.info("  Trying cached Cloudflare-cleared session (no browser)...")
-            response = requests.get(
-                url,
-                cookies=session['cookies'],
-                headers={'User-Agent': session['user_agent']},
-                timeout=15,
-            )
-        except Exception as e:
-            logger.warning(f"  Cached-session request failed: {e}")
-            return None
+            return super().scrape()
+        finally:
+            self._close_browser()
 
-        if session_cache.is_challenge_response(response.status_code, response.text):
-            logger.warning("  Cached session was rejected (expired/invalidated) — falling back to full solve")
-            session_cache.invalidate_session(self.shop_name)
-            return None
+    def _close_browser(self):
+        if self._browser is not None:
+            try:
+                self._browser.driver.stop()
+            except Exception as e:
+                logger.warning(f"  Error closing browser: {e}")
+            self._browser = None
 
-        logger.info("  Cached session accepted — skipped browser entirely")
-        return response.text
+    def fetch_html(self, url, retry=3):
+        for attempt in range(retry):
+            try:
+                if self._browser is None:
+                    logger.info("Launching Chrome (CDP mode)...")
+                    self._browser = sb_cdp.Chrome()
+                logger.info(f"  Opening: {url} (attempt {attempt + 1}/{retry})")
+                self._browser.open(url)
 
-    def _wait_for_challenge_to_clear(self, driver):
-        """Poll for Cloudflare's managed challenge to resolve instead of a
-        single fixed-wait check. Verified live 2026-09-12: the challenge
-        cleared in ~5s on one run but the previous fixed 10s-wait-then-
-        check design had already logged two straight 'Got 403 Forbidden'
-        failures — a single early check was catching the page mid-
-        challenge and declaring it a hard failure, when waiting longer
-        would have let it clear on its own (Cloudflare's managed
-        challenge appears to vary in how long it takes per visit).
-        Returns the cleared page_source, or None if it never clears
-        within CHALLENGE_MAX_WAIT_SECONDS."""
-        elapsed = 0
-        while elapsed <= self.CHALLENGE_MAX_WAIT_SECONDS:
-            time.sleep(self.CHALLENGE_POLL_INTERVAL_SECONDS)
-            elapsed += self.CHALLENGE_POLL_INTERVAL_SECONDS
-            page_source = driver.page_source
-            if not session_cache.is_challenge_response(200, page_source):
-                logger.info(f"  Challenge cleared after ~{elapsed}s")
-                return page_source
-            logger.info(f"  Still on challenge page at {elapsed}s, continuing to wait...")
+                html = self._wait_for_products(self._browser)
+                if html is not None:
+                    return html
+                raise Exception(
+                    f"product grid not ready within {self.PAGE_READY_TIMEOUT_SECONDS}s"
+                )
+            except Exception as e:
+                logger.error(f"  Error fetching {url}: {e}")
+                # A broken session (stuck challenge, crashed tab) won't heal
+                # by itself — start the next attempt with a fresh browser.
+                self._close_browser()
+                if attempt < retry - 1:
+                    logger.info(f"  Retrying in {self.RETRY_BACKOFF_SECONDS}s...")
+                    time.sleep(self.RETRY_BACKOFF_SECONDS)
         return None
 
-    def _fetch_with_uc_mode(self, url, retry=3):
-        """Full SeleniumBase UC mode solve. Expensive and the highest-risk
-        step, so a successful solve's cookies get cached for reuse."""
-        for attempt in range(retry):
-            driver = None
-            try:
-                logger.info(f"Launching UC Chrome for: {url} (attempt {attempt + 1}/{retry})")
-
-                driver = Driver(
-                    uc=True,
-                    headless=False,
-                    chromium_arg="--disable-blink-features=AutomationControlled",
-                )
-
-                logger.info("  Navigating to page...")
-                driver.get(url)
-
-                logger.info("  Waiting for Cloudflare challenge to clear...")
-                page_source = self._wait_for_challenge_to_clear(driver)
-                if page_source is None:
-                    raise Exception(
-                        f"Cloudflare challenge did not clear within "
-                        f"{self.CHALLENGE_MAX_WAIT_SECONDS}s"
-                    )
-
-                logger.info("  Scrolling to load all products...")
-                driver.execute_script('window.scrollTo(0, document.body.scrollHeight)')
-                time.sleep(3)
-
-                html = driver.page_source
-                user_agent = driver.execute_script("return navigator.userAgent;")
-                cookies = driver.get_cookies()
-                driver.quit()
-
-                if not session_cache.is_challenge_response(200, html):
-                    session_cache.save_session(self.shop_name, cookies, user_agent)
-                    logger.info("  Cached this session's cookies for reuse on future runs")
-
-                return html
-
-            except Exception as e:
-                logger.error(f"Error with UC Chrome: {e}")
-                if driver:
-                    try:
-                        driver.quit()
-                    except:
-                        pass
-
-                if attempt < retry - 1:
-                    wait_time = (attempt + 1) * 120  # 2 min, 4 min, 6 min
-                    logger.info(f"Retrying in {wait_time}s...")
-                    time.sleep(wait_time)
-
+    def _wait_for_products(self, browser):
+        """Poll until Cloudflare's challenge has cleared AND the product grid
+        has rendered. Cloudflare's managed challenge takes a variable time
+        per visit (a single fixed wait was the cause of the original false
+        "403 Forbidden" failures). Returns the page HTML, or None on timeout."""
+        elapsed = 0
+        while elapsed <= self.PAGE_READY_TIMEOUT_SECONDS:
+            html = browser.get_page_source()
+            if CHALLENGE_MARKER not in html and PRODUCT_READY_MARKER in html:
+                logger.info(f"  Products ready after ~{elapsed}s")
+                browser.scroll_to_bottom()
+                time.sleep(2)
+                return browser.get_page_source()
+            time.sleep(self.POLL_INTERVAL_SECONDS)
+            elapsed += self.POLL_INTERVAL_SECONDS
         return None
 
     def _extract_price_text(self, item):

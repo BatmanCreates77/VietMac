@@ -6,7 +6,7 @@ lxml==5.1.0
 # Browser automation
 playwright==1.44.0
 playwright-stealth==1.0.6
-seleniumbase==4.26.0
+seleniumbase==4.46.4
 
 # Data handling
 python-dotenv==1.0.1

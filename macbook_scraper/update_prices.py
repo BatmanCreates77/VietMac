@@ -59,6 +59,13 @@ STALE_THRESHOLD_HOURS = 24
 
 REQUIRED_PRODUCT_FIELDS = ('model', 'price_vnd', 'shop')
 
+# A few listings with no price (out of stock, "contact for price") are normal
+# and get dropped individually. Above this fraction it's a broken selector,
+# not a few odd listings, and the shop's whole run is rejected. Calibrated
+# against two real cases: 1/16 unpriced (2026-10-01, a genuinely unpriced
+# listing) must pass; 4/17 (2026-09-19, an encoding bug) must not.
+MAX_INCOMPLETE_RATIO = 0.2
+
 BACKUP_RETENTION_COUNT = 10
 
 
@@ -135,32 +142,26 @@ class PriceUpdater:
             print(f"❌ {shop_name}: Exception - {error_msg}")
             return False
 
-    def _load_previous_summary(self):
-        """Read the currently-live latest_products.json's per-shop counts
-        and timestamp. Returns ({}, None) if the file doesn't exist or is
-        unreadable."""
+    def _load_previous(self):
+        """The currently-live latest_products.json, or None if absent or
+        unreadable. This is both the last-known-good baseline for the drop
+        check and the source of carried-forward data for failed shops."""
         latest_file = self.output_dir / "latest_products.json"
         if not latest_file.exists():
-            return {}, None
+            return None
         try:
             with open(latest_file, 'r', encoding='utf-8') as f:
-                previous = json.load(f)
-            by_shop = previous.get('summary', {}).get('by_shop', {})
-            timestamp_str = previous.get('timestamp')
-            return by_shop, timestamp_str
+                return json.load(f)
         except (json.JSONDecodeError, OSError):
-            return {}, None
+            return None
 
-    def _is_previous_data_stale(self, timestamp_str):
-        """The relative-drop check only makes sense when 'last-known-good'
-        is actually recent — it exists to catch a sudden regression
-        between nearby runs (e.g. a broken selector), not to compare
-        against data from long before this scraper was even running
-        reliably. If the previous run is older than STALE_THRESHOLD_HOURS,
-        its counts are not a trustworthy drop-comparison baseline (the
-        site's real listings can easily have shifted that much on their
-        own), so the drop check is skipped for this run — the absolute
-        floor and required-field checks still apply regardless."""
+    @staticmethod
+    def _is_stale(timestamp_str):
+        """The relative-drop check exists to catch a sudden regression
+        between nearby runs (a broken selector), not to compare against
+        data from long ago — real listings shift that much on their own.
+        Checked per shop, since a carried-forward shop can be much older
+        than the file it sits in."""
         if not timestamp_str:
             return True
         try:
@@ -170,87 +171,137 @@ class PriceUpdater:
         age_hours = (datetime.now() - previous_time).total_seconds() / 3600
         return age_hours > STALE_THRESHOLD_HOURS
 
-    def validate_results(self):
-        """Gate checked before every write to latest_products.json. Returns
-        a list of failure reasons (empty list = passed). Runs per shop that
-        reported success this run:
-          1. required fields non-null on every product
-          2. count clears the absolute floor (MIN_PRODUCTS_PER_SHOP)
-          3. count hasn't dropped more than MAX_DROP_RATIO vs last-known-good
-             — skipped entirely if that last-known-good is stale (see
-             _is_previous_data_stale): comparing against months-old data
-             produces false rejections, not real regression detection.
-        A shop that failed to scrape (success=False) is not re-penalized
-        here — run_scraper() already recorded that as an error; this gate
-        only exists to catch a *silent* partial failure that still reported
-        success=True.
-        """
-        reasons = []
-        previous_summary, previous_timestamp = self._load_previous_summary()
-        skip_drop_check = self._is_previous_data_stale(previous_timestamp)
-        if skip_drop_check and previous_timestamp:
-            print(f"   (skipping relative-drop check — last-known-good is from "
-                  f"{previous_timestamp}, older than {STALE_THRESHOLD_HOURS}h)")
+    def _validate_shop(self, shop, fresh_products, previous_count, previous_scraped_at):
+        """Returns (accepted_products, rejection_reason, skipped_urls).
+        rejection_reason is None when the shop's fresh data is accepted."""
+        incomplete_ids = {
+            id(p) for p in fresh_products
+            if any(not p.get(f) for f in REQUIRED_PRODUCT_FIELDS)
+        }
+        if fresh_products and len(incomplete_ids) / len(fresh_products) > MAX_INCOMPLETE_RATIO:
+            return [], (
+                f"{len(incomplete_ids)}/{len(fresh_products)} products missing required "
+                f"fields {list(REQUIRED_PRODUCT_FIELDS)} — exceeds "
+                f"{MAX_INCOMPLETE_RATIO:.0%}, looks like broken parsing"
+            ), []
 
-        products_by_shop = {}
-        for product in self.results['products']:
-            products_by_shop.setdefault(product.get('shop'), []).append(product)
+        accepted = [p for p in fresh_products if id(p) not in incomplete_ids]
+        skipped = [p.get('url') for p in fresh_products if id(p) in incomplete_ids]
 
-        for shop, info in self.results['summary']['by_shop'].items():
-            if not info.get('success'):
-                continue
+        floor = MIN_PRODUCTS_PER_SHOP.get(shop, 1)
+        if len(accepted) < floor:
+            return [], f"count {len(accepted)} is below the absolute floor of {floor}", []
 
-            count = info.get('count', 0)
+        if previous_count > 0 and not self._is_stale(previous_scraped_at):
+            drop_ratio = 1 - (len(accepted) / previous_count)
+            if drop_ratio > MAX_DROP_RATIO:
+                return [], (
+                    f"count dropped {drop_ratio:.0%} vs last-known-good "
+                    f"({previous_count} -> {len(accepted)}), exceeds {MAX_DROP_RATIO:.0%} threshold"
+                ), []
 
-            for product in products_by_shop.get(shop, []):
-                missing = [f for f in REQUIRED_PRODUCT_FIELDS if not product.get(f)]
-                if missing:
-                    reasons.append(
-                        f"{shop}: product missing required field(s) {missing} "
-                        f"(url={product.get('url')})"
-                    )
-                    break  # one bad product is enough to flag this shop
+        return accepted, None, skipped
 
-            floor = MIN_PRODUCTS_PER_SHOP.get(shop, 1)
-            if count < floor:
-                reasons.append(
-                    f"{shop}: count {count} is below the absolute floor of {floor}"
-                )
-
-            if not skip_drop_check:
-                previous_count = previous_summary.get(shop, {}).get('count', 0)
-                if previous_count > 0:
-                    drop_ratio = 1 - (count / previous_count)
-                    if drop_ratio > MAX_DROP_RATIO:
-                        reasons.append(
-                            f"{shop}: count dropped {drop_ratio:.0%} vs last-known-good "
-                            f"({previous_count} -> {count}), exceeds {MAX_DROP_RATIO:.0%} threshold"
-                        )
-
-        return reasons
+    def _write_failed_attempt(self, reasons):
+        self.failed_dir.mkdir(exist_ok=True)
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        failed_file = self.failed_dir / f"rejected_{timestamp}.json"
+        with open(failed_file, 'w', encoding='utf-8') as f:
+            json.dump({**self.results, 'validation_failures': reasons},
+                      f, indent=2, ensure_ascii=False)
+        return failed_file
 
     def save_results(self):
-        """Validate, then save results to JSON files. Refuses to overwrite
-        latest_products.json if validation fails — the site keeps serving
-        the last-known-good data instead of a silently gutted or malformed
-        one, and the rejected attempt is written to output/failed/ for
-        debugging."""
-        self.results['summary']['total_products'] = len(self.results['products'])
+        """Validate each shop independently, then write latest_products.json.
 
-        failure_reasons = self.validate_results()
-        if failure_reasons:
-            self.failed_dir.mkdir(exist_ok=True)
-            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-            failed_file = self.failed_dir / f"rejected_{timestamp}.json"
-            with open(failed_file, 'w', encoding='utf-8') as f:
-                json.dump({**self.results, 'validation_failures': failure_reasons},
-                          f, indent=2, ensure_ascii=False)
+        A shop whose fresh data is accepted replaces its previous data. A
+        shop that failed to scrape, or whose data fails validation, keeps
+        its last-known-good products, marked stale — one flaky shop must
+        never wipe its listings off the site (this happened 2026-10-01
+        06:00: FPTShop failed and the old all-shops-or-nothing gate
+        published a file with zero FPTShop products). The write is only
+        refused outright (ValidationFailure, file untouched) when no shop
+        produced acceptable fresh data at all."""
+        previous = self._load_previous() or {}
+        previous_timestamp = previous.get('timestamp')
+        previous_summary = previous.get('summary', {}).get('by_shop', {})
+        previous_by_shop = {}
+        for product in previous.get('products', []):
+            previous_by_shop.setdefault(product.get('shop'), []).append(product)
 
-            print(f"\n❌ Validation gate REJECTED this run — latest_products.json left unchanged")
-            for reason in failure_reasons:
-                print(f"   - {reason}")
+        fresh_by_shop = {}
+        for product in self.results['products']:
+            fresh_by_shop.setdefault(product.get('shop'), []).append(product)
+
+        attempted = self.results['summary']['by_shop']
+        run_timestamp = self.results['timestamp']
+        shops = list(attempted) + [s for s in previous_summary if s not in attempted]
+
+        final_products, final_summary, rejections = [], {}, []
+        for shop in shops:
+            info = attempted.get(shop)
+            previous_info = previous_summary.get(shop, {})
+            previous_scraped_at = previous_info.get('scraped_at') or previous_timestamp
+
+            if info is None:
+                reason = 'not run this time'
+            elif not info.get('success'):
+                reason = info.get('error', 'scrape failed')
+            else:
+                accepted, reason, skipped = self._validate_shop(
+                    shop, fresh_by_shop.get(shop, []),
+                    previous_info.get('count', 0), previous_scraped_at,
+                )
+
+            if reason is None:
+                for p in accepted:
+                    p['scraped_at'] = run_timestamp
+                    p['stale'] = False
+                final_products += accepted
+                final_summary[shop] = {
+                    'count': len(accepted), 'success': True,
+                    'status': 'fresh', 'scraped_at': run_timestamp,
+                }
+                if skipped:
+                    final_summary[shop]['skipped_incomplete'] = skipped
+                    print(f"   ⚠️  {shop}: dropped {len(skipped)} listing(s) with missing fields: {skipped}")
+                continue
+
+            carried = previous_by_shop.get(shop, [])
+            if info is None and not carried:
+                continue
+            if info is not None:
+                rejections.append(f"{shop}: {reason}")
+            for p in carried:
+                p.setdefault('scraped_at', previous_scraped_at)
+                p['stale'] = True
+            final_products += carried
+            final_summary[shop] = {
+                'count': len(carried), 'success': False,
+                'status': 'carried_forward' if carried else 'missing',
+                'scraped_at': previous_scraped_at if carried else None,
+                'error': reason,
+            }
+
+        if not any(s['status'] == 'fresh' for s in final_summary.values()):
+            reasons = rejections or ['no shop produced fresh data']
+            failed_file = self._write_failed_attempt(reasons)
+            print(f"\n❌ Validation gate REJECTED this run — no shop produced acceptable fresh data")
+            for r in reasons:
+                print(f"   - {r}")
+            print(f"   latest_products.json left unchanged. Attempt saved to: {failed_file}")
+            raise ValidationFailure(reasons)
+
+        if rejections:
+            failed_file = self._write_failed_attempt(rejections)
+            print(f"\n⚠️  Partial update — these shops keep their last-known-good data:")
+            for r in rejections:
+                print(f"   - {r}")
             print(f"   Rejected attempt saved to: {failed_file}")
-            raise ValidationFailure(failure_reasons)
+
+        self.results['products'] = final_products
+        self.results['summary']['by_shop'] = final_summary
+        self.results['summary']['total_products'] = len(final_products)
 
         # Save to latest_products.json (used by Next.js API)
         latest_file = self.output_dir / "latest_products.json"
@@ -286,9 +337,10 @@ class PriceUpdater:
         print(f"Total Products: {self.results['summary']['total_products']}")
         print(f"\nBy Shop:")
 
+        icons = {'fresh': '✅', 'carried_forward': '⚠️ ', 'missing': '❌'}
         for shop, info in self.results['summary']['by_shop'].items():
-            status = "✅" if info['success'] else "❌"
-            print(f"  {status} {shop}: {info['count']} products")
+            status = info.get('status', 'fresh' if info['success'] else 'missing')
+            print(f"  {icons.get(status, '❌')} {shop}: {info['count']} products ({status})")
             if not info['success']:
                 print(f"     Error: {info.get('error', 'Unknown')}")
 

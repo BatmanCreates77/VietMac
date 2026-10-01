@@ -123,3 +123,54 @@ def test_cellphones_playwright_fetch_preserves_encoding():
 
     assert isinstance(html, str), "fetch must return str, not re-encoded bytes"
     assert vietnamese_text in html, "Vietnamese text must survive unchanged, no mojibake"
+
+
+FPT_READY_HTML = (Path(__file__).parent / "fixtures" / "raw" / "fptshop" / "live_macbook_listing.html").read_text(encoding="utf-8")
+FPT_CHALLENGE_HTML = "<html><head><title>Just a moment...</title></head><body></body></html>"
+
+
+def make_fake_cdp_browser(pages):
+    """A stand-in for sb_cdp.Chrome whose get_page_source() walks through
+    `pages` (repeating the last one)."""
+    browser = MagicMock()
+    sequence = list(pages)
+    browser.get_page_source.side_effect = lambda: sequence.pop(0) if len(sequence) > 1 else sequence[0]
+    return browser
+
+
+@pytest.fixture
+def no_sleep():
+    with patch("scrapers.fptshop_scraper.time.sleep"), patch("scrapers.base_scraper.time.sleep"):
+        yield
+
+
+def test_fptshop_waits_through_cloudflare_challenge(no_sleep):
+    browser = make_fake_cdp_browser([FPT_CHALLENGE_HTML, FPT_CHALLENGE_HTML, FPT_READY_HTML])
+    with patch("scrapers.fptshop_scraper.sb_cdp.Chrome", return_value=browser):
+        html = FPTShopScraper().fetch_html("https://fptshop.com.vn/x")
+
+    assert html is not None and "cardInfo" in html
+
+
+def test_fptshop_reuses_one_browser_and_always_closes_it(no_sleep):
+    """Solve Cloudflare once per run, then reuse the session; and never leave
+    a stray Chrome behind after a scheduled run."""
+    browser = make_fake_cdp_browser([FPT_READY_HTML])
+    with patch("scrapers.fptshop_scraper.sb_cdp.Chrome", return_value=browser) as chrome:
+        result = FPTShopScraper().scrape()
+
+    assert result['success'] and result['count'] > 0
+    assert chrome.call_count == 1, "one browser for all listing pages"
+    assert browser.open.call_count == len(FPTShopScraper().page_urls())
+    browser.driver.stop.assert_called_once()
+
+
+def test_fptshop_gives_up_with_fresh_browser_per_attempt(no_sleep):
+    """A page stuck on the challenge must time out (not hang a scheduled run),
+    and each retry must start a new browser rather than reuse a stuck one."""
+    with patch("scrapers.fptshop_scraper.sb_cdp.Chrome",
+               side_effect=lambda: make_fake_cdp_browser([FPT_CHALLENGE_HTML])) as chrome:
+        html = FPTShopScraper().fetch_html("https://fptshop.com.vn/x", retry=2)
+
+    assert html is None
+    assert chrome.call_count == 2
