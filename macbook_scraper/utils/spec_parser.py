@@ -87,7 +87,12 @@ class SpecParser:
         }
 
     def _extract_model_type(self, name: str) -> str:
-        """Extract MacBook Air or MacBook Pro"""
+        """Extract MacBook Air / Pro / Neo"""
+        # Prefer the word right after "MacBook": a bare substring check
+        # misfiles "MacBook Neo 13 inch A18 Pro" as a MacBook Pro.
+        match = re.search(r'MacBook\s+(Air|Pro|Neo)\b', name, re.IGNORECASE)
+        if match:
+            return f"MacBook {match.group(1).capitalize()}"
         name_lower = name.lower()
         if 'air' in name_lower:
             return 'MacBook Air'
@@ -268,6 +273,8 @@ class SpecParser:
                 parts.append('air')
             elif 'Pro' in model_type:
                 parts.append('pro')
+            elif 'Neo' in model_type:
+                parts.append('neo')
 
         # Screen
         if screen_size:
