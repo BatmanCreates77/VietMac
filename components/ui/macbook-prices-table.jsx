@@ -117,6 +117,8 @@ function MacBookPricesTable({ data, currency, posthog }) {
     const [genB, variantB] = chipSortKey(b);
     return genA - genB || variantA - variantB || a.localeCompare(b);
   });
+  // "New" badge goes on the latest base M chip (sorted last).
+  const newestChip = chipsets.filter((chip) => /^M\d+$/.test(chip)).at(-1);
 
   // Detect mobile screen size
   useEffect(() => {
@@ -348,7 +350,7 @@ function MacBookPricesTable({ data, currency, posthog }) {
                           <SelectItem key={chip} value={chip}>
                             <span className="flex items-center gap-2">
                               {chip}
-                              {chip === "M5" && (
+                              {chip === newestChip && (
                                 <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
                                   New
                                 </span>
@@ -441,7 +443,7 @@ function MacBookPricesTable({ data, currency, posthog }) {
                     <SelectItem key={chip} value={chip}>
                       <span className="flex items-center gap-2">
                         {chip}
-                        {chip === "M5" && (
+                        {chip === newestChip && (
                           <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
                             New
                           </span>
