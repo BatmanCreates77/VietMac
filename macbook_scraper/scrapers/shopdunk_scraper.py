@@ -30,7 +30,10 @@ class ShopDunkScraper(BaseScraper):
 
         name = name.strip()
         # Remove common suffixes
-        name = re.sub(r'\s*\(.*?\)\s*$', '', name)  # Remove (Đủ hộp, PK) etc
+        # Remove notes like "(Đủ hộp, PK)", but keep a trailing config such
+        # as "(10 core GPU| 16GB RAM| 512GB SSD)": it is the only thing that
+        # tells apart e.g. 12 "MacBook Pro 14 inch M5 2025" listings.
+        name = re.sub(r'\s*\([^()\d]*\)\s*$', '', name)
         name = re.sub(r'\s*-\s*Cũ.*', '', name)  # Remove "Cũ đẹp"
         name = re.sub(r'\s*Cũ.*', '', name)
 

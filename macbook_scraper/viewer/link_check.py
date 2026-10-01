@@ -25,8 +25,10 @@ USER_AGENT = (
     '(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
 )
 
-CHIP_PATTERN = re.compile(r'(m[1-9])(pro|max)?')
-SIZE_PATTERN = re.compile(r'(\d+)(gb|tb)')
+CHIP_PATTERN = re.compile(r'(m[1-9]|a1[89])(pro|max|ultra)?')
+# Matched on the lowercased title with spaces kept: once normalised,
+# "Mac mini M4 (24GB RAM)" reads "m424gb" and the chip digit joins the size.
+SIZE_PATTERN = re.compile(r'\b(\d+)\s*(gb|tb)\b')
 
 
 def page_title(html):
@@ -185,7 +187,7 @@ def evaluate(product, fetched):
         our_sizes.add(f"{specs['ram_gb']}gb")
     if specs.get('storage_display'):
         our_sizes.add(_normalise(specs['storage_display']))
-    page_sizes = {n + u for n, u in SIZE_PATTERN.findall(norm_heading)}
+    page_sizes = {n + u for n, u in SIZE_PATTERN.findall(heading.lower())}
     sizes_conflict = bool(our_sizes and page_sizes and not (our_sizes & page_sizes))
     if sizes_conflict:
         result['notes'].append(
