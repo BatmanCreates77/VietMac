@@ -191,15 +191,98 @@ def test_fresh_previous_data_still_enforces_drop_check(tmp_path):
         updater.save_results()
 
 
-def test_rejected_run_preserves_last_known_good_exactly(tmp_path):
-    """The core guarantee: after a rejected run, latest_products.json is
-    byte-identical to what it was before — not partially overwritten."""
-    seeded = seed_previous(tmp_path, {'shopdunk': 30, 'cellphones': 20})
+def mark_failed(updater, shop, error="Cloudflare block or timeout"):
+    updater.results['summary']['by_shop'][shop] = {'count': 0, 'success': False, 'error': error}
+
+
+def load_latest(tmp_path):
+    return json.loads((tmp_path / "latest_products.json").read_text())
+
+
+def test_all_shops_rejected_preserves_last_known_good_exactly(tmp_path):
+    """When no shop produces acceptable fresh data, latest_products.json is
+    byte-identical to before — not partially overwritten."""
+    seed_previous(tmp_path, {'shopdunk': 30, 'cellphones': 20})
     before = (tmp_path / "latest_products.json").read_text()
 
-    updater = make_updater_with_results(tmp_path, {'shopdunk': 0, 'cellphones': 20})
+    updater = make_updater_with_results(tmp_path, {'shopdunk': 0, 'cellphones': 0})
     with pytest.raises(ValidationFailure):
         updater.save_results()
 
-    after = (tmp_path / "latest_products.json").read_text()
-    assert before == after
+    assert (tmp_path / "latest_products.json").read_text() == before
+
+
+def test_rejected_shop_keeps_last_known_good_while_others_update(tmp_path):
+    seed_previous(tmp_path, {'shopdunk': 30, 'cellphones': 20})
+
+    updater = make_updater_with_results(tmp_path, {'shopdunk': 0, 'cellphones': 20})
+    updater.save_results()  # partial update, must not raise
+
+    latest = load_latest(tmp_path)
+    shopdunk = latest['summary']['by_shop']['shopdunk']
+    assert shopdunk['status'] == 'carried_forward'
+    assert shopdunk['count'] == 30
+    assert latest['summary']['by_shop']['cellphones']['status'] == 'fresh'
+    by_shop = {}
+    for p in latest['products']:
+        by_shop.setdefault(p['shop'], []).append(p)
+    assert len(by_shop['shopdunk']) == 30 and all(p['stale'] for p in by_shop['shopdunk'])
+    assert len(by_shop['cellphones']) == 20 and not any(p['stale'] for p in by_shop['cellphones'])
+
+
+def test_failed_shop_is_carried_forward_not_dropped(tmp_path):
+    """Real incident 2026-10-01 06:00: FPTShop failed outright (missing
+    Rosetta), and the old gate — which only checked shops that succeeded —
+    published a file with zero FPTShop products."""
+    seed_previous(tmp_path, {'cellphones': 16, 'shopdunk': 23, 'fptshop': 50})
+
+    updater = make_updater_with_results(tmp_path, {'cellphones': 16, 'shopdunk': 23})
+    mark_failed(updater, 'fptshop')
+    updater.save_results()
+
+    latest = load_latest(tmp_path)
+    fpt = latest['summary']['by_shop']['fptshop']
+    assert fpt['status'] == 'carried_forward'
+    assert fpt['count'] == 50
+    assert latest['summary']['total_products'] == 89
+
+
+def test_single_unpriced_listing_is_dropped_not_fatal(tmp_path):
+    """Real incident 2026-10-01 12:00: one CellphoneS listing with no price
+    rejected the entire run, blocking all three shops' updates."""
+    updater = make_updater_with_results(tmp_path, {'cellphones': 16})
+    unpriced = updater.results['products'][0]
+    unpriced['price_vnd'] = None
+    updater.save_results()
+
+    latest = load_latest(tmp_path)
+    cellphones = latest['summary']['by_shop']['cellphones']
+    assert cellphones['status'] == 'fresh'
+    assert cellphones['count'] == 15
+    assert cellphones['skipped_incomplete'] == [unpriced['url']]
+
+
+def test_systematic_missing_prices_rejects_shop(tmp_path):
+    """Real incident 2026-09-19: an encoding bug blanked 4/17 CellphoneS
+    prices. That's broken parsing, not a few odd listings — the shop must
+    fall back to last-known-good rather than publish a gutted list."""
+    seed_previous(tmp_path, {'cellphones': 17, 'shopdunk': 23})
+    updater = make_updater_with_results(tmp_path, {'cellphones': 17, 'shopdunk': 23})
+    for p in [p for p in updater.results['products'] if p['shop'] == 'cellphones'][:4]:
+        p['price_vnd'] = None
+    updater.save_results()
+
+    cellphones = load_latest(tmp_path)['summary']['by_shop']['cellphones']
+    assert cellphones['status'] == 'carried_forward'
+    assert cellphones['count'] == 17
+    assert '4/17' in cellphones['error']
+
+
+def test_failed_shop_with_no_history_is_reported_missing(tmp_path):
+    updater = make_updater_with_results(tmp_path, {'shopdunk': 23})
+    mark_failed(updater, 'fptshop')
+    updater.save_results()
+
+    fpt = load_latest(tmp_path)['summary']['by_shop']['fptshop']
+    assert fpt['status'] == 'missing'
+    assert fpt['count'] == 0

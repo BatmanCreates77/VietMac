@@ -52,8 +52,8 @@ venv/
 .venv/
 
 # Scraper operational artifacts (debug output, not source)
-# (session cache already covered by the .cache/ rule below)
 macbook_scraper/output/failed/
+macbook_scraper/logs/
 
 # Development tools
 chainlit.md

@@ -41,10 +41,49 @@ log "Using Python: $PYTHON_CMD"
 # base (rejected as non-fast-forward). --ff-only refuses to run on a
 # diverged or dirty clone rather than guessing how to reconcile it.
 REPO_ROOT="$( cd "$SCRIPT_DIR/.." && pwd )"
+AUTOMATED_COMMIT_PREFIX="chore: automated price update"
+
+# True when every local commit not on origin/main is one of this job's own
+# price commits — i.e. a previous push failed and nothing else was done here.
+only_automated_commits_unpushed() {
+    local subjects
+    subjects=$(git -C "$REPO_ROOT" log --format=%s origin/main..HEAD) || return 1
+    [ -n "$subjects" ] || return 1
+    ! printf '%s\n' "$subjects" | grep -qv "^$AUTOMATED_COMMIT_PREFIX"
+}
+
+# A push can report failure yet have landed (seen 2026-10-01 06:53: "cannot
+# lock ref" after a slow push that GitHub had already applied), or fail
+# because main moved (a PR merged mid-run). Check before declaring failure.
+push_with_recovery() {
+    git -C "$REPO_ROOT" push -q >> "$LOG_FILE" 2>&1 && return 0
+    log "⚠️  push reported failure — checking GitHub..."
+    git -C "$REPO_ROOT" fetch -q origin >> "$LOG_FILE" 2>&1 || return 1
+    if git -C "$REPO_ROOT" merge-base --is-ancestor HEAD origin/main; then
+        log "ℹ️  GitHub already has this commit — push did land"
+        return 0
+    fi
+    log "main moved during the run — rebasing and retrying once..."
+    if ! git -C "$REPO_ROOT" rebase -q origin/main >> "$LOG_FILE" 2>&1; then
+        git -C "$REPO_ROOT" rebase --abort >> "$LOG_FILE" 2>&1
+        return 1
+    fi
+    git -C "$REPO_ROOT" push -q >> "$LOG_FILE" 2>&1
+}
+
 log "Pulling latest main..."
-if ! git -C "$REPO_ROOT" pull --ff-only >> "$LOG_FILE" 2>&1; then
-    log "❌ git pull --ff-only failed — clone is diverged or dirty, not scraping"
-    exit 1
+if ! git -C "$REPO_ROOT" pull -q --ff-only >> "$LOG_FILE" 2>&1; then
+    # An unpushed price commit from an earlier failed run would otherwise
+    # block every future run here. Its data is about to be re-scraped
+    # anyway, so it's safe to drop — but only if that's all it is.
+    git -C "$REPO_ROOT" fetch -q origin >> "$LOG_FILE" 2>&1
+    if only_automated_commits_unpushed && git -C "$REPO_ROOT" diff --quiet HEAD; then
+        log "⚠️  Dropping unpushed automated price commit(s) and syncing to origin/main"
+        git -C "$REPO_ROOT" reset -q --hard origin/main >> "$LOG_FILE" 2>&1
+    else
+        log "❌ git pull --ff-only failed — clone is diverged or dirty, not scraping"
+        exit 1
+    fi
 fi
 
 # Run the scraper
@@ -71,8 +110,8 @@ if [ $EXIT_CODE -eq 0 ]; then
     else
         log "Committing updated prices..."
         if git -C "$REPO_ROOT" add macbook_scraper/output/latest_products.json \
-            && git -C "$REPO_ROOT" commit -m "chore: automated price update $(date '+%Y-%m-%d %H:%M')" \
-            && git -C "$REPO_ROOT" push; then
+            && git -C "$REPO_ROOT" commit -q -m "$AUTOMATED_COMMIT_PREFIX $(date '+%Y-%m-%d %H:%M')" \
+            && push_with_recovery; then
             log "✅ Committed and pushed updated prices"
         else
             log "❌ git commit/push failed — new prices are on disk but NOT live"
