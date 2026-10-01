@@ -29,7 +29,7 @@ class CellphonesScraper(BaseScraper):
     base_url = 'https://cellphones.com.vn'
 
     def _parse_model_name(self, name):
-        """Parse MacBook model name and extract specs"""
+        """Parse Mac model name and extract specs"""
         if not name:
             return None
 
@@ -45,10 +45,52 @@ class CellphonesScraper(BaseScraper):
             'https://cellphones.com.vn/laptop/mac/macbook-pro/macbook-pro-2025.html',
             'https://cellphones.com.vn/laptop/mac/macbook-air.html',
             'https://cellphones.com.vn/laptop/mac/macbook-pro.html',
+            'https://cellphones.com.vn/laptop/mac/mini.html',
+            'https://cellphones.com.vn/laptop/mac/imac.html',
+            'https://cellphones.com.vn/laptop/mac/mac-studio.html',
         ]
+
+    # Listings show 20 cards, then an "Xem thêm N sản phẩm" ("show N more")
+    # button: laptop/mac.html held 75 products behind 3 clicks (2026-10-01).
+    # Clicked from JS because a newsletter overlay intercepts real clicks.
+    MAX_SHOW_MORE_CLICKS = 10
+    CLICK_SHOW_MORE_JS = """() => {
+        const button = document.querySelector('a.button__show-more-product');
+        if (!button || !/\\d/.test(button.textContent)) return false;
+        button.click();
+        return true;
+    }"""
+    # Every card has a price element, but it is sometimes still empty when
+    # the cards appear: one 18:00 run saw 17/40 unpriced, a probe 12/12.
+    UNPRICED_CARDS_JS = """() => [...document.querySelectorAll('.product-info')]
+        .filter(card => !card.querySelector('.product__price--show')?.textContent.trim()).length"""
+    PRICE_WAIT_SECONDS = 15
 
     def fetch_html(self, url, retry=3):
         return self._fetch_with_playwright(url, retry=retry)
+
+    def _expand_listing(self, page):
+        for _ in range(self.MAX_SHOW_MORE_CLICKS):
+            before = page.locator('.product-info').count()
+            if not page.evaluate(self.CLICK_SHOW_MORE_JS):
+                return
+            try:
+                page.wait_for_function(
+                    f"() => document.querySelectorAll('.product-info').length > {before}",
+                    timeout=10000,
+                )
+            except PlaywrightTimeout:
+                logger.warning("  'Show more' clicked but no new products appeared")
+                return
+            logger.info(f"  Expanded listing: {before} -> {page.locator('.product-info').count()} products")
+
+    def _wait_for_prices(self, page):
+        for _ in range(self.PRICE_WAIT_SECONDS):
+            unpriced = page.evaluate(self.UNPRICED_CARDS_JS)
+            if unpriced == 0:
+                return
+            time.sleep(1)
+        logger.warning(f"  {unpriced} products still unpriced after {self.PRICE_WAIT_SECONDS}s")
 
     def _fetch_with_playwright(self, url, retry=3):
         for attempt in range(retry):
@@ -76,10 +118,12 @@ class CellphonesScraper(BaseScraper):
                         logger.warning("  Product selector not found, continuing anyway...")
 
                     time.sleep(2)
+                    self._expand_listing(page)
 
                     logger.info("  Scrolling to load all products...")
                     page.evaluate('window.scrollTo(0, document.body.scrollHeight)')
                     time.sleep(2)
+                    self._wait_for_prices(page)
 
                     content = page.content()
                     browser.close()
@@ -125,7 +169,7 @@ class CellphonesScraper(BaseScraper):
 
                 raw_name = name_elem.get_text(strip=True)
 
-                if 'MacBook' not in raw_name:
+                if not self._is_mac(raw_name):
                     continue
 
                 model_name = self._parse_model_name(raw_name)

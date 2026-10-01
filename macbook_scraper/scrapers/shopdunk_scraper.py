@@ -24,7 +24,7 @@ class ShopDunkScraper(BaseScraper):
     base_url = 'https://shopdunk.com'
 
     def _parse_model_name(self, name):
-        """Parse and clean MacBook model name"""
+        """Parse and clean Mac model name"""
         if not name:
             return None
 
@@ -44,6 +44,9 @@ class ShopDunkScraper(BaseScraper):
             "https://shopdunk.com/macbook-pro-m5",
             "https://shopdunk.com/macbook-air",
             "https://shopdunk.com/macbook-pro-2",
+            "https://shopdunk.com/mac-mini",
+            "https://shopdunk.com/imac",
+            "https://shopdunk.com/mac-studio",
         ]
 
     @staticmethod
@@ -126,7 +129,7 @@ class ShopDunkScraper(BaseScraper):
 
                 raw_name = name_elem.get_text(strip=True)
 
-                if 'MacBook' not in raw_name:
+                if not self._is_mac(raw_name):
                     continue
 
                 model_name = self._parse_model_name(raw_name)

@@ -45,7 +45,7 @@ class FPTShopScraper(BaseScraper):
         self._browser = None
 
     def _parse_model_name(self, name):
-        """Parse and clean MacBook model name"""
+        """Parse and clean Mac model name"""
         if not name:
             return None
 
@@ -61,6 +61,8 @@ class FPTShopScraper(BaseScraper):
             "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air?kich-thuoc-man-hinh=15-inch&sort=noi-bat",
             "https://fptshop.com.vn/may-tinh-xach-tay/macbook-pro?kich-thuoc-man-hinh=14-inch&sort=noi-bat",
             "https://fptshop.com.vn/may-tinh-xach-tay/macbook-pro?kich-thuoc-man-hinh=16-inch&sort=noi-bat",
+            # Mac mini, iMac and Mac Studio share one listing.
+            "https://fptshop.com.vn/may-tinh-de-ban/apple-imac",
         ]
 
     def scrape(self):
@@ -193,7 +195,7 @@ class FPTShopScraper(BaseScraper):
 
                 raw_name = name_elem.get('title') or name_elem.get_text(strip=True)
 
-                if 'MacBook' not in raw_name:
+                if not self._is_mac(raw_name):
                     continue
 
                 model_name = self._parse_model_name(raw_name)

@@ -135,8 +135,8 @@ export default function MacBookTracker() {
 
           {/* Subtitle */}
           <p className="text-center text-gray-400 text-sm md:text-base mb-4 px-4 animate-in fade-in slide-in-from-bottom duration-700 delay-200">
-            Live MacBook prices from Vietnam's top Apple retailers with VAT
-            refunds for tourists
+            Live MacBook, Mac mini, iMac and Mac Studio prices from Vietnam's
+            top Apple retailers with VAT refunds for tourists
           </p>
 
           {/* Exchange Rate Card */}

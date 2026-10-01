@@ -22,6 +22,10 @@ from utils.spec_parser import SpecParser
 
 logger = logging.getLogger(__name__)
 
+# Product lines the site tracks. Shops' Mac pages also list Studio Display
+# and accessories; those don't match and are skipped.
+MAC_NAME_PATTERN = re.compile(r'\b(?:MacBook|Mac\s*mini|iMac|Mac\s*Studio)\b', re.IGNORECASE)
+
 
 class BaseScraper(ABC):
     shop_name: str
@@ -36,6 +40,11 @@ class BaseScraper(ABC):
             return None
         cleaned = re.sub(r'[^\d]', '', price_text)
         return int(cleaned) if cleaned else None
+
+    @staticmethod
+    def _is_mac(raw_name):
+        """True for a MacBook, Mac mini, iMac or Mac Studio listing."""
+        return bool(raw_name and MAC_NAME_PATTERN.search(raw_name))
 
     def _parse_model_name(self, name):
         """
