@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-01T13:18:43.577084",
+  "timestamp": "2026-10-01T18:00:07.527887",
   "products": [
     {
       "model": "MacBook Neo 13 inch A18 Pro 2026 6CPU 5GPU 8GB 256GB",
@@ -24,7 +24,7 @@
       "product_id": "pro-13-8-256gb",
       "clean_name": "MacBook Pro 13\" 6C 5G 8GB 256GB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Air M5 13 inch 2026 10CPU 8GPU 16GB 512GB",
@@ -49,7 +49,7 @@
       "product_id": "m5-air-13-16-512gb",
       "clean_name": "MacBook Air 13\" M5 10C 8G 16GB 512GB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Neo 13 inch A18 Pro 2026 6CPU 5GPU 8GB 512GB Touch ID",
@@ -74,7 +74,7 @@
       "product_id": "pro-13-8-512gb",
       "clean_name": "MacBook Pro 13\" 6C 5G 8GB 512GB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Air M4 13 inch 2025 10CPU 8GPU 16GB 256GB",
@@ -99,7 +99,7 @@
       "product_id": "m4-air-13-16-256gb",
       "clean_name": "MacBook Air 13\" M4 10C 8G 16GB 256GB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Air M5 13 inch 2026 10CPU 8GPU 16GB 512GB Sạc 70W",
@@ -124,7 +124,7 @@
       "product_id": "m5-air-13-16-512gb",
       "clean_name": "MacBook Air 13\" M5 10C 8G 16GB 512GB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Pro 14 M5 10CPU 10GPU 16GB 1TB",
@@ -149,7 +149,7 @@
       "product_id": "m5-pro-14-16-1tb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 16GB 1TB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Air M5 13 inch 2026 10CPU 10GPU 16GB 512GB Sạc 30W",
@@ -174,7 +174,7 @@
       "product_id": "m5-air-13-16-512gb",
       "clean_name": "MacBook Air 13\" M5 10C 10G 16GB 512GB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Air M5 13 inch 2026 10CPU 10GPU 24GB 512GB Sạc 70W",
@@ -199,7 +199,7 @@
       "product_id": "m5-air-13-24-512gb",
       "clean_name": "MacBook Air 13\" M5 10C 10G 24GB 512GB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Pro M5 Pro 14 inch 2026 15CPU 16GPU 24GB 1TB",
@@ -224,7 +224,7 @@
       "product_id": "m5-pro-pro-14-24-1tb",
       "clean_name": "MacBook Pro 14\" M5 Pro 15C 16G 24GB 1TB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Air M4 13 inch 2025 10CPU 10GPU 24GB 512GB Sạc 70W",
@@ -249,7 +249,7 @@
       "product_id": "m4-air-13-24-512gb",
       "clean_name": "MacBook Air 13\" M4 10C 10G 24GB 512GB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Air M5 15 inch 2026 10CPU 10GPU 16GB 512GB",
@@ -274,7 +274,7 @@
       "product_id": "m5-air-15-16-512gb",
       "clean_name": "MacBook Air 15\" M5 10C 10G 16GB 512GB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Pro M5 Max 16 inch 2026 18CPU 40GPU 48GB 2TB Sạc 140W",
@@ -299,7 +299,7 @@
       "product_id": "m5-max-pro-16-48-2tb",
       "clean_name": "MacBook Pro 16\" M5 Max 18C 40G 48GB 2TB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Pro 14 M5 10CPU 10GPU 24GB 1TB",
@@ -324,7 +324,7 @@
       "product_id": "m5-pro-14-24-1tb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 24GB 1TB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Pro 14 M5 10CPU 10GPU 16GB 1TB Sạc 96W",
@@ -349,7 +349,7 @@
       "product_id": "m5-pro-14-16-1tb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 16GB 1TB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Pro 14 M5 10CPU 10GPU 32GB 1TB Sạc 70W",
@@ -374,7 +374,7 @@
       "product_id": "m5-pro-14-32-1tb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 32GB 1TB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Pro 14 M5 10CPU 10GPU 32GB 1TB Nano Sạc 70W",
@@ -399,7 +399,7 @@
       "product_id": "m5-pro-14-32-1tb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 32GB 1TB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Air M5 13 inch 2026 10CPU 10GPU 16GB 1TB",
@@ -424,7 +424,7 @@
       "product_id": "m5-air-13-16-1tb",
       "clean_name": "MacBook Air 13\" M5 10C 10G 16GB 1TB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Air M5 15 inch 2026 10CPU 10GPU 24GB 512GB Sạc 70W",
@@ -449,7 +449,7 @@
       "product_id": "m5-air-15-24-512gb",
       "clean_name": "MacBook Air 15\" M5 10C 10G 24GB 512GB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Air M5 15 inch 2026 10CPU 10GPU 32GB 1TB Sạc 70W",
@@ -474,7 +474,7 @@
       "product_id": "m5-air-15-32-1tb",
       "clean_name": "MacBook Air 15\" M5 10C 10G 32GB 1TB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Air M5 15 inch 2026 10CPU 10GPU 16GB 512GB Sạc 70W",
@@ -499,7 +499,7 @@
       "product_id": "m5-air-15-16-512gb",
       "clean_name": "MacBook Air 15\" M5 10C 10G 16GB 512GB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Air M5 13 inch 2026 10CPU 10GPU 24GB 1TB",
@@ -524,7 +524,7 @@
       "product_id": "m5-air-13-24-1tb",
       "clean_name": "MacBook Air 13\" M5 10C 10G 24GB 1TB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Air M5 13 inch 2026 10CPU 10GPU 32GB 1TB Sạc 70W",
@@ -549,7 +549,7 @@
       "product_id": "m5-air-13-32-1tb",
       "clean_name": "MacBook Air 13\" M5 10C 10G 32GB 1TB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Air M5 15 inch 2026 10CPU 10GPU 24GB 1TB",
@@ -574,7 +574,7 @@
       "product_id": "m5-air-15-24-1tb",
       "clean_name": "MacBook Air 15\" M5 10C 10G 24GB 1TB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Air M5 15 inch 2026 10CPU 10GPU 24GB 1TB Sạc 70W",
@@ -599,7 +599,7 @@
       "product_id": "m5-air-15-24-1tb",
       "clean_name": "MacBook Air 15\" M5 10C 10G 24GB 1TB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Air M5 13 inch 2026 10CPU 10GPU 32GB 512GB Sạc 70W",
@@ -624,7 +624,7 @@
       "product_id": "m5-air-13-32-512gb",
       "clean_name": "MacBook Air 13\" M5 10C 10G 32GB 512GB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Air M5 13 inch 2026 10CPU 10GPU 16GB 1TB Sạc 70W",
@@ -649,7 +649,7 @@
       "product_id": "m5-air-13-16-1tb",
       "clean_name": "MacBook Air 13\" M5 10C 10G 16GB 1TB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Air M5 13 inch 2026 10CPU 10GPU 24GB 1TB Sạc 70W",
@@ -674,7 +674,7 @@
       "product_id": "m5-air-13-24-1tb",
       "clean_name": "MacBook Air 13\" M5 10C 10G 24GB 1TB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "Apple MacBook Air M2 2024 8CPU 10GPU 16GB 512GB I",
@@ -699,7 +699,7 @@
       "product_id": "m2-air-16-512gb",
       "clean_name": "MacBook Air M2 8C 10G 16GB 512GB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Air M5 15 inch 2026 10CPU 10GPU 16GB 1TB",
@@ -724,7 +724,7 @@
       "product_id": "m5-air-15-16-1tb",
       "clean_name": "MacBook Air 15\" M5 10C 10G 16GB 1TB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Pro 14 M4 Pro 14CPU 20GPU 24GB 512GB Nano",
@@ -749,7 +749,7 @@
       "product_id": "m4-pro-pro-14-24-512gb",
       "clean_name": "MacBook Pro 14\" M4 Pro 14C 20G 24GB 512GB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Pro M5 Max 16 inch 2026 18CPU 32GPU 36GB 2TB Sạc 140W",
@@ -774,7 +774,7 @@
       "product_id": "m5-max-pro-16-36-2tb",
       "clean_name": "MacBook Pro 16\" M5 Max 18C 32G 36GB 2TB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Pro M5 Pro 16 inch 2026 18CPU 20GPU 24GB 1TB",
@@ -799,7 +799,7 @@
       "product_id": "m5-pro-pro-16-24-1tb",
       "clean_name": "MacBook Pro 16\" M5 Pro 18C 20G 24GB 1TB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Pro M5 Pro 16 inch 2026 18CPU 20GPU 48GB 1TB Sạc 140W",
@@ -824,7 +824,7 @@
       "product_id": "m5-pro-pro-16-48-1tb",
       "clean_name": "MacBook Pro 16\" M5 Pro 18C 20G 48GB 1TB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Pro M5 Pro 14 inch 2026 15CPU 16GPU 24GB 1TB Sạc 96W",
@@ -849,7 +849,7 @@
       "product_id": "m5-pro-pro-14-24-1tb",
       "clean_name": "MacBook Pro 14\" M5 Pro 15C 16G 24GB 1TB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Pro 14 M4 Pro 14CPU 20GPU 24GB 1TB Nano",
@@ -874,7 +874,7 @@
       "product_id": "m4-pro-pro-14-24-1tb",
       "clean_name": "MacBook Pro 14\" M4 Pro 14C 20G 24GB 1TB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Pro 16 M4 Max 16CPU 40GPU 48GB 1TB",
@@ -899,7 +899,7 @@
       "product_id": "m4-max-pro-16-48-1tb",
       "clean_name": "MacBook Pro 16\" M4 Max 16C 40G 48GB 1TB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Pro 14 M4 Max 14CPU 32GPU 36GB 1TB Nano",
@@ -924,7 +924,7 @@
       "product_id": "m4-max-pro-14-36-1tb",
       "clean_name": "MacBook Pro 14\" M4 Max 14C 32G 36GB 1TB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Pro M5 Pro 14 inch 2026 15CPU 16GPU 24GB 2TB",
@@ -949,7 +949,7 @@
       "product_id": "m5-pro-pro-14-24-2tb",
       "clean_name": "MacBook Pro 14\" M5 Pro 15C 16G 24GB 2TB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Pro 16 M4 Pro 14CPU 20GPU 24GB 1TB Sạc 140W",
@@ -974,7 +974,7 @@
       "product_id": "m4-pro-pro-16-24-1tb",
       "clean_name": "MacBook Pro 16\" M4 Pro 14C 20G 24GB 1TB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Pro M5 Max 14 inch 2026 18CPU 32GPU 36GB 2TB Nano",
@@ -999,7 +999,7 @@
       "product_id": "m5-max-pro-14-36-2tb",
       "clean_name": "MacBook Pro 14\" M5 Max 18C 32G 36GB 2TB",
       "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
+      "stale": true
     },
     {
       "model": "MacBook Pro (M5 Pro) 14 inch chip with 15‑core CPU and 16‑core GPU, 24GB",
@@ -1023,7 +1023,7 @@
       },
       "product_id": "6357",
       "clean_name": "MacBook Pro 14\" M5 Pro 24GB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1048,7 +1048,7 @@
       },
       "product_id": "6365",
       "clean_name": "MacBook Air 13\" M5 16GB 512GB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1073,7 +1073,7 @@
       },
       "product_id": "5801",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 16GB 512GB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1098,7 +1098,7 @@
       },
       "product_id": "3726",
       "clean_name": "MacBook Air 13\" M2 10G 16GB 256GB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1123,7 +1123,7 @@
       },
       "product_id": "6358",
       "clean_name": "MacBook Pro 14\" M5 Pro 24GB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1148,7 +1148,7 @@
       },
       "product_id": "1820",
       "clean_name": "MacBook Air 13\" M2 8GB 256GB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1173,7 +1173,7 @@
       },
       "product_id": "3216",
       "clean_name": "MacBook Air 13\" M3 8GB 256GB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1198,7 +1198,7 @@
       },
       "product_id": "5802",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 16GB 1TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1223,7 +1223,7 @@
       },
       "product_id": "5803",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 24GB 1TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1248,7 +1248,7 @@
       },
       "product_id": "5804",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 24GB 512GB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1273,7 +1273,7 @@
       },
       "product_id": "5805",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 32GB 512GB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1298,7 +1298,7 @@
       },
       "product_id": "5807",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 32GB 1TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1323,7 +1323,7 @@
       },
       "product_id": "5808",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 16GB 2TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1348,7 +1348,7 @@
       },
       "product_id": "5809",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 24GB 2TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1373,7 +1373,7 @@
       },
       "product_id": "5810",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 32GB 2TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1398,7 +1398,7 @@
       },
       "product_id": "5811",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 16GB 4TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1423,7 +1423,7 @@
       },
       "product_id": "5812",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 24GB 4TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1448,7 +1448,7 @@
       },
       "product_id": "5813",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 32GB 4TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1473,7 +1473,7 @@
       },
       "product_id": "6737",
       "clean_name": "MacBook Air 13\" M5 16GB 512GB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1498,7 +1498,7 @@
       },
       "product_id": "6360",
       "clean_name": "MacBook Pro 16\" M5 Pro 24GB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1523,7 +1523,7 @@
       },
       "product_id": "1822",
       "clean_name": "MacBook Air 13\" M2 8G 16GB 256GB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1548,7 +1548,7 @@
       },
       "product_id": "1821",
       "clean_name": "MacBook Air M2 8GB 512GB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1573,7 +1573,7 @@
       },
       "product_id": "1823",
       "clean_name": "MacBook Air M2 16GB 512GB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1585,7 +1585,7 @@
       "image_url": null,
       "shop": "fptshop",
       "specs": {
-        "model_type": "MacBook",
+        "model_type": "MacBook Neo",
         "chip": null,
         "chip_variant": null,
         "screen_size": "13\"",
@@ -1596,9 +1596,9 @@
         "storage_display": "256GB",
         "year": null
       },
-      "product_id": "13-8-256gb",
-      "clean_name": "MacBook 13\" 8GB 256GB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "product_id": "neo-13-8-256gb",
+      "clean_name": "MacBook Neo 13\" 8GB 256GB",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1610,7 +1610,7 @@
       "image_url": null,
       "shop": "fptshop",
       "specs": {
-        "model_type": "MacBook",
+        "model_type": "MacBook Neo",
         "chip": null,
         "chip_variant": null,
         "screen_size": "13\"",
@@ -1621,9 +1621,9 @@
         "storage_display": "512GB",
         "year": null
       },
-      "product_id": "13-8-512gb",
-      "clean_name": "MacBook 13\" 8GB 512GB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "product_id": "neo-13-8-512gb",
+      "clean_name": "MacBook Neo 13\" 8GB 512GB",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1648,7 +1648,7 @@
       },
       "product_id": "m5-air-13-16-512gb",
       "clean_name": "MacBook Air 13\" M5 10C 8G 16GB 512GB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1673,7 +1673,7 @@
       },
       "product_id": "m5-air-13-16-512gb",
       "clean_name": "MacBook Air 13\" M5 10C 8G 16GB 512GB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1698,7 +1698,7 @@
       },
       "product_id": "m5-air-13-24-512gb",
       "clean_name": "MacBook Air 13\" M5 10C 10G 24GB 512GB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1723,7 +1723,7 @@
       },
       "product_id": "m5-air-15-16-512gb",
       "clean_name": "MacBook Air 15\" M5 10C 10G 16GB 512GB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1748,7 +1748,7 @@
       },
       "product_id": "m5-pro-14-16-1tb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 16GB 1TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1773,7 +1773,7 @@
       },
       "product_id": "m5-pro-14-16-1tb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 16GB 1TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1798,7 +1798,7 @@
       },
       "product_id": "m5-pro-14-24-1tb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 24GB 1TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1823,7 +1823,7 @@
       },
       "product_id": "m5-pro-14-24-1tb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 24GB 1TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1848,7 +1848,7 @@
       },
       "product_id": "m5-pro-14-32-1tb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 32GB 1TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1873,7 +1873,7 @@
       },
       "product_id": "m5-pro-14-32-1tb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 32GB 1TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1898,7 +1898,7 @@
       },
       "product_id": "m5-pro-pro-14-24-1tb",
       "clean_name": "MacBook Pro 14\" M5 Pro 15C 16G 24GB 1TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1923,7 +1923,7 @@
       },
       "product_id": "m5-pro-pro-14-24-2tb",
       "clean_name": "MacBook Pro 14\" M5 Pro 15C 16G 24GB 2TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1948,7 +1948,7 @@
       },
       "product_id": "m5-pro-pro-16-24-1tb",
       "clean_name": "MacBook Pro 16\" M5 Pro 18C 20G 24GB 1TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1973,7 +1973,7 @@
       },
       "product_id": "m5-pro-pro-16-48-1tb",
       "clean_name": "MacBook Pro 16\" M5 Pro 18C 20G 48GB 1TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -1998,7 +1998,7 @@
       },
       "product_id": "m5-pro-pro-16-24-2tb",
       "clean_name": "MacBook Pro 16\" M5 Pro 18C 20G 24GB 2TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -2023,7 +2023,7 @@
       },
       "product_id": "m5-pro-pro-16-48-2tb",
       "clean_name": "MacBook Pro 16\" M5 Pro 18C 20G 48GB 2TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -2048,7 +2048,7 @@
       },
       "product_id": "m5-max-pro-16-48-2tb",
       "clean_name": "MacBook Pro 16\" M5 Max 18C 40G 48GB 2TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -2073,7 +2073,7 @@
       },
       "product_id": "m5-max-pro-16-48-2tb",
       "clean_name": "MacBook Pro 16\" M5 Max 18C 40G 48GB 2TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -2098,7 +2098,7 @@
       },
       "product_id": "m5-max-pro-14-64-4tb",
       "clean_name": "MacBook Pro 14\" M5 Max 18C 40G 64GB 4TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -2123,7 +2123,7 @@
       },
       "product_id": "m5-max-pro-16-64-4tb",
       "clean_name": "MacBook Pro 16\" M5 Max 18C 40G 64GB 4TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -2148,7 +2148,7 @@
       },
       "product_id": "m5-max-pro-16-128-8tb",
       "clean_name": "MacBook Pro 16\" M5 Max 18C 40G 128GB 8TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -2173,32 +2173,7 @@
       },
       "product_id": "m5-air-13-24-1tb",
       "clean_name": "MacBook Air 13\" M5 10C 10G 24GB 1TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
-    },
-    {
-      "model": "MacBook Air 13 M5 2026 10CPU/10GPU/16GB/1TB/35W",
-      "raw_name": "MacBook Air 13 M5 2026 10CPU/10GPU/16GB/1TB/35W",
-      "price_vnd": 42390000,
-      "price_text": "42.390.000đ",
-      "url": "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-13-inch-m5-2026-10cpu-10gpu-16gb-1tb",
-      "image_url": null,
-      "shop": "fptshop",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M5",
-        "chip_variant": null,
-        "screen_size": "13\"",
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 16,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": 2026
-      },
-      "product_id": "m5-air-13-16-1tb",
-      "clean_name": "MacBook Air 13\" M5 10C 10G 16GB 1TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -2223,7 +2198,32 @@
       },
       "product_id": "m5-air-13-32-1tb",
       "clean_name": "MacBook Air 13\" M5 10C 10G 32GB 1TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
+      "stale": false
+    },
+    {
+      "model": "MacBook Air 13 M5 2026 10CPU/10GPU/16GB/1TB/35W",
+      "raw_name": "MacBook Air 13 M5 2026 10CPU/10GPU/16GB/1TB/35W",
+      "price_vnd": 42390000,
+      "price_text": "42.390.000đ",
+      "url": "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-13-inch-m5-2026-10cpu-10gpu-16gb-1tb",
+      "image_url": null,
+      "shop": "fptshop",
+      "specs": {
+        "model_type": "MacBook Air",
+        "chip": "M5",
+        "chip_variant": null,
+        "screen_size": "13\"",
+        "cpu_cores": 10,
+        "gpu_cores": 10,
+        "ram_gb": 16,
+        "storage_gb": 1024,
+        "storage_display": "1TB",
+        "year": 2026
+      },
+      "product_id": "m5-air-13-16-1tb",
+      "clean_name": "MacBook Air 13\" M5 10C 10G 16GB 1TB",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -2248,7 +2248,7 @@
       },
       "product_id": "m5-air-13-32-2tb",
       "clean_name": "MacBook Air 13\" M5 10C 10G 32GB 2TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -2273,7 +2273,7 @@
       },
       "product_id": "m5-air-13-32-4tb",
       "clean_name": "MacBook Air 13\" M5 10C 10G 32GB 4TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -2298,57 +2298,7 @@
       },
       "product_id": "m5-air-15-24-512gb",
       "clean_name": "MacBook Air 15\" M5 10C 10G 24GB 512GB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
-    },
-    {
-      "model": "MacBook Air 15 M5 2026 10CPU/10GPU/32GB/2TB/70W",
-      "raw_name": "MacBook Air 15 M5 2026 10CPU/10GPU/32GB/2TB/70W",
-      "price_vnd": 69990000,
-      "price_text": "69.990.000đ",
-      "url": "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-15-m5-2026-10cpu-10gpu-32gb-2tb-70w",
-      "image_url": null,
-      "shop": "fptshop",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M5",
-        "chip_variant": null,
-        "screen_size": "15\"",
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 32,
-        "storage_gb": 2048,
-        "storage_display": "2TB",
-        "year": 2026
-      },
-      "product_id": "m5-air-15-32-2tb",
-      "clean_name": "MacBook Air 15\" M5 10C 10G 32GB 2TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
-    },
-    {
-      "model": "MacBook Air 15 M5 2026 10CPU/10GPU/16GB/1TB/35W",
-      "raw_name": "MacBook Air 15 M5 2026 10CPU/10GPU/16GB/1TB/35W",
-      "price_vnd": 47490000,
-      "price_text": "47.490.000đ",
-      "url": "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-15-m5-2026-10cpu-10gpu-16gb-1tb",
-      "image_url": null,
-      "shop": "fptshop",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M5",
-        "chip_variant": null,
-        "screen_size": "15\"",
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 16,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": 2026
-      },
-      "product_id": "m5-air-15-16-1tb",
-      "clean_name": "MacBook Air 15\" M5 10C 10G 16GB 1TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -2373,15 +2323,15 @@
       },
       "product_id": "m5-air-15-32-1tb",
       "clean_name": "MacBook Air 15\" M5 10C 10G 32GB 1TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
-      "model": "MacBook Air 15 M5 2026 10CPU/10GPU/32GB/1TB/70W",
-      "raw_name": "MacBook Air 15 M5 2026 10CPU/10GPU/32GB/1TB/70W (Z1M1)",
-      "price_vnd": 56990000,
-      "price_text": "56.990.000đ",
-      "url": "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-15-m5-2026-10cpu-10gpu-32gb-1tb-70w-z1m1",
+      "model": "MacBook Air 15 M5 2026 10CPU/10GPU/32GB/2TB/70W",
+      "raw_name": "MacBook Air 15 M5 2026 10CPU/10GPU/32GB/2TB/70W",
+      "price_vnd": 69990000,
+      "price_text": "69.990.000đ",
+      "url": "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-15-m5-2026-10cpu-10gpu-32gb-2tb-70w",
       "image_url": null,
       "shop": "fptshop",
       "specs": {
@@ -2392,13 +2342,38 @@
         "cpu_cores": 10,
         "gpu_cores": 10,
         "ram_gb": 32,
+        "storage_gb": 2048,
+        "storage_display": "2TB",
+        "year": 2026
+      },
+      "product_id": "m5-air-15-32-2tb",
+      "clean_name": "MacBook Air 15\" M5 10C 10G 32GB 2TB",
+      "scraped_at": "2026-10-01T18:00:07.527887",
+      "stale": false
+    },
+    {
+      "model": "MacBook Air 15 M5 2026 10CPU/10GPU/16GB/1TB/35W",
+      "raw_name": "MacBook Air 15 M5 2026 10CPU/10GPU/16GB/1TB/35W",
+      "price_vnd": 47490000,
+      "price_text": "47.490.000đ",
+      "url": "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-15-m5-2026-10cpu-10gpu-16gb-1tb",
+      "image_url": null,
+      "shop": "fptshop",
+      "specs": {
+        "model_type": "MacBook Air",
+        "chip": "M5",
+        "chip_variant": null,
+        "screen_size": "15\"",
+        "cpu_cores": 10,
+        "gpu_cores": 10,
+        "ram_gb": 16,
         "storage_gb": 1024,
         "storage_display": "1TB",
         "year": 2026
       },
-      "product_id": "m5-air-15-32-1tb",
-      "clean_name": "MacBook Air 15\" M5 10C 10G 32GB 1TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "product_id": "m5-air-15-16-1tb",
+      "clean_name": "MacBook Air 15\" M5 10C 10G 16GB 1TB",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -2423,7 +2398,7 @@
       },
       "product_id": "m5-air-15-32-4tb",
       "clean_name": "MacBook Air 15\" M5 10C 10G 32GB 4TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -2448,7 +2423,32 @@
       },
       "product_id": "m5-air-15-24-1tb",
       "clean_name": "MacBook Air 15\" M5 10C 10G 24GB 1TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
+      "stale": false
+    },
+    {
+      "model": "MacBook Air 15 M5 2026 10CPU/10GPU/32GB/1TB/70W",
+      "raw_name": "MacBook Air 15 M5 2026 10CPU/10GPU/32GB/1TB/70W (Z1M1)",
+      "price_vnd": 56990000,
+      "price_text": "56.990.000đ",
+      "url": "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-15-m5-2026-10cpu-10gpu-32gb-1tb-70w-z1m1",
+      "image_url": null,
+      "shop": "fptshop",
+      "specs": {
+        "model_type": "MacBook Air",
+        "chip": "M5",
+        "chip_variant": null,
+        "screen_size": "15\"",
+        "cpu_cores": 10,
+        "gpu_cores": 10,
+        "ram_gb": 32,
+        "storage_gb": 1024,
+        "storage_display": "1TB",
+        "year": 2026
+      },
+      "product_id": "m5-air-15-32-1tb",
+      "clean_name": "MacBook Air 15\" M5 10C 10G 32GB 1TB",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -2473,7 +2473,7 @@
       },
       "product_id": "m5-pro-14-32-2tb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 32GB 2TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -2498,7 +2498,7 @@
       },
       "product_id": "m5-pro-14-32-2tb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 32GB 2TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -2523,7 +2523,7 @@
       },
       "product_id": "m5-pro-14-24-1tb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 24GB 1TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -2548,7 +2548,7 @@
       },
       "product_id": "m5-pro-pro-14-24-2tb",
       "clean_name": "MacBook Pro 14\" M5 Pro 18C 20G 24GB 2TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -2573,57 +2573,7 @@
       },
       "product_id": "m5-pro-pro-14-48-2tb",
       "clean_name": "MacBook Pro 14\" M5 Pro 15C 16G 48GB 2TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
-    },
-    {
-      "model": "MacBook Pro 14 M5 2026 10CPU/10GPU/32GB/4TB/96W",
-      "raw_name": "MacBook Pro 14 M5 2026 10CPU/10GPU/32GB/4TB/96W",
-      "price_vnd": 105490000,
-      "price_text": "105.490.000đ",
-      "url": "https://fptshop.com.vn/may-tinh-xach-tay/macbook-pro-14-m5-2026-10cpu-10gpu-32gb-4tb-96w",
-      "image_url": null,
-      "shop": "fptshop",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M5",
-        "chip_variant": null,
-        "screen_size": "14\"",
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 32,
-        "storage_gb": 4096,
-        "storage_display": "4TB",
-        "year": 2026
-      },
-      "product_id": "m5-pro-14-32-4tb",
-      "clean_name": "MacBook Pro 14\" M5 10C 10G 32GB 4TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
-      "stale": false
-    },
-    {
-      "model": "MacBook Pro 14 M5 Pro 2026 18CPU/20GPU/24GB/1TB",
-      "raw_name": "MacBook Pro 14 M5 Pro 2026 18CPU/20GPU/24GB/1TB",
-      "price_vnd": 73790000,
-      "price_text": "73.790.000đ",
-      "url": "https://fptshop.com.vn/may-tinh-xach-tay/macbook-pro-14-m5-pro-2026-18cpu-20gpu-24gb-1tb",
-      "image_url": null,
-      "shop": "fptshop",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M5",
-        "chip_variant": "Pro",
-        "screen_size": "14\"",
-        "cpu_cores": 18,
-        "gpu_cores": 20,
-        "ram_gb": 24,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": 2026
-      },
-      "product_id": "m5-pro-pro-14-24-1tb",
-      "clean_name": "MacBook Pro 14\" M5 Pro 18C 20G 24GB 1TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -2648,7 +2598,57 @@
       },
       "product_id": "m5-pro-14-32-512gb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 32GB 512GB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
+      "stale": false
+    },
+    {
+      "model": "MacBook Pro 14 M5 2026 10CPU/10GPU/32GB/4TB/96W",
+      "raw_name": "MacBook Pro 14 M5 2026 10CPU/10GPU/32GB/4TB/96W",
+      "price_vnd": 105490000,
+      "price_text": "105.490.000đ",
+      "url": "https://fptshop.com.vn/may-tinh-xach-tay/macbook-pro-14-m5-2026-10cpu-10gpu-32gb-4tb-96w",
+      "image_url": null,
+      "shop": "fptshop",
+      "specs": {
+        "model_type": "MacBook Pro",
+        "chip": "M5",
+        "chip_variant": null,
+        "screen_size": "14\"",
+        "cpu_cores": 10,
+        "gpu_cores": 10,
+        "ram_gb": 32,
+        "storage_gb": 4096,
+        "storage_display": "4TB",
+        "year": 2026
+      },
+      "product_id": "m5-pro-14-32-4tb",
+      "clean_name": "MacBook Pro 14\" M5 10C 10G 32GB 4TB",
+      "scraped_at": "2026-10-01T18:00:07.527887",
+      "stale": false
+    },
+    {
+      "model": "MacBook Pro 14 M5 Pro 2026 18CPU/20GPU/24GB/1TB",
+      "raw_name": "MacBook Pro 14 M5 Pro 2026 18CPU/20GPU/24GB/1TB",
+      "price_vnd": 73790000,
+      "price_text": "73.790.000đ",
+      "url": "https://fptshop.com.vn/may-tinh-xach-tay/macbook-pro-14-m5-pro-2026-18cpu-20gpu-24gb-1tb",
+      "image_url": null,
+      "shop": "fptshop",
+      "specs": {
+        "model_type": "MacBook Pro",
+        "chip": "M5",
+        "chip_variant": "Pro",
+        "screen_size": "14\"",
+        "cpu_cores": 18,
+        "gpu_cores": 20,
+        "ram_gb": 24,
+        "storage_gb": 1024,
+        "storage_display": "1TB",
+        "year": 2026
+      },
+      "product_id": "m5-pro-pro-14-24-1tb",
+      "clean_name": "MacBook Pro 14\" M5 Pro 18C 20G 24GB 1TB",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -2673,7 +2673,7 @@
       },
       "product_id": "m5-pro-14-24-1tb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 24GB 1TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -2698,7 +2698,7 @@
       },
       "product_id": "m5-pro-14-24-1tb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 24GB 1TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -2723,7 +2723,7 @@
       },
       "product_id": "m5-pro-14-16-1tb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 16GB 1TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -2748,7 +2748,7 @@
       },
       "product_id": "m5-pro-pro-16-24-1tb",
       "clean_name": "MacBook Pro 16\" M5 Pro 18C 20G 24GB 1TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -2773,7 +2773,7 @@
       },
       "product_id": "m5-max-pro-16-36-2tb",
       "clean_name": "MacBook Pro 16\" M5 Max 18C 32G 36GB 2TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -2798,7 +2798,7 @@
       },
       "product_id": "m5-pro-pro-16-64-4tb",
       "clean_name": "MacBook Pro 16\" M5 Pro 18C 20G 64GB 4TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     },
     {
@@ -2823,7 +2823,7 @@
       },
       "product_id": "m5-pro-pro-16-24-2tb",
       "clean_name": "MacBook Pro 16\" M5 Pro 18C 20G 24GB 2TB",
-      "scraped_at": "2026-10-01T13:18:43.577084",
+      "scraped_at": "2026-10-01T18:00:07.527887",
       "stale": false
     }
   ],
@@ -2832,21 +2832,22 @@
     "by_shop": {
       "cellphones": {
         "count": 40,
-        "success": true,
-        "status": "fresh",
-        "scraped_at": "2026-10-01T13:18:43.577084"
+        "success": false,
+        "status": "carried_forward",
+        "scraped_at": "2026-10-01T13:18:43.577084",
+        "error": "17/40 products missing required fields ['model', 'price_vnd', 'shop'] — exceeds 20%, looks like broken parsing"
       },
       "shopdunk": {
         "count": 23,
         "success": true,
         "status": "fresh",
-        "scraped_at": "2026-10-01T13:18:43.577084"
+        "scraped_at": "2026-10-01T18:00:07.527887"
       },
       "fptshop": {
         "count": 50,
         "success": true,
         "status": "fresh",
-        "scraped_at": "2026-10-01T13:18:43.577084"
+        "scraped_at": "2026-10-01T18:00:07.527887"
       }
     },
     "errors": []
