@@ -1,27 +1,27 @@
 {
   "captured_at": "2026-09-12",
-  "note": "shopdunk/cellphones/fptshop 'live' fixtures capture real HTML at capture time (fptshop's captured after fixing the Cloudflare-challenge wait logic and the stale .cardInfo selector — see fptshop_scraper.py history). topzone's fixture and fptshop's second entry are hand-written synthetic HTML exercising each shop's selector fallback chain, non-MacBook filtering, and (for fptshop) the no-discount price-extraction fallback that no real product on the live page exercised. All fixtures verify parse_products() is byte-for-byte behavior-preserving — expected counts are what parse_products() returns against these exact frozen files; a mismatch means the code changed behavior, not that the site changed.",
+  "note": "shopdunk/cellphones/fptshop 'live' fixtures capture real HTML at capture time (fptshop's captured after fixing the Cloudflare-challenge wait logic and the stale .cardInfo selector — see fptshop_scraper.py history). topzone's fixture and fptshop's second entry are hand-written synthetic HTML exercising each shop's selector fallback chain, non-MacBook filtering, and (for fptshop) the no-discount price-extraction fallback that no real product on the live page exercised. All fixtures verify parse_products() is byte-for-byte behavior-preserving — expected counts are what parse_products() returns against these exact frozen files; a mismatch means the code changed behavior, not that the site changed. Counts updated 2026-10-01 when the MacBook-only name filter became a Mac filter (MacBook, Mac mini, iMac, Mac Studio; case-insensitive): every added product was diffed and is either a desktop Mac or a ShopDunk 'Macbook ...' listing the case-sensitive filter had been silently dropping.",
   "fixtures": [
     {
       "shop": "shopdunk",
       "file": "raw/shopdunk/https_shopdunk_com_mac.html",
       "source_url": "https://shopdunk.com/mac",
       "type": "live",
-      "expected_product_count": 20
+      "expected_product_count": 62
     },
     {
       "shop": "shopdunk",
       "file": "raw/shopdunk/https_shopdunk_com_macbook_air.html",
       "source_url": "https://shopdunk.com/macbook-air",
       "type": "live",
-      "expected_product_count": 8
+      "expected_product_count": 16
     },
     {
       "shop": "cellphones",
       "file": "raw/cellphones/all_mac.html",
       "source_url": "https://cellphones.com.vn/laptop/mac.html",
       "type": "live",
-      "expected_product_count": 13
+      "expected_product_count": 18
     },
     {
       "shop": "fptshop",

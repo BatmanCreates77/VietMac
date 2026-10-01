@@ -39,3 +39,30 @@ def test_model_type(name, expected):
 def test_bare_size_does_not_disturb_other_specs():
     specs = SpecParser().parse("MacBook Pro 14 M5 10CPU 10GPU 24GB 1TB")
     assert (specs['chip'], specs['ram_gb'], specs['storage_display'], specs['cpu_cores']) == ('M5', 24, '1TB', 10)
+
+
+# Names as the shops list them (2026-10-01): CellphoneS, ShopDunk, FPTShop.
+@pytest.mark.parametrize("name, model_type, chip, variant", [
+    ("Apple Mac mini M6 12CPU 12GPU 16GB 256GB 2026", 'Mac mini', 'M6', None),
+    ("Mac mini M6 12CPU/12GPU/16GB/256GB", 'Mac mini', 'M6', None),
+    # "Pro" belongs to the chip; this is not a MacBook Pro.
+    ("Mac mini M5 Pro chip with 15-core CPU and 16-core GPU, 24GB, 512GB SSD", 'Mac mini', 'M5', 'Pro'),
+    ("Mac mini M2 (10-Core GPU| 8GB RAM | 256GB SSD)", 'Mac mini', 'M2', None),
+    ("iMac M4 2024 24 inch 8CPU 8GPU 16GB 256GB", 'iMac', 'M4', None),
+    ("iMac 24 inch M4 2024 10CPU/10GPU/16GB/256GB", 'iMac', 'M4', None),
+    ("Apple Mac Studio M5 Max 18CPU 32GPU 36GB 512GB 2026", 'Mac Studio', 'M5', 'Max'),
+    ("Mac Studio M5 Ultra 30CPU/64GPU/96GB/1TB", 'Mac Studio', 'M5', 'Ultra'),
+    ("MacBook Neo 13 inch A18 Pro 2026 6CPU 5GPU 8GB 256GB", 'MacBook Neo', 'A18', 'Pro'),
+    ("Macbook Air M5 13-inch with 10‑core CPU and 10‑core GPU 16GB", 'MacBook Air', 'M5', None),
+])
+def test_mac_lines_and_chips(name, model_type, chip, variant):
+    specs = SpecParser().parse(name)
+    assert (specs['model_type'], specs['chip'], specs['chip_variant']) == (model_type, chip, variant)
+
+
+def test_desktop_specs_and_id():
+    specs = SpecParser().parse("Mac Studio M5 Ultra chip with 30-core CPU, 64-core GPU, 96GB, 1TB")
+    assert (specs['cpu_cores'], specs['gpu_cores'], specs['ram_gb'], specs['storage_display']) == (30, 64, 96, '1TB')
+    assert specs['screen_size'] is None
+    assert specs['id'] == 'm5-ultra-studio-96-1tb'
+    assert SpecParser().parse("iMac M4 2024 24 inch 8CPU 8GPU 16GB 256GB")['screen_size'] == '24"'

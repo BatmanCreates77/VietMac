@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Spec Parser - Extract structured data from MacBook product names
+Spec Parser - Extract structured data from Mac product names
 """
 
 import re
@@ -8,12 +8,20 @@ from typing import Dict, Optional
 
 
 class SpecParser:
-    """Parse MacBook specifications from product names"""
+    """Parse Mac specifications from product names"""
+
+    # Product lines other than MacBook, in the casing Apple uses.
+    DESKTOP_MODEL_TYPES = [
+        (r'\bMac\s*mini\b', 'Mac mini'),
+        (r'\biMac\b', 'iMac'),
+        (r'\bMac\s*Studio\b', 'Mac Studio'),
+    ]
 
     def __init__(self):
         # Regex patterns for extracting specs
         self.patterns = {
-            'chip': r'(M1|M2|M3|M4|M5)(?:\s*(Pro|Max))?',
+            # \b keeps "M6" out of "M60" and "Pro" out of "Promotion".
+            'chip': r'\b(M[1-9]|A1[89])(?:\s*(Pro|Max|Ultra)\b)?',
             'screen': r'(\d+(?:\.\d+)?)[\s-]*(?:inch|"|\'\')',
             'cpu': r'(\d+)\s*(?:CPU|core\s*CPU|C)',
             'gpu': r'(\d+)\s*(?:GPU|core\s*GPU|G)',
@@ -24,7 +32,7 @@ class SpecParser:
 
     def parse(self, product_name: str) -> Dict:
         """
-        Parse a MacBook product name and extract structured specs
+        Parse a Mac product name and extract structured specs
 
         Args:
             product_name: Raw product name from shop
@@ -87,7 +95,13 @@ class SpecParser:
         }
 
     def _extract_model_type(self, name: str) -> str:
-        """Extract MacBook Air / Pro / Neo"""
+        """Extract the product line: MacBook Air/Pro/Neo, Mac mini, iMac,
+        Mac Studio."""
+        # Desktops first: "Mac mini M5 Pro" must not fall through to the
+        # bare "pro" check below and become a MacBook Pro.
+        for pattern, model_type in self.DESKTOP_MODEL_TYPES:
+            if re.search(pattern, name, re.IGNORECASE):
+                return model_type
         # Prefer the word right after "MacBook": a bare substring check
         # misfiles "MacBook Neo 13 inch A18 Pro" as a MacBook Pro.
         match = re.search(r'MacBook\s+(Air|Pro|Neo)\b', name, re.IGNORECASE)
@@ -101,7 +115,7 @@ class SpecParser:
         return 'MacBook'
 
     def _extract_chip(self, name: str) -> Dict:
-        """Extract chip (M1, M2, M3, M4, M5) and variant (Pro, Max)"""
+        """Extract chip (M1-M6..., A18) and variant (Pro, Max, Ultra)"""
         match = re.search(self.patterns['chip'], name, re.IGNORECASE)
         if match:
             chip = match.group(1).upper()
@@ -125,10 +139,11 @@ class SpecParser:
 
     def _extract_cpu_cores(self, name: str) -> Optional[int]:
         """Extract CPU core count"""
-        # Look for patterns like "10CPU", "10 CPU", "10 core CPU", "10C"
+        # Look for patterns like "10CPU", "10 CPU", "10 core CPU", "10C".
+        # ShopDunk writes "15-core" / "15‑core" (non-breaking hyphen).
         patterns = [
             r'(\d+)\s*CPU',
-            r'(\d+)\s*core\s*CPU',
+            r'(\d+)[\s‑-]*core\s*CPU',
             r'(\d+)\s*C(?:PU)?(?:\s|,|$)',
         ]
 
@@ -140,10 +155,11 @@ class SpecParser:
 
     def _extract_gpu_cores(self, name: str) -> Optional[int]:
         """Extract GPU core count"""
-        # Look for patterns like "10GPU", "10 GPU", "10 core GPU", "10G"
+        # Look for patterns like "10GPU", "10 GPU", "10 core GPU", "10G"; see
+        # _extract_cpu_cores for the hyphen variants.
         patterns = [
             r'(\d+)\s*GPU',
-            r'(\d+)\s*core\s*GPU',
+            r'(\d+)[\s‑-]*core\s*GPU',
             r'(\d+)\s*G(?:PU)?(?:\s|,|$)',
         ]
 
@@ -275,6 +291,12 @@ class SpecParser:
                 parts.append('pro')
             elif 'Neo' in model_type:
                 parts.append('neo')
+            elif model_type == 'Mac mini':
+                parts.append('mini')
+            elif model_type == 'iMac':
+                parts.append('imac')
+            elif model_type == 'Mac Studio':
+                parts.append('studio')
 
         # Screen
         if screen_size:

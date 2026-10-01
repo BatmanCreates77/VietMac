@@ -24,13 +24,16 @@ class ShopDunkScraper(BaseScraper):
     base_url = 'https://shopdunk.com'
 
     def _parse_model_name(self, name):
-        """Parse and clean MacBook model name"""
+        """Parse and clean Mac model name"""
         if not name:
             return None
 
         name = name.strip()
         # Remove common suffixes
-        name = re.sub(r'\s*\(.*?\)\s*$', '', name)  # Remove (Đủ hộp, PK) etc
+        # Remove notes like "(Đủ hộp, PK)", but keep a trailing config such
+        # as "(10 core GPU| 16GB RAM| 512GB SSD)": it is the only thing that
+        # tells apart e.g. 12 "MacBook Pro 14 inch M5 2025" listings.
+        name = re.sub(r'\s*\([^()\d]*\)\s*$', '', name)
         name = re.sub(r'\s*-\s*Cũ.*', '', name)  # Remove "Cũ đẹp"
         name = re.sub(r'\s*Cũ.*', '', name)
 
@@ -44,6 +47,9 @@ class ShopDunkScraper(BaseScraper):
             "https://shopdunk.com/macbook-pro-m5",
             "https://shopdunk.com/macbook-air",
             "https://shopdunk.com/macbook-pro-2",
+            "https://shopdunk.com/mac-mini",
+            "https://shopdunk.com/imac",
+            "https://shopdunk.com/mac-studio",
         ]
 
     @staticmethod
@@ -126,7 +132,7 @@ class ShopDunkScraper(BaseScraper):
 
                 raw_name = name_elem.get_text(strip=True)
 
-                if 'MacBook' not in raw_name:
+                if not self._is_mac(raw_name):
                     continue
 
                 model_name = self._parse_model_name(raw_name)

@@ -106,7 +106,7 @@ class TopZoneScraper(BaseScraper):
 
                 raw_name = name_elem.get_text(strip=True)
 
-                if 'MacBook' not in raw_name:
+                if not self._is_mac(raw_name):
                     continue
 
                 model_name = self._parse_model_name(raw_name)

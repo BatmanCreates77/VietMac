@@ -104,6 +104,8 @@ def test_cellphones_playwright_fetch_preserves_encoding():
 
     mock_page = MagicMock()
     mock_page.content.return_value = f"<html><body>{vietnamese_text}</body></html>"
+    # No "show more" button to click, and every card already priced.
+    mock_page.evaluate.side_effect = lambda js: 0 if js == CellphonesScraper.UNPRICED_CARDS_JS else False
 
     mock_context = MagicMock()
     mock_context.new_page.return_value = mock_page
@@ -123,6 +125,52 @@ def test_cellphones_playwright_fetch_preserves_encoding():
 
     assert isinstance(html, str), "fetch must return str, not re-encoded bytes"
     assert vietnamese_text in html, "Vietnamese text must survive unchanged, no mojibake"
+
+
+class FakeCellphonesPage:
+    """Listing with `hidden` products behind "show more" (20 per click) and
+    prices that fill in over successive checks."""
+
+    def __init__(self, shown, hidden, unpriced_checks):
+        self.shown, self.hidden = shown, hidden
+        self.unpriced_checks = list(unpriced_checks)
+        self.clicks = 0
+
+    def locator(self, selector):
+        count = MagicMock()
+        count.count.return_value = self.shown
+        return count
+
+    def evaluate(self, js):
+        if js == CellphonesScraper.CLICK_SHOW_MORE_JS:
+            if not self.hidden:
+                return False
+            batch = min(20, self.hidden)
+            self.shown, self.hidden = self.shown + batch, self.hidden - batch
+            self.clicks += 1
+            return True
+        if js == CellphonesScraper.UNPRICED_CARDS_JS:
+            return self.unpriced_checks.pop(0) if len(self.unpriced_checks) > 1 else self.unpriced_checks[0]
+        raise AssertionError(f"unexpected script: {js}")
+
+    def wait_for_function(self, js, timeout):
+        pass
+
+
+def test_cellphones_expands_show_more_until_everything_is_listed():
+    """laptop/mac.html showed 20 of 75 products until "Xem thêm" had been
+    clicked 3 times (2026-10-01)."""
+    page = FakeCellphonesPage(shown=20, hidden=55, unpriced_checks=[0])
+    CellphonesScraper()._expand_listing(page)
+    assert (page.shown, page.clicks) == (75, 3)
+
+
+def test_cellphones_waits_for_prices_to_fill_in():
+    page = FakeCellphonesPage(shown=20, hidden=0, unpriced_checks=[12, 3, 0])
+    with patch("scrapers.cellphones_scraper.time.sleep") as sleep:
+        CellphonesScraper()._wait_for_prices(page)
+    assert sleep.call_count == 2
+    assert page.unpriced_checks == [0]
 
 
 def test_shopdunk_removed_listing_page_fails_fast():
@@ -201,3 +249,18 @@ def test_fptshop_gives_up_with_fresh_browser_per_attempt(no_sleep):
 
     assert html is None
     assert chrome.call_count == 2
+
+
+@pytest.mark.parametrize("raw_name, expected", [
+    ("MacBook Air M5 13 inch 2026", True),
+    ("Macbook Air M5 13-inch", True),  # ShopDunk's casing; was dropped
+    ("Apple Mac mini M6 12CPU 12GPU 16GB 256GB 2026", True),
+    ("iMac M4 2024 24 inch", True),
+    ("Apple Mac Studio M5 Max 18CPU 32GPU 36GB 512GB 2026", True),
+    ("Apple Studio Display XDR 27 5K Ngàm VESA 2026", False),
+    ("Studio Display", False),
+    ("", False),
+    (None, False),
+])
+def test_is_mac(raw_name, expected):
+    assert CellphonesScraper._is_mac(raw_name) is expected

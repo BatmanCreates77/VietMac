@@ -82,3 +82,33 @@ def test_stuck_on_challenge_is_broken():
 def test_untitled_js_challenge_is_not_a_real_page():
     # What CellphoneS serves to non-browsers: no <title>, obfuscated script.
     assert not is_real_page("<html><head><script>var _0x4cb6=...</script></head></html>")
+
+
+def test_ultra_chip_page_is_verified():
+    html = page("Mac Studio M5 Ultra 30CPU 64GPU 96GB 1TB", "<p>158.990.000₫</p>")
+    studio = product(price_vnd=158990000,
+                     specs={'chip': 'M5', 'chip_variant': 'Ultra', 'ram_gb': 96, 'storage_display': '1TB'})
+    assert evaluate(studio, fetched(html))['verdict'] == 'verified'
+
+
+def test_max_page_for_ultra_product_is_wrong():
+    html = page("Mac Studio M5 Max 18CPU 32GPU 36GB 512GB", "<p>158.990.000₫</p>")
+    studio = product(price_vnd=158990000,
+                     specs={'chip': 'M5', 'chip_variant': 'Ultra', 'ram_gb': 96, 'storage_display': '1TB'})
+    assert evaluate(studio, fetched(html))['verdict'] == 'wrong'
+
+
+def test_a18_pro_neo_page_is_verified():
+    html = page("MacBook Neo 13 inch A18 Pro 8GB 256GB", "<p>18.990.000₫</p>")
+    neo = product(price_vnd=18990000,
+                  specs={'chip': 'A18', 'chip_variant': 'Pro', 'ram_gb': 8, 'storage_display': '256GB'})
+    assert evaluate(neo, fetched(html))['verdict'] == 'verified'
+
+
+def test_chip_digit_is_not_read_as_part_of_a_size():
+    """ShopDunk's "Mac mini M4 (24GB RAM)" used to read as 424GB."""
+    html = page("Mac mini M4 (24GB RAM)", "<p>32.990.000₫</p>")
+    mini = product(price_vnd=32990000,
+                   specs={'chip': 'M4', 'chip_variant': None, 'ram_gb': 24, 'storage_display': None})
+    result = evaluate(mini, fetched(html))
+    assert (result['verdict'], result['notes']) == ('verified', [])

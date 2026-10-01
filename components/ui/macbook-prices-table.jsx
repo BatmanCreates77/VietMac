@@ -78,18 +78,47 @@ function MacBookPricesTable({ data, currency, posthog }) {
     return symbols[currency] || currency;
   };
 
-  const models = ["All", "MacBook Air", "MacBook Pro"];
-  const screenSizes = ["All", '13"', '14"', '15"', '16"'];
-  const chipsets = [
-    "All",
-    "M2",
-    "M3",
-    "M4",
-    "M4 Pro",
-    "M4 Max",
-    "M5",
-    "M3 Max",
+  // Filter options are built from the data, so a new product line or chip
+  // (Mac mini, M6, ...) shows up without a code change.
+  const optionsFrom = (key, compare) => {
+    const values = new Set(
+      data.map((item) => item[key]).filter((v) => v && v !== "Unknown"),
+    );
+    return ["All", ...[...values].sort(compare)];
+  };
+  const MODEL_ORDER = [
+    "MacBook Neo",
+    "MacBook Air",
+    "MacBook Pro",
+    "Mac mini",
+    "iMac",
+    "Mac Studio",
   ];
+  const rankIn = (order, value) =>
+    order.includes(value) ? order.indexOf(value) : order.length;
+  const CHIP_VARIANT_ORDER = ["", "Pro", "Max", "Ultra"];
+  // "M5 Pro" -> [5, 1]; non-M chips (A18 Pro) sort after every M chip.
+  const chipSortKey = (chip) => {
+    const match = chip.match(/^M(\d+)\s*(\w*)$/);
+    if (!match) return [Infinity, 0];
+    return [Number(match[1]), rankIn(CHIP_VARIANT_ORDER, match[2])];
+  };
+
+  const models = optionsFrom(
+    "modelType",
+    (a, b) => rankIn(MODEL_ORDER, a) - rankIn(MODEL_ORDER, b),
+  );
+  const screenSizes = optionsFrom(
+    "screenSize",
+    (a, b) => parseFloat(a) - parseFloat(b),
+  );
+  const chipsets = optionsFrom("category", (a, b) => {
+    const [genA, variantA] = chipSortKey(a);
+    const [genB, variantB] = chipSortKey(b);
+    return genA - genB || variantA - variantB || a.localeCompare(b);
+  });
+  // "New" badge goes on the latest base M chip (sorted last).
+  const newestChip = chipsets.filter((chip) => /^M\d+$/.test(chip)).at(-1);
 
   // Detect mobile screen size
   useEffect(() => {
@@ -321,7 +350,7 @@ function MacBookPricesTable({ data, currency, posthog }) {
                           <SelectItem key={chip} value={chip}>
                             <span className="flex items-center gap-2">
                               {chip}
-                              {chip === "M5" && (
+                              {chip === newestChip && (
                                 <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
                                   New
                                 </span>
@@ -414,7 +443,7 @@ function MacBookPricesTable({ data, currency, posthog }) {
                     <SelectItem key={chip} value={chip}>
                       <span className="flex items-center gap-2">
                         {chip}
-                        {chip === "M5" && (
+                        {chip === newestChip && (
                           <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
                             New
                           </span>
