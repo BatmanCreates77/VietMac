@@ -52,9 +52,7 @@ class BaseScraper(ABC):
                         image_url=None, product_id=None, extra_specs_source=None):
         """
         Assemble the product dict in the shared shape. `extra_specs_source`
-        is the string handed to SpecParser (defaults to raw_name, but
-        CellphoneS passes the enriched model_name so screen size folded
-        into the name is picked up by the parser too).
+        is the string handed to SpecParser (defaults to raw_name).
         """
         specs_source = extra_specs_source if extra_specs_source is not None else raw_name
         parsed_specs = self.spec_parser.parse(specs_source)
@@ -84,28 +82,6 @@ class BaseScraper(ABC):
             'clean_name': parsed_specs.get('clean_name'),
         }
 
-    def _apply_specs(self, product, specs_source):
-        """Re-derive specs/product_id/clean_name from `specs_source` and
-        write them into `product` in place. Used by enrich_product() when
-        a live fetch changes the string specs should be parsed from
-        (e.g. CellphoneS appending screen size to the model name)."""
-        parsed_specs = self.spec_parser.parse(specs_source)
-        product['specs'] = {
-            'model_type': parsed_specs.get('model_type'),
-            'chip': parsed_specs.get('chip'),
-            'chip_variant': parsed_specs.get('chip_variant'),
-            'screen_size': parsed_specs.get('screen_size'),
-            'cpu_cores': parsed_specs.get('cpu_cores'),
-            'gpu_cores': parsed_specs.get('gpu_cores'),
-            'ram_gb': parsed_specs.get('ram_gb'),
-            'storage_gb': parsed_specs.get('storage_gb'),
-            'storage_display': parsed_specs.get('storage_display'),
-            'year': parsed_specs.get('year'),
-        }
-        product['product_id'] = parsed_specs.get('id')
-        product['clean_name'] = parsed_specs.get('clean_name')
-        return product
-
     @abstractmethod
     def page_urls(self):
         """Return the list of listing-page URLs to scrape for this shop."""
@@ -122,20 +98,12 @@ class BaseScraper(ABC):
     def parse_products(self, html):
         """Pure function: parse products out of already-fetched HTML.
         MUST NOT perform network I/O — this is what fixture tests call
-        directly. Any per-product enrichment that needs a live request
-        belongs in enrich_product(), not here."""
+        directly."""
         raise NotImplementedError
 
-    def enrich_product(self, product):
-        """Optional hook for a per-product live fetch (e.g. CellphoneS
-        fetching a detail page for screen size). Default is a no-op so
-        shops that don't need it inherit this unchanged. Runs after
-        parse_products(), never inside it."""
-        return product
-
     def scrape(self):
-        """Orchestrate fetch -> parse -> enrich -> assemble result, shared
-        by every shop."""
+        """Orchestrate fetch -> parse -> assemble result, shared by every
+        shop."""
         logger.info("=" * 80)
         logger.info(f"Starting {self.shop_name} scraper...")
         logger.info("=" * 80)
@@ -153,7 +121,7 @@ class BaseScraper(ABC):
                     product_url = product.get('url')
                     if product_url and product_url not in seen_urls:
                         seen_urls.add(product_url)
-                        all_products.append(self.enrich_product(product))
+                        all_products.append(product)
                 logger.info(f"Found {len(products)} models from this page ({len(all_products)} unique total)")
             else:
                 logger.warning(f"Failed to scrape {url}")

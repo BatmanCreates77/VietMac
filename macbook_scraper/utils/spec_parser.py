@@ -14,7 +14,7 @@ class SpecParser:
         # Regex patterns for extracting specs
         self.patterns = {
             'chip': r'(M1|M2|M3|M4|M5)(?:\s*(Pro|Max))?',
-            'screen': r'(\d+(?:\.\d+)?)\s*(?:inch|"|\'\')',
+            'screen': r'(\d+(?:\.\d+)?)[\s-]*(?:inch|"|\'\')',
             'cpu': r'(\d+)\s*(?:CPU|core\s*CPU|C)',
             'gpu': r'(\d+)\s*(?:GPU|core\s*GPU|G)',
             'ram': r'(\d+)\s*GB(?!\s*SSD)',
@@ -109,11 +109,13 @@ class SpecParser:
         """Extract screen size (13, 14, 15, 16 inch)"""
         match = re.search(self.patterns['screen'], name)
         if match:
-            size = match.group(1)
-            # Normalize to integer if possible
-            if '.' not in size:
-                return f"{size}\""
-            return f"{size}\""
+            return f"{match.group(1)}\""
+        # Shops also write the size bare, straight after the model type —
+        # CellphoneS lists "MacBook Pro 14 M5 10CPU ...". The lookahead keeps
+        # "MacBook Pro 16GB" or "MacBook Air 13.6" from matching.
+        match = re.search(r'MacBook\s+(?:Air|Pro|Neo)\s+(1[3-6])(?![\w.])', name, re.IGNORECASE)
+        if match:
+            return f"{match.group(1)}\""
         return None
 
     def _extract_cpu_cores(self, name: str) -> Optional[int]:
