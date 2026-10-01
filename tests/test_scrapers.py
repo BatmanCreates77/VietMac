@@ -125,7 +125,34 @@ def test_cellphones_playwright_fetch_preserves_encoding():
     assert vietnamese_text in html, "Vietnamese text must survive unchanged, no mojibake"
 
 
-FPT_READY_HTML = (Path(__file__).parent / "fixtures" / "raw" / "fptshop" / "live_macbook_listing.html").read_text(encoding="utf-8")
+def test_shopdunk_removed_listing_page_fails_fast():
+    """Real case 2026-10-01: /macbook-pro-m4 and /macbook-air-m4 began 404ing
+    after the M5 launch, and each cost ~9 minutes per run in selector
+    timeouts + retry backoff. A missing page must fail on the first attempt
+    without waiting for products that will never appear."""
+    mock_response = MagicMock(status=404)
+    mock_page = MagicMock(url="https://shopdunk.com/page-not-found")
+    mock_page.goto.return_value = mock_response
+    mock_context = MagicMock()
+    mock_context.new_page.return_value = mock_page
+    mock_browser = MagicMock()
+    mock_browser.new_context.return_value = mock_context
+    mock_pw = MagicMock()
+    mock_pw.chromium.launch.return_value = mock_browser
+    mock_cm = MagicMock()
+    mock_cm.__enter__.return_value = mock_pw
+
+    with patch("scrapers.shopdunk_scraper.sync_playwright", return_value=mock_cm) as sync_pw, \
+         patch("scrapers.shopdunk_scraper.time.sleep") as sleep:
+        html = ShopDunkScraper().fetch_html("https://shopdunk.com/macbook-pro-m4")
+
+    assert html is None
+    assert sync_pw.call_count == 1, "no retries for a page that's gone"
+    mock_page.wait_for_selector.assert_not_called()
+    sleep.assert_not_called()
+
+
+FPT_READY_HTML =(Path(__file__).parent / "fixtures" / "raw" / "fptshop" / "live_macbook_listing.html").read_text(encoding="utf-8")
 FPT_CHALLENGE_HTML = "<html><head><title>Just a moment...</title></head><body></body></html>"
 
 

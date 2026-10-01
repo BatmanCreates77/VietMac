@@ -37,14 +37,18 @@ class ShopDunkScraper(BaseScraper):
         return name
 
     def page_urls(self):
+        # /macbook-pro-m4 and /macbook-air-m4 were removed after the M5
+        # launch (404 -> /page-not-found as of 2026-10-01).
         return [
             "https://shopdunk.com/mac",
             "https://shopdunk.com/macbook-pro-m5",
-            "https://shopdunk.com/macbook-pro-m4",
-            "https://shopdunk.com/macbook-air-m4",
             "https://shopdunk.com/macbook-air",
             "https://shopdunk.com/macbook-pro-2",
         ]
+
+    @staticmethod
+    def _is_missing_page(response, final_url):
+        return (response is not None and response.status == 404) or 'page-not-found' in final_url
 
     def fetch_html(self, url, retry=3):
         """Scrape using Playwright"""
@@ -66,7 +70,18 @@ class ShopDunkScraper(BaseScraper):
                     page = context.new_page()
 
                     logger.info("  Navigating to page...")
-                    page.goto(url, wait_until='domcontentloaded', timeout=60000)
+                    response = page.goto(url, wait_until='domcontentloaded', timeout=60000)
+
+                    # A removed category page will never show products, so
+                    # don't burn ~9 minutes of selector timeouts and retry
+                    # backoff waiting for them.
+                    if self._is_missing_page(response, page.url):
+                        logger.warning(
+                            f"  Listing page is gone (404, landed on {page.url}) — "
+                            f"remove it from page_urls"
+                        )
+                        browser.close()
+                        return None
 
                     logger.info("  Waiting for products to load...")
                     page.wait_for_selector('.product-item', timeout=30000)

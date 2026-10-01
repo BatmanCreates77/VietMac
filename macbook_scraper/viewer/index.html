@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VietMac Scraper Viewer</title>
+<style>
+  :root {
+    --bg: #f6f7f9; --panel: #ffffff; --text: #1d2330; --muted: #6b7385;
+    --border: #e1e4ea; --accent: #2f6fed;
+    --ok: #12805c; --ok-bg: #e3f5ee; --warn: #9a6200; --warn-bg: #fdf1dc;
+    --bad: #c0362c; --bad-bg: #fbe5e3; --neutral-bg: #eef0f4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #12151b; --panel: #1b1f27; --text: #e6e9ef; --muted: #959cad;
+      --border: #2c323d; --accent: #6f9bff;
+      --ok: #4cc79a; --ok-bg: #143328; --warn: #e3b25a; --warn-bg: #3a2e14;
+      --bad: #f07a70; --bad-bg: #3d1d1b; --neutral-bg: #262b35;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); }
+  header { padding: 20px 28px 8px; }
+  h1 { margin: 0 0 4px; font-size: 20px; }
+  .meta { color: var(--muted); font-size: 13px; }
+  .meta code { font-size: 12px; }
+  main { padding: 8px 28px 40px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; margin: 12px 0 20px; }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+  .card h2 { margin: 0 0 6px; font-size: 15px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .card .big { font-size: 26px; font-weight: 600; }
+  .card .small { color: var(--muted); font-size: 12px; }
+  .card details { margin-top: 6px; font-size: 12px; }
+  .card details li { word-break: break-all; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+  .b-ok { color: var(--ok); background: var(--ok-bg); }
+  .b-warn { color: var(--warn); background: var(--warn-bg); }
+  .b-bad { color: var(--bad); background: var(--bad-bg); }
+  .b-neutral { color: var(--muted); background: var(--neutral-bg); }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 12px; }
+  .toolbar input, .toolbar select, button {
+    font: inherit; padding: 6px 10px; border-radius: 8px; border: 1px solid var(--border);
+    background: var(--panel); color: var(--text);
+  }
+  .toolbar input { min-width: 240px; }
+  button { cursor: pointer; }
+  button.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+  button:disabled { opacity: .55; cursor: default; }
+  #progress { color: var(--muted); font-size: 13px; }
+  .tally { display: flex; gap: 6px; flex-wrap: wrap; }
+  .table-wrap { overflow-x: auto; background: var(--panel); border: 1px solid var(--border); border-radius: 10px; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); position: sticky; top: 0; background: var(--panel); }
+  tr:last-child td { border-bottom: none; }
+  td.price { white-space: nowrap; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .model { font-weight: 500; }
+  .raw { color: var(--muted); font-size: 12px; }
+  .specs { color: var(--muted); font-size: 12px; white-space: nowrap; }
+  a { color: var(--accent); }
+  .url { font-size: 12px; word-break: break-all; }
+  tr.detail td { background: var(--bg); font-size: 12px; }
+  tr.detail dl { display: grid; grid-template-columns: max-content 1fr; gap: 3px 14px; margin: 0; }
+  tr.detail dt { color: var(--muted); }
+  tr.detail dd { margin: 0; word-break: break-all; }
+  .stale { color: var(--warn); font-size: 12px; font-weight: 600; }
+  #error { color: var(--bad); }
+</style>
+</head>
+<body>
+<header>
+  <h1>VietMac Scraper Viewer</h1>
+  <div class="meta" id="meta">Loading…</div>
+</header>
+<main>
+  <div id="error"></div>
+  <section class="cards" id="cards"></section>
+
+  <div class="toolbar">
+    <input id="search" type="search" placeholder="Search model, chip, URL…">
+    <select id="shopFilter"><option value="">All shops</option></select>
+    <select id="verdictFilter">
+      <option value="">All link results</option>
+      <option value="unchecked">Not checked yet</option>
+      <option value="verified">Verified</option>
+      <option value="check">Needs a look</option>
+      <option value="wrong">Wrong product</option>
+      <option value="broken">Broken</option>
+    </select>
+    <button class="primary" id="checkAll">Check visible links</button>
+    <span id="progress"></span>
+    <span class="tally" id="tally"></span>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th>Shop</th><th>Product</th><th>Price</th><th>Specs</th><th>Scraped</th><th>Link</th><th>Link check</th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+</main>
+
+<script>
+const VERDICTS = {
+  verified: { label: 'Verified', cls: 'b-ok' },
+  check:    { label: 'Needs a look', cls: 'b-warn' },
+  wrong:    { label: 'Wrong product', cls: 'b-bad' },
+  broken:   { label: 'Broken', cls: 'b-bad' },
+};
+const SHOP_STATUS = {
+  fresh:           { label: 'Fresh', cls: 'b-ok' },
+  carried_forward: { label: 'Carried forward', cls: 'b-warn' },
+  missing:         { label: 'Missing', cls: 'b-bad' },
+};
+const CHECK_CONCURRENCY = 3;
+
+let products = [];         // [{p, index}]
+const results = new Map(); // index -> check result
+
+function el(tag, attrs = {}, ...children) {
+  const node = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === 'class') node.className = v;
+    else if (k.startsWith('on')) node.addEventListener(k.slice(2), v);
+    else node.setAttribute(k, v);
+  }
+  for (const c of children) {
+    if (c == null) continue;
+    node.append(c instanceof Node ? c : document.createTextNode(String(c)));
+  }
+  return node;
+}
+
+function badge(label, cls) { return el('span', { class: `badge ${cls}` }, label); }
+
+function formatVnd(n) {
+  return n == null ? '—' : n.toLocaleString('vi-VN') + ' ₫';
+}
+
+function ago(iso) {
+  if (!iso) return '—';
+  const mins = Math.round((Date.now() - new Date(iso)) / 60000);
+  if (mins < 60) return `${mins}m ago`;
+  const hours = Math.round(mins / 60);
+  if (hours < 48) return `${hours}h ago`;
+  return `${Math.round(hours / 24)}d ago`;
+}
+
+function specsText(s = {}) {
+  const chip = [s.chip, s.chip_variant].filter(Boolean).join(' ');
+  return [
+    s.model_type, chip,
+    s.screen_size && `${s.screen_size}"`,
+    s.ram_gb && `${s.ram_gb}GB RAM`,
+    s.storage_display,
+  ].filter(Boolean).join(' · ') || '—';
+}
+
+function renderMeta(source, data) {
+  const meta = document.getElementById('meta');
+  meta.replaceChildren(
+    `${data.summary?.total_products ?? data.products.length} products · last run ${ago(data.timestamp)} (${data.timestamp}) · source `,
+    el('code', {}, source),
+  );
+}
+
+function renderCards(data) {
+  const cards = document.getElementById('cards');
+  cards.replaceChildren();
+  const byShop = data.summary?.by_shop || {};
+  for (const [shop, info] of Object.entries(byShop)) {
+    const status = SHOP_STATUS[info.status] || (info.success ? SHOP_STATUS.fresh : SHOP_STATUS.missing);
+    const card = el('div', { class: 'card' },
+      el('h2', {}, shop, badge(status.label, status.cls)),
+      el('div', { class: 'big' }, info.count),
+      el('div', { class: 'small' }, `products · scraped ${ago(info.scraped_at || data.timestamp)}`),
+    );
+    if (info.error) card.append(el('div', { class: 'small' }, `Reason: ${info.error}`));
+    if (info.skipped_incomplete?.length) {
+      const list = el('ul');
+      for (const u of info.skipped_incomplete) list.append(el('li', {}, el('a', { href: u, target: '_blank', rel: 'noopener' }, u)));
+      card.append(el('details', {}, el('summary', {}, `${info.skipped_incomplete.length} listing(s) skipped — missing price/fields`), list));
+    }
+    cards.append(card);
+  }
+}
+
+function filtered() {
+  const q = document.getElementById('search').value.trim().toLowerCase();
+  const shop = document.getElementById('shopFilter').value;
+  const verdict = document.getElementById('verdictFilter').value;
+  return products.filter(({ p, index }) => {
+    if (shop && p.shop !== shop) return false;
+    const r = results.get(index);
+    if (verdict === 'unchecked' && r) return false;
+    if (verdict && verdict !== 'unchecked' && r?.verdict !== verdict) return false;
+    if (!q) return true;
+    return [p.model, p.raw_name, p.url, specsText(p.specs)].join(' ').toLowerCase().includes(q);
+  });
+}
+
+function checkCell(index) {
+  const r = results.get(index);
+  const td = el('td', { class: 'check-cell' });
+  if (r === 'pending') {
+    td.append(badge('Checking…', 'b-neutral'));
+  } else if (r) {
+    const v = VERDICTS[r.verdict] || { label: r.verdict, cls: 'b-neutral' };
+    td.append(el('button', { class: `badge ${v.cls}`, title: 'Show details', onclick: () => toggleDetail(index) }, `${v.label} ▾`));
+  } else {
+    td.append(el('button', { onclick: () => checkOne(index) }, 'Check'));
+  }
+  return td;
+}
+
+function detailRow(index) {
+  const r = results.get(index);
+  const dl = el('dl');
+  const add = (k, v) => dl.append(el('dt', {}, k), el('dd', {}, v));
+  add('Fetched via', r.method === 'browser' ? 'real browser (page is behind an anti-bot challenge)' : 'plain HTTP');
+  add('HTTP status', r.http_status ?? '—');
+  if (r.redirected) add('Landed on', el('a', { href: r.final_url, target: '_blank', rel: 'noopener' }, r.final_url));
+  add('Page title / heading', r.page_heading || '—');
+  add('Scraped price on page', r.price_on_page == null ? '—' : (r.price_on_page ? 'yes' : 'no'));
+  add('Notes', r.notes?.length ? r.notes.join(' · ') : 'none');
+  return el('tr', { class: 'detail', 'data-detail': index }, el('td', { colspan: 7 }, dl));
+}
+
+const openDetails = new Set();
+function toggleDetail(index) {
+  openDetails.has(index) ? openDetails.delete(index) : openDetails.add(index);
+  renderRows();
+}
+
+function renderRows() {
+  const tbody = document.getElementById('rows');
+  tbody.replaceChildren();
+  for (const { p, index } of filtered()) {
+    tbody.append(el('tr', {},
+      el('td', {}, p.shop),
+      el('td', {},
+        el('div', { class: 'model' }, p.model || '—'),
+        p.raw_name && p.raw_name !== p.model ? el('div', { class: 'raw' }, p.raw_name) : null),
+      el('td', { class: 'price' }, formatVnd(p.price_vnd)),
+      el('td', { class: 'specs' }, specsText(p.specs)),
+      el('td', {}, ago(p.scraped_at), p.stale ? el('div', { class: 'stale' }, 'stale') : null),
+      el('td', {}, p.url ? el('a', { class: 'url', href: p.url, target: '_blank', rel: 'noopener' }, p.url.replace(/^https?:\/\/(www\.)?/, '')) : '—'),
+      checkCell(index),
+    ));
+    if (openDetails.has(index) && results.get(index) && results.get(index) !== 'pending') {
+      tbody.append(detailRow(index));
+    }
+  }
+  renderTally();
+}
+
+function renderTally() {
+  const counts = {};
+  for (const r of results.values()) if (r !== 'pending') counts[r.verdict] = (counts[r.verdict] || 0) + 1;
+  document.getElementById('tally').replaceChildren(
+    ...Object.entries(VERDICTS).filter(([k]) => counts[k]).map(([k, v]) => badge(`${v.label}: ${counts[k]}`, v.cls)),
+  );
+}
+
+async function checkOne(index) {
+  results.set(index, 'pending');
+  renderRows();
+  try {
+    const res = await fetch(`/api/check?i=${index}`);
+    const body = await res.json();
+    results.set(index, res.ok ? body : { verdict: 'broken', notes: [body.error || `server error ${res.status}`] });
+  } catch (e) {
+    results.set(index, { verdict: 'broken', notes: [`viewer server unreachable: ${e.message}`] });
+  }
+  renderRows();
+}
+
+async function checkVisible() {
+  const button = document.getElementById('checkAll');
+  const progress = document.getElementById('progress');
+  const queue = filtered().map(x => x.index).filter(i => !results.has(i));
+  if (!queue.length) { progress.textContent = 'Nothing left to check in this view.'; return; }
+  button.disabled = true;
+  let done = 0;
+  const total = queue.length;
+  progress.textContent = `Checking 0 / ${total}…`;
+  const worker = async () => {
+    while (queue.length) {
+      await checkOne(queue.shift());
+      progress.textContent = `Checking ${++done} / ${total}…`;
+    }
+  };
+  await Promise.all(Array.from({ length: CHECK_CONCURRENCY }, worker));
+  progress.textContent = `Checked ${total} link(s).`;
+  button.disabled = false;
+}
+
+async function load() {
+  try {
+    const res = await fetch('/api/data');
+    const body = await res.json();
+    if (!res.ok) throw new Error(body.error);
+    const { source, data } = body;
+    products = data.products.map((p, index) => ({ p, index }));
+    renderMeta(source, data);
+    renderCards(data);
+    const shopFilter = document.getElementById('shopFilter');
+    for (const shop of [...new Set(data.products.map(p => p.shop))]) shopFilter.append(el('option', { value: shop }, shop));
+    renderRows();
+  } catch (e) {
+    document.getElementById('meta').textContent = '';
+    document.getElementById('error').textContent = `Could not load data: ${e.message}`;
+  }
+}
+
+for (const id of ['search', 'shopFilter', 'verdictFilter']) {
+  document.getElementById(id).addEventListener('input', renderRows);
+}
+document.getElementById('checkAll').addEventListener('click', checkVisible);
+load();
+</script>
+</body>
+</html>
