@@ -15,6 +15,7 @@ import { Laptop, RefreshCw, Smartphone } from "lucide-react";
 import { toast } from "sonner";
 import MacBookPricesTable from "@/components/ui/macbook-prices-table";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { refundShareOfPrice, vatPercentOn } from "@/lib/vat-refund";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { Squares } from "@/components/ui/squares-background";
 
@@ -249,23 +250,44 @@ export default function MacBookTracker() {
             </p>
             <ul className="space-y-2 list-disc list-inside">
               <li>
-                <strong>Online vs Physical Store:</strong> Prices shown are from
-                online stores. Physical stores often allow bargaining -
-                typically 2-5% discount for average negotiation, or 5-10% for
-                skilled bargaining. Use the slider above to estimate savings.
+                <strong>VAT refund:</strong> foreign passport holders get back
+                85% of the VAT when they fly out (the refunding bank keeps
+                15%). VAT is {vatPercentOn()}%
+                {vatPercentOn() === 8 && " until 31 Dec 2026, then 10%"}, so
+                the refund is about{" "}
+                {(refundShareOfPrice() * 100).toFixed(1)}% of the price. The
+                Est. Price column already takes it off.
               </li>
               <li>
-                <strong>VAT Refund:</strong> To qualify for 8.5% VAT refund,
-                purchase from authorized retail locations and ask for VAT refund
-                documents. Refunds are processed at the airport (minus ~22%
-                processing fee).
+                <strong>To qualify:</strong> spend at least ₫2,000,000 at one
+                shop in one day, at a branch registered for VAT refunds (ask
+                before you pay), get an electronic VAT invoice ("hóa đơn điện
+                tử GTGT"), and leave Vietnam within 60 days of the invoice.
               </li>
               <li>
-                <strong>Price Accuracy:</strong> Prices are indicative and
-                subject to change. Always verify current prices at the store
-                before purchasing.
+                <strong>At the airport:</strong> keep the product unopened in
+                your carry-on. Show it with the invoice to customs before
+                check-in, at least 30 minutes before departure (arrive early).
+                The refund is paid in VND at the refund counter after security,
+                at international airports such as Hanoi, Ho Chi Minh City and
+                Da Nang.
+              </li>
+              <li>
+                <strong>Bargaining:</strong> prices shown are from online
+                stores. Physical stores often allow 2-5% off, or 5-10% with
+                skilled bargaining; the slider above applies it to the
+                estimated price and refund.
+              </li>
+              <li>
+                <strong>Price accuracy:</strong> prices are indicative and
+                change often. Always confirm the price, and that the item is in
+                stock rather than pre-order, at the store before buying.
               </li>
             </ul>
+            <p className="mt-3 text-xs text-gray-500">
+              VAT refund rules: Decree 181/2025/ND-CP and Circular
+              84/2026/TT-BTC; 8% VAT rate: Decree 174/2025/ND-CP.
+            </p>
           </div>
         </div>
       </div>
