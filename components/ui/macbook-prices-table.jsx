@@ -26,7 +26,20 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { Check, ChevronDown, ChevronUp } from "lucide-react";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { vatPercentOn, vatRefundFor } from "@/lib/vat-refund";
 
 // Filter option ordering.
@@ -649,30 +662,113 @@ function MacBookPricesTable({ data, currency, posthog, productLine = "mac" }) {
   );
 }
 
+// Lists longer than this open with a search box (type or scroll); shorter
+// ones stay a plain dropdown. Both scroll inside a capped height.
+const SEARCHABLE_MIN_OPTIONS = 9;
+const DROPDOWN_HEIGHT = "max-h-72";
+
+function OptionLabel({ filter, option, options }) {
+  return (
+    <span className="flex items-center gap-2">
+      {option}
+      {filter.isNew?.(option, options) && (
+        <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
+          New
+        </span>
+      )}
+    </span>
+  );
+}
+
 function FilterSelect({ filter, value, options, onChange }) {
+  const searchable = options.length >= SEARCHABLE_MIN_OPTIONS;
   return (
     <div className="flex flex-col gap-2">
       <div className="text-sm font-semibold text-gray-700">{filter.label}</div>
-      <Select value={value} onValueChange={onChange}>
-        <SelectTrigger className={cn("w-full", filter.width)}>
-          <SelectValue placeholder={`Select ${filter.label.toLowerCase()}`} />
-        </SelectTrigger>
-        <SelectContent>
-          {options.map((option) => (
-            <SelectItem key={option} value={option}>
-              <span className="flex items-center gap-2">
-                {option}
-                {filter.isNew?.(option, options) && (
-                  <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
-                    New
-                  </span>
-                )}
-              </span>
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
+      {searchable ? (
+        <SearchableSelect
+          filter={filter}
+          value={value}
+          options={options}
+          onChange={onChange}
+        />
+      ) : (
+        <Select value={value} onValueChange={onChange}>
+          <SelectTrigger className={cn("w-full", filter.width)}>
+            <SelectValue placeholder={`Select ${filter.label.toLowerCase()}`} />
+          </SelectTrigger>
+          <SelectContent className={DROPDOWN_HEIGHT}>
+            {options.map((option) => (
+              <SelectItem key={option} value={option}>
+                <OptionLabel filter={filter} option={option} options={options} />
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      )}
     </div>
+  );
+}
+
+function SearchableSelect({ filter, value, options, onChange }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <button
+          type="button"
+          role="combobox"
+          aria-expanded={open}
+          aria-label={filter.label}
+          className={cn(
+            // Same look as SelectTrigger, so both kinds of filter match.
+            "flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+            filter.width,
+          )}
+        >
+          <span className="truncate">{value}</span>
+          <ChevronDown className="h-4 w-4 shrink-0 opacity-50" />
+        </button>
+      </PopoverTrigger>
+      <PopoverContent
+        align="start"
+        className="w-[--radix-popover-trigger-width] min-w-[12rem] p-0"
+      >
+        <Command>
+          <CommandInput
+            placeholder={`Search ${filter.label.toLowerCase()}…`}
+            autoFocus
+          />
+          <CommandList className={DROPDOWN_HEIGHT}>
+            <CommandEmpty>No match.</CommandEmpty>
+            <CommandGroup>
+              {options.map((option) => (
+                <CommandItem
+                  key={option}
+                  value={option}
+                  onSelect={() => {
+                    onChange(option);
+                    setOpen(false);
+                  }}
+                >
+                  <Check
+                    className={cn(
+                      "h-4 w-4",
+                      option === value ? "opacity-100" : "opacity-0",
+                    )}
+                  />
+                  <OptionLabel
+                    filter={filter}
+                    option={option}
+                    options={options}
+                  />
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          </CommandList>
+        </Command>
+      </PopoverContent>
+    </Popover>
   );
 }
 
