@@ -293,7 +293,8 @@ export async function GET(request) {
   } catch (error) {
     console.error("API Error:", error);
     return NextResponse.json(
-      { success: false, error: error.message },
+      // Details stay in the server log; callers get a generic message.
+      { success: false, error: "Could not load prices" },
       { status: 500 },
     );
   }

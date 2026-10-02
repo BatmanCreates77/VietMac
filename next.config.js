@@ -4,8 +4,6 @@ const nextConfig = {
   },
   // Enable standalone output for Docker
   output: "standalone",
-  // External packages for Server Components (moved from experimental)
-  serverExternalPackages: ["mongodb"],
   webpack(config, { dev }) {
     if (dev) {
       // Reduce CPU/memory from file watching
@@ -26,17 +24,18 @@ const nextConfig = {
       {
         source: "/(.*)",
         headers: [
-          { key: "X-Frame-Options", value: "ALLOWALL" },
-          { key: "Content-Security-Policy", value: "frame-ancestors *;" },
+          // Only this site may frame its pages (was: any site, which allows
+          // clickjacking-style overlays).
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "Content-Security-Policy", value: "frame-ancestors 'self';" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           {
-            key: "Access-Control-Allow-Origin",
-            value: process.env.CORS_ORIGINS || "*",
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=()",
           },
-          {
-            key: "Access-Control-Allow-Methods",
-            value: "GET, POST, PUT, DELETE, OPTIONS",
-          },
-          { key: "Access-Control-Allow-Headers", value: "*" },
+          // No Access-Control-Allow-* headers: only this site's own pages
+          // call /api, so browsers need no cross-origin permission.
         ],
       },
     ];
