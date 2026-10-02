@@ -27,6 +27,7 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { vatPercentOn, vatRefundFor } from "@/lib/vat-refund";
 
 // Filter option ordering.
 const MAC_MODEL_ORDER = [
@@ -197,9 +198,11 @@ function MacBookPricesTable({ data, currency, posthog, productLine = "mac" }) {
       const discountAmountVND = item.vndPrice * (bargainDiscount / 100);
       const bargainedPriceVND = item.vndPrice - discountAmountVND;
 
-      // VAT refund calculation (this should still be in the selected currency)
-      const vatRefund = ((item.convertedPrice * 8.5) / 108.5) * 0.78;
-      const finalPrice = item.convertedPrice - vatRefund;
+      // The refund is a share of what is actually paid, so it follows the
+      // bargained price (in the selected currency).
+      const paidConverted = item.convertedPrice * (1 - bargainDiscount / 100);
+      const vatRefund = vatRefundFor(paidConverted);
+      const finalPrice = paidConverted - vatRefund;
 
       return {
         ...item,
@@ -518,7 +521,7 @@ function MacBookPricesTable({ data, currency, posthog, productLine = "mac" }) {
                   )}
                   <div className="bg-green-50/50 rounded-lg p-3 col-span-2">
                     <div className="text-gray-500 text-xs font-medium mb-1">
-                      VAT Refund (8.5% with fees)
+                      VAT Refund (85% of {vatPercentOn()}% VAT)
                     </div>
                     <div className="font-bold text-green-600 text-lg">
                       -{getCurrencySymbol(currency)}

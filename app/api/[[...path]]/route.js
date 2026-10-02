@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { vatPercentOn, vatRefundFor } from "@/lib/vat-refund";
 
 import { readFileSync } from "fs";
 import { join } from "path";
@@ -215,11 +216,7 @@ function calculatePrices(priceData, exchangeRate) {
     }
 
     const convertedPrice = item.vndPrice / exchangeRate;
-    // Correct VAT calculation: extract 8.5% tax from the total price
-    // If price includes VAT: tax = (price × 8.5) / 108.5
-    const vatRefundGross = (convertedPrice * 8.5) / 108.5;
-    // Airport processing fee is ~22% of the refund (based on real user data)
-    const vatRefund = vatRefundGross * 0.78;
+    const vatRefund = vatRefundFor(convertedPrice);
     const finalPrice = convertedPrice - vatRefund;
 
     return {
@@ -275,6 +272,7 @@ export async function GET(request) {
         },
         exchangeRate: exchangeRate,
         currency: currency.toUpperCase(),
+        vatPercent: vatPercentOn(),
         timestamp: new Date().toISOString(),
         source: "Scraped from retailer websites",
         scrapedProductsCount: scrapedCount,
