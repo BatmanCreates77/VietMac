@@ -2,6 +2,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import { Analytics } from "@vercel/analytics/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { ANALYTICS_ENABLED, GA_MEASUREMENT_ID } from "@/lib/analytics-config";
 import { PostHogProvider } from "./providers/posthog-provider";
 
 const inter = Inter({
@@ -21,6 +23,7 @@ export default function RootLayout({ children }) {
         <PostHogProvider>{children}</PostHogProvider>
         <Analytics />
       </body>
+      {ANALYTICS_ENABLED && <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />}
     </html>
   );
 }

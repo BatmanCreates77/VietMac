@@ -143,7 +143,12 @@ const FILTERS = {
   ],
 };
 
-function MacBookPricesTable({ data, currency, posthog, productLine = "mac" }) {
+function MacBookPricesTable({
+  data,
+  currency,
+  analytics,
+  productLine = "mac",
+}) {
   const filters = FILTERS[productLine] || FILTERS.mac;
   // { field: selected value }; a missing field means "All". Reset by the
   // parent remounting this table (key) when the product tab changes.
@@ -156,7 +161,7 @@ function MacBookPricesTable({ data, currency, posthog, productLine = "mac" }) {
     if (value !== "All") {
       const properties = { product_line: productLine };
       for (const f of filters) properties[f.prop] = next[f.field] || "All";
-      posthog?.capture(filter.event, properties);
+      analytics?.capture(filter.event, properties);
     }
   };
 
@@ -276,7 +281,7 @@ function MacBookPricesTable({ data, currency, posthog, productLine = "mac" }) {
           <button
             onClick={() => {
               const newState = !showBargainSlider;
-              posthog?.capture("bargain_toggle_clicked", {
+              analytics?.capture("bargain_toggle_clicked", {
                 enabled: newState,
               });
               setShowBargainSlider(newState);
@@ -434,7 +439,7 @@ function MacBookPricesTable({ data, currency, posthog, productLine = "mac" }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => {
-                  posthog?.capture("macbook_listing_clicked", {
+                  analytics?.capture("macbook_listing_clicked", {
                     shop: item.shop,
                     model: item.model,
                     model_type: item.modelType,
@@ -593,7 +598,7 @@ function MacBookPricesTable({ data, currency, posthog, productLine = "mac" }) {
                       getPriceHighlightClass(item.finalPrice),
                     )}
                     onClick={() => {
-                      posthog?.capture("macbook_listing_clicked", {
+                      analytics?.capture("macbook_listing_clicked", {
                         shop: item.shop,
                         model: item.model,
                         model_type: item.modelType,
