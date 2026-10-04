@@ -181,7 +181,11 @@ function MacBookPricesTable({
   const filters = FILTERS[productLine] || FILTERS.mac;
   // India comparison: iPhones only (india_prices.py covers iPhones), and
   // only in rupees, the currency the Indian prices are in.
-  const showIndia = productLine === "iphone" && currency === "INR";
+  // Hidden entirely when no India data has been published yet.
+  const showIndia =
+    productLine === "iphone" &&
+    currency === "INR" &&
+    data.some((item) => item.india);
   // { field: selected value }; a missing field means "All". Reset by the
   // parent remounting this table (key) when the product tab changes.
   const [selected, setSelected] = useState({});
@@ -845,15 +849,15 @@ function IndiaComparison({ item }) {
     <div className="flex flex-col gap-0.5">
       {difference >= 0 ? (
         <span className="font-semibold text-green-700">
-          Save ₹{difference.toLocaleString("en-IN")} in Vietnam
+          Save ₹{difference.toLocaleString()} in Vietnam
         </span>
       ) : (
         <span className="font-semibold text-amber-700">
-          ₹{(-difference).toLocaleString("en-IN")} cheaper in India
+          ₹{(-difference).toLocaleString()} cheaper in India
         </span>
       )}
       <span className="text-xs text-gray-500">
-        India: ₹{price.toLocaleString("en-IN")} at{" "}
+        India: ₹{price.toLocaleString()} at{" "}
         <span
           role="link"
           tabIndex={0}
