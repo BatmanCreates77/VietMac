@@ -273,6 +273,12 @@ export default function MacBookTracker() {
                 Da Nang.
               </li>
               <li>
+                <strong>Card fees:</strong> most cards add a foreign-currency
+                markup when you pay abroad, about 3.5% plus 18% GST (4.13%) on
+                typical Indian cards. Pick how you'll pay above to include it,
+                or use cash or a zero-forex card to avoid it.
+              </li>
+              <li>
                 <strong>Bargaining:</strong> prices shown are from online
                 stores. Physical stores often allow 2-5% off, or 5-10% with
                 skilled bargaining; the slider above applies it to the
