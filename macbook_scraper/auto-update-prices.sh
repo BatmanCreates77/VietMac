@@ -131,11 +131,18 @@ if [ $EXIT_CODE -eq 0 ]; then
     # rejected this run (non-zero exit, caught above) if the data looked
     # bad, so a successful exit here means latest_products.json genuinely
     # changed to something validated — safe to publish.
-    if git -C "$REPO_ROOT" diff --quiet -- macbook_scraper/output/latest_products.json; then
-        log "ℹ️  No change to latest_products.json — nothing to commit"
+    # india_prices.json (Indian prices for comparison) is published
+    # alongside; `git status` rather than `git diff` so the file's first,
+    # still-untracked version is picked up too.
+    PRICE_FILES=()
+    for f in macbook_scraper/output/latest_products.json macbook_scraper/output/india_prices.json; do
+        [ -f "$REPO_ROOT/$f" ] && PRICE_FILES+=("$f")
+    done
+    if [ -z "$(git -C "$REPO_ROOT" status --porcelain -- "${PRICE_FILES[@]}")" ]; then
+        log "ℹ️  No change to the price files — nothing to commit"
     else
         log "Committing updated prices..."
-        if git -C "$REPO_ROOT" add macbook_scraper/output/latest_products.json \
+        if git -C "$REPO_ROOT" add -- "${PRICE_FILES[@]}" \
             && git -C "$REPO_ROOT" commit -q -m "$AUTOMATED_COMMIT_PREFIX $(date '+%Y-%m-%d %H:%M')" \
             && push_with_recovery; then
             log "✅ Committed and pushed updated prices"

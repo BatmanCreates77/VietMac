@@ -343,6 +343,15 @@ class PriceUpdater:
         if stale:
             print(f"   Pruned {len(stale)} old backup(s), kept most recent {BACKUP_RETENTION_COUNT}")
 
+    def update_india_prices(self):
+        try:
+            from india_prices import IndiaPriceUpdater
+            result = IndiaPriceUpdater(self.output_dir).run()
+            statuses = ", ".join(f"{name}: {source['status']}" for name, source in result["sources"].items())
+            print(f"🇮🇳 India prices: {len(result['products'])} model/storage prices ({statuses})")
+        except Exception as e:
+            print(f"⚠️  India prices not updated: {e}")
+
     def print_summary(self):
         """Print execution summary"""
         print(f"\n{'='*80}")
@@ -391,6 +400,10 @@ class PriceUpdater:
             if TOPZONE_AVAILABLE:
                 print("\n⚠️  Warning: TopZone usually times out")
                 self.run_scraper(TopZoneScraper, 'topzone')
+
+        # Indian prices for the "cheaper than India" comparison. Separate
+        # file, own safeguards, and it can never fail the Vietnam update.
+        self.update_india_prices()
 
         # Validate + save results. A ValidationFailure means the gate
         # rejected the write on purpose (see save_results/validate_results)

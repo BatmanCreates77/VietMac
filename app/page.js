@@ -34,6 +34,7 @@ export default function MacBookTracker() {
   const [allPrices, setAllPrices] = useState([]);
   const [loading, setLoading] = useState(false);
   const [exchangeRate, setExchangeRate] = useState(null);
+  const [rateSource, setRateSource] = useState(null);
   const [currency, setCurrency] = useState("INR");
   const [productLine, setProductLine] = useState("mac");
 
@@ -86,6 +87,7 @@ export default function MacBookTracker() {
         ];
         setAllPrices(combinedPrices);
         setExchangeRate(data.exchangeRate);
+        setRateSource(data.rateSource);
         setCurrency(data.currency);
         toast.success("Prices updated successfully!");
       } else {
@@ -176,7 +178,11 @@ export default function MacBookTracker() {
                   <div className="text-base sm:text-lg font-bold mb-1">
                     Exchange Rate: 1 {currency} = {exchangeRate.toFixed(2)} VND
                   </div>
-                  <div className="text-xs text-gray-400">Powered by Wise</div>
+                  {rateSource && rateSource !== "fallback" && (
+                    <div className="text-xs text-gray-400">
+                      Rate from {rateSource}
+                    </div>
+                  )}
                 </div>
                 <Button
                   onClick={() => {
@@ -277,6 +283,13 @@ export default function MacBookTracker() {
                 markup when you pay abroad, about 3.5% plus 18% GST (4.13%) on
                 typical Indian cards. Pick how you'll pay above to include it,
                 or use cash or a zero-forex card to avoid it.
+              </li>
+              <li>
+                <strong>vs India (iPhones, in ₹):</strong> compares the
+                estimated price with the lowest price we found in India at
+                Apple India, Flipkart or Reliance Digital, ignoring sold-out
+                and "coming soon" offers. Indian prices change often, so check
+                the date shown and confirm before you fly.
               </li>
               <li>
                 <strong>Bargaining:</strong> prices shown are from online
