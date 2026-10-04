@@ -1,0 +1,1755 @@
+{
+ "timestamp": "2026-10-05T01:56:56.039360",
+ "currency": "INR",
+ "sources": {
+  "Apple India": {
+   "checked_at": "2026-10-05T01:56:56.039360",
+   "status": "fresh",
+   "offers": [
+    {
+     "key": [
+      "iPhone 18 Pro Max",
+      "1TB"
+     ],
+     "source": "Apple India",
+     "price": 254900,
+     "url": "https://www.apple.com/in/shop/buy-iphone/iphone-18-pro",
+     "title": "iPhone 18 Pro Max 1TB Burgundy"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro Max",
+      "256GB"
+     ],
+     "source": "Apple India",
+     "price": 179900,
+     "url": "https://www.apple.com/in/shop/buy-iphone/iphone-18-pro",
+     "title": "iPhone 18 Pro Max 256GB Silver"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro Max",
+      "2TB"
+     ],
+     "source": "Apple India",
+     "price": 329900,
+     "url": "https://www.apple.com/in/shop/buy-iphone/iphone-18-pro",
+     "title": "iPhone 18 Pro Max 2TB Glacier"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro Max",
+      "512GB"
+     ],
+     "source": "Apple India",
+     "price": 204900,
+     "url": "https://www.apple.com/in/shop/buy-iphone/iphone-18-pro",
+     "title": "iPhone 18 Pro Max 512GB Black"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro",
+      "1TB"
+     ],
+     "source": "Apple India",
+     "price": 239900,
+     "url": "https://www.apple.com/in/shop/buy-iphone/iphone-18-pro",
+     "title": "iPhone 18 Pro 1TB Black"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro",
+      "256GB"
+     ],
+     "source": "Apple India",
+     "price": 164900,
+     "url": "https://www.apple.com/in/shop/buy-iphone/iphone-18-pro",
+     "title": "iPhone 18 Pro 256GB Black"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro",
+      "2TB"
+     ],
+     "source": "Apple India",
+     "price": 314900,
+     "url": "https://www.apple.com/in/shop/buy-iphone/iphone-18-pro",
+     "title": "iPhone 18 Pro 2TB Black"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro",
+      "512GB"
+     ],
+     "source": "Apple India",
+     "price": 189900,
+     "url": "https://www.apple.com/in/shop/buy-iphone/iphone-18-pro",
+     "title": "iPhone 18 Pro 512GB Burgundy"
+    },
+    {
+     "key": [
+      "iPhone 17",
+      "256GB"
+     ],
+     "source": "Apple India",
+     "price": 99900,
+     "url": "https://www.apple.com/in/shop/buy-iphone/iphone-17",
+     "title": "iPhone 17 256GB Mist Blue"
+    },
+    {
+     "key": [
+      "iPhone 17",
+      "512GB"
+     ],
+     "source": "Apple India",
+     "price": 124900,
+     "url": "https://www.apple.com/in/shop/buy-iphone/iphone-17",
+     "title": "iPhone 17 512GB White"
+    },
+    {
+     "key": [
+      "iPhone 17e",
+      "512GB"
+     ],
+     "source": "Apple India",
+     "price": 104900,
+     "url": "https://www.apple.com/in/shop/buy-iphone/iphone-17e",
+     "title": "iPhone 17e 512GB Black"
+    },
+    {
+     "key": [
+      "iPhone 17e",
+      "256GB"
+     ],
+     "source": "Apple India",
+     "price": 79900,
+     "url": "https://www.apple.com/in/shop/buy-iphone/iphone-17e",
+     "title": "iPhone 17e 256GB White"
+    },
+    {
+     "key": [
+      "iPhone 16",
+      "128GB"
+     ],
+     "source": "Apple India",
+     "price": 89900,
+     "url": "https://www.apple.com/in/shop/buy-iphone/iphone-16",
+     "title": "iPhone 16 128GB White"
+    }
+   ]
+  },
+  "Flipkart": {
+   "checked_at": "2026-10-05T01:56:56.039360",
+   "status": "fresh",
+   "offers": [
+    {
+     "key": [
+      "iPhone 18 Pro",
+      "256GB"
+     ],
+     "source": "Flipkart",
+     "price": 164900,
+     "url": "https://www.flipkart.com/apple-iphone-18-pro-burgundy-256-gb/p/itm2b2c10b01cc46",
+     "title": "Apple iPhone 18 Pro (Burgundy, 256 GB)"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro",
+      "256GB"
+     ],
+     "source": "Flipkart",
+     "price": 164900,
+     "url": "https://www.flipkart.com/apple-iphone-18-pro-black-256-gb/p/itm63a95e8ef1485",
+     "title": "Apple iPhone 18 Pro (Black, 256 GB)"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro",
+      "256GB"
+     ],
+     "source": "Flipkart",
+     "price": 164900,
+     "url": "https://www.flipkart.com/apple-iphone-18-pro-silver-256-gb/p/itm5ce813274f766",
+     "title": "Apple iPhone 18 Pro (Silver, 256 GB)"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro",
+      "512GB"
+     ],
+     "source": "Flipkart",
+     "price": 189900,
+     "url": "https://www.flipkart.com/apple-iphone-18-pro-burgundy-512-gb/p/itm45fade022ddea",
+     "title": "Apple iPhone 18 Pro (Burgundy, 512 GB)"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro",
+      "256GB"
+     ],
+     "source": "Flipkart",
+     "price": 164900,
+     "url": "https://www.flipkart.com/apple-iphone-18-pro-glacier-256-gb/p/itm3874a83c12f72",
+     "title": "Apple iPhone 18 Pro (Glacier, 256 GB)"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro",
+      "512GB"
+     ],
+     "source": "Flipkart",
+     "price": 189900,
+     "url": "https://www.flipkart.com/apple-iphone-18-pro-black-512-gb/p/itm6d0500f65dfb8",
+     "title": "Apple iPhone 18 Pro (Black, 512 GB)"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro",
+      "1TB"
+     ],
+     "source": "Flipkart",
+     "price": 239900,
+     "url": "https://www.flipkart.com/apple-iphone-18-pro-burgundy-1-tb/p/itm08a1e7834ce1d",
+     "title": "Apple iPhone 18 Pro (Burgundy, 1 TB)"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro",
+      "512GB"
+     ],
+     "source": "Flipkart",
+     "price": 189900,
+     "url": "https://www.flipkart.com/apple-iphone-18-pro-glacier-512-gb/p/itm279b80a9b1198",
+     "title": "Apple iPhone 18 Pro (Glacier, 512 GB)"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro",
+      "512GB"
+     ],
+     "source": "Flipkart",
+     "price": 189900,
+     "url": "https://www.flipkart.com/apple-iphone-18-pro-silver-512-gb/p/itm5f321763cbf7a",
+     "title": "Apple iPhone 18 Pro (Silver, 512 GB)"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro",
+      "1TB"
+     ],
+     "source": "Flipkart",
+     "price": 239900,
+     "url": "https://www.flipkart.com/apple-iphone-18-pro-black-1-tb/p/itm3e8f460d243aa",
+     "title": "Apple iPhone 18 Pro (Black, 1 TB)"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro",
+      "256GB"
+     ],
+     "source": "Flipkart",
+     "price": 134900,
+     "url": "https://www.flipkart.com/apple-iphone-17-pro-deep-blue-256-gb/p/itm239d0b996d7f0",
+     "title": "Apple iPhone 17 Pro (Deep Blue, 256 GB)"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro",
+      "256GB"
+     ],
+     "source": "Flipkart",
+     "price": 134900,
+     "url": "https://www.flipkart.com/apple-iphone-17-pro-cosmic-orange-256-gb/p/itm76fe37ca9ea8c",
+     "title": "Apple iPhone 17 Pro (Cosmic Orange, 256 GB)"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro",
+      "256GB"
+     ],
+     "source": "Flipkart",
+     "price": 134900,
+     "url": "https://www.flipkart.com/apple-iphone-17-pro-silver-256-gb/p/itm106f475c264c7",
+     "title": "Apple iPhone 17 Pro (Silver, 256 GB)"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro",
+      "512GB"
+     ],
+     "source": "Flipkart",
+     "price": 154900,
+     "url": "https://www.flipkart.com/apple-iphone-17-pro-silver-512-gb/p/itmfe915ac778113",
+     "title": "Apple iPhone 17 Pro (Silver, 512 GB)"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro",
+      "512GB"
+     ],
+     "source": "Flipkart",
+     "price": 154900,
+     "url": "https://www.flipkart.com/apple-iphone-17-pro-deep-blue-512-gb/p/itmce30d684c921a",
+     "title": "Apple iPhone 17 Pro (Deep Blue, 512 GB)"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro",
+      "512GB"
+     ],
+     "source": "Flipkart",
+     "price": 154900,
+     "url": "https://www.flipkart.com/apple-iphone-17-pro-cosmic-orange-512-gb/p/itm999d978f08430",
+     "title": "Apple iPhone 17 Pro (Cosmic Orange, 512 GB)"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro",
+      "1TB"
+     ],
+     "source": "Flipkart",
+     "price": 174900,
+     "url": "https://www.flipkart.com/apple-iphone-17-pro-silver-1-tb/p/itmb9e5aad6aaf35",
+     "title": "Apple iPhone 17 Pro (Silver, 1 TB)"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro",
+      "1TB"
+     ],
+     "source": "Flipkart",
+     "price": 174900,
+     "url": "https://www.flipkart.com/apple-iphone-17-pro-deep-blue-1-tb/p/itm68dd0a6d0e8eb",
+     "title": "Apple iPhone 17 Pro (Deep Blue, 1 TB)"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro",
+      "1TB"
+     ],
+     "source": "Flipkart",
+     "price": 174900,
+     "url": "https://www.flipkart.com/apple-iphone-17-pro-cosmic-orange-1-tb/p/itm5671124459db4",
+     "title": "Apple iPhone 17 Pro (Cosmic Orange, 1 TB)"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro Max",
+      "256GB"
+     ],
+     "source": "Flipkart",
+     "price": 149900,
+     "url": "https://www.flipkart.com/apple-iphone-17-pro-max-silver-256-gb/p/itmd38e30731883a",
+     "title": "Apple iPhone 17 Pro Max (Silver, 256 GB)"
+    },
+    {
+     "key": [
+      "iPhone 17e",
+      "512GB"
+     ],
+     "source": "Flipkart",
+     "price": 84900,
+     "url": "https://www.flipkart.com/apple-iphone-17e-soft-pink-512-gb/p/itm9ca2e491bc0c9",
+     "title": "Apple iPhone 17e (Soft Pink, 512 GB)"
+    },
+    {
+     "key": [
+      "iPhone 15 Plus",
+      "128GB"
+     ],
+     "source": "Flipkart",
+     "price": 69900,
+     "url": "https://www.flipkart.com/apple-iphone-15-plus-pink-128-gb/p/itmecb6209a78172",
+     "title": "Apple iPhone 15 Plus (Pink, 128 GB)"
+    },
+    {
+     "key": [
+      "iPhone 15 Plus",
+      "128GB"
+     ],
+     "source": "Flipkart",
+     "price": 69900,
+     "url": "https://www.flipkart.com/apple-iphone-15-plus-black-128-gb/p/itme3a53984760fb",
+     "title": "Apple iPhone 15 Plus (Black, 128 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16 Plus",
+      "128GB"
+     ],
+     "source": "Flipkart",
+     "price": 79900,
+     "url": "https://www.flipkart.com/apple-iphone-16-plus-teal-128-gb/p/itmfa939eebe8adf",
+     "title": "Apple iPhone 16 Plus (Teal, 128 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16 Plus",
+      "128GB"
+     ],
+     "source": "Flipkart",
+     "price": 79900,
+     "url": "https://www.flipkart.com/apple-iphone-16-plus-white-128-gb/p/itm0635ebbf8c665",
+     "title": "Apple iPhone 16 Plus (White, 128 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16 Plus",
+      "256GB"
+     ],
+     "source": "Flipkart",
+     "price": 89900,
+     "url": "https://www.flipkart.com/apple-iphone-16-plus-black-256-gb/p/itma302a45837ec4",
+     "title": "Apple iPhone 16 Plus (Black, 256 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16 Plus",
+      "128GB"
+     ],
+     "source": "Flipkart",
+     "price": 79900,
+     "url": "https://www.flipkart.com/apple-iphone-16-plus-black-128-gb/p/itm1abbae671f9ef",
+     "title": "Apple iPhone 16 Plus (Black, 128 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16 Plus",
+      "256GB"
+     ],
+     "source": "Flipkart",
+     "price": 89900,
+     "url": "https://www.flipkart.com/apple-iphone-16-plus-white-256-gb/p/itmc63bd0635f400",
+     "title": "Apple iPhone 16 Plus (White, 256 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16 Plus",
+      "128GB"
+     ],
+     "source": "Flipkart",
+     "price": 79900,
+     "url": "https://www.flipkart.com/apple-iphone-16-plus-ultramarine-128-gb/p/itm3a32a91957d41",
+     "title": "Apple iPhone 16 Plus (Ultramarine, 128 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16 Plus",
+      "256GB"
+     ],
+     "source": "Flipkart",
+     "price": 89900,
+     "url": "https://www.flipkart.com/apple-iphone-16-plus-pink-256-gb/p/itm2e8da1548666b",
+     "title": "Apple iPhone 16 Plus (Pink, 256 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16 Plus",
+      "256GB"
+     ],
+     "source": "Flipkart",
+     "price": 89900,
+     "url": "https://www.flipkart.com/apple-iphone-16-plus-teal-256-gb/p/itmc838d56fd8d50",
+     "title": "Apple iPhone 16 Plus (Teal, 256 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16 Plus",
+      "128GB"
+     ],
+     "source": "Flipkart",
+     "price": 79900,
+     "url": "https://www.flipkart.com/apple-iphone-16-plus-pink-128-gb/p/itm9761d2a9d8939",
+     "title": "Apple iPhone 16 Plus (Pink, 128 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16",
+      "128GB"
+     ],
+     "source": "Flipkart",
+     "price": 69900,
+     "url": "https://www.flipkart.com/apple-iphone-16-ultramarine-128-gb/p/itmcc210cae43fba",
+     "title": "Apple iPhone 16 (Ultramarine, 128 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16",
+      "128GB"
+     ],
+     "source": "Flipkart",
+     "price": 69900,
+     "url": "https://www.flipkart.com/apple-iphone-16-black-128-gb/p/itmb07d67f995271",
+     "title": "Apple iPhone 16 (Black, 128 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16",
+      "128GB"
+     ],
+     "source": "Flipkart",
+     "price": 69900,
+     "url": "https://www.flipkart.com/apple-iphone-16-teal-128-gb/p/itmce4bb3f55cc2f",
+     "title": "Apple iPhone 16 (Teal, 128 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16",
+      "128GB"
+     ],
+     "source": "Flipkart",
+     "price": 69900,
+     "url": "https://www.flipkart.com/apple-iphone-16-white-128-gb/p/itm7c0281cd247be",
+     "title": "Apple iPhone 16 (White, 128 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16",
+      "128GB"
+     ],
+     "source": "Flipkart",
+     "price": 69900,
+     "url": "https://www.flipkart.com/apple-iphone-16-pink-128-gb/p/itmc2e910b4d0b1c",
+     "title": "Apple iPhone 16 (Pink, 128 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16",
+      "256GB"
+     ],
+     "source": "Flipkart",
+     "price": 79900,
+     "url": "https://www.flipkart.com/apple-iphone-16-pink-256-gb/p/itm0d8c695cded44",
+     "title": "Apple iPhone 16 (Pink, 256 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16",
+      "256GB"
+     ],
+     "source": "Flipkart",
+     "price": 79900,
+     "url": "https://www.flipkart.com/apple-iphone-16-black-256-gb/p/itm86da1977dcdf1",
+     "title": "Apple iPhone 16 (Black, 256 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16",
+      "256GB"
+     ],
+     "source": "Flipkart",
+     "price": 79900,
+     "url": "https://www.flipkart.com/apple-iphone-16-ultramarine-256-gb/p/itm03cecd3e85111",
+     "title": "Apple iPhone 16 (Ultramarine, 256 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16",
+      "256GB"
+     ],
+     "source": "Flipkart",
+     "price": 79900,
+     "url": "https://www.flipkart.com/apple-iphone-16-teal-256-gb/p/itm2b7be11cfadef",
+     "title": "Apple iPhone 16 (Teal, 256 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16",
+      "256GB"
+     ],
+     "source": "Flipkart",
+     "price": 79900,
+     "url": "https://www.flipkart.com/apple-iphone-16-white-256-gb/p/itma0ed9b33a2973",
+     "title": "Apple iPhone 16 (White, 256 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16e",
+      "256GB"
+     ],
+     "source": "Flipkart",
+     "price": 69900,
+     "url": "https://www.flipkart.com/apple-iphone-16e-white-256-gb/p/itm20137f3cfd0e6",
+     "title": "Apple iPhone 16e (White, 256 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16",
+      "128GB"
+     ],
+     "source": "Flipkart",
+     "price": 69900,
+     "url": "https://www.flipkart.com/apple-iphone-16-black-128-gb/p/itmb07d67f995271",
+     "title": "Apple iPhone 16 (Black, 128 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16",
+      "128GB"
+     ],
+     "source": "Flipkart",
+     "price": 69900,
+     "url": "https://www.flipkart.com/apple-iphone-16-ultramarine-128-gb/p/itmcc210cae43fba",
+     "title": "Apple iPhone 16 (Ultramarine, 128 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16e",
+      "128GB"
+     ],
+     "source": "Flipkart",
+     "price": 59900,
+     "url": "https://www.flipkart.com/apple-iphone-16e-black-128-gb/p/itm730f9c68ad562",
+     "title": "Apple iPhone 16e (Black, 128 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16e",
+      "128GB"
+     ],
+     "source": "Flipkart",
+     "price": 59900,
+     "url": "https://www.flipkart.com/apple-iphone-16e-white-128-gb/p/itm7971f594b0906",
+     "title": "Apple iPhone 16e (White, 128 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16e",
+      "256GB"
+     ],
+     "source": "Flipkart",
+     "price": 69900,
+     "url": "https://www.flipkart.com/apple-iphone-16e-black-256-gb/p/itm24bcdb43505bd",
+     "title": "Apple iPhone 16e (Black, 256 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16",
+      "128GB"
+     ],
+     "source": "Flipkart",
+     "price": 69900,
+     "url": "https://www.flipkart.com/apple-iphone-16-teal-128-gb/p/itmce4bb3f55cc2f",
+     "title": "Apple iPhone 16 (Teal, 128 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16",
+      "128GB"
+     ],
+     "source": "Flipkart",
+     "price": 69900,
+     "url": "https://www.flipkart.com/apple-iphone-16-white-128-gb/p/itm7c0281cd247be",
+     "title": "Apple iPhone 16 (White, 128 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16",
+      "256GB"
+     ],
+     "source": "Flipkart",
+     "price": 79900,
+     "url": "https://www.flipkart.com/apple-iphone-16-teal-256-gb/p/itm2b7be11cfadef",
+     "title": "Apple iPhone 16 (Teal, 256 GB)"
+    },
+    {
+     "key": [
+      "iPhone 16",
+      "128GB"
+     ],
+     "source": "Flipkart",
+     "price": 69900,
+     "url": "https://www.flipkart.com/apple-iphone-16-pink-128-gb/p/itmc2e910b4d0b1c",
+     "title": "Apple iPhone 16 (Pink, 128 GB)"
+    }
+   ]
+  },
+  "Reliance Digital": {
+   "checked_at": "2026-10-05T01:56:56.039360",
+   "status": "fresh",
+   "offers": [
+    {
+     "key": [
+      "iPhone 18 Pro Max",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 179900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-max-256-gb-burgundy-mtwvbt-10615187",
+     "title": "Apple iPhone 18 Pro Max 256 GB, Burgundy"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro Max",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 179900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-max-256-gb-black-mtwvbs-10615178",
+     "title": "Apple iPhone 18 Pro Max 256 GB, Black"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro Max",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 179900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-max-256-gb-silver-mtwvbs-10615191",
+     "title": "Apple iPhone 18 Pro Max 256 GB, Silver"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro Max",
+      "512GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 204900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-max-512-gb-burgundy-mtwvbt-10615192",
+     "title": "Apple iPhone 18 Pro Max 512 GB, Burgundy"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro Max",
+      "512GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 204900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-max-512-gb-glacier-mtwvbr-10615183",
+     "title": "Apple iPhone 18 Pro Max 512 GB, Glacier"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro Max",
+      "512GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 204900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-max-512-gb-silver-mtwvbs-10615186",
+     "title": "Apple iPhone 18 Pro Max 512 GB, Silver"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro Max",
+      "1TB"
+     ],
+     "source": "Reliance Digital",
+     "price": 254900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-max-1-tb-burgundy-mtwvbs-10615177",
+     "title": "Apple iPhone 18 Pro Max 1 TB, Burgundy"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro",
+      "512GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 189900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-512-gb-burgundy-mtwsn5-10615121",
+     "title": "Apple iPhone 18 Pro 512 GB, Burgundy"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro Max",
+      "512GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 204900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-max-512-gb-black-mtwvbr-10615189",
+     "title": "Apple iPhone 18 Pro Max 512 GB, Black"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro Max",
+      "1TB"
+     ],
+     "source": "Reliance Digital",
+     "price": 254900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-max-1-tb-silver-mtwvbt-10615190",
+     "title": "Apple iPhone 18 Pro Max 1 TB, Silver"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro Max",
+      "1TB"
+     ],
+     "source": "Reliance Digital",
+     "price": 254900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-max-1-tb-black-mtwvbr-10615188",
+     "title": "Apple iPhone 18 Pro Max 1 TB, Black"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 164900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-256-gb-burgundy-mtwsn4-10615111",
+     "title": "Apple iPhone 18 Pro 256 GB, Burgundy"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 164900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-256-gb-silver-mtwsn6-10615123",
+     "title": "Apple iPhone 18 Pro 256 GB, Silver"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 164900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-256-gb-black-mtwsn4-10615119",
+     "title": "Apple iPhone 18 Pro 256 GB, Black"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 164900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-256-gb-glacier-mtwsn4-10615110",
+     "title": "Apple iPhone 18 Pro 256 GB, Glacier"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro",
+      "512GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 189900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-512-gb-burgundy-mtwsn5-10615121",
+     "title": "Apple iPhone 18 Pro 512 GB, Burgundy"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro Max",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 179900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-max-256-gb-burgundy-mtwvbt-10615187",
+     "title": "Apple iPhone 18 Pro Max 256 GB, Burgundy"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro Max",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 179900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-max-256-gb-black-mtwvbs-10615178",
+     "title": "Apple iPhone 18 Pro Max 256 GB, Black"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro Max",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 179900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-max-256-gb-silver-mtwvbs-10615191",
+     "title": "Apple iPhone 18 Pro Max 256 GB, Silver"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro Max",
+      "512GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 204900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-max-512-gb-burgundy-mtwvbt-10615192",
+     "title": "Apple iPhone 18 Pro Max 512 GB, Burgundy"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro",
+      "512GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 189900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-512-gb-black-mtwsn5-10615118",
+     "title": "Apple iPhone 18 Pro 512 GB, Black"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro",
+      "512GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 189900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-512-gb-silver-mtwsn6-10615112",
+     "title": "Apple iPhone 18 Pro 512 GB, Silver"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro Max",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 149900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-max-256-gb-silver-mff2dr-9387381",
+     "title": "Apple iPhone 17 Pro Max 256 GB, Silver"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro Max",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 149900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-max-256-gb-cosmic-orange-mff2f0-9387382",
+     "title": "Apple iPhone 17 Pro Max 256 GB, Cosmic Orange"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro Max",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 149900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-max-256-gb-deep-blue-mff2k1-9387385",
+     "title": "Apple iPhone 17 Pro Max 256 GB, Deep Blue"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro Max",
+      "512GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 169900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-max-512-gb-deep-blue-mff2k5-9387386",
+     "title": "Apple iPhone 17 Pro Max 512 GB, Deep Blue"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 134900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-256-gb-silver-mff5yc-9388031",
+     "title": "Apple iPhone 17 Pro 256 GB, Silver"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 134900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-256-gb-cosmic-orange-mff5yc-9388032",
+     "title": "Apple iPhone 17 Pro 256 GB, Cosmic Orange"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 134900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-256-gb-deep-blue-mff5yc-9388030",
+     "title": "Apple iPhone 17 Pro 256 GB, Deep Blue"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro",
+      "512GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 154900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-512-gb-cosmic-orange-mff5z3-9388045",
+     "title": "Apple iPhone 17 Pro 512 GB, Cosmic Orange"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro",
+      "512GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 154900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-512-gb-deep-blue-mff5z3-9388046",
+     "title": "Apple iPhone 17 Pro 512 GB, Deep Blue"
+    },
+    {
+     "key": [
+      "iPhone 17",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 99900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-256-gb-white-mff8s2-9391633",
+     "title": "Apple iPhone 17 256 GB, White"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 134900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-256-gb-silver-mff5yc-9388031",
+     "title": "Apple iPhone 17 Pro 256 GB, Silver"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 134900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-256-gb-cosmic-orange-mff5yc-9388032",
+     "title": "Apple iPhone 17 Pro 256 GB, Cosmic Orange"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 134900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-256-gb-deep-blue-mff5yc-9388030",
+     "title": "Apple iPhone 17 Pro 256 GB, Deep Blue"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro Max",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 149900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-max-256-gb-silver-mff2dr-9387381",
+     "title": "Apple iPhone 17 Pro Max 256 GB, Silver"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro Max",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 149900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-max-256-gb-cosmic-orange-mff2f0-9387382",
+     "title": "Apple iPhone 17 Pro Max 256 GB, Cosmic Orange"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro",
+      "512GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 154900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-512-gb-deep-blue-mff5z3-9388046",
+     "title": "Apple iPhone 17 Pro 512 GB, Deep Blue"
+    },
+    {
+     "key": [
+      "iPhone 17",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 99900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-256-gb-black-mff8ru-9391619",
+     "title": "Apple iPhone 17 256 GB, Black"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro",
+      "512GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 154900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-512-gb-cosmic-orange-mff5z3-9388045",
+     "title": "Apple iPhone 17 Pro 512 GB, Cosmic Orange"
+    },
+    {
+     "key": [
+      "iPhone 17",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 99900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-256-gb-mist-blue-mff8s5-9391645",
+     "title": "Apple iPhone 17 256 GB, Mist Blue"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro Max",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 149900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-max-256-gb-deep-blue-mff2k1-9387385",
+     "title": "Apple iPhone 17 Pro Max 256 GB, Deep Blue"
+    },
+    {
+     "key": [
+      "iPhone 17",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 99900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-256-gb-white-mff8s2-9391633",
+     "title": "Apple iPhone 17 256 GB, White"
+    },
+    {
+     "key": [
+      "iPhone 17",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 99900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-256-gb-black-mff8ru-9391619",
+     "title": "Apple iPhone 17 256 GB, Black"
+    },
+    {
+     "key": [
+      "iPhone 17",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 99900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-256-gb-mist-blue-mff8s5-9391645",
+     "title": "Apple iPhone 17 256 GB, Mist Blue"
+    },
+    {
+     "key": [
+      "iPhone 17",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 99900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-256-gb-white-mff8s2-9391633",
+     "title": "Apple iPhone 17 256 GB, White"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 134900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-256-gb-silver-mff5yc-9388031",
+     "title": "Apple iPhone 17 Pro 256 GB, Silver"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 134900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-256-gb-deep-blue-mff5yc-9388030",
+     "title": "Apple iPhone 17 Pro 256 GB, Deep Blue"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 134900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-256-gb-cosmic-orange-mff5yc-9388032",
+     "title": "Apple iPhone 17 Pro 256 GB, Cosmic Orange"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro Max",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 149900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-max-256-gb-silver-mff2dr-9387381",
+     "title": "Apple iPhone 17 Pro Max 256 GB, Silver"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro Max",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 149900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-max-256-gb-cosmic-orange-mff2f0-9387382",
+     "title": "Apple iPhone 17 Pro Max 256 GB, Cosmic Orange"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro",
+      "512GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 154900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-512-gb-cosmic-orange-mff5z3-9388045",
+     "title": "Apple iPhone 17 Pro 512 GB, Cosmic Orange"
+    },
+    {
+     "key": [
+      "iPhone 17 Pro",
+      "512GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 154900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-512-gb-deep-blue-mff5z3-9388046",
+     "title": "Apple iPhone 17 Pro 512 GB, Deep Blue"
+    },
+    {
+     "key": [
+      "iPhone 17e",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 64900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17e-256-gb-black-mmbrg8-9968387",
+     "title": "Apple iPhone 17e 256 GB, Black"
+    },
+    {
+     "key": [
+      "iPhone 17e",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 64900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17e-256-gb-soft-pink-mmbrg8-9968390",
+     "title": "Apple iPhone 17e 256 GB, Soft Pink"
+    },
+    {
+     "key": [
+      "iPhone 17e",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 64900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17e-256-gb-black-mmbrg8-9968387",
+     "title": "Apple iPhone 17e 256 GB, Black"
+    },
+    {
+     "key": [
+      "iPhone 17e",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 64900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17e-256-gb-white-mmbrg8-9968388",
+     "title": "Apple iPhone 17e 256 GB, White"
+    },
+    {
+     "key": [
+      "iPhone 17e",
+      "256GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 64900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17e-256-gb-soft-pink-mmbrg8-9968390",
+     "title": "Apple iPhone 17e 256 GB, Soft Pink"
+    },
+    {
+     "key": [
+      "iPhone 14",
+      "128GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 54900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-14-128-gb-midnight-l7ucfv",
+     "title": "Apple iPhone 14 128 GB, Midnight"
+    },
+    {
+     "key": [
+      "iPhone 15",
+      "128GB"
+     ],
+     "source": "Reliance Digital",
+     "price": 59900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-15-128gb-green-lmiqm7-7533788",
+     "title": "Apple iPhone 15 128 GB Green"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro",
+      "2TB"
+     ],
+     "source": "Reliance Digital",
+     "price": 314900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-2-tb-burgundy-mtwsn6-10615125",
+     "title": "Apple iPhone 18 Pro 2 TB, Burgundy"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro",
+      "2TB"
+     ],
+     "source": "Reliance Digital",
+     "price": 314900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-2-tb-black-mtwsn4-10615116",
+     "title": "Apple iPhone 18 Pro 2 TB, Black"
+    },
+    {
+     "key": [
+      "iPhone 18 Pro",
+      "1TB"
+     ],
+     "source": "Reliance Digital",
+     "price": 239900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-1-tb-black-mtwsn4-10615120",
+     "title": "Apple iPhone 18 Pro 1 TB, Black"
+    }
+   ]
+  }
+ },
+ "products": {
+  "iPhone 18 Pro Max 1TB": {
+   "model_type": "iPhone 18 Pro Max",
+   "storage": "1TB",
+   "best_price": 254900,
+   "best_source": "Apple India",
+   "best_url": "https://www.apple.com/in/shop/buy-iphone/iphone-18-pro",
+   "offers": [
+    {
+     "source": "Apple India",
+     "price": 254900,
+     "url": "https://www.apple.com/in/shop/buy-iphone/iphone-18-pro"
+    },
+    {
+     "source": "Reliance Digital",
+     "price": 254900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-max-1-tb-burgundy-mtwvbs-10615177"
+    }
+   ]
+  },
+  "iPhone 18 Pro Max 256GB": {
+   "model_type": "iPhone 18 Pro Max",
+   "storage": "256GB",
+   "best_price": 179900,
+   "best_source": "Apple India",
+   "best_url": "https://www.apple.com/in/shop/buy-iphone/iphone-18-pro",
+   "offers": [
+    {
+     "source": "Apple India",
+     "price": 179900,
+     "url": "https://www.apple.com/in/shop/buy-iphone/iphone-18-pro"
+    },
+    {
+     "source": "Reliance Digital",
+     "price": 179900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-max-256-gb-burgundy-mtwvbt-10615187"
+    }
+   ]
+  },
+  "iPhone 18 Pro Max 2TB": {
+   "model_type": "iPhone 18 Pro Max",
+   "storage": "2TB",
+   "best_price": 329900,
+   "best_source": "Apple India",
+   "best_url": "https://www.apple.com/in/shop/buy-iphone/iphone-18-pro",
+   "offers": [
+    {
+     "source": "Apple India",
+     "price": 329900,
+     "url": "https://www.apple.com/in/shop/buy-iphone/iphone-18-pro"
+    }
+   ]
+  },
+  "iPhone 18 Pro Max 512GB": {
+   "model_type": "iPhone 18 Pro Max",
+   "storage": "512GB",
+   "best_price": 204900,
+   "best_source": "Apple India",
+   "best_url": "https://www.apple.com/in/shop/buy-iphone/iphone-18-pro",
+   "offers": [
+    {
+     "source": "Apple India",
+     "price": 204900,
+     "url": "https://www.apple.com/in/shop/buy-iphone/iphone-18-pro"
+    },
+    {
+     "source": "Reliance Digital",
+     "price": 204900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-max-512-gb-burgundy-mtwvbt-10615192"
+    }
+   ]
+  },
+  "iPhone 18 Pro 1TB": {
+   "model_type": "iPhone 18 Pro",
+   "storage": "1TB",
+   "best_price": 239900,
+   "best_source": "Apple India",
+   "best_url": "https://www.apple.com/in/shop/buy-iphone/iphone-18-pro",
+   "offers": [
+    {
+     "source": "Apple India",
+     "price": 239900,
+     "url": "https://www.apple.com/in/shop/buy-iphone/iphone-18-pro"
+    },
+    {
+     "source": "Flipkart",
+     "price": 239900,
+     "url": "https://www.flipkart.com/apple-iphone-18-pro-burgundy-1-tb/p/itm08a1e7834ce1d"
+    },
+    {
+     "source": "Reliance Digital",
+     "price": 239900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-1-tb-black-mtwsn4-10615120"
+    }
+   ]
+  },
+  "iPhone 18 Pro 256GB": {
+   "model_type": "iPhone 18 Pro",
+   "storage": "256GB",
+   "best_price": 164900,
+   "best_source": "Apple India",
+   "best_url": "https://www.apple.com/in/shop/buy-iphone/iphone-18-pro",
+   "offers": [
+    {
+     "source": "Apple India",
+     "price": 164900,
+     "url": "https://www.apple.com/in/shop/buy-iphone/iphone-18-pro"
+    },
+    {
+     "source": "Flipkart",
+     "price": 164900,
+     "url": "https://www.flipkart.com/apple-iphone-18-pro-burgundy-256-gb/p/itm2b2c10b01cc46"
+    },
+    {
+     "source": "Reliance Digital",
+     "price": 164900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-256-gb-burgundy-mtwsn4-10615111"
+    }
+   ]
+  },
+  "iPhone 18 Pro 2TB": {
+   "model_type": "iPhone 18 Pro",
+   "storage": "2TB",
+   "best_price": 314900,
+   "best_source": "Apple India",
+   "best_url": "https://www.apple.com/in/shop/buy-iphone/iphone-18-pro",
+   "offers": [
+    {
+     "source": "Apple India",
+     "price": 314900,
+     "url": "https://www.apple.com/in/shop/buy-iphone/iphone-18-pro"
+    },
+    {
+     "source": "Reliance Digital",
+     "price": 314900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-2-tb-burgundy-mtwsn6-10615125"
+    }
+   ]
+  },
+  "iPhone 18 Pro 512GB": {
+   "model_type": "iPhone 18 Pro",
+   "storage": "512GB",
+   "best_price": 189900,
+   "best_source": "Apple India",
+   "best_url": "https://www.apple.com/in/shop/buy-iphone/iphone-18-pro",
+   "offers": [
+    {
+     "source": "Apple India",
+     "price": 189900,
+     "url": "https://www.apple.com/in/shop/buy-iphone/iphone-18-pro"
+    },
+    {
+     "source": "Flipkart",
+     "price": 189900,
+     "url": "https://www.flipkart.com/apple-iphone-18-pro-burgundy-512-gb/p/itm45fade022ddea"
+    },
+    {
+     "source": "Reliance Digital",
+     "price": 189900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-18-pro-512-gb-burgundy-mtwsn5-10615121"
+    }
+   ]
+  },
+  "iPhone 17 256GB": {
+   "model_type": "iPhone 17",
+   "storage": "256GB",
+   "best_price": 99900,
+   "best_source": "Apple India",
+   "best_url": "https://www.apple.com/in/shop/buy-iphone/iphone-17",
+   "offers": [
+    {
+     "source": "Apple India",
+     "price": 99900,
+     "url": "https://www.apple.com/in/shop/buy-iphone/iphone-17"
+    },
+    {
+     "source": "Reliance Digital",
+     "price": 99900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-256-gb-white-mff8s2-9391633"
+    }
+   ]
+  },
+  "iPhone 17 512GB": {
+   "model_type": "iPhone 17",
+   "storage": "512GB",
+   "best_price": 124900,
+   "best_source": "Apple India",
+   "best_url": "https://www.apple.com/in/shop/buy-iphone/iphone-17",
+   "offers": [
+    {
+     "source": "Apple India",
+     "price": 124900,
+     "url": "https://www.apple.com/in/shop/buy-iphone/iphone-17"
+    }
+   ]
+  },
+  "iPhone 17e 512GB": {
+   "model_type": "iPhone 17e",
+   "storage": "512GB",
+   "best_price": 84900,
+   "best_source": "Flipkart",
+   "best_url": "https://www.flipkart.com/apple-iphone-17e-soft-pink-512-gb/p/itm9ca2e491bc0c9",
+   "offers": [
+    {
+     "source": "Flipkart",
+     "price": 84900,
+     "url": "https://www.flipkart.com/apple-iphone-17e-soft-pink-512-gb/p/itm9ca2e491bc0c9"
+    },
+    {
+     "source": "Apple India",
+     "price": 104900,
+     "url": "https://www.apple.com/in/shop/buy-iphone/iphone-17e"
+    }
+   ]
+  },
+  "iPhone 17e 256GB": {
+   "model_type": "iPhone 17e",
+   "storage": "256GB",
+   "best_price": 64900,
+   "best_source": "Reliance Digital",
+   "best_url": "https://www.reliancedigital.in/product/apple-iphone-17e-256-gb-black-mmbrg8-9968387",
+   "offers": [
+    {
+     "source": "Reliance Digital",
+     "price": 64900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17e-256-gb-black-mmbrg8-9968387"
+    },
+    {
+     "source": "Apple India",
+     "price": 79900,
+     "url": "https://www.apple.com/in/shop/buy-iphone/iphone-17e"
+    }
+   ]
+  },
+  "iPhone 16 128GB": {
+   "model_type": "iPhone 16",
+   "storage": "128GB",
+   "best_price": 69900,
+   "best_source": "Flipkart",
+   "best_url": "https://www.flipkart.com/apple-iphone-16-ultramarine-128-gb/p/itmcc210cae43fba",
+   "offers": [
+    {
+     "source": "Flipkart",
+     "price": 69900,
+     "url": "https://www.flipkart.com/apple-iphone-16-ultramarine-128-gb/p/itmcc210cae43fba"
+    },
+    {
+     "source": "Apple India",
+     "price": 89900,
+     "url": "https://www.apple.com/in/shop/buy-iphone/iphone-16"
+    }
+   ]
+  },
+  "iPhone 17 Pro 256GB": {
+   "model_type": "iPhone 17 Pro",
+   "storage": "256GB",
+   "best_price": 134900,
+   "best_source": "Flipkart",
+   "best_url": "https://www.flipkart.com/apple-iphone-17-pro-deep-blue-256-gb/p/itm239d0b996d7f0",
+   "offers": [
+    {
+     "source": "Flipkart",
+     "price": 134900,
+     "url": "https://www.flipkart.com/apple-iphone-17-pro-deep-blue-256-gb/p/itm239d0b996d7f0"
+    },
+    {
+     "source": "Reliance Digital",
+     "price": 134900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-256-gb-silver-mff5yc-9388031"
+    }
+   ]
+  },
+  "iPhone 17 Pro 512GB": {
+   "model_type": "iPhone 17 Pro",
+   "storage": "512GB",
+   "best_price": 154900,
+   "best_source": "Flipkart",
+   "best_url": "https://www.flipkart.com/apple-iphone-17-pro-silver-512-gb/p/itmfe915ac778113",
+   "offers": [
+    {
+     "source": "Flipkart",
+     "price": 154900,
+     "url": "https://www.flipkart.com/apple-iphone-17-pro-silver-512-gb/p/itmfe915ac778113"
+    },
+    {
+     "source": "Reliance Digital",
+     "price": 154900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-512-gb-cosmic-orange-mff5z3-9388045"
+    }
+   ]
+  },
+  "iPhone 17 Pro 1TB": {
+   "model_type": "iPhone 17 Pro",
+   "storage": "1TB",
+   "best_price": 174900,
+   "best_source": "Flipkart",
+   "best_url": "https://www.flipkart.com/apple-iphone-17-pro-silver-1-tb/p/itmb9e5aad6aaf35",
+   "offers": [
+    {
+     "source": "Flipkart",
+     "price": 174900,
+     "url": "https://www.flipkart.com/apple-iphone-17-pro-silver-1-tb/p/itmb9e5aad6aaf35"
+    }
+   ]
+  },
+  "iPhone 17 Pro Max 256GB": {
+   "model_type": "iPhone 17 Pro Max",
+   "storage": "256GB",
+   "best_price": 149900,
+   "best_source": "Flipkart",
+   "best_url": "https://www.flipkart.com/apple-iphone-17-pro-max-silver-256-gb/p/itmd38e30731883a",
+   "offers": [
+    {
+     "source": "Flipkart",
+     "price": 149900,
+     "url": "https://www.flipkart.com/apple-iphone-17-pro-max-silver-256-gb/p/itmd38e30731883a"
+    },
+    {
+     "source": "Reliance Digital",
+     "price": 149900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-max-256-gb-silver-mff2dr-9387381"
+    }
+   ]
+  },
+  "iPhone 15 Plus 128GB": {
+   "model_type": "iPhone 15 Plus",
+   "storage": "128GB",
+   "best_price": 69900,
+   "best_source": "Flipkart",
+   "best_url": "https://www.flipkart.com/apple-iphone-15-plus-pink-128-gb/p/itmecb6209a78172",
+   "offers": [
+    {
+     "source": "Flipkart",
+     "price": 69900,
+     "url": "https://www.flipkart.com/apple-iphone-15-plus-pink-128-gb/p/itmecb6209a78172"
+    }
+   ]
+  },
+  "iPhone 16 Plus 128GB": {
+   "model_type": "iPhone 16 Plus",
+   "storage": "128GB",
+   "best_price": 79900,
+   "best_source": "Flipkart",
+   "best_url": "https://www.flipkart.com/apple-iphone-16-plus-teal-128-gb/p/itmfa939eebe8adf",
+   "offers": [
+    {
+     "source": "Flipkart",
+     "price": 79900,
+     "url": "https://www.flipkart.com/apple-iphone-16-plus-teal-128-gb/p/itmfa939eebe8adf"
+    }
+   ]
+  },
+  "iPhone 16 Plus 256GB": {
+   "model_type": "iPhone 16 Plus",
+   "storage": "256GB",
+   "best_price": 89900,
+   "best_source": "Flipkart",
+   "best_url": "https://www.flipkart.com/apple-iphone-16-plus-black-256-gb/p/itma302a45837ec4",
+   "offers": [
+    {
+     "source": "Flipkart",
+     "price": 89900,
+     "url": "https://www.flipkart.com/apple-iphone-16-plus-black-256-gb/p/itma302a45837ec4"
+    }
+   ]
+  },
+  "iPhone 16 256GB": {
+   "model_type": "iPhone 16",
+   "storage": "256GB",
+   "best_price": 79900,
+   "best_source": "Flipkart",
+   "best_url": "https://www.flipkart.com/apple-iphone-16-pink-256-gb/p/itm0d8c695cded44",
+   "offers": [
+    {
+     "source": "Flipkart",
+     "price": 79900,
+     "url": "https://www.flipkart.com/apple-iphone-16-pink-256-gb/p/itm0d8c695cded44"
+    }
+   ]
+  },
+  "iPhone 16e 256GB": {
+   "model_type": "iPhone 16e",
+   "storage": "256GB",
+   "best_price": 69900,
+   "best_source": "Flipkart",
+   "best_url": "https://www.flipkart.com/apple-iphone-16e-white-256-gb/p/itm20137f3cfd0e6",
+   "offers": [
+    {
+     "source": "Flipkart",
+     "price": 69900,
+     "url": "https://www.flipkart.com/apple-iphone-16e-white-256-gb/p/itm20137f3cfd0e6"
+    }
+   ]
+  },
+  "iPhone 16e 128GB": {
+   "model_type": "iPhone 16e",
+   "storage": "128GB",
+   "best_price": 59900,
+   "best_source": "Flipkart",
+   "best_url": "https://www.flipkart.com/apple-iphone-16e-black-128-gb/p/itm730f9c68ad562",
+   "offers": [
+    {
+     "source": "Flipkart",
+     "price": 59900,
+     "url": "https://www.flipkart.com/apple-iphone-16e-black-128-gb/p/itm730f9c68ad562"
+    }
+   ]
+  },
+  "iPhone 17 Pro Max 512GB": {
+   "model_type": "iPhone 17 Pro Max",
+   "storage": "512GB",
+   "best_price": 169900,
+   "best_source": "Reliance Digital",
+   "best_url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-max-512-gb-deep-blue-mff2k5-9387386",
+   "offers": [
+    {
+     "source": "Reliance Digital",
+     "price": 169900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-17-pro-max-512-gb-deep-blue-mff2k5-9387386"
+    }
+   ]
+  },
+  "iPhone 14 128GB": {
+   "model_type": "iPhone 14",
+   "storage": "128GB",
+   "best_price": 54900,
+   "best_source": "Reliance Digital",
+   "best_url": "https://www.reliancedigital.in/product/apple-iphone-14-128-gb-midnight-l7ucfv",
+   "offers": [
+    {
+     "source": "Reliance Digital",
+     "price": 54900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-14-128-gb-midnight-l7ucfv"
+    }
+   ]
+  },
+  "iPhone 15 128GB": {
+   "model_type": "iPhone 15",
+   "storage": "128GB",
+   "best_price": 59900,
+   "best_source": "Reliance Digital",
+   "best_url": "https://www.reliancedigital.in/product/apple-iphone-15-128gb-green-lmiqm7-7533788",
+   "offers": [
+    {
+     "source": "Reliance Digital",
+     "price": 59900,
+     "url": "https://www.reliancedigital.in/product/apple-iphone-15-128gb-green-lmiqm7-7533788"
+    }
+   ]
+  }
+ }
+}
