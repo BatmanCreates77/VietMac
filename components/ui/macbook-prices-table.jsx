@@ -90,6 +90,19 @@ const compareIphones = (a, b) => {
   return genB - genA || variantA - variantB || a.localeCompare(b);
 };
 
+// What paying by card abroad adds on top of the price (the bank's foreign
+// currency markup). Indian cards charge 18% GST on that markup, so the
+// common 3.5% becomes 3.5 x 1.18 = 4.13%. Default is no fee, so prices only
+// change when a visitor picks one.
+const CARD_FEE_OPTIONS = [
+  { value: "0", percent: 0, label: "No fee (cash / zero-forex card)" },
+  { value: "1", percent: 1, label: "1% (premium travel card)" },
+  { value: "2", percent: 2, label: "2%" },
+  { value: "3", percent: 3, label: "3% (typical non-Indian card)" },
+  { value: "4.13", percent: 4.13, label: "4.13% (Indian card: 3.5% + GST)" },
+];
+const CARD_FEE_STORAGE_KEY = "vietmac.cardFee";
+
 // Filters per product line. `field` is the row property filtered on;
 // `event`/`prop` keep the PostHog names analytics already records.
 const FILTERS = {
@@ -180,6 +193,25 @@ function MacBookPricesTable({
   const [isMobile, setIsMobile] = useState(false);
   const [bargainDiscount, setBargainDiscount] = useState(0); // 0-10% typical bargaining discount
   const [showBargainSlider, setShowBargainSlider] = useState(false);
+  const [cardFee, setCardFee] = useState("0");
+  const cardFeePercent =
+    CARD_FEE_OPTIONS.find((o) => o.value === cardFee)?.percent ?? 0;
+
+  // Remember the visitor's payment choice on this device.
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(CARD_FEE_STORAGE_KEY);
+      if (CARD_FEE_OPTIONS.some((o) => o.value === saved)) setCardFee(saved);
+    } catch {}
+  }, []);
+
+  const selectCardFee = (value) => {
+    setCardFee(value);
+    analytics?.capture("card_fee_selected", { card_fee_percent: value });
+    try {
+      localStorage.setItem(CARD_FEE_STORAGE_KEY, value);
+    } catch {}
+  };
   const [showFilters, setShowFilters] = useState(false);
 
   const getCurrencySymbol = (currency) => {
@@ -220,13 +252,17 @@ function MacBookPricesTable({
       // bargained price (in the selected currency).
       const paidConverted = item.convertedPrice * (1 - bargainDiscount / 100);
       const vatRefund = vatRefundFor(paidConverted);
-      const finalPrice = paidConverted - vatRefund;
+      // The card fee is charged on what goes on the card; the refund is
+      // paid back in VND cash at the airport, so it carries no card fee.
+      const cardFeeAmount = paidConverted * (cardFeePercent / 100);
+      const finalPrice = paidConverted + cardFeeAmount - vatRefund;
 
       return {
         ...item,
         bargainedPriceVND: Math.round(bargainedPriceVND),
         bargainDiscountVND: Math.round(discountAmountVND),
         vatRefund: Math.round(vatRefund),
+        cardFeeAmount: Math.round(cardFeeAmount),
         finalPrice: Math.round(finalPrice),
       };
     });
@@ -341,6 +377,31 @@ function MacBookPricesTable({
           </div>
         )}
 
+        {/* Card / forex fee */}
+        <div className="flex flex-col gap-2 p-3 bg-gray-50 rounded-lg border border-gray-200 md:flex-row md:items-center md:justify-between">
+          <label
+            htmlFor="card-fee"
+            className="text-sm font-medium text-gray-700"
+          >
+            💳 How will you pay?
+            <span className="block text-xs font-normal text-gray-500">
+              Card forex fees are added to the estimated price
+            </span>
+          </label>
+          <Select value={cardFee} onValueChange={selectCardFee}>
+            <SelectTrigger id="card-fee" className="w-full md:w-[340px]">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {CARD_FEE_OPTIONS.map((option) => (
+                <SelectItem key={option.value} value={option.value}>
+                  {option.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
         {/* Filter Accordion - Mobile Only */}
         <div className="md:hidden border border-gray-200 rounded-lg overflow-hidden">
           {/* Accordion Header */}
@@ -453,6 +514,7 @@ function MacBookPricesTable({
                     final_price: item.finalPrice,
                     vat_refund: item.vatRefund,
                     bargain_discount: bargainDiscount,
+                    card_fee_percent: cardFeePercent,
                     currency: currency,
                     device: "mobile",
                   });
@@ -537,6 +599,17 @@ function MacBookPricesTable({
                       </div>
                     </div>
                   )}
+                  {cardFeePercent > 0 && (
+                    <div className="bg-red-50/50 rounded-lg p-3 col-span-2">
+                      <div className="text-gray-500 text-xs font-medium mb-1">
+                        Card fee ({cardFeePercent}%)
+                      </div>
+                      <div className="font-bold text-red-600">
+                        +{getCurrencySymbol(currency)}
+                        {item.cardFeeAmount?.toLocaleString()}
+                      </div>
+                    </div>
+                  )}
                   <div className="bg-green-50/50 rounded-lg p-3 col-span-2">
                     <div className="text-gray-500 text-xs font-medium mb-1">
                       VAT Refund (85% of {vatPercentOn()}% VAT)
@@ -580,6 +653,11 @@ function MacBookPricesTable({
                     Bargain -{bargainDiscount}%
                   </TableHead>
                 )}
+                {cardFeePercent > 0 && (
+                  <TableHead className="w-[130px] text-red-700 font-semibold">
+                    Card fee +{cardFeePercent}%
+                  </TableHead>
+                )}
                 <TableHead className="w-[130px] text-gray-900 font-semibold">
                   VAT Refund
                 </TableHead>
@@ -612,6 +690,7 @@ function MacBookPricesTable({
                         final_price: item.finalPrice,
                         vat_refund: item.vatRefund,
                         bargain_discount: bargainDiscount,
+                        card_fee_percent: cardFeePercent,
                         currency: currency,
                         device: "desktop",
                       });
@@ -639,6 +718,12 @@ function MacBookPricesTable({
                         -₫{item.bargainDiscountVND?.toLocaleString() || "N/A"}
                       </TableCell>
                     )}
+                    {cardFeePercent > 0 && (
+                      <TableCell className="whitespace-nowrap text-red-600 font-medium">
+                        +{getCurrencySymbol(currency)}
+                        {item.cardFeeAmount?.toLocaleString() || "N/A"}
+                      </TableCell>
+                    )}
                     <TableCell className="whitespace-nowrap text-green-600 font-medium">
                       -{getCurrencySymbol(currency)}
                       {item.vatRefund?.toLocaleString() || "N/A"}
@@ -652,7 +737,9 @@ function MacBookPricesTable({
               ) : (
                 <TableRow>
                   <TableCell
-                    colSpan={bargainDiscount > 0 ? 8 : 7}
+                    colSpan={
+                      7 + (bargainDiscount > 0 ? 1 : 0) + (cardFeePercent > 0 ? 1 : 0)
+                    }
                     className="text-center py-6"
                   >
                     No results found.
