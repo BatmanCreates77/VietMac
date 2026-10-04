@@ -179,6 +179,13 @@ function MacBookPricesTable({
   productLine = "mac",
 }) {
   const filters = FILTERS[productLine] || FILTERS.mac;
+  // India comparison: iPhones only (india_prices.py covers iPhones), and
+  // only in rupees, the currency the Indian prices are in.
+  // Hidden entirely when no India data has been published yet.
+  const showIndia =
+    productLine === "iphone" &&
+    currency === "INR" &&
+    data.some((item) => item.india);
   // { field: selected value }; a missing field means "All". Reset by the
   // parent remounting this table (key) when the product tab changes.
   const [selected, setSelected] = useState({});
@@ -647,6 +654,14 @@ function MacBookPricesTable({
                       {item.vatRefund?.toLocaleString() || "N/A"}
                     </div>
                   </div>
+                  {showIndia && item.india && (
+                    <div className="bg-gray-50 rounded-lg p-3 col-span-2">
+                      <div className="text-gray-500 text-xs font-medium mb-1">
+                        vs best price in India
+                      </div>
+                      <IndiaComparison item={item} />
+                    </div>
+                  )}
                 </div>
               </a>
             ))
@@ -692,6 +707,11 @@ function MacBookPricesTable({
                 <TableHead className="w-[130px] text-gray-900 font-semibold">
                   Est. Price
                 </TableHead>
+                {showIndia && (
+                  <TableHead className="w-[220px] text-gray-900 font-semibold">
+                    vs India
+                  </TableHead>
+                )}
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -760,13 +780,27 @@ function MacBookPricesTable({
                       {getCurrencySymbol(currency)}
                       {item.finalPrice?.toLocaleString() || "N/A"}
                     </TableCell>
+                    {showIndia && (
+                      <TableCell className="whitespace-nowrap">
+                        {item.india ? (
+                          <IndiaComparison item={item} />
+                        ) : (
+                          <span className="text-xs text-gray-400">
+                            No Indian price found
+                          </span>
+                        )}
+                      </TableCell>
+                    )}
                   </TableRow>
                 ))
               ) : (
                 <TableRow>
                   <TableCell
                     colSpan={
-                      7 + (bargainDiscount > 0 ? 1 : 0) + (cardFeePercent > 0 ? 1 : 0)
+                      7 +
+                      (bargainDiscount > 0 ? 1 : 0) +
+                      (cardFeePercent > 0 ? 1 : 0) +
+                      (showIndia ? 1 : 0)
                     }
                     className="text-center py-6"
                   >
@@ -797,6 +831,56 @@ function OptionLabel({ filter, option, options }) {
         </span>
       )}
     </span>
+  );
+}
+
+// Vietnam's estimated price (after bargaining, card fee and VAT refund)
+// against the lowest Indian price found, with where and when it was found.
+function IndiaComparison({ item }) {
+  const { price, source, url, checkedAt } = item.india;
+  const difference = price - item.finalPrice;
+  const checked = checkedAt
+    ? new Date(checkedAt).toLocaleDateString("en-IN", {
+        day: "numeric",
+        month: "short",
+      })
+    : null;
+  return (
+    <div className="flex flex-col gap-0.5">
+      {difference >= 0 ? (
+        <span className="font-semibold text-green-700">
+          Save ₹{difference.toLocaleString()} in Vietnam
+        </span>
+      ) : (
+        <span className="font-semibold text-amber-700">
+          ₹{(-difference).toLocaleString()} cheaper in India
+        </span>
+      )}
+      <span className="text-xs text-gray-500">
+        India: ₹{price.toLocaleString()} at{" "}
+        <span
+          role="link"
+          tabIndex={0}
+          className="underline hover:text-gray-700"
+          onClick={(e) => {
+            // Inside a row/card that itself opens the Vietnamese listing.
+            e.preventDefault();
+            e.stopPropagation();
+            window.open(url, "_blank", "noopener,noreferrer");
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              e.stopPropagation();
+              window.open(url, "_blank", "noopener,noreferrer");
+            }
+          }}
+        >
+          {source}
+        </span>
+        {checked && ` · checked ${checked}`}
+      </span>
+    </div>
   );
 }
 

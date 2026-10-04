@@ -21,6 +21,34 @@ function loadScrapedData() {
   }
 }
 
+// Best Indian price per iPhone model + storage (india_prices.py), keyed
+// "iPhone 18 Pro 256GB". Each entry carries when its source was checked:
+// Indian prices change daily, so the page always shows that date.
+function loadIndiaPrices() {
+  try {
+    const filePath = join(
+      process.cwd(),
+      "macbook_scraper",
+      "output",
+      "india_prices.json",
+    );
+    const data = JSON.parse(readFileSync(filePath, "utf-8"));
+    const india = {};
+    for (const [key, entry] of Object.entries(data.products || {})) {
+      india[key] = {
+        price: entry.best_price,
+        source: entry.best_source,
+        url: entry.best_url,
+        checkedAt: data.sources?.[entry.best_source]?.checked_at || data.timestamp,
+      };
+    }
+    return india;
+  } catch (error) {
+    console.error("Error loading India prices:", error.message);
+    return {};
+  }
+}
+
 // Transform scraped product to marketplace product format
 function transformScrapedProduct(product) {
   const modelName = product.model || "";
@@ -140,68 +168,54 @@ function getMarketplacePrices(scrapedProducts) {
   };
 }
 
-async function getExchangeRateFromWise(currency = "INR") {
-  const currencySymbols = {
-    INR: "₹",
-    USD: "$",
-    EUR: "€",
-  };
-  const symbol =
-    currencySymbols[currency.toUpperCase()] || currency.toUpperCase();
-  const url = `https://wise.com/in/currency-converter/${currency.toLowerCase()}-to-vnd-rate`;
+const SUPPORTED_CURRENCIES = ["INR", "USD", "EUR"];
+const RATE_CACHE_MS = 60 * 60 * 1000;
+const rateCache = new Map(); // currency -> { rate, source, fetchedAt }
 
-  try {
-    const response = await fetch(url, {
-      headers: {
-        "User-Agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-      },
-    });
-
-    if (response.ok) {
-      const html = await response.text();
-      const regex = new RegExp(
-        `${symbol}1\s*${currency.toUpperCase()}\s*=\s*([\d.,]+)\s*VND`,
-        "i",
-      );
-      const rateMatch = html.match(regex);
-      if (rateMatch && rateMatch[1]) {
-        const rate = parseFloat(rateMatch[1].replace(/,/g, ""));
-        if (rate > 0) {
-          console.log("✅ Wise rate:", rate);
-          return rate;
-        }
-      }
-    }
-  } catch (error) {
-    console.log(`❌ Wise error for ${currency}:`, error.message);
-  }
-  return null;
+// Wise's live mid-market rate, from the JSON feed its own converter uses
+// (e.g. {"source":"INR","target":"VND","value":270.238,...}).
+async function getWiseRate(currency) {
+  const response = await fetch(
+    `https://wise.com/rates/live?source=${currency}&target=VND`,
+    { headers: { Accept: "application/json" } },
+  );
+  if (!response.ok) throw new Error(`Wise HTTP ${response.status}`);
+  const data = await response.json();
+  if (!(data.value > 0)) throw new Error("Wise returned no rate");
+  return data.value;
 }
 
-async function getExchangeRate(currency = "INR") {
-  try {
-    const wiseRate = await getExchangeRateFromWise(currency);
-    if (wiseRate) return wiseRate;
+async function getFallbackRate(currency) {
+  const response = await fetch(
+    `https://api.exchangerate-api.com/v4/latest/${currency}`,
+  );
+  const data = await response.json();
+  if (!(data.rates?.VND > 0)) throw new Error("ExchangeRate-API returned no rate");
+  return data.rates.VND;
+}
 
-    const response = await fetch(
-      `https://api.exchangerate-api.com/v4/latest/${currency.toUpperCase()}`,
-    );
-    const data = await response.json();
-    if (data.rates.VND) {
-      console.log("✅ ExchangeRate-API:", data.rates.VND);
-      return data.rates.VND;
+// Returns { rate, source }: source is "Wise", "ExchangeRate-API" or
+// "fallback", and the page only credits Wise when it really is Wise.
+// Cached for an hour per currency so page loads don't hit Wise each time.
+async function getExchangeRate(currency) {
+  const cached = rateCache.get(currency);
+  if (cached && Date.now() - cached.fetchedAt < RATE_CACHE_MS) return cached;
+
+  let result;
+  try {
+    result = { rate: await getWiseRate(currency), source: "Wise" };
+  } catch (wiseError) {
+    console.warn(`Wise rate unavailable for ${currency}:`, wiseError.message);
+    try {
+      result = { rate: await getFallbackRate(currency), source: "ExchangeRate-API" };
+    } catch (error) {
+      console.error("Exchange rate error:", error.message);
+      const fallbackRates = { INR: 270, USD: 26000, EUR: 30000 };
+      return { rate: fallbackRates[currency], source: "fallback" };
     }
-  } catch (error) {
-    console.error("Exchange rate error:", error);
   }
-  // Fallback rates
-  const fallbackRates = {
-    INR: 298,
-    USD: 25000,
-    EUR: 27000,
-  };
-  return fallbackRates[currency.toUpperCase()] || fallbackRates.INR;
+  rateCache.set(currency, { ...result, fetchedAt: Date.now() });
+  return result;
 }
 
 function calculatePrices(priceData, exchangeRate) {
@@ -231,14 +245,23 @@ function calculatePrices(priceData, exchangeRate) {
 export async function GET(request) {
   try {
     const { pathname, searchParams } = new URL(request.url);
-    const currency = searchParams.get("currency") || "INR";
+    const requested = (searchParams.get("currency") || "INR").toUpperCase();
+    const currency = SUPPORTED_CURRENCIES.includes(requested) ? requested : "INR";
 
     if (pathname.includes("/api/macbook-prices")) {
       console.log(`🔄 Fetching prices for ${currency}...`);
-      const exchangeRate = await getExchangeRate(currency);
+      const { rate: exchangeRate, source: rateSource } =
+        await getExchangeRate(currency);
 
       const scraped = loadScrapedData();
       const marketplacePrices = getMarketplacePrices(scraped.products);
+      const india = loadIndiaPrices();
+      for (const products of Object.values(marketplacePrices)) {
+        for (const item of products) {
+          if (item.productLine !== "iphone") continue;
+          item.india = india[`${item.modelType} ${item.storage}`] || null;
+        }
+      }
 
       const fptWithConverted = calculatePrices(
         marketplacePrices.fptShop,
@@ -271,6 +294,7 @@ export async function GET(request) {
           cellphones: cellphonesWithConverted,
         },
         exchangeRate: exchangeRate,
+        rateSource,
         currency: currency.toUpperCase(),
         vatPercent: vatPercentOn(),
         timestamp: new Date().toISOString(),
