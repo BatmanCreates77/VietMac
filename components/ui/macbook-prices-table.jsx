@@ -90,6 +90,22 @@ const compareIphones = (a, b) => {
   return genB - genA || variantA - variantB || a.localeCompare(b);
 };
 
+// How new a product generation is, for the "Newest models first" sort.
+// iPhones by generation, with Air and Duo grouped into the generation they
+// launched beside (so the pre-order Duo doesn't outrank every iPhone 18 by
+// itself); within a generation the cheapest comes first. Macs by chip
+// generation. MacBook Neo's A18 Pro launched in 2026 alongside the M5
+// Macs, so it ranks with M5.
+const generationOf = (item) => {
+  if (item.productLine === "iphone") {
+    return Math.floor(iphoneSortKey(item.modelType)[0]);
+  }
+  const chip = item.category || "";
+  const m = chip.match(/^M(\d+)/);
+  if (m) return Number(m[1]);
+  return /^A\d+/.test(chip) ? 5 : 0;
+};
+
 // What paying by card abroad adds on top of the price (the bank's foreign
 // currency markup). Indian cards charge 18% GST on that markup, so the
 // common 3.5% becomes 3.5 x 1.18 = 4.13%. Default is no fee, so prices only
@@ -189,7 +205,9 @@ function MacBookPricesTable({
     return ["All", ...[...values].sort(filter.compare)];
   };
 
-  const [sortOrder, setSortOrder] = useState("low-to-high");
+  // Newest first by default: sorting by price alone put iPhone 11 and M2
+  // Macs at the top (feedback on r/AppleIndia).
+  const [sortOrder, setSortOrder] = useState("newest");
   const [isMobile, setIsMobile] = useState(false);
   const [bargainDiscount, setBargainDiscount] = useState(0); // 0-10% typical bargaining discount
   const [showBargainSlider, setShowBargainSlider] = useState(false);
@@ -267,7 +285,13 @@ function MacBookPricesTable({
       };
     });
 
-    if (sortOrder === "low-to-high") {
+    if (sortOrder === "newest") {
+      filtered = [...filtered].sort(
+        (a, b) =>
+          generationOf(b) - generationOf(a) ||
+          (a.finalPrice || 0) - (b.finalPrice || 0),
+      );
+    } else if (sortOrder === "low-to-high") {
       filtered = [...filtered].sort(
         (a, b) => (a.finalPrice || 0) - (b.finalPrice || 0),
       );
@@ -444,6 +468,9 @@ function MacBookPricesTable({
                         <SelectValue placeholder="Sort by price" />
                       </SelectTrigger>
                       <SelectContent>
+                        <SelectItem value="newest">
+                          Newest models first
+                        </SelectItem>
                         <SelectItem value="low-to-high">
                           Price: Low to High
                         </SelectItem>
@@ -481,6 +508,7 @@ function MacBookPricesTable({
                 <SelectValue placeholder="Sort by price" />
               </SelectTrigger>
               <SelectContent>
+                <SelectItem value="newest">Newest models first</SelectItem>
                 <SelectItem value="low-to-high">Price: Low to High</SelectItem>
                 <SelectItem value="high-to-low">Price: High to Low</SelectItem>
               </SelectContent>
