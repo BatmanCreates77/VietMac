@@ -2,7 +2,7 @@
 
 import { Instrument_Serif } from "next/font/google";
 import { useState, useEffect } from "react";
-import { usePostHog } from "posthog-js/react";
+import { useAnalytics } from "@/lib/use-analytics";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -30,7 +30,7 @@ const PRODUCT_TABS = [
 ];
 
 export default function MacBookTracker() {
-  const posthog = usePostHog();
+  const analytics = useAnalytics();
   const [allPrices, setAllPrices] = useState([]);
   const [loading, setLoading] = useState(false);
   const [exchangeRate, setExchangeRate] = useState(null);
@@ -46,7 +46,7 @@ export default function MacBookTracker() {
   }, []);
 
   const selectProductLine = (tab) => {
-    posthog?.capture("product_tab_selected", { product_line: tab });
+    analytics.capture("product_tab_selected", { product_line: tab });
     setProductLine(tab);
     const url = new URL(window.location.href);
     if (tab === "mac") url.searchParams.delete("tab");
@@ -124,7 +124,7 @@ export default function MacBookTracker() {
             <Select
               value={currency}
               onValueChange={(newCurrency) => {
-                posthog?.capture("currency_changed", {
+                analytics.capture("currency_changed", {
                   from: currency,
                   to: newCurrency,
                 });
@@ -180,7 +180,7 @@ export default function MacBookTracker() {
                 </div>
                 <Button
                   onClick={() => {
-                    posthog?.capture("refresh_prices_clicked", { currency });
+                    analytics.capture("refresh_prices_clicked", { currency });
                     fetchPrices(currency);
                   }}
                   disabled={loading}
@@ -238,7 +238,7 @@ export default function MacBookTracker() {
                   (item) => (item.productLine || "mac") === productLine,
                 )}
                 currency={currency}
-                posthog={posthog}
+                analytics={analytics}
               />
             </>
           )}

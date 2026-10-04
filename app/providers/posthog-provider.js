@@ -8,15 +8,14 @@ export function PostHogProvider({ children }) {
   useEffect(() => {
     // Initialize PostHog only on client side
     if (typeof window !== "undefined") {
-      console.log("PostHog Init - Key:", process.env.NEXT_PUBLIC_POSTHOG_KEY);
-      console.log("PostHog Init - Host:", process.env.NEXT_PUBLIC_POSTHOG_HOST);
-
       posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
         api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
-        debug: true, // Enable debug mode
-        loaded: (posthog) => {
-          console.log("PostHog loaded successfully!");
-          posthog.debug();
+        // Verbose console logging only while developing locally.
+        debug: process.env.NODE_ENV === "development",
+        loaded: (client) => {
+          // An earlier build called posthog.debug(), which persists in each
+          // visitor's localStorage ("ph_debug") and outlives `debug: false`.
+          if (process.env.NODE_ENV !== "development") client.debug(false);
         },
         capture_pageview: true, // Automatic pageview tracking
         capture_pageleave: true, // Track when users leave
