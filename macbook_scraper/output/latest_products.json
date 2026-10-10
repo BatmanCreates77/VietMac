@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-08T12:48:10.777156",
+  "timestamp": "2026-10-10T12:00:06.555003",
   "products": [
     {
       "model": "MacBook Neo 13 inch A18 Pro 2026 6CPU 5GPU 8GB 256GB",
@@ -25,14 +25,14 @@
       },
       "product_id": "a18-pro-neo-13-8-256gb",
       "clean_name": "MacBook Neo 13\" A18 Pro 6C 5G 8GB 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
       "model": "MacBook Air M5 13 inch 2026 10CPU 8GPU 16GB 512GB",
       "raw_name": "MacBook Air M5 13 inch 2026 10CPU 8GPU 16GB 512GB | Chính hãng Apple Việt Nam",
-      "price_vnd": 33590000,
-      "price_text": "33.590.000đ",
+      "price_vnd": 33190000,
+      "price_text": "33.190.000đ",
       "url": "https://cellphones.com.vn/macbook-air-13-m5-10-cpu-8-gpu-16gb-512gb.html",
       "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_13_17.png",
       "shop": "cellphones",
@@ -52,7 +52,34 @@
       },
       "product_id": "m5-air-13-16-512gb",
       "clean_name": "MacBook Air 13\" M5 10C 8G 16GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "MacBook Air M5 13 inch 2026 10CPU 8GPU 16GB 512GB Sạc 70W",
+      "raw_name": "MacBook Air M5 13 inch 2026 10CPU 8GPU 16GB 512GB Sạc 70W | Chính hãng Apple Việt Nam",
+      "price_vnd": 33490000,
+      "price_text": "33.490.000đ",
+      "url": "https://cellphones.com.vn/macbook-air-13-inch-m5-10-cpu-8-gpu-16gb-512gb-2026-sac-70w.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_13_17_1.png",
+      "shop": "cellphones",
+      "product_line": "mac",
+      "source": "cellphones",
+      "specs": {
+        "model_type": "MacBook Air",
+        "chip": "M5",
+        "chip_variant": null,
+        "screen_size": "13\"",
+        "cpu_cores": 10,
+        "gpu_cores": 8,
+        "ram_gb": 16,
+        "storage_gb": 512,
+        "storage_display": "512GB",
+        "year": 2026
+      },
+      "product_id": "m5-air-13-16-512gb",
+      "clean_name": "MacBook Air 13\" M5 10C 8G 16GB 512GB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -79,34 +106,7 @@
       },
       "product_id": "m4-air-13-16-256gb",
       "clean_name": "MacBook Air 13\" M4 10C 8G 16GB 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "MacBook Air M5 13 inch 2026 10CPU 8GPU 16GB 512GB Sạc 70W",
-      "raw_name": "MacBook Air M5 13 inch 2026 10CPU 8GPU 16GB 512GB Sạc 70W | Chính hãng Apple Việt Nam",
-      "price_vnd": 33990000,
-      "price_text": "33.990.000đ",
-      "url": "https://cellphones.com.vn/macbook-air-13-inch-m5-10-cpu-8-gpu-16gb-512gb-2026-sac-70w.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_13_17_1.png",
-      "shop": "cellphones",
-      "product_line": "mac",
-      "source": "cellphones",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M5",
-        "chip_variant": null,
-        "screen_size": "13\"",
-        "cpu_cores": 10,
-        "gpu_cores": 8,
-        "ram_gb": 16,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": 2026
-      },
-      "product_id": "m5-air-13-16-512gb",
-      "clean_name": "MacBook Air 13\" M5 10C 8G 16GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -133,7 +133,7 @@
       },
       "product_id": "a18-pro-neo-13-8-512gb",
       "clean_name": "MacBook Neo 13\" A18 Pro 6C 5G 8GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -160,7 +160,7 @@
       },
       "product_id": "m2-air-16-256gb",
       "clean_name": "MacBook Air M2 8C 8G 16GB 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -187,7 +187,7 @@
       },
       "product_id": "m5-pro-14-16-1tb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 16GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -214,34 +214,7 @@
       },
       "product_id": "m4-mini-24-256gb",
       "clean_name": "Mac mini M4 10C 10G 24GB 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "Mac mini M4 2024 10CPU 10GPU 16GB 256GB",
-      "raw_name": "Mac mini M4 2024 10CPU 10GPU 16GB 256GB | Chính hãng Apple Việt Nam",
-      "price_vnd": 21990000,
-      "price_text": "21.990.000đ",
-      "url": "https://cellphones.com.vn/mac-mini-m4-2024-16gb-256gb.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_7_1.png",
-      "shop": "cellphones",
-      "product_line": "mac",
-      "source": "cellphones",
-      "specs": {
-        "model_type": "Mac mini",
-        "chip": "M4",
-        "chip_variant": null,
-        "screen_size": null,
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 16,
-        "storage_gb": 256,
-        "storage_display": "256GB",
-        "year": 2024
-      },
-      "product_id": "m4-mini-16-256gb",
-      "clean_name": "Mac mini M4 10C 10G 16GB 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -268,7 +241,7 @@
       },
       "product_id": "m5-air-13-16-512gb",
       "clean_name": "MacBook Air 13\" M5 10C 10G 16GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -295,7 +268,7 @@
       },
       "product_id": "m6-mini-16-256gb",
       "clean_name": "Mac mini M6 12C 12G 16GB 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -322,7 +295,34 @@
       },
       "product_id": "m5-air-13-24-512gb",
       "clean_name": "MacBook Air 13\" M5 10C 10G 24GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "Mac mini M4 2024 10CPU 10GPU 16GB 256GB",
+      "raw_name": "Mac mini M4 2024 10CPU 10GPU 16GB 256GB | Chính hãng Apple Việt Nam",
+      "price_vnd": 21990000,
+      "price_text": "21.990.000đ",
+      "url": "https://cellphones.com.vn/mac-mini-m4-2024-16gb-256gb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_7_1.png",
+      "shop": "cellphones",
+      "product_line": "mac",
+      "source": "cellphones",
+      "specs": {
+        "model_type": "Mac mini",
+        "chip": "M4",
+        "chip_variant": null,
+        "screen_size": null,
+        "cpu_cores": 10,
+        "gpu_cores": 10,
+        "ram_gb": 16,
+        "storage_gb": 256,
+        "storage_display": "256GB",
+        "year": 2024
+      },
+      "product_id": "m4-mini-16-256gb",
+      "clean_name": "Mac mini M4 10C 10G 16GB 256GB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -349,14 +349,14 @@
       },
       "product_id": "m5-pro-pro-14-24-1tb",
       "clean_name": "MacBook Pro 14\" M5 Pro 15C 16G 24GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
       "model": "MacBook Air M5 15 inch 2026 10CPU 10GPU 16GB 512GB",
       "raw_name": "MacBook Air M5 15 inch 2026 10CPU 10GPU 16GB 512GB | Chính hãng Apple Việt Nam",
-      "price_vnd": 38990000,
-      "price_text": "38.990.000đ",
+      "price_vnd": 38590000,
+      "price_text": "38.590.000đ",
       "url": "https://cellphones.com.vn/macbook-air-15-m5-10-cpu-10-gpu-16gb-512gb.html",
       "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_3__19.png",
       "shop": "cellphones",
@@ -376,7 +376,7 @@
       },
       "product_id": "m5-air-15-16-512gb",
       "clean_name": "MacBook Air 15\" M5 10C 10G 16GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -403,88 +403,7 @@
       },
       "product_id": "m4-air-13-24-512gb",
       "clean_name": "MacBook Air 13\" M4 10C 10G 24GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "Mac mini M4 2024 10CPU 10GPU 16GB 512GB",
-      "raw_name": "Mac mini M4 2024 10CPU 10GPU 16GB 512GB | Chính hãng Apple Việt Nam",
-      "price_vnd": 26490000,
-      "price_text": "26.490.000đ",
-      "url": "https://cellphones.com.vn/mac-mini-m4-2024-16gb-512gb.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_1__2_3.png",
-      "shop": "cellphones",
-      "product_line": "mac",
-      "source": "cellphones",
-      "specs": {
-        "model_type": "Mac mini",
-        "chip": "M4",
-        "chip_variant": null,
-        "screen_size": null,
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 16,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": 2024
-      },
-      "product_id": "m4-mini-16-512gb",
-      "clean_name": "Mac mini M4 10C 10G 16GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "Mac mini M4 2024 10CPU 10GPU 24GB 512GB",
-      "raw_name": "Mac mini M4 2024 10CPU 10GPU 24GB 512GB | Chính hãng Apple Việt Nam",
-      "price_vnd": 32990000,
-      "price_text": "32.990.000đ",
-      "url": "https://cellphones.com.vn/mac-mini-m4-2024-24gb-512gb.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_2__13.png",
-      "shop": "cellphones",
-      "product_line": "mac",
-      "source": "cellphones",
-      "specs": {
-        "model_type": "Mac mini",
-        "chip": "M4",
-        "chip_variant": null,
-        "screen_size": null,
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 24,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": 2024
-      },
-      "product_id": "m4-mini-24-512gb",
-      "clean_name": "Mac mini M4 10C 10G 24GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "MacBook Pro 14 M5 10CPU 10GPU 24GB 1TB",
-      "raw_name": "MacBook Pro 14 M5 10CPU 10GPU 24GB 1TB | Chính hãng Apple Việt Nam",
-      "price_vnd": 57990000,
-      "price_text": "57.990.000đ",
-      "url": "https://cellphones.com.vn/macbook-pro-14-inch-m5-24gb-1tb.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_2__1_4.png",
-      "shop": "cellphones",
-      "product_line": "mac",
-      "source": "cellphones",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M5",
-        "chip_variant": null,
-        "screen_size": "14\"",
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 24,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": null
-      },
-      "product_id": "m5-pro-14-24-1tb",
-      "clean_name": "MacBook Pro 14\" M5 10C 10G 24GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -511,7 +430,34 @@
       },
       "product_id": "m4-pro-pro-14-24-512gb",
       "clean_name": "MacBook Pro 14\" M4 Pro 14C 20G 24GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "MacBook Pro 14 M5 10CPU 10GPU 24GB 1TB",
+      "raw_name": "MacBook Pro 14 M5 10CPU 10GPU 24GB 1TB | Chính hãng Apple Việt Nam",
+      "price_vnd": 57990000,
+      "price_text": "57.990.000đ",
+      "url": "https://cellphones.com.vn/macbook-pro-14-inch-m5-24gb-1tb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_2__1_4.png",
+      "shop": "cellphones",
+      "product_line": "mac",
+      "source": "cellphones",
+      "specs": {
+        "model_type": "MacBook Pro",
+        "chip": "M5",
+        "chip_variant": null,
+        "screen_size": "14\"",
+        "cpu_cores": 10,
+        "gpu_cores": 10,
+        "ram_gb": 24,
+        "storage_gb": 1024,
+        "storage_display": "1TB",
+        "year": null
+      },
+      "product_id": "m5-pro-14-24-1tb",
+      "clean_name": "MacBook Pro 14\" M5 10C 10G 24GB 1TB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -538,7 +484,88 @@
       },
       "product_id": "m5-max-studio-36-512gb",
       "clean_name": "Mac Studio M5 Max 18C 32G 36GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "Mac mini M4 2024 10CPU 10GPU 16GB 512GB",
+      "raw_name": "Mac mini M4 2024 10CPU 10GPU 16GB 512GB | Chính hãng Apple Việt Nam",
+      "price_vnd": 26490000,
+      "price_text": "26.490.000đ",
+      "url": "https://cellphones.com.vn/mac-mini-m4-2024-16gb-512gb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_1__2_3.png",
+      "shop": "cellphones",
+      "product_line": "mac",
+      "source": "cellphones",
+      "specs": {
+        "model_type": "Mac mini",
+        "chip": "M4",
+        "chip_variant": null,
+        "screen_size": null,
+        "cpu_cores": 10,
+        "gpu_cores": 10,
+        "ram_gb": 16,
+        "storage_gb": 512,
+        "storage_display": "512GB",
+        "year": 2024
+      },
+      "product_id": "m4-mini-16-512gb",
+      "clean_name": "Mac mini M4 10C 10G 16GB 512GB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "Mac mini M4 2024 10CPU 10GPU 24GB 512GB",
+      "raw_name": "Mac mini M4 2024 10CPU 10GPU 24GB 512GB | Chính hãng Apple Việt Nam",
+      "price_vnd": 32590000,
+      "price_text": "32.590.000đ",
+      "url": "https://cellphones.com.vn/mac-mini-m4-2024-24gb-512gb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_2__13.png",
+      "shop": "cellphones",
+      "product_line": "mac",
+      "source": "cellphones",
+      "specs": {
+        "model_type": "Mac mini",
+        "chip": "M4",
+        "chip_variant": null,
+        "screen_size": null,
+        "cpu_cores": 10,
+        "gpu_cores": 10,
+        "ram_gb": 24,
+        "storage_gb": 512,
+        "storage_display": "512GB",
+        "year": 2024
+      },
+      "product_id": "m4-mini-24-512gb",
+      "clean_name": "Mac mini M4 10C 10G 24GB 512GB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "MacBook Air M5 13 inch 2026 10CPU 10GPU 16GB 1TB",
+      "raw_name": "MacBook Air M5 13 inch 2026 10CPU 10GPU 16GB 1TB | Chính hãng Apple Việt Nam",
+      "price_vnd": 40890000,
+      "price_text": "40.890.000đ",
+      "url": "https://cellphones.com.vn/macbook-air-13-m5-10-cpu-10-gpu-16gb-1tb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_1__7_8.png",
+      "shop": "cellphones",
+      "product_line": "mac",
+      "source": "cellphones",
+      "specs": {
+        "model_type": "MacBook Air",
+        "chip": "M5",
+        "chip_variant": null,
+        "screen_size": "13\"",
+        "cpu_cores": 10,
+        "gpu_cores": 10,
+        "ram_gb": 16,
+        "storage_gb": 1024,
+        "storage_display": "1TB",
+        "year": 2026
+      },
+      "product_id": "m5-air-13-16-1tb",
+      "clean_name": "MacBook Air 13\" M5 10C 10G 16GB 1TB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -565,61 +592,7 @@
       },
       "product_id": "m5-max-pro-16-48-2tb",
       "clean_name": "MacBook Pro 16\" M5 Max 18C 40G 48GB 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "MacBook Air M5 13 inch 2026 10CPU 10GPU 16GB 1TB",
-      "raw_name": "MacBook Air M5 13 inch 2026 10CPU 10GPU 16GB 1TB | Chính hãng Apple Việt Nam",
-      "price_vnd": 41290000,
-      "price_text": "41.290.000đ",
-      "url": "https://cellphones.com.vn/macbook-air-13-m5-10-cpu-10-gpu-16gb-1tb.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_1__7_8.png",
-      "shop": "cellphones",
-      "product_line": "mac",
-      "source": "cellphones",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M5",
-        "chip_variant": null,
-        "screen_size": "13\"",
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 16,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": 2026
-      },
-      "product_id": "m5-air-13-16-1tb",
-      "clean_name": "MacBook Air 13\" M5 10C 10G 16GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "Apple Mac mini M6 12CPU 12GPU 16GB 512GB 2026",
-      "raw_name": "Apple Mac mini M6 12CPU 12GPU 16GB 512GB 2026 | Chính hãng Apple Việt Nam",
-      "price_vnd": 30090000,
-      "price_text": "30.090.000đ",
-      "url": "https://cellphones.com.vn/mac-mini-m6-12cpu-12gpu-16gb-512gb-2026.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_2__1_9.png",
-      "shop": "cellphones",
-      "product_line": "mac",
-      "source": "cellphones",
-      "specs": {
-        "model_type": "Mac mini",
-        "chip": "M6",
-        "chip_variant": null,
-        "screen_size": null,
-        "cpu_cores": 12,
-        "gpu_cores": 12,
-        "ram_gb": 16,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": 2026
-      },
-      "product_id": "m6-mini-16-512gb",
-      "clean_name": "Mac mini M6 12C 12G 16GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -646,7 +619,34 @@
       },
       "product_id": "m6-mini-24-512gb",
       "clean_name": "Mac mini M6 12C 12G 24GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "Apple Mac mini M6 12CPU 12GPU 16GB 512GB 2026",
+      "raw_name": "Apple Mac mini M6 12CPU 12GPU 16GB 512GB 2026 | Chính hãng Apple Việt Nam",
+      "price_vnd": 30090000,
+      "price_text": "30.090.000đ",
+      "url": "https://cellphones.com.vn/mac-mini-m6-12cpu-12gpu-16gb-512gb-2026.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_2__1_9.png",
+      "shop": "cellphones",
+      "product_line": "mac",
+      "source": "cellphones",
+      "specs": {
+        "model_type": "Mac mini",
+        "chip": "M6",
+        "chip_variant": null,
+        "screen_size": null,
+        "cpu_cores": 12,
+        "gpu_cores": 12,
+        "ram_gb": 16,
+        "storage_gb": 512,
+        "storage_display": "512GB",
+        "year": 2026
+      },
+      "product_id": "m6-mini-16-512gb",
+      "clean_name": "Mac mini M6 12C 12G 16GB 512GB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -673,7 +673,7 @@
       },
       "product_id": "m5-air-15-24-512gb",
       "clean_name": "MacBook Air 15\" M5 10C 10G 24GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -700,7 +700,7 @@
       },
       "product_id": "m5-pro-pro-16-24-1tb",
       "clean_name": "MacBook Pro 16\" M5 Pro 18C 20G 24GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -727,41 +727,41 @@
       },
       "product_id": "m6-mini-24-256gb",
       "clean_name": "Mac mini M6 12C 12G 24GB 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
-      "model": "Apple Mac Studio M4 Max 16CPU 40GPU 48GB 1TB",
-      "raw_name": "Apple Mac Studio M4 Max 16CPU 40GPU 48GB 1TB | Chính hãng Apple Việt Nam",
-      "price_vnd": 107990000,
-      "price_text": "107.990.000đ",
-      "url": "https://cellphones.com.vn/mac-studio-m4-max-16cpu-40gpu-48gb-1tb.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_1__7_17.png",
+      "model": "MacBook Air M5 15 inch 2026 10CPU 10GPU 16GB 512GB Sạc 70W",
+      "raw_name": "MacBook Air M5 15 inch 2026 10CPU 10GPU 16GB 512GB Sạc 70W | Chính hãng Apple Việt Nam",
+      "price_vnd": 39190000,
+      "price_text": "39.190.000đ",
+      "url": "https://cellphones.com.vn/macbook-air-15-m5-10-cpu-10-gpu-16gb-512gb-sac-70w.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_3__19_1.png",
       "shop": "cellphones",
       "product_line": "mac",
       "source": "cellphones",
       "specs": {
-        "model_type": "Mac Studio",
-        "chip": "M4",
-        "chip_variant": "Max",
-        "screen_size": null,
-        "cpu_cores": 16,
-        "gpu_cores": 40,
-        "ram_gb": 48,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": null
+        "model_type": "MacBook Air",
+        "chip": "M5",
+        "chip_variant": null,
+        "screen_size": "15\"",
+        "cpu_cores": 10,
+        "gpu_cores": 10,
+        "ram_gb": 16,
+        "storage_gb": 512,
+        "storage_display": "512GB",
+        "year": 2026
       },
-      "product_id": "m4-max-studio-48-1tb",
-      "clean_name": "Mac Studio M4 Max 16C 40G 48GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "product_id": "m5-air-15-16-512gb",
+      "clean_name": "MacBook Air 15\" M5 10C 10G 16GB 512GB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
       "model": "MacBook Air M5 13 inch 2026 10CPU 10GPU 24GB 1TB",
       "raw_name": "MacBook Air M5 13 inch 2026 10CPU 10GPU 24GB 1TB | Chính hãng Apple Việt Nam",
-      "price_vnd": 46490000,
-      "price_text": "46.490.000đ",
+      "price_vnd": 45990000,
+      "price_text": "45.990.000đ",
       "url": "https://cellphones.com.vn/macbook-air-13-m5-10-cpu-10-gpu-24gb-1tb.html",
       "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_2__1_6.png",
       "shop": "cellphones",
@@ -781,7 +781,7 @@
       },
       "product_id": "m5-air-13-24-1tb",
       "clean_name": "MacBook Air 13\" M5 10C 10G 24GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -808,7 +808,7 @@
       },
       "product_id": "m4-imac-24-16-256gb",
       "clean_name": "iMac 24\" M4 8C 8G 16GB 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -835,61 +835,7 @@
       },
       "product_id": "m5-pro-pro-16-48-1tb",
       "clean_name": "MacBook Pro 16\" M5 Pro 18C 20G 48GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "MacBook Air M5 15 inch 2026 10CPU 10GPU 16GB 512GB Sạc 70W",
-      "raw_name": "MacBook Air M5 15 inch 2026 10CPU 10GPU 16GB 512GB Sạc 70W | Chính hãng Apple Việt Nam",
-      "price_vnd": 39290000,
-      "price_text": "39.290.000đ",
-      "url": "https://cellphones.com.vn/macbook-air-15-m5-10-cpu-10-gpu-16gb-512gb-sac-70w.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_3__19_1.png",
-      "shop": "cellphones",
-      "product_line": "mac",
-      "source": "cellphones",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M5",
-        "chip_variant": null,
-        "screen_size": "15\"",
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 16,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": 2026
-      },
-      "product_id": "m5-air-15-16-512gb",
-      "clean_name": "MacBook Air 15\" M5 10C 10G 16GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "MacBook Pro M5 Max 16 inch 2026 18CPU 32GPU 36GB 2TB Sạc 140W",
-      "raw_name": "MacBook Pro M5 Max 16 inch 2026 18CPU 32GPU 36GB 2TB Sạc 140W | Chính hãng Apple Việt Nam",
-      "price_vnd": 117490000,
-      "price_text": "117.490.000đ",
-      "url": "https://cellphones.com.vn/macbook-pro-16-m5-max-18cpu-32-gpu-36gb-2tb.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_12__2.png",
-      "shop": "cellphones",
-      "product_line": "mac",
-      "source": "cellphones",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M5",
-        "chip_variant": "Max",
-        "screen_size": "16\"",
-        "cpu_cores": 18,
-        "gpu_cores": 32,
-        "ram_gb": 36,
-        "storage_gb": 2048,
-        "storage_display": "2TB",
-        "year": 2026
-      },
-      "product_id": "m5-max-pro-16-36-2tb",
-      "clean_name": "MacBook Pro 16\" M5 Max 18C 32G 36GB 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -916,88 +862,61 @@
       },
       "product_id": "m5-pro-pro-14-24-1tb",
       "clean_name": "MacBook Pro 14\" M5 Pro 15C 16G 24GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
-      "model": "Mac mini M4 2024 10CPU 10GPU 16GB 1TB",
-      "raw_name": "Mac mini M4 2024 10CPU 10GPU 16GB 1TB | Chính hãng Apple Việt Nam",
-      "price_vnd": 34990000,
-      "price_text": "34.990.000đ",
-      "url": "https://cellphones.com.vn/mac-mini-m4-10cpu-10gpu-16gb-1tb-2024.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_1__7_7.png",
+      "model": "Apple Mac Studio M4 Max 16CPU 40GPU 48GB 1TB",
+      "raw_name": "Apple Mac Studio M4 Max 16CPU 40GPU 48GB 1TB | Chính hãng Apple Việt Nam",
+      "price_vnd": 107990000,
+      "price_text": "107.990.000đ",
+      "url": "https://cellphones.com.vn/mac-studio-m4-max-16cpu-40gpu-48gb-1tb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_1__7_17.png",
       "shop": "cellphones",
       "product_line": "mac",
       "source": "cellphones",
       "specs": {
-        "model_type": "Mac mini",
+        "model_type": "Mac Studio",
         "chip": "M4",
-        "chip_variant": null,
+        "chip_variant": "Max",
         "screen_size": null,
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 16,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": 2024
-      },
-      "product_id": "m4-mini-16-1tb",
-      "clean_name": "Mac mini M4 10C 10G 16GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "MacBook Pro 14 M4 Pro 14CPU 20GPU 24GB 1TB Nano",
-      "raw_name": "MacBook Pro 14 M4 Pro 14CPU 20GPU 24GB 1TB Nano | Chính hãng Apple Việt Nam",
-      "price_vnd": 66990000,
-      "price_text": "66.990.000đ",
-      "url": "https://cellphones.com.vn/macbook-pro-m4-pro-14-inch-14cpu-20gpu-24gb-1tb-nano.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_2__17.png",
-      "shop": "cellphones",
-      "product_line": "mac",
-      "source": "cellphones",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M4",
-        "chip_variant": "Pro",
-        "screen_size": "14\"",
-        "cpu_cores": 14,
-        "gpu_cores": 20,
-        "ram_gb": 24,
+        "cpu_cores": 16,
+        "gpu_cores": 40,
+        "ram_gb": 48,
         "storage_gb": 1024,
         "storage_display": "1TB",
         "year": null
       },
-      "product_id": "m4-pro-pro-14-24-1tb",
-      "clean_name": "MacBook Pro 14\" M4 Pro 14C 20G 24GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "product_id": "m4-max-studio-48-1tb",
+      "clean_name": "Mac Studio M4 Max 16C 40G 48GB 1TB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
-      "model": "MacBook Pro 14 M5 10CPU 10GPU 32GB 1TB Sạc 70W",
-      "raw_name": "MacBook Pro 14 M5 10CPU 10GPU 32GB 1TB Sạc 70W | Chính hãng Apple Việt Nam",
-      "price_vnd": 64990000,
-      "price_text": "64.990.000đ",
-      "url": "https://cellphones.com.vn/macbook-pro-14-inch-m5-10-cpu-10-gpu-32gb-1tb-2026-sac-70w.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_13_24.png",
+      "model": "MacBook Pro M5 Max 16 inch 2026 18CPU 32GPU 36GB 2TB Sạc 140W",
+      "raw_name": "MacBook Pro M5 Max 16 inch 2026 18CPU 32GPU 36GB 2TB Sạc 140W | Chính hãng Apple Việt Nam",
+      "price_vnd": 117490000,
+      "price_text": "117.490.000đ",
+      "url": "https://cellphones.com.vn/macbook-pro-16-m5-max-18cpu-32-gpu-36gb-2tb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_12__2.png",
       "shop": "cellphones",
       "product_line": "mac",
       "source": "cellphones",
       "specs": {
         "model_type": "MacBook Pro",
         "chip": "M5",
-        "chip_variant": null,
-        "screen_size": "14\"",
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 32,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": null
+        "chip_variant": "Max",
+        "screen_size": "16\"",
+        "cpu_cores": 18,
+        "gpu_cores": 32,
+        "ram_gb": 36,
+        "storage_gb": 2048,
+        "storage_display": "2TB",
+        "year": 2026
       },
-      "product_id": "m5-pro-14-32-1tb",
-      "clean_name": "MacBook Pro 14\" M5 10C 10G 32GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "product_id": "m5-max-pro-16-36-2tb",
+      "clean_name": "MacBook Pro 16\" M5 Max 18C 32G 36GB 2TB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -1024,7 +943,61 @@
       },
       "product_id": "m5-pro-14-16-1tb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 16GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "MacBook Pro 14 M5 10CPU 10GPU 32GB 1TB Sạc 70W",
+      "raw_name": "MacBook Pro 14 M5 10CPU 10GPU 32GB 1TB Sạc 70W | Chính hãng Apple Việt Nam",
+      "price_vnd": 64990000,
+      "price_text": "64.990.000đ",
+      "url": "https://cellphones.com.vn/macbook-pro-14-inch-m5-10-cpu-10-gpu-32gb-1tb-2026-sac-70w.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_13_24.png",
+      "shop": "cellphones",
+      "product_line": "mac",
+      "source": "cellphones",
+      "specs": {
+        "model_type": "MacBook Pro",
+        "chip": "M5",
+        "chip_variant": null,
+        "screen_size": "14\"",
+        "cpu_cores": 10,
+        "gpu_cores": 10,
+        "ram_gb": 32,
+        "storage_gb": 1024,
+        "storage_display": "1TB",
+        "year": null
+      },
+      "product_id": "m5-pro-14-32-1tb",
+      "clean_name": "MacBook Pro 14\" M5 10C 10G 32GB 1TB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "MacBook Pro 14 M4 Pro 14CPU 20GPU 24GB 1TB Nano",
+      "raw_name": "MacBook Pro 14 M4 Pro 14CPU 20GPU 24GB 1TB Nano | Chính hãng Apple Việt Nam",
+      "price_vnd": 66990000,
+      "price_text": "66.990.000đ",
+      "url": "https://cellphones.com.vn/macbook-pro-m4-pro-14-inch-14cpu-20gpu-24gb-1tb-nano.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_2__17.png",
+      "shop": "cellphones",
+      "product_line": "mac",
+      "source": "cellphones",
+      "specs": {
+        "model_type": "MacBook Pro",
+        "chip": "M4",
+        "chip_variant": "Pro",
+        "screen_size": "14\"",
+        "cpu_cores": 14,
+        "gpu_cores": 20,
+        "ram_gb": 24,
+        "storage_gb": 1024,
+        "storage_display": "1TB",
+        "year": null
+      },
+      "product_id": "m4-pro-pro-14-24-1tb",
+      "clean_name": "MacBook Pro 14\" M4 Pro 14C 20G 24GB 1TB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -1051,34 +1024,7 @@
       },
       "product_id": "m5-pro-mini-24-512gb",
       "clean_name": "Mac mini M5 Pro 15C 16G 24GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "iMac M4 2024 24 inch 8CPU 8GPU 16GB 512GB",
-      "raw_name": "iMac M4 2024 24 inch 8CPU 8GPU 16GB 512GB | Chính hãng Apple Việt Nam",
-      "price_vnd": 45490000,
-      "price_text": "45.490.000đ",
-      "url": "https://cellphones.com.vn/imac-m4-2024-24-inch-16gb-512gb.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_2__12.png",
-      "shop": "cellphones",
-      "product_line": "mac",
-      "source": "cellphones",
-      "specs": {
-        "model_type": "iMac",
-        "chip": "M4",
-        "chip_variant": null,
-        "screen_size": "24\"",
-        "cpu_cores": 8,
-        "gpu_cores": 8,
-        "ram_gb": 16,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": 2024
-      },
-      "product_id": "m4-imac-24-16-512gb",
-      "clean_name": "iMac 24\" M4 8C 8G 16GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -1105,41 +1051,68 @@
       },
       "product_id": "m4-max-pro-14-36-1tb",
       "clean_name": "MacBook Pro 14\" M4 Max 14C 32G 36GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
-      "model": "MacBook Pro 16 M4 Max 16CPU 40GPU 48GB 1TB",
-      "raw_name": "MacBook Pro 16 M4 Max 16CPU 40GPU 48GB 1TB | Chính hãng Apple Việt Nam",
-      "price_vnd": 98990000,
-      "price_text": "98.990.000đ",
-      "url": "https://cellphones.com.vn/macbook-pro-16-inch-m4-max-48gb-1tb.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_3__8.png",
+      "model": "Mac mini M4 2024 10CPU 10GPU 16GB 1TB",
+      "raw_name": "Mac mini M4 2024 10CPU 10GPU 16GB 1TB | Chính hãng Apple Việt Nam",
+      "price_vnd": 34590000,
+      "price_text": "34.590.000đ",
+      "url": "https://cellphones.com.vn/mac-mini-m4-10cpu-10gpu-16gb-1tb-2024.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_1__7_7.png",
       "shop": "cellphones",
       "product_line": "mac",
       "source": "cellphones",
       "specs": {
-        "model_type": "MacBook Pro",
+        "model_type": "Mac mini",
         "chip": "M4",
-        "chip_variant": "Max",
-        "screen_size": "16\"",
-        "cpu_cores": 16,
-        "gpu_cores": 40,
-        "ram_gb": 48,
+        "chip_variant": null,
+        "screen_size": null,
+        "cpu_cores": 10,
+        "gpu_cores": 10,
+        "ram_gb": 16,
         "storage_gb": 1024,
         "storage_display": "1TB",
-        "year": null
+        "year": 2024
       },
-      "product_id": "m4-max-pro-16-48-1tb",
-      "clean_name": "MacBook Pro 16\" M4 Max 16C 40G 48GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "product_id": "m4-mini-16-1tb",
+      "clean_name": "Mac mini M4 10C 10G 16GB 1TB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "iMac M4 2024 24 inch 8CPU 8GPU 16GB 512GB",
+      "raw_name": "iMac M4 2024 24 inch 8CPU 8GPU 16GB 512GB | Chính hãng Apple Việt Nam",
+      "price_vnd": 45490000,
+      "price_text": "45.490.000đ",
+      "url": "https://cellphones.com.vn/imac-m4-2024-24-inch-16gb-512gb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_2__12.png",
+      "shop": "cellphones",
+      "product_line": "mac",
+      "source": "cellphones",
+      "specs": {
+        "model_type": "iMac",
+        "chip": "M4",
+        "chip_variant": null,
+        "screen_size": "24\"",
+        "cpu_cores": 8,
+        "gpu_cores": 8,
+        "ram_gb": 16,
+        "storage_gb": 512,
+        "storage_display": "512GB",
+        "year": 2024
+      },
+      "product_id": "m4-imac-24-16-512gb",
+      "clean_name": "iMac 24\" M4 8C 8G 16GB 512GB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
       "model": "Mac mini M4 2024 10CPU 10GPU 24GB 1TB",
       "raw_name": "Mac mini M4 2024 10CPU 10GPU 24GB 1TB | Chính hãng Apple Việt Nam",
-      "price_vnd": 40990000,
-      "price_text": "40.990.000đ",
+      "price_vnd": 40590000,
+      "price_text": "40.590.000đ",
       "url": "https://cellphones.com.vn/apple-mac-mini-m4-10cpu-10gpu-24gb-1tb-2024.html",
       "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_2__18.png",
       "shop": "cellphones",
@@ -1159,34 +1132,7 @@
       },
       "product_id": "m4-mini-24-1tb",
       "clean_name": "Mac mini M4 10C 10G 24GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "iMac M4 2024 24 inch 10CPU 10GPU 16GB 256GB",
-      "raw_name": "iMac M4 2024 24 inch 10CPU 10GPU 16GB 256GB | Chính hãng Apple Việt Nam",
-      "price_vnd": 43990000,
-      "price_text": "43.990.000đ",
-      "url": "https://cellphones.com.vn/imac-m4-2024-24-inch-10cpu-10gpu-16gb-256gb.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_3__6.png",
-      "shop": "cellphones",
-      "product_line": "mac",
-      "source": "cellphones",
-      "specs": {
-        "model_type": "iMac",
-        "chip": "M4",
-        "chip_variant": null,
-        "screen_size": "24\"",
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 16,
-        "storage_gb": 256,
-        "storage_display": "256GB",
-        "year": 2024
-      },
-      "product_id": "m4-imac-24-16-256gb",
-      "clean_name": "iMac 24\" M4 10C 10G 16GB 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -1213,7 +1159,34 @@
       },
       "product_id": "m5-air-15-24-1tb",
       "clean_name": "MacBook Air 15\" M5 10C 10G 24GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "iMac M4 2024 24 inch 10CPU 10GPU 16GB 256GB",
+      "raw_name": "iMac M4 2024 24 inch 10CPU 10GPU 16GB 256GB | Chính hãng Apple Việt Nam",
+      "price_vnd": 43990000,
+      "price_text": "43.990.000đ",
+      "url": "https://cellphones.com.vn/imac-m4-2024-24-inch-10cpu-10gpu-16gb-256gb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_3__6.png",
+      "shop": "cellphones",
+      "product_line": "mac",
+      "source": "cellphones",
+      "specs": {
+        "model_type": "iMac",
+        "chip": "M4",
+        "chip_variant": null,
+        "screen_size": "24\"",
+        "cpu_cores": 10,
+        "gpu_cores": 10,
+        "ram_gb": 16,
+        "storage_gb": 256,
+        "storage_display": "256GB",
+        "year": 2024
+      },
+      "product_id": "m4-imac-24-16-256gb",
+      "clean_name": "iMac 24\" M4 10C 10G 16GB 256GB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -1240,34 +1213,34 @@
       },
       "product_id": "m5-pro-mini-48-512gb",
       "clean_name": "Mac mini M5 Pro 15C 16G 48GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
-      "model": "MacBook Pro M5 Pro 14 inch 2026 15CPU 16GPU 24GB 2TB",
-      "raw_name": "MacBook Pro M5 Pro 14 inch 2026 15CPU 16GPU 24GB 2TB | Chính hãng Apple Việt Nam",
-      "price_vnd": 79990000,
-      "price_text": "79.990.000đ",
-      "url": "https://cellphones.com.vn/macbook-pro-14-m5-pro-15cpu-16-gpu-24gb-2tb.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_7__6.png",
+      "model": "MacBook Pro 16 M4 Max 16CPU 40GPU 48GB 1TB",
+      "raw_name": "MacBook Pro 16 M4 Max 16CPU 40GPU 48GB 1TB | Chính hãng Apple Việt Nam",
+      "price_vnd": 98990000,
+      "price_text": "98.990.000đ",
+      "url": "https://cellphones.com.vn/macbook-pro-16-inch-m4-max-48gb-1tb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_3__8.png",
       "shop": "cellphones",
       "product_line": "mac",
       "source": "cellphones",
       "specs": {
         "model_type": "MacBook Pro",
-        "chip": "M5",
-        "chip_variant": "Pro",
-        "screen_size": "14\"",
-        "cpu_cores": 15,
-        "gpu_cores": 16,
-        "ram_gb": 24,
-        "storage_gb": 2048,
-        "storage_display": "2TB",
-        "year": 2026
+        "chip": "M4",
+        "chip_variant": "Max",
+        "screen_size": "16\"",
+        "cpu_cores": 16,
+        "gpu_cores": 40,
+        "ram_gb": 48,
+        "storage_gb": 1024,
+        "storage_display": "1TB",
+        "year": null
       },
-      "product_id": "m5-pro-pro-14-24-2tb",
-      "clean_name": "MacBook Pro 14\" M5 Pro 15C 16G 24GB 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "product_id": "m4-max-pro-16-48-1tb",
+      "clean_name": "MacBook Pro 16\" M4 Max 16C 40G 48GB 1TB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -1294,169 +1267,7 @@
       },
       "product_id": "m5-pro-14-32-1tb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 32GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "Apple Mac Studio M5 Max 18CPU 40GPU 64GB 1TB 2026",
-      "raw_name": "Apple Mac Studio M5 Max 18CPU 40GPU 64GB 1TB 2026 | Chính hãng Apple Việt Nam",
-      "price_vnd": 105750000,
-      "price_text": "105.750.000đ",
-      "url": "https://cellphones.com.vn/mac-studio-m5-max-18cpu-40gpu-64gb-1tb-2026.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_1__7_32.png",
-      "shop": "cellphones",
-      "product_line": "mac",
-      "source": "cellphones",
-      "specs": {
-        "model_type": "Mac Studio",
-        "chip": "M5",
-        "chip_variant": "Max",
-        "screen_size": null,
-        "cpu_cores": 18,
-        "gpu_cores": 40,
-        "ram_gb": 64,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": 2026
-      },
-      "product_id": "m5-max-studio-64-1tb",
-      "clean_name": "Mac Studio M5 Max 18C 40G 64GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "MacBook Air M5 13 inch 2026 10CPU 10GPU 16GB 1TB Sạc 70W",
-      "raw_name": "MacBook Air M5 13 inch 2026 10CPU 10GPU 16GB 1TB Sạc 70W | Chính hãng Apple Việt Nam",
-      "price_vnd": 41490000,
-      "price_text": "41.490.000đ",
-      "url": "https://cellphones.com.vn/macbook-air-13-m5-10-cpu-10-gpu-16gb-1tb-2026-sac-70w.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_1__7_8_1.png",
-      "shop": "cellphones",
-      "product_line": "mac",
-      "source": "cellphones",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M5",
-        "chip_variant": null,
-        "screen_size": "13\"",
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 16,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": 2026
-      },
-      "product_id": "m5-air-13-16-1tb",
-      "clean_name": "MacBook Air 13\" M5 10C 10G 16GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "MacBook Air M5 15 inch 2026 10CPU 10GPU 24GB 1TB Sạc 70W",
-      "raw_name": "MacBook Air M5 15 inch 2026 10CPU 10GPU 24GB 1TB Sạc 70W | Chính hãng Apple Việt Nam",
-      "price_vnd": 52990000,
-      "price_text": "52.990.000đ",
-      "url": "https://cellphones.com.vn/macbook-air-15-m5-10-cpu-10-gpu-24gb-1tb-sac-70w.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_2__1_8.png",
-      "shop": "cellphones",
-      "product_line": "mac",
-      "source": "cellphones",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M5",
-        "chip_variant": null,
-        "screen_size": "15\"",
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 24,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": 2026
-      },
-      "product_id": "m5-air-15-24-1tb",
-      "clean_name": "MacBook Air 15\" M5 10C 10G 24GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "MacBook Air M5 15 inch 2026 10CPU 10GPU 16GB 1TB",
-      "raw_name": "MacBook Air M5 15 inch 2026 10CPU 10GPU 16GB 1TB | Chính hãng Apple Việt Nam",
-      "price_vnd": 47490000,
-      "price_text": "47.490.000đ",
-      "url": "https://cellphones.com.vn/macbook-air-15-m5-10-cpu-10-gpu-16gb-1tb.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_4__1_6.png",
-      "shop": "cellphones",
-      "product_line": "mac",
-      "source": "cellphones",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M5",
-        "chip_variant": null,
-        "screen_size": "15\"",
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 16,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": 2026
-      },
-      "product_id": "m5-air-15-16-1tb",
-      "clean_name": "MacBook Air 15\" M5 10C 10G 16GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "MacBook Pro 16 M4 Pro 14CPU 20GPU 24GB 1TB Sạc 140W",
-      "raw_name": "MacBook Pro 16 M4 Pro 14CPU 20GPU 24GB 1TB Sạc 140W | Chính hãng Apple Việt Nam",
-      "price_vnd": 73990000,
-      "price_text": "73.990.000đ",
-      "url": "https://cellphones.com.vn/macbook-pro-16-m4-pro-14-cpu-20-gpu-24gb-1tb-2024-sac-140w.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_1__7_1.png",
-      "shop": "cellphones",
-      "product_line": "mac",
-      "source": "cellphones",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M4",
-        "chip_variant": "Pro",
-        "screen_size": "16\"",
-        "cpu_cores": 14,
-        "gpu_cores": 20,
-        "ram_gb": 24,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": null
-      },
-      "product_id": "m4-pro-pro-16-24-1tb",
-      "clean_name": "MacBook Pro 16\" M4 Pro 14C 20G 24GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "Apple MacBook Air M2 2024 8CPU 10GPU 16GB 512GB I",
-      "raw_name": "Apple MacBook Air M2 2024 8CPU 10GPU 16GB 512GB I Chính hãng Apple Việt Nam",
-      "price_vnd": 26990000,
-      "price_text": "26.990.000đ",
-      "url": "https://cellphones.com.vn/macbook-air-m2-2022-16gb-512gb.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/r/group_533_1.png",
-      "shop": "cellphones",
-      "product_line": "mac",
-      "source": "cellphones",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M2",
-        "chip_variant": null,
-        "screen_size": null,
-        "cpu_cores": 8,
-        "gpu_cores": 10,
-        "ram_gb": 16,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": 2024
-      },
-      "product_id": "m2-air-16-512gb",
-      "clean_name": "MacBook Air M2 8C 10G 16GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -1483,7 +1294,88 @@
       },
       "product_id": "m5-max-studio-48-1tb",
       "clean_name": "Mac Studio M5 Max 18C 40G 48GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "Apple Mac Studio M5 Max 18CPU 40GPU 64GB 1TB 2026",
+      "raw_name": "Apple Mac Studio M5 Max 18CPU 40GPU 64GB 1TB 2026 | Chính hãng Apple Việt Nam",
+      "price_vnd": 105750000,
+      "price_text": "105.750.000đ",
+      "url": "https://cellphones.com.vn/mac-studio-m5-max-18cpu-40gpu-64gb-1tb-2026.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_1__7_32.png",
+      "shop": "cellphones",
+      "product_line": "mac",
+      "source": "cellphones",
+      "specs": {
+        "model_type": "Mac Studio",
+        "chip": "M5",
+        "chip_variant": "Max",
+        "screen_size": null,
+        "cpu_cores": 18,
+        "gpu_cores": 40,
+        "ram_gb": 64,
+        "storage_gb": 1024,
+        "storage_display": "1TB",
+        "year": 2026
+      },
+      "product_id": "m5-max-studio-64-1tb",
+      "clean_name": "Mac Studio M5 Max 18C 40G 64GB 1TB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "MacBook Pro M5 Pro 14 inch 2026 15CPU 16GPU 24GB 2TB",
+      "raw_name": "MacBook Pro M5 Pro 14 inch 2026 15CPU 16GPU 24GB 2TB | Chính hãng Apple Việt Nam",
+      "price_vnd": 79990000,
+      "price_text": "79.990.000đ",
+      "url": "https://cellphones.com.vn/macbook-pro-14-m5-pro-15cpu-16-gpu-24gb-2tb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_7__6.png",
+      "shop": "cellphones",
+      "product_line": "mac",
+      "source": "cellphones",
+      "specs": {
+        "model_type": "MacBook Pro",
+        "chip": "M5",
+        "chip_variant": "Pro",
+        "screen_size": "14\"",
+        "cpu_cores": 15,
+        "gpu_cores": 16,
+        "ram_gb": 24,
+        "storage_gb": 2048,
+        "storage_display": "2TB",
+        "year": 2026
+      },
+      "product_id": "m5-pro-pro-14-24-2tb",
+      "clean_name": "MacBook Pro 14\" M5 Pro 15C 16G 24GB 2TB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "Apple MacBook Air M2 2024 8CPU 10GPU 16GB 512GB I",
+      "raw_name": "Apple MacBook Air M2 2024 8CPU 10GPU 16GB 512GB I Chính hãng Apple Việt Nam",
+      "price_vnd": 26990000,
+      "price_text": "26.990.000đ",
+      "url": "https://cellphones.com.vn/macbook-air-m2-2022-16gb-512gb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/r/group_533_1.png",
+      "shop": "cellphones",
+      "product_line": "mac",
+      "source": "cellphones",
+      "specs": {
+        "model_type": "MacBook Air",
+        "chip": "M2",
+        "chip_variant": null,
+        "screen_size": null,
+        "cpu_cores": 8,
+        "gpu_cores": 10,
+        "ram_gb": 16,
+        "storage_gb": 512,
+        "storage_display": "512GB",
+        "year": 2024
+      },
+      "product_id": "m2-air-16-512gb",
+      "clean_name": "MacBook Air M2 8C 10G 16GB 512GB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -1510,34 +1402,115 @@
       },
       "product_id": "m5-air-13-24-1tb",
       "clean_name": "MacBook Air 13\" M5 10C 10G 24GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
-      "model": "Apple Mac Studio M4 Max 16CPU 40GPU 48GB 512GB",
-      "raw_name": "Apple Mac Studio M4 Max 16CPU 40GPU 48GB 512GB | Chính hãng Apple Việt Nam",
-      "price_vnd": 98490000,
-      "price_text": "98.490.000đ",
-      "url": "https://cellphones.com.vn/mac-studio-m4-max-16cpu-40gpu-48gb-512gb.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_1__7_16.png",
+      "model": "MacBook Air M5 15 inch 2026 10CPU 10GPU 16GB 1TB",
+      "raw_name": "MacBook Air M5 15 inch 2026 10CPU 10GPU 16GB 1TB | Chính hãng Apple Việt Nam",
+      "price_vnd": 47490000,
+      "price_text": "47.490.000đ",
+      "url": "https://cellphones.com.vn/macbook-air-15-m5-10-cpu-10-gpu-16gb-1tb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_4__1_6.png",
       "shop": "cellphones",
       "product_line": "mac",
       "source": "cellphones",
       "specs": {
-        "model_type": "Mac Studio",
+        "model_type": "MacBook Air",
+        "chip": "M5",
+        "chip_variant": null,
+        "screen_size": "15\"",
+        "cpu_cores": 10,
+        "gpu_cores": 10,
+        "ram_gb": 16,
+        "storage_gb": 1024,
+        "storage_display": "1TB",
+        "year": 2026
+      },
+      "product_id": "m5-air-15-16-1tb",
+      "clean_name": "MacBook Air 15\" M5 10C 10G 16GB 1TB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "MacBook Air M5 13 inch 2026 10CPU 10GPU 16GB 1TB Sạc 70W",
+      "raw_name": "MacBook Air M5 13 inch 2026 10CPU 10GPU 16GB 1TB Sạc 70W | Chính hãng Apple Việt Nam",
+      "price_vnd": 41290000,
+      "price_text": "41.290.000đ",
+      "url": "https://cellphones.com.vn/macbook-air-13-m5-10-cpu-10-gpu-16gb-1tb-2026-sac-70w.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_1__7_8_1.png",
+      "shop": "cellphones",
+      "product_line": "mac",
+      "source": "cellphones",
+      "specs": {
+        "model_type": "MacBook Air",
+        "chip": "M5",
+        "chip_variant": null,
+        "screen_size": "13\"",
+        "cpu_cores": 10,
+        "gpu_cores": 10,
+        "ram_gb": 16,
+        "storage_gb": 1024,
+        "storage_display": "1TB",
+        "year": 2026
+      },
+      "product_id": "m5-air-13-16-1tb",
+      "clean_name": "MacBook Air 13\" M5 10C 10G 16GB 1TB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "MacBook Air M5 15 inch 2026 10CPU 10GPU 24GB 1TB Sạc 70W",
+      "raw_name": "MacBook Air M5 15 inch 2026 10CPU 10GPU 24GB 1TB Sạc 70W | Chính hãng Apple Việt Nam",
+      "price_vnd": 52990000,
+      "price_text": "52.990.000đ",
+      "url": "https://cellphones.com.vn/macbook-air-15-m5-10-cpu-10-gpu-24gb-1tb-sac-70w.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_2__1_8.png",
+      "shop": "cellphones",
+      "product_line": "mac",
+      "source": "cellphones",
+      "specs": {
+        "model_type": "MacBook Air",
+        "chip": "M5",
+        "chip_variant": null,
+        "screen_size": "15\"",
+        "cpu_cores": 10,
+        "gpu_cores": 10,
+        "ram_gb": 24,
+        "storage_gb": 1024,
+        "storage_display": "1TB",
+        "year": 2026
+      },
+      "product_id": "m5-air-15-24-1tb",
+      "clean_name": "MacBook Air 15\" M5 10C 10G 24GB 1TB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "MacBook Pro 16 M4 Pro 14CPU 20GPU 24GB 1TB Sạc 140W",
+      "raw_name": "MacBook Pro 16 M4 Pro 14CPU 20GPU 24GB 1TB Sạc 140W | Chính hãng Apple Việt Nam",
+      "price_vnd": 73990000,
+      "price_text": "73.990.000đ",
+      "url": "https://cellphones.com.vn/macbook-pro-16-m4-pro-14-cpu-20-gpu-24gb-1tb-2024-sac-140w.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_1__7_1.png",
+      "shop": "cellphones",
+      "product_line": "mac",
+      "source": "cellphones",
+      "specs": {
+        "model_type": "MacBook Pro",
         "chip": "M4",
-        "chip_variant": "Max",
-        "screen_size": null,
-        "cpu_cores": 16,
-        "gpu_cores": 40,
-        "ram_gb": 48,
-        "storage_gb": 512,
-        "storage_display": "512GB",
+        "chip_variant": "Pro",
+        "screen_size": "16\"",
+        "cpu_cores": 14,
+        "gpu_cores": 20,
+        "ram_gb": 24,
+        "storage_gb": 1024,
+        "storage_display": "1TB",
         "year": null
       },
-      "product_id": "m4-max-studio-48-512gb",
-      "clean_name": "Mac Studio M4 Max 16C 40G 48GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "product_id": "m4-pro-pro-16-24-1tb",
+      "clean_name": "MacBook Pro 16\" M4 Pro 14C 20G 24GB 1TB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -1564,7 +1537,7 @@
       },
       "product_id": "m5-max-studio-36-1tb",
       "clean_name": "Mac Studio M5 Max 18C 32G 36GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -1591,34 +1564,34 @@
       },
       "product_id": "m5-pro-mini-24-1tb",
       "clean_name": "Mac mini M5 Pro 15C 16G 24GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
-      "model": "iMac M4 2024 24 inch 8CPU 8GPU 24GB 512GB",
-      "raw_name": "iMac M4 2024 24 inch 8CPU 8GPU 24GB 512GB | Chính hãng Apple Việt Nam",
-      "price_vnd": 51490000,
-      "price_text": "51.490.000đ",
-      "url": "https://cellphones.com.vn/imac-m4-2024-24-inch-24gb-512gb.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_7_6.png",
+      "model": "Apple Mac Studio M4 Max 16CPU 40GPU 48GB 512GB",
+      "raw_name": "Apple Mac Studio M4 Max 16CPU 40GPU 48GB 512GB | Chính hãng Apple Việt Nam",
+      "price_vnd": 98490000,
+      "price_text": "98.490.000đ",
+      "url": "https://cellphones.com.vn/mac-studio-m4-max-16cpu-40gpu-48gb-512gb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_1__7_16.png",
       "shop": "cellphones",
       "product_line": "mac",
       "source": "cellphones",
       "specs": {
-        "model_type": "iMac",
+        "model_type": "Mac Studio",
         "chip": "M4",
-        "chip_variant": null,
-        "screen_size": "24\"",
-        "cpu_cores": 8,
-        "gpu_cores": 8,
-        "ram_gb": 24,
+        "chip_variant": "Max",
+        "screen_size": null,
+        "cpu_cores": 16,
+        "gpu_cores": 40,
+        "ram_gb": 48,
         "storage_gb": 512,
         "storage_display": "512GB",
-        "year": 2024
+        "year": null
       },
-      "product_id": "m4-imac-24-24-512gb",
-      "clean_name": "iMac 24\" M4 8C 8G 24GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "product_id": "m4-max-studio-48-512gb",
+      "clean_name": "Mac Studio M4 Max 16C 40G 48GB 512GB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -1645,7 +1618,61 @@
       },
       "product_id": "m6-mini-24-1tb",
       "clean_name": "Mac mini M6 12C 12G 24GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "iMac M4 2024 24 inch 8CPU 8GPU 24GB 512GB",
+      "raw_name": "iMac M4 2024 24 inch 8CPU 8GPU 24GB 512GB | Chính hãng Apple Việt Nam",
+      "price_vnd": 51490000,
+      "price_text": "51.490.000đ",
+      "url": "https://cellphones.com.vn/imac-m4-2024-24-inch-24gb-512gb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_7_6.png",
+      "shop": "cellphones",
+      "product_line": "mac",
+      "source": "cellphones",
+      "specs": {
+        "model_type": "iMac",
+        "chip": "M4",
+        "chip_variant": null,
+        "screen_size": "24\"",
+        "cpu_cores": 8,
+        "gpu_cores": 8,
+        "ram_gb": 24,
+        "storage_gb": 512,
+        "storage_display": "512GB",
+        "year": 2024
+      },
+      "product_id": "m4-imac-24-24-512gb",
+      "clean_name": "iMac 24\" M4 8C 8G 24GB 512GB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "Macbook Pro 16 inch 2021",
+      "raw_name": "Macbook Pro 16 inch 2021 | Chính hãng Apple Việt Nam",
+      "price_vnd": 57990000,
+      "price_text": "57.990.000đ",
+      "url": "https://cellphones.com.vn/macbook-pro-16-inch-2021.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/l/o/loll.png",
+      "shop": "cellphones",
+      "product_line": "mac",
+      "source": "cellphones",
+      "specs": {
+        "model_type": "MacBook Pro",
+        "chip": null,
+        "chip_variant": null,
+        "screen_size": "16\"",
+        "cpu_cores": null,
+        "gpu_cores": null,
+        "ram_gb": null,
+        "storage_gb": null,
+        "storage_display": null,
+        "year": 2021
+      },
+      "product_id": "pro-16",
+      "clean_name": "MacBook Pro 16\"",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -1672,7 +1699,7 @@
       },
       "product_id": "m4-pro-mini-24-1tb",
       "clean_name": "Mac mini M4 Pro 12C 16G 24GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -1699,7 +1726,34 @@
       },
       "product_id": "m6-mini-16-1tb",
       "clean_name": "Mac mini M6 12C 12G 16GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "iMac M4 2024 24 inch 10CPU 10GPU 24GB 512GB",
+      "raw_name": "iMac M4 2024 24 inch 10CPU 10GPU 24GB 512GB | Chính hãng Apple Việt Nam",
+      "price_vnd": 57990000,
+      "price_text": "57.990.000đ",
+      "url": "https://cellphones.com.vn/imac-m4-24-inch-10cpu-10gpu-24gb-512gb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_7_8.png",
+      "shop": "cellphones",
+      "product_line": "mac",
+      "source": "cellphones",
+      "specs": {
+        "model_type": "iMac",
+        "chip": "M4",
+        "chip_variant": null,
+        "screen_size": "24\"",
+        "cpu_cores": 10,
+        "gpu_cores": 10,
+        "ram_gb": 24,
+        "storage_gb": 512,
+        "storage_display": "512GB",
+        "year": 2024
+      },
+      "product_id": "m4-imac-24-24-512gb",
+      "clean_name": "iMac 24\" M4 10C 10G 24GB 512GB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -1726,7 +1780,7 @@
       },
       "product_id": "m6-mini-32-1tb",
       "clean_name": "Mac mini M6 12C 12G 32GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -1753,7 +1807,7 @@
       },
       "product_id": "m5-pro-mini-64-1tb",
       "clean_name": "Mac mini M5 Pro 18C 20G 64GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -1780,7 +1834,7 @@
       },
       "product_id": "m5-pro-mini-64-1tb",
       "clean_name": "Mac mini M5 Pro 15C 16G 64GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -1807,7 +1861,7 @@
       },
       "product_id": "m6-mini-32-256gb",
       "clean_name": "Mac mini M6 12C 12G 32GB 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -1834,7 +1888,7 @@
       },
       "product_id": "m3-max-pro-16-128-8tb",
       "clean_name": "MacBook Pro 16\" M3 Max 128GB 8TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -1861,7 +1915,7 @@
       },
       "product_id": "m6-mini-32-512gb",
       "clean_name": "Mac mini M6 12C 12G 32GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -1888,7 +1942,7 @@
       },
       "product_id": "m5-air-15-32-1tb",
       "clean_name": "MacBook Air 15\" M5 10C 10G 32GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -1915,7 +1969,7 @@
       },
       "product_id": "m5-air-13-32-1tb",
       "clean_name": "MacBook Air 13\" M5 10C 10G 32GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -1942,14 +1996,14 @@
       },
       "product_id": "m5-air-13-32-512gb",
       "clean_name": "MacBook Air 13\" M5 10C 10G 32GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
       "model": "Macbook Neo 13-inch Chip A18 Pro with 6‑core CPU and 5‑core GPU 8GB RAM 256GB SSD",
       "raw_name": "Macbook Neo 13-inch Chip A18 Pro with 6‑core CPU and 5‑core GPU 8GB RAM 256GB SSD",
-      "price_vnd": 18490000,
-      "price_text": "18.490.000₫",
+      "price_vnd": 18790000,
+      "price_text": "18.790.000₫",
       "url": "https://shopdunk.com/macbook-neo-13-inch-chip-a18-pro-with-6-core-cpu-and-5-core-gpu-8gb-ram-256gb-ssd",
       "image_url": "/images/uploaded/icon/hotsale-2026.png",
       "shop": "shopdunk",
@@ -1969,14 +2023,14 @@
       },
       "product_id": "6375",
       "clean_name": "MacBook Neo 13\" A18 Pro 6C 5G 8GB 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
       "model": "Macbook Neo 13-inch chip A18 Pro with 6‑core CPU and 5‑core GPU 8GB RAM 512GB",
       "raw_name": "Macbook Neo 13-inch chip A18 Pro with 6‑core CPU and 5‑core GPU 8GB RAM 512GB",
-      "price_vnd": 20990000,
-      "price_text": "20.990.000₫",
+      "price_vnd": 21190000,
+      "price_text": "21.190.000₫",
       "url": "https://shopdunk.com/macbook-neo-13-inch-chip-a18-pro-with-6-core-cpu-and-5-core-gpu-8gb-ram-512gb",
       "image_url": "/images/uploaded/icon/hotsale-2026.png",
       "shop": "shopdunk",
@@ -1996,7 +2050,7 @@
       },
       "product_id": "6376",
       "clean_name": "MacBook Neo 13\" A18 Pro 6C 5G 8GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2023,7 +2077,7 @@
       },
       "product_id": "6365",
       "clean_name": "MacBook Air 13\" M5 10C 8G 16GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2050,7 +2104,7 @@
       },
       "product_id": "6366",
       "clean_name": "MacBook Air 13\" M5 10C 10G 16GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2077,7 +2131,7 @@
       },
       "product_id": "6738",
       "clean_name": "MacBook Air 13\" M5 10C 10G 24GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2104,7 +2158,7 @@
       },
       "product_id": "5802",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 16GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2131,7 +2185,7 @@
       },
       "product_id": "6947",
       "clean_name": "Mac mini M6 12C 12G 16GB 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2158,7 +2212,7 @@
       },
       "product_id": "6950",
       "clean_name": "Mac mini M6 12C 12G 16GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2185,7 +2239,7 @@
       },
       "product_id": "6951",
       "clean_name": "Mac mini M6 12C 12G 24GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2212,7 +2266,7 @@
       },
       "product_id": "6946",
       "clean_name": "Mac mini M5 Pro 15C 16G 24GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2239,7 +2293,7 @@
       },
       "product_id": "6948",
       "clean_name": "Mac Studio M5 Max 18C 32G 36GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2266,7 +2320,7 @@
       },
       "product_id": "6949",
       "clean_name": "Mac Studio M5 Ultra 30C 64G 96GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2293,7 +2347,7 @@
       },
       "product_id": "6367",
       "clean_name": "MacBook Air 13\" M5 10C 10G 24GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2320,7 +2374,7 @@
       },
       "product_id": "6368",
       "clean_name": "MacBook Air 15\" M5 10C 10G 16GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2347,7 +2401,7 @@
       },
       "product_id": "6369",
       "clean_name": "MacBook Air 15\" M5 10C 10G 16GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2374,7 +2428,7 @@
       },
       "product_id": "6374",
       "clean_name": "MacBook Air 15\" M5 10C 10G 24GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2401,7 +2455,7 @@
       },
       "product_id": "6360",
       "clean_name": "MacBook Pro 16\" M5 Pro 18C 20G 24GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2428,7 +2482,7 @@
       },
       "product_id": "6564",
       "clean_name": "MacBook Air 13\" M5 10C 8G 24GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2455,7 +2509,7 @@
       },
       "product_id": "6626",
       "clean_name": "MacBook Air 13\" M5 10C 10G 16GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2482,7 +2536,7 @@
       },
       "product_id": "6357",
       "clean_name": "MacBook Pro 14\" M5 Pro 15C 16G 24GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2509,7 +2563,7 @@
       },
       "product_id": "6358",
       "clean_name": "MacBook Pro 14\" M5 Pro 18C 20G 24GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2536,7 +2590,7 @@
       },
       "product_id": "3583",
       "clean_name": "iMac 24\" M4 8G 16GB 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2563,7 +2617,7 @@
       },
       "product_id": "4204",
       "clean_name": "Mac mini M4 24GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2590,7 +2644,7 @@
       },
       "product_id": "3585",
       "clean_name": "Mac mini M4 16GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2617,7 +2671,7 @@
       },
       "product_id": "3586",
       "clean_name": "Mac mini M4 Pro",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2644,7 +2698,7 @@
       },
       "product_id": "2620",
       "clean_name": "Mac Studio M2 Ultra",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2671,7 +2725,7 @@
       },
       "product_id": "2621",
       "clean_name": "Mac Studio M2 Max",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2698,7 +2752,7 @@
       },
       "product_id": "3216",
       "clean_name": "MacBook Air 13\" M3 8GB 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2725,7 +2779,7 @@
       },
       "product_id": "97",
       "clean_name": "Mac Studio M1 Max",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2752,7 +2806,7 @@
       },
       "product_id": "98",
       "clean_name": "Mac Studio M1 Ultra",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2779,7 +2833,7 @@
       },
       "product_id": "2003",
       "clean_name": "Mac mini M2 10G 8GB 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2806,7 +2860,7 @@
       },
       "product_id": "2004",
       "clean_name": "Mac mini M2 10G 8GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2833,7 +2887,7 @@
       },
       "product_id": "2471",
       "clean_name": "Mac mini M2 Pro 16G 16GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2860,7 +2914,7 @@
       },
       "product_id": "5801",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 16GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2887,7 +2941,7 @@
       },
       "product_id": "3584",
       "clean_name": "iMac 24\" M4 10G 16GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2914,7 +2968,7 @@
       },
       "product_id": "3587",
       "clean_name": "iMac 24\" M4 10G 16GB 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2941,7 +2995,7 @@
       },
       "product_id": "3588",
       "clean_name": "iMac 24\" M4 10G 24GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2968,7 +3022,7 @@
       },
       "product_id": "3750",
       "clean_name": "iMac 24\" M4 10G 16GB 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -2995,7 +3049,7 @@
       },
       "product_id": "4058",
       "clean_name": "Mac Studio M4 Max",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3022,7 +3076,7 @@
       },
       "product_id": "4059",
       "clean_name": "Mac Studio M3 Ultra",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3049,7 +3103,7 @@
       },
       "product_id": "2472",
       "clean_name": "Mac mini M2 10G 16GB 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3076,7 +3130,7 @@
       },
       "product_id": "2473",
       "clean_name": "Mac mini M2 10G 16GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3103,7 +3157,7 @@
       },
       "product_id": "2474",
       "clean_name": "Mac mini M2 Pro 16G 32GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3130,7 +3184,7 @@
       },
       "product_id": "2550",
       "clean_name": "Mac mini M2 10G 24GB 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3157,7 +3211,7 @@
       },
       "product_id": "2551",
       "clean_name": "Mac mini M2 10G 24GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3184,7 +3238,7 @@
       },
       "product_id": "5803",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 24GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3211,7 +3265,7 @@
       },
       "product_id": "5804",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 24GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3238,7 +3292,7 @@
       },
       "product_id": "5805",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 32GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3265,7 +3319,7 @@
       },
       "product_id": "5807",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 32GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3292,7 +3346,7 @@
       },
       "product_id": "5808",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 16GB 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3319,7 +3373,7 @@
       },
       "product_id": "5809",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 24GB 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3346,7 +3400,7 @@
       },
       "product_id": "5810",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 32GB 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3373,7 +3427,7 @@
       },
       "product_id": "5811",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 16GB 4TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3400,7 +3454,7 @@
       },
       "product_id": "5812",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 24GB 4TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3427,7 +3481,7 @@
       },
       "product_id": "5813",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 32GB 4TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3454,7 +3508,7 @@
       },
       "product_id": "6737",
       "clean_name": "MacBook Air 13\" M5 10C 8G 16GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3481,7 +3535,7 @@
       },
       "product_id": "6362",
       "clean_name": "MacBook Pro 16\" M5 Pro 18C 20G 48GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3508,7 +3562,7 @@
       },
       "product_id": "6363",
       "clean_name": "MacBook Pro 14\" M5 Max 18C 32G 36GB 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3535,7 +3589,7 @@
       },
       "product_id": "6377",
       "clean_name": "MacBook Pro 16\" M5 Max 18C 32G 36GB 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3562,7 +3616,7 @@
       },
       "product_id": "6378",
       "clean_name": "MacBook Pro 16\" M5 Max 18C 40G 48GB 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3589,34 +3643,7 @@
       },
       "product_id": "iphone-18-pro-256gb",
       "clean_name": "iPhone 18 Pro 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "iPhone 17 Pro 256GB",
-      "raw_name": "iPhone 17 Pro 256GB | Chính hãng",
-      "price_vnd": 31990000,
-      "price_text": "31.990.000đ",
-      "url": "https://cellphones.com.vn/iphone-17-pro.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-17-pro-256-gb.png",
-      "shop": "cellphones",
-      "product_line": "iphone",
-      "source": "cellphones-iphone",
-      "specs": {
-        "model_type": "iPhone 17 Pro",
-        "chip": null,
-        "chip_variant": null,
-        "screen_size": null,
-        "cpu_cores": null,
-        "gpu_cores": null,
-        "ram_gb": null,
-        "storage_gb": 256,
-        "storage_display": "256GB",
-        "year": null
-      },
-      "product_id": "iphone-17-pro-256gb",
-      "clean_name": "iPhone 17 Pro 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3643,7 +3670,34 @@
       },
       "product_id": "iphone-18-pro-max-256gb",
       "clean_name": "iPhone 18 Pro Max 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "iPhone 17 Pro 256GB",
+      "raw_name": "iPhone 17 Pro 256GB | Chính hãng",
+      "price_vnd": 31990000,
+      "price_text": "31.990.000đ",
+      "url": "https://cellphones.com.vn/iphone-17-pro.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-17-pro-256-gb.png",
+      "shop": "cellphones",
+      "product_line": "iphone",
+      "source": "cellphones-iphone",
+      "specs": {
+        "model_type": "iPhone 17 Pro",
+        "chip": null,
+        "chip_variant": null,
+        "screen_size": null,
+        "cpu_cores": null,
+        "gpu_cores": null,
+        "ram_gb": null,
+        "storage_gb": 256,
+        "storage_display": "256GB",
+        "year": null
+      },
+      "product_id": "iphone-17-pro-256gb",
+      "clean_name": "iPhone 17 Pro 256GB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3670,7 +3724,7 @@
       },
       "product_id": "iphone-17-pro-max-256gb",
       "clean_name": "iPhone 17 Pro Max 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3697,7 +3751,7 @@
       },
       "product_id": "iphone-17-256gb",
       "clean_name": "iPhone 17 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3724,7 +3778,7 @@
       },
       "product_id": "iphone-18-pro-max-512gb",
       "clean_name": "iPhone 18 Pro Max 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3751,34 +3805,7 @@
       },
       "product_id": "iphone-18-pro-2tb",
       "clean_name": "iPhone 18 Pro 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "iPhone Air 256GB",
-      "raw_name": "iPhone Air 256GB | Chính hãng",
-      "price_vnd": 23190000,
-      "price_text": "23.190.000đ",
-      "url": "https://cellphones.com.vn/iphone-air-256gb.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone_air-3_2.jpg",
-      "shop": "cellphones",
-      "product_line": "iphone",
-      "source": "cellphones-iphone",
-      "specs": {
-        "model_type": "iPhone Air",
-        "chip": null,
-        "chip_variant": null,
-        "screen_size": null,
-        "cpu_cores": null,
-        "gpu_cores": null,
-        "ram_gb": null,
-        "storage_gb": 256,
-        "storage_display": "256GB",
-        "year": null
-      },
-      "product_id": "iphone-air-256gb",
-      "clean_name": "iPhone Air 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3805,7 +3832,34 @@
       },
       "product_id": "iphone-18-pro-max-2tb",
       "clean_name": "iPhone 18 Pro Max 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "iPhone Air 256GB",
+      "raw_name": "iPhone Air 256GB | Chính hãng",
+      "price_vnd": 23190000,
+      "price_text": "23.190.000đ",
+      "url": "https://cellphones.com.vn/iphone-air-256gb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone_air-3_2.jpg",
+      "shop": "cellphones",
+      "product_line": "iphone",
+      "source": "cellphones-iphone",
+      "specs": {
+        "model_type": "iPhone Air",
+        "chip": null,
+        "chip_variant": null,
+        "screen_size": null,
+        "cpu_cores": null,
+        "gpu_cores": null,
+        "ram_gb": null,
+        "storage_gb": 256,
+        "storage_display": "256GB",
+        "year": null
+      },
+      "product_id": "iphone-air-256gb",
+      "clean_name": "iPhone Air 256GB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3832,7 +3886,7 @@
       },
       "product_id": "iphone-18-pro-max-1tb",
       "clean_name": "iPhone 18 Pro Max 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3859,7 +3913,7 @@
       },
       "product_id": "iphone-18-pro-512gb",
       "clean_name": "iPhone 18 Pro 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3886,7 +3940,7 @@
       },
       "product_id": "iphone-16-pro-max-256gb",
       "clean_name": "iPhone 16 Pro Max 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3913,7 +3967,7 @@
       },
       "product_id": "iphone-17-pro-max-512gb",
       "clean_name": "iPhone 17 Pro Max 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3940,7 +3994,7 @@
       },
       "product_id": "iphone-18-pro-1tb",
       "clean_name": "iPhone 18 Pro 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3967,7 +4021,7 @@
       },
       "product_id": "iphone-15-128gb",
       "clean_name": "iPhone 15 128GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -3994,7 +4048,7 @@
       },
       "product_id": "iphone-17-pro-512gb",
       "clean_name": "iPhone 17 Pro 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4021,7 +4075,7 @@
       },
       "product_id": "iphone-16-128gb",
       "clean_name": "iPhone 16 128GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4048,7 +4102,7 @@
       },
       "product_id": "iphone-16e-128gb",
       "clean_name": "iPhone 16e 128GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4075,14 +4129,14 @@
       },
       "product_id": "iphone-16-pro-max-512gb",
       "clean_name": "iPhone 16 Pro Max 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
       "model": "iPhone 13 128GB",
       "raw_name": "iPhone 13 128GB | Chính hãng VN/A",
-      "price_vnd": 15490000,
-      "price_text": "15.490.000đ",
+      "price_vnd": 15290000,
+      "price_text": "15.290.000đ",
       "url": "https://cellphones.com.vn/iphone-13.html",
       "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-13_2_2.jpg",
       "shop": "cellphones",
@@ -4102,7 +4156,7 @@
       },
       "product_id": "iphone-13-128gb",
       "clean_name": "iPhone 13 128GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4129,34 +4183,7 @@
       },
       "product_id": "iphone-15-256gb",
       "clean_name": "iPhone 15 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "iPhone 17 Pro Max 1TB",
-      "raw_name": "iPhone 17 Pro Max 1TB | Chính hãng",
-      "price_vnd": 47490000,
-      "price_text": "47.490.000đ",
-      "url": "https://cellphones.com.vn/iphone-17-pro-max-1tb.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-17-pro-cam_4.jpg",
-      "shop": "cellphones",
-      "product_line": "iphone",
-      "source": "cellphones-iphone",
-      "specs": {
-        "model_type": "iPhone 17 Pro Max",
-        "chip": null,
-        "chip_variant": null,
-        "screen_size": null,
-        "cpu_cores": null,
-        "gpu_cores": null,
-        "ram_gb": null,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": null
-      },
-      "product_id": "iphone-17-pro-max-1tb",
-      "clean_name": "iPhone 17 Pro Max 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4183,34 +4210,34 @@
       },
       "product_id": "iphone-17-pro-1tb",
       "clean_name": "iPhone 17 Pro 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
-      "model": "iPhone 14 128GB",
-      "raw_name": "iPhone 14 128GB  | Chính hãng VN/A",
-      "price_vnd": 17490000,
-      "price_text": "17.490.000đ",
-      "url": "https://cellphones.com.vn/iphone-14.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-14_2_1.jpg",
+      "model": "iPhone 17 Pro Max 1TB",
+      "raw_name": "iPhone 17 Pro Max 1TB | Chính hãng",
+      "price_vnd": 47490000,
+      "price_text": "47.490.000đ",
+      "url": "https://cellphones.com.vn/iphone-17-pro-max-1tb.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-17-pro-cam_4.jpg",
       "shop": "cellphones",
       "product_line": "iphone",
       "source": "cellphones-iphone",
       "specs": {
-        "model_type": "iPhone 14",
+        "model_type": "iPhone 17 Pro Max",
         "chip": null,
         "chip_variant": null,
         "screen_size": null,
         "cpu_cores": null,
         "gpu_cores": null,
         "ram_gb": null,
-        "storage_gb": 128,
-        "storage_display": "128GB",
+        "storage_gb": 1024,
+        "storage_display": "1TB",
         "year": null
       },
-      "product_id": "iphone-14-128gb",
-      "clean_name": "iPhone 14 128GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "product_id": "iphone-17-pro-max-1tb",
+      "clean_name": "iPhone 17 Pro Max 1TB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4237,7 +4264,34 @@
       },
       "product_id": "iphone-17-512gb",
       "clean_name": "iPhone 17 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "iPhone 14 128GB",
+      "raw_name": "iPhone 14 128GB  | Chính hãng VN/A",
+      "price_vnd": 17290000,
+      "price_text": "17.290.000đ",
+      "url": "https://cellphones.com.vn/iphone-14.html",
+      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-14_2_1.jpg",
+      "shop": "cellphones",
+      "product_line": "iphone",
+      "source": "cellphones-iphone",
+      "specs": {
+        "model_type": "iPhone 14",
+        "chip": null,
+        "chip_variant": null,
+        "screen_size": null,
+        "cpu_cores": null,
+        "gpu_cores": null,
+        "ram_gb": null,
+        "storage_gb": 128,
+        "storage_display": "128GB",
+        "year": null
+      },
+      "product_id": "iphone-14-128gb",
+      "clean_name": "iPhone 14 128GB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4264,7 +4318,7 @@
       },
       "product_id": "iphone-17e-256gb",
       "clean_name": "iPhone 17e 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4291,7 +4345,7 @@
       },
       "product_id": "iphone-16-plus-128gb",
       "clean_name": "iPhone 16 Plus 128GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4318,7 +4372,7 @@
       },
       "product_id": "iphone-17-pro-max-2tb",
       "clean_name": "iPhone 17 Pro Max 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4345,7 +4399,7 @@
       },
       "product_id": "iphone-16-plus-256gb",
       "clean_name": "iPhone 16 Plus 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4372,7 +4426,7 @@
       },
       "product_id": "iphone-16e-256gb",
       "clean_name": "iPhone 16e 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4399,7 +4453,7 @@
       },
       "product_id": "iphone-17e-512gb",
       "clean_name": "iPhone 17e 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4426,61 +4480,7 @@
       },
       "product_id": "iphone-16-pro-1tb",
       "clean_name": "iPhone 16 Pro 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "iPhone Duo 256GB",
-      "raw_name": "iPhone Duo 256GB",
-      "price_vnd": 64990000,
-      "price_text": "64.990.000đ",
-      "url": "https://cellphones.com.vn/iphone-duo-256gb.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-duo-01.jpg",
-      "shop": "cellphones",
-      "product_line": "iphone",
-      "source": "cellphones-iphone",
-      "specs": {
-        "model_type": "iPhone Duo",
-        "chip": null,
-        "chip_variant": null,
-        "screen_size": null,
-        "cpu_cores": null,
-        "gpu_cores": null,
-        "ram_gb": null,
-        "storage_gb": 256,
-        "storage_display": "256GB",
-        "year": null
-      },
-      "product_id": "iphone-duo-256gb",
-      "clean_name": "iPhone Duo 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "iPhone Duo 512GB",
-      "raw_name": "iPhone Duo 512GB",
-      "price_vnd": 71490000,
-      "price_text": "71.490.000đ",
-      "url": "https://cellphones.com.vn/iphone-duo-512gb.html",
-      "image_url": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-duo-01_1.jpg",
-      "shop": "cellphones",
-      "product_line": "iphone",
-      "source": "cellphones-iphone",
-      "specs": {
-        "model_type": "iPhone Duo",
-        "chip": null,
-        "chip_variant": null,
-        "screen_size": null,
-        "cpu_cores": null,
-        "gpu_cores": null,
-        "ram_gb": null,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": null
-      },
-      "product_id": "iphone-duo-512gb",
-      "clean_name": "iPhone Duo 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4507,7 +4507,7 @@
       },
       "product_id": "6977",
       "clean_name": "iPhone 18 Pro 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4534,7 +4534,7 @@
       },
       "product_id": "7144",
       "clean_name": "iPhone 18 Pro Max 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4561,7 +4561,7 @@
       },
       "product_id": "5578",
       "clean_name": "iPhone 17 Pro Max 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4588,7 +4588,7 @@
       },
       "product_id": "6985",
       "clean_name": "iPhone Duo 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4615,7 +4615,7 @@
       },
       "product_id": "6978",
       "clean_name": "iPhone 18 Pro 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4642,7 +4642,7 @@
       },
       "product_id": "6979",
       "clean_name": "iPhone 18 Pro 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4669,7 +4669,7 @@
       },
       "product_id": "6989",
       "clean_name": "iPhone 18 Pro 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4696,7 +4696,7 @@
       },
       "product_id": "7145",
       "clean_name": "iPhone 18 Pro Max 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4723,7 +4723,7 @@
       },
       "product_id": "6982",
       "clean_name": "iPhone 18 Pro Max 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4750,7 +4750,7 @@
       },
       "product_id": "6983",
       "clean_name": "iPhone 18 Pro Max 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4777,7 +4777,7 @@
       },
       "product_id": "6986",
       "clean_name": "iPhone Duo 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4804,7 +4804,7 @@
       },
       "product_id": "6987",
       "clean_name": "iPhone Duo 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4831,7 +4831,7 @@
       },
       "product_id": "6988",
       "clean_name": "iPhone Duo 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4858,7 +4858,7 @@
       },
       "product_id": "5573",
       "clean_name": "iPhone 17 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4885,7 +4885,7 @@
       },
       "product_id": "5586",
       "clean_name": "iPhone 17 Pro Max 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4912,7 +4912,7 @@
       },
       "product_id": "5589",
       "clean_name": "iPhone 17 Pro 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4939,7 +4939,7 @@
       },
       "product_id": "5590",
       "clean_name": "iPhone 17 Pro 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4966,7 +4966,7 @@
       },
       "product_id": "6326",
       "clean_name": "iPhone 17e 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -4993,7 +4993,7 @@
       },
       "product_id": "5591",
       "clean_name": "iPhone 17 Pro 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5020,7 +5020,7 @@
       },
       "product_id": "5587",
       "clean_name": "iPhone 17 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5047,7 +5047,7 @@
       },
       "product_id": "5583",
       "clean_name": "iPhone 17 Pro Max 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5074,7 +5074,7 @@
       },
       "product_id": "6327",
       "clean_name": "iPhone 17e 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5101,7 +5101,7 @@
       },
       "product_id": "5585",
       "clean_name": "iPhone 17 Pro Max 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5128,7 +5128,7 @@
       },
       "product_id": "5593",
       "clean_name": "iPhone Air 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5155,7 +5155,7 @@
       },
       "product_id": "3472",
       "clean_name": "iPhone 16 128GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5182,7 +5182,7 @@
       },
       "product_id": "3473",
       "clean_name": "iPhone 16 Plus 128GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5209,7 +5209,7 @@
       },
       "product_id": "2702",
       "clean_name": "iPhone 15 128GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5236,7 +5236,7 @@
       },
       "product_id": "3480",
       "clean_name": "iPhone 16 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5263,7 +5263,7 @@
       },
       "product_id": "5582",
       "clean_name": "iPhone Air 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5290,7 +5290,7 @@
       },
       "product_id": "5592",
       "clean_name": "iPhone Air 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5317,7 +5317,7 @@
       },
       "product_id": "6980",
       "clean_name": "iPhone 18 Pro Max 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5344,7 +5344,7 @@
       },
       "product_id": "6981",
       "clean_name": "iPhone 18 Pro Max 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5371,7 +5371,7 @@
       },
       "product_id": "neo-13-8-256gb",
       "clean_name": "MacBook Neo 13\" 8GB 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5398,7 +5398,7 @@
       },
       "product_id": "neo-13-8-512gb",
       "clean_name": "MacBook Neo 13\" 8GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5425,7 +5425,7 @@
       },
       "product_id": "m5-air-13-16-512gb",
       "clean_name": "MacBook Air 13\" M5 10C 8G 16GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5452,7 +5452,7 @@
       },
       "product_id": "m5-air-13-16-512gb",
       "clean_name": "MacBook Air 13\" M5 10C 8G 16GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5479,7 +5479,7 @@
       },
       "product_id": "m5-air-13-24-512gb",
       "clean_name": "MacBook Air 13\" M5 10C 10G 24GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5506,7 +5506,7 @@
       },
       "product_id": "m5-air-15-16-512gb",
       "clean_name": "MacBook Air 15\" M5 10C 10G 16GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5533,7 +5533,7 @@
       },
       "product_id": "m5-pro-14-16-1tb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 16GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5560,7 +5560,7 @@
       },
       "product_id": "m5-pro-14-16-1tb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 16GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5587,7 +5587,7 @@
       },
       "product_id": "m5-pro-14-24-1tb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 24GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5614,7 +5614,7 @@
       },
       "product_id": "m5-pro-14-32-1tb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 32GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5641,7 +5641,7 @@
       },
       "product_id": "m5-pro-pro-14-24-1tb",
       "clean_name": "MacBook Pro 14\" M5 Pro 15C 16G 24GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5668,7 +5668,7 @@
       },
       "product_id": "m5-pro-pro-14-24-2tb",
       "clean_name": "MacBook Pro 14\" M5 Pro 15C 16G 24GB 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5695,7 +5695,7 @@
       },
       "product_id": "m5-pro-pro-16-24-1tb",
       "clean_name": "MacBook Pro 16\" M5 Pro 18C 20G 24GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5722,7 +5722,7 @@
       },
       "product_id": "m5-pro-pro-16-48-1tb",
       "clean_name": "MacBook Pro 16\" M5 Pro 18C 20G 48GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5749,7 +5749,7 @@
       },
       "product_id": "m5-pro-pro-16-24-2tb",
       "clean_name": "MacBook Pro 16\" M5 Pro 18C 20G 24GB 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5776,7 +5776,7 @@
       },
       "product_id": "m5-pro-pro-16-48-2tb",
       "clean_name": "MacBook Pro 16\" M5 Pro 18C 20G 48GB 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5803,7 +5803,7 @@
       },
       "product_id": "m5-max-pro-16-48-2tb",
       "clean_name": "MacBook Pro 16\" M5 Max 18C 40G 48GB 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5830,7 +5830,7 @@
       },
       "product_id": "m5-max-pro-16-48-2tb",
       "clean_name": "MacBook Pro 16\" M5 Max 18C 40G 48GB 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5857,7 +5857,7 @@
       },
       "product_id": "m5-max-pro-14-64-4tb",
       "clean_name": "MacBook Pro 14\" M5 Max 18C 40G 64GB 4TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5884,7 +5884,7 @@
       },
       "product_id": "m5-max-pro-16-64-4tb",
       "clean_name": "MacBook Pro 16\" M5 Max 18C 40G 64GB 4TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5911,7 +5911,7 @@
       },
       "product_id": "m5-max-pro-16-128-8tb",
       "clean_name": "MacBook Pro 16\" M5 Max 18C 40G 128GB 8TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5938,7 +5938,7 @@
       },
       "product_id": "m5-air-13-16-1tb",
       "clean_name": "MacBook Air 13\" M5 10C 10G 16GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5965,7 +5965,7 @@
       },
       "product_id": "m5-air-13-24-1tb",
       "clean_name": "MacBook Air 13\" M5 10C 10G 24GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -5992,34 +5992,7 @@
       },
       "product_id": "m5-air-13-32-1tb",
       "clean_name": "MacBook Air 13\" M5 10C 10G 32GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "MacBook Air 13 M5 2026 10CPU/10GPU/32GB/4TB/70W",
-      "raw_name": "MacBook Air 13 M5 2026 10CPU/10GPU/32GB/4TB/70W",
-      "price_vnd": 89990000,
-      "price_text": "89.990.000đ",
-      "url": "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-13-m5-2026-10cpu-10gpu-32gb-4tb-70w",
-      "image_url": null,
-      "shop": "fptshop",
-      "product_line": "mac",
-      "source": "fptshop",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M5",
-        "chip_variant": null,
-        "screen_size": "13\"",
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 32,
-        "storage_gb": 4096,
-        "storage_display": "4TB",
-        "year": 2026
-      },
-      "product_id": "m5-air-13-32-4tb",
-      "clean_name": "MacBook Air 13\" M5 10C 10G 32GB 4TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -6046,7 +6019,34 @@
       },
       "product_id": "m5-air-13-32-2tb",
       "clean_name": "MacBook Air 13\" M5 10C 10G 32GB 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "MacBook Air 13 M5 2026 10CPU/10GPU/32GB/4TB/70W",
+      "raw_name": "MacBook Air 13 M5 2026 10CPU/10GPU/32GB/4TB/70W",
+      "price_vnd": 89990000,
+      "price_text": "89.990.000đ",
+      "url": "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-13-m5-2026-10cpu-10gpu-32gb-4tb-70w",
+      "image_url": null,
+      "shop": "fptshop",
+      "product_line": "mac",
+      "source": "fptshop",
+      "specs": {
+        "model_type": "MacBook Air",
+        "chip": "M5",
+        "chip_variant": null,
+        "screen_size": "13\"",
+        "cpu_cores": 10,
+        "gpu_cores": 10,
+        "ram_gb": 32,
+        "storage_gb": 4096,
+        "storage_display": "4TB",
+        "year": 2026
+      },
+      "product_id": "m5-air-13-32-4tb",
+      "clean_name": "MacBook Air 13\" M5 10C 10G 32GB 4TB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -6073,7 +6073,7 @@
       },
       "product_id": "m5-air-15-24-512gb",
       "clean_name": "MacBook Air 15\" M5 10C 10G 24GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -6100,88 +6100,7 @@
       },
       "product_id": "m5-air-15-32-1tb",
       "clean_name": "MacBook Air 15\" M5 10C 10G 32GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "MacBook Air 15 M5 2026 10CPU/10GPU/32GB/4TB/70W",
-      "raw_name": "MacBook Air 15 M5 2026 10CPU/10GPU/32GB/4TB/70W",
-      "price_vnd": 92990000,
-      "price_text": "92.990.000đ",
-      "url": "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-15-m5-2026-10cpu-10gpu-32gb-4tb-70w",
-      "image_url": null,
-      "shop": "fptshop",
-      "product_line": "mac",
-      "source": "fptshop",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M5",
-        "chip_variant": null,
-        "screen_size": "15\"",
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 32,
-        "storage_gb": 4096,
-        "storage_display": "4TB",
-        "year": 2026
-      },
-      "product_id": "m5-air-15-32-4tb",
-      "clean_name": "MacBook Air 15\" M5 10C 10G 32GB 4TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "MacBook Air 15 M5 2026 10CPU/10GPU/16GB/1TB/35W",
-      "raw_name": "MacBook Air 15 M5 2026 10CPU/10GPU/16GB/1TB/35W",
-      "price_vnd": 46990000,
-      "price_text": "46.990.000đ",
-      "url": "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-15-m5-2026-10cpu-10gpu-16gb-1tb",
-      "image_url": null,
-      "shop": "fptshop",
-      "product_line": "mac",
-      "source": "fptshop",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M5",
-        "chip_variant": null,
-        "screen_size": "15\"",
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 16,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": 2026
-      },
-      "product_id": "m5-air-15-16-1tb",
-      "clean_name": "MacBook Air 15\" M5 10C 10G 16GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "MacBook Air 15 M5 2026 10CPU/10GPU/32GB/2TB/70W",
-      "raw_name": "MacBook Air 15 M5 2026 10CPU/10GPU/32GB/2TB/70W",
-      "price_vnd": 67990000,
-      "price_text": "67.990.000đ",
-      "url": "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-15-m5-2026-10cpu-10gpu-32gb-2tb-70w",
-      "image_url": null,
-      "shop": "fptshop",
-      "product_line": "mac",
-      "source": "fptshop",
-      "specs": {
-        "model_type": "MacBook Air",
-        "chip": "M5",
-        "chip_variant": null,
-        "screen_size": "15\"",
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 32,
-        "storage_gb": 2048,
-        "storage_display": "2TB",
-        "year": 2026
-      },
-      "product_id": "m5-air-15-32-2tb",
-      "clean_name": "MacBook Air 15\" M5 10C 10G 32GB 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -6208,7 +6127,34 @@
       },
       "product_id": "m5-air-15-24-1tb",
       "clean_name": "MacBook Air 15\" M5 10C 10G 24GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "MacBook Air 15 M5 2026 10CPU/10GPU/16GB/1TB/35W",
+      "raw_name": "MacBook Air 15 M5 2026 10CPU/10GPU/16GB/1TB/35W",
+      "price_vnd": 46990000,
+      "price_text": "46.990.000đ",
+      "url": "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-15-m5-2026-10cpu-10gpu-16gb-1tb",
+      "image_url": null,
+      "shop": "fptshop",
+      "product_line": "mac",
+      "source": "fptshop",
+      "specs": {
+        "model_type": "MacBook Air",
+        "chip": "M5",
+        "chip_variant": null,
+        "screen_size": "15\"",
+        "cpu_cores": 10,
+        "gpu_cores": 10,
+        "ram_gb": 16,
+        "storage_gb": 1024,
+        "storage_display": "1TB",
+        "year": 2026
+      },
+      "product_id": "m5-air-15-16-1tb",
+      "clean_name": "MacBook Air 15\" M5 10C 10G 16GB 1TB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -6235,7 +6181,7 @@
       },
       "product_id": "m3-air-16-512gb",
       "clean_name": "MacBook Air M3 8C 10G 16GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -6262,24 +6208,51 @@
       },
       "product_id": "m2-air-15-8-512gb",
       "clean_name": "MacBook Air 15\" M2 8C 10G 8GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
-      "model": "MacBook Pro 14 M5 2026 10CPU/10GPU/32GB/2TB/96W",
-      "raw_name": "MacBook Pro 14 M5 2026 10CPU/10GPU/32GB/2TB/96W",
-      "price_vnd": 77890000,
-      "price_text": "77.890.000đ",
-      "url": "https://fptshop.com.vn/may-tinh-xach-tay/macbook-pro-14-m5-2026-10cpu-10gpu-32gb-2tb-96w",
+      "model": "MacBook Air 15 M5 2026 10CPU/10GPU/32GB/4TB/70W",
+      "raw_name": "MacBook Air 15 M5 2026 10CPU/10GPU/32GB/4TB/70W",
+      "price_vnd": 92990000,
+      "price_text": "92.990.000đ",
+      "url": "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-15-m5-2026-10cpu-10gpu-32gb-4tb-70w",
       "image_url": null,
       "shop": "fptshop",
       "product_line": "mac",
       "source": "fptshop",
       "specs": {
-        "model_type": "MacBook Pro",
+        "model_type": "MacBook Air",
         "chip": "M5",
         "chip_variant": null,
-        "screen_size": "14\"",
+        "screen_size": "15\"",
+        "cpu_cores": 10,
+        "gpu_cores": 10,
+        "ram_gb": 32,
+        "storage_gb": 4096,
+        "storage_display": "4TB",
+        "year": 2026
+      },
+      "product_id": "m5-air-15-32-4tb",
+      "clean_name": "MacBook Air 15\" M5 10C 10G 32GB 4TB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "MacBook Air 15 M5 2026 10CPU/10GPU/32GB/2TB/70W",
+      "raw_name": "MacBook Air 15 M5 2026 10CPU/10GPU/32GB/2TB/70W",
+      "price_vnd": 67990000,
+      "price_text": "67.990.000đ",
+      "url": "https://fptshop.com.vn/may-tinh-xach-tay/macbook-air-15-m5-2026-10cpu-10gpu-32gb-2tb-70w",
+      "image_url": null,
+      "shop": "fptshop",
+      "product_line": "mac",
+      "source": "fptshop",
+      "specs": {
+        "model_type": "MacBook Air",
+        "chip": "M5",
+        "chip_variant": null,
+        "screen_size": "15\"",
         "cpu_cores": 10,
         "gpu_cores": 10,
         "ram_gb": 32,
@@ -6287,9 +6260,9 @@
         "storage_display": "2TB",
         "year": 2026
       },
-      "product_id": "m5-pro-14-32-2tb",
-      "clean_name": "MacBook Pro 14\" M5 10C 10G 32GB 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "product_id": "m5-air-15-32-2tb",
+      "clean_name": "MacBook Air 15\" M5 10C 10G 32GB 2TB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -6316,7 +6289,34 @@
       },
       "product_id": "m5-pro-14-32-2tb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 32GB 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "MacBook Pro 14 M5 2026 10CPU/10GPU/32GB/2TB/96W",
+      "raw_name": "MacBook Pro 14 M5 2026 10CPU/10GPU/32GB/2TB/96W",
+      "price_vnd": 77890000,
+      "price_text": "77.890.000đ",
+      "url": "https://fptshop.com.vn/may-tinh-xach-tay/macbook-pro-14-m5-2026-10cpu-10gpu-32gb-2tb-96w",
+      "image_url": null,
+      "shop": "fptshop",
+      "product_line": "mac",
+      "source": "fptshop",
+      "specs": {
+        "model_type": "MacBook Pro",
+        "chip": "M5",
+        "chip_variant": null,
+        "screen_size": "14\"",
+        "cpu_cores": 10,
+        "gpu_cores": 10,
+        "ram_gb": 32,
+        "storage_gb": 2048,
+        "storage_display": "2TB",
+        "year": 2026
+      },
+      "product_id": "m5-pro-14-32-2tb",
+      "clean_name": "MacBook Pro 14\" M5 10C 10G 32GB 2TB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -6343,7 +6343,7 @@
       },
       "product_id": "m5-pro-14-32-4tb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 32GB 4TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -6370,34 +6370,7 @@
       },
       "product_id": "m5-pro-14-24-1tb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 24GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "MacBook Pro 14 M5 2025 10CPU/10GPU/24GB/1TB Nano",
-      "raw_name": "MacBook Pro 14 M5 2025 10CPU/10GPU/24GB/1TB Nano",
-      "price_vnd": 63990000,
-      "price_text": "63.990.000đ",
-      "url": "https://fptshop.com.vn/may-tinh-xach-tay/macbook-pro-14-m5-2025-10cpu-10gpu-24gb-1tb-nano",
-      "image_url": null,
-      "shop": "fptshop",
-      "product_line": "mac",
-      "source": "fptshop",
-      "specs": {
-        "model_type": "MacBook Pro",
-        "chip": "M5",
-        "chip_variant": null,
-        "screen_size": "14\"",
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 24,
-        "storage_gb": 1024,
-        "storage_display": "1TB",
-        "year": 2025
-      },
-      "product_id": "m5-pro-14-24-1tb",
-      "clean_name": "MacBook Pro 14\" M5 10C 10G 24GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -6424,15 +6397,15 @@
       },
       "product_id": "m5-pro-pro-14-24-2tb",
       "clean_name": "MacBook Pro 14\" M5 Pro 18C 20G 24GB 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
-      "model": "MacBook Pro 14 M5 Pro 2026 18CPU/20GPU/24GB/1TB",
-      "raw_name": "MacBook Pro 14 M5 Pro 2026 18CPU/20GPU/24GB/1TB",
-      "price_vnd": 73790000,
-      "price_text": "73.790.000đ",
-      "url": "https://fptshop.com.vn/may-tinh-xach-tay/macbook-pro-14-m5-pro-2026-18cpu-20gpu-24gb-1tb",
+      "model": "MacBook Pro 14 M5 2025 10CPU/10GPU/24GB/1TB Nano",
+      "raw_name": "MacBook Pro 14 M5 2025 10CPU/10GPU/24GB/1TB Nano",
+      "price_vnd": 63990000,
+      "price_text": "63.990.000đ",
+      "url": "https://fptshop.com.vn/may-tinh-xach-tay/macbook-pro-14-m5-2025-10cpu-10gpu-24gb-1tb-nano",
       "image_url": null,
       "shop": "fptshop",
       "product_line": "mac",
@@ -6440,18 +6413,18 @@
       "specs": {
         "model_type": "MacBook Pro",
         "chip": "M5",
-        "chip_variant": "Pro",
+        "chip_variant": null,
         "screen_size": "14\"",
-        "cpu_cores": 18,
-        "gpu_cores": 20,
+        "cpu_cores": 10,
+        "gpu_cores": 10,
         "ram_gb": 24,
         "storage_gb": 1024,
         "storage_display": "1TB",
-        "year": 2026
+        "year": 2025
       },
-      "product_id": "m5-pro-pro-14-24-1tb",
-      "clean_name": "MacBook Pro 14\" M5 Pro 18C 20G 24GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "product_id": "m5-pro-14-24-1tb",
+      "clean_name": "MacBook Pro 14\" M5 10C 10G 24GB 1TB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -6478,7 +6451,61 @@
       },
       "product_id": "m5-pro-pro-14-48-2tb",
       "clean_name": "MacBook Pro 14\" M5 Pro 15C 16G 48GB 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "MacBook Pro 14 M5 Pro 2026 18CPU/20GPU/24GB/1TB",
+      "raw_name": "MacBook Pro 14 M5 Pro 2026 18CPU/20GPU/24GB/1TB",
+      "price_vnd": 73790000,
+      "price_text": "73.790.000đ",
+      "url": "https://fptshop.com.vn/may-tinh-xach-tay/macbook-pro-14-m5-pro-2026-18cpu-20gpu-24gb-1tb",
+      "image_url": null,
+      "shop": "fptshop",
+      "product_line": "mac",
+      "source": "fptshop",
+      "specs": {
+        "model_type": "MacBook Pro",
+        "chip": "M5",
+        "chip_variant": "Pro",
+        "screen_size": "14\"",
+        "cpu_cores": 18,
+        "gpu_cores": 20,
+        "ram_gb": 24,
+        "storage_gb": 1024,
+        "storage_display": "1TB",
+        "year": 2026
+      },
+      "product_id": "m5-pro-pro-14-24-1tb",
+      "clean_name": "MacBook Pro 14\" M5 Pro 18C 20G 24GB 1TB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "MacBook Pro 14 inch M5 2025 10CPU/10GPU/24GB/1TB 96W",
+      "raw_name": "MacBook Pro 14 inch M5 2025 10CPU/10GPU/24GB/1TB 96W",
+      "price_vnd": 57990000,
+      "price_text": "57.990.000đ",
+      "url": "https://fptshop.com.vn/may-tinh-xach-tay/macbook-pro-14-inch-m5-2025-10cpu-10gpu-24gb-1tb-96w",
+      "image_url": null,
+      "shop": "fptshop",
+      "product_line": "mac",
+      "source": "fptshop",
+      "specs": {
+        "model_type": "MacBook Pro",
+        "chip": "M5",
+        "chip_variant": null,
+        "screen_size": "14\"",
+        "cpu_cores": 10,
+        "gpu_cores": 10,
+        "ram_gb": 24,
+        "storage_gb": 1024,
+        "storage_display": "1TB",
+        "year": 2025
+      },
+      "product_id": "m5-pro-14-24-1tb",
+      "clean_name": "MacBook Pro 14\" M5 10C 10G 24GB 1TB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -6505,7 +6532,7 @@
       },
       "product_id": "m5-pro-14-32-1tb",
       "clean_name": "MacBook Pro 14\" M5 10C 10G 32GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -6532,7 +6559,7 @@
       },
       "product_id": "m5-pro-pro-16-24-1tb",
       "clean_name": "MacBook Pro 16\" M5 Pro 18C 20G 24GB 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -6559,7 +6586,7 @@
       },
       "product_id": "m5-pro-pro-16-64-4tb",
       "clean_name": "MacBook Pro 16\" M5 Pro 18C 20G 64GB 4TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -6586,7 +6613,7 @@
       },
       "product_id": "m5-max-pro-16-36-2tb",
       "clean_name": "MacBook Pro 16\" M5 Max 18C 32G 36GB 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -6613,7 +6640,7 @@
       },
       "product_id": "m4-pro-pro-16-48-512gb",
       "clean_name": "MacBook Pro 16\" M4 Pro 14C 20G 48GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -6640,7 +6667,7 @@
       },
       "product_id": "m5-pro-pro-16-24-2tb",
       "clean_name": "MacBook Pro 16\" M5 Pro 18C 20G 24GB 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -6667,7 +6694,7 @@
       },
       "product_id": "m6-mini-16-256gb",
       "clean_name": "Mac mini M6 12C 12G 16GB 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -6694,7 +6721,7 @@
       },
       "product_id": "m4-mini-16-512gb",
       "clean_name": "Mac mini M4 10C 10G 16GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -6721,7 +6748,7 @@
       },
       "product_id": "m6-mini-16-512gb",
       "clean_name": "Mac mini M6 12C 12G 16GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -6748,7 +6775,7 @@
       },
       "product_id": "m4-imac-24-16-256gb",
       "clean_name": "iMac 24\" M4 8C 8G 16GB 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -6775,88 +6802,7 @@
       },
       "product_id": "m4-mini-16-256gb",
       "clean_name": "Mac mini M4 10C 10G 16GB 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "iMac 24 inch M4 2024 10CPU/10GPU/16GB/256GB",
-      "raw_name": "iMac 24 inch M4 2024 10CPU/10GPU/16GB/256GB",
-      "price_vnd": 45990000,
-      "price_text": "45.990.000đ",
-      "url": "https://fptshop.com.vn/may-tinh-de-ban/imac-24-m4-2024-10-cpu-10-gpu-16gb-256gb",
-      "image_url": null,
-      "shop": "fptshop",
-      "product_line": "mac",
-      "source": "fptshop",
-      "specs": {
-        "model_type": "iMac",
-        "chip": "M4",
-        "chip_variant": null,
-        "screen_size": "24\"",
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 16,
-        "storage_gb": 256,
-        "storage_display": "256GB",
-        "year": 2024
-      },
-      "product_id": "m4-imac-24-16-256gb",
-      "clean_name": "iMac 24\" M4 10C 10G 16GB 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "Mac mini M5 Pro 15CPU/16GPU/24GB/512GB",
-      "raw_name": "Mac mini M5 Pro 15CPU/16GPU/24GB/512GB",
-      "price_vnd": 46990000,
-      "price_text": "46.990.000đ",
-      "url": "https://fptshop.com.vn/may-tinh-de-ban/mac-mini-m5-pro-15cpu-16gpu-24gb-512gb",
-      "image_url": null,
-      "shop": "fptshop",
-      "product_line": "mac",
-      "source": "fptshop",
-      "specs": {
-        "model_type": "Mac mini",
-        "chip": "M5",
-        "chip_variant": "Pro",
-        "screen_size": null,
-        "cpu_cores": 15,
-        "gpu_cores": 16,
-        "ram_gb": 24,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": null
-      },
-      "product_id": "m5-pro-mini-24-512gb",
-      "clean_name": "Mac mini M5 Pro 15C 16G 24GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
-      "stale": false
-    },
-    {
-      "model": "iMac 24 inch M4 2024 10CPU/10GPU/16GB/512GB",
-      "raw_name": "iMac 24 inch M4 2024 10CPU/10GPU/16GB/512GB",
-      "price_vnd": 51490000,
-      "price_text": "51.490.000đ",
-      "url": "https://fptshop.com.vn/may-tinh-de-ban/imac-24-m4-2024-10-cpu-10-gpu-16gb-512gb",
-      "image_url": null,
-      "shop": "fptshop",
-      "product_line": "mac",
-      "source": "fptshop",
-      "specs": {
-        "model_type": "iMac",
-        "chip": "M4",
-        "chip_variant": null,
-        "screen_size": "24\"",
-        "cpu_cores": 10,
-        "gpu_cores": 10,
-        "ram_gb": 16,
-        "storage_gb": 512,
-        "storage_display": "512GB",
-        "year": 2024
-      },
-      "product_id": "m4-imac-24-16-512gb",
-      "clean_name": "iMac 24\" M4 10C 10G 16GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -6883,7 +6829,88 @@
       },
       "product_id": "m4-imac-24-24-512gb",
       "clean_name": "iMac 24\" M4 10C 10G 24GB 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "iMac 24 inch M4 2024 10CPU/10GPU/16GB/512GB",
+      "raw_name": "iMac 24 inch M4 2024 10CPU/10GPU/16GB/512GB",
+      "price_vnd": 51490000,
+      "price_text": "51.490.000đ",
+      "url": "https://fptshop.com.vn/may-tinh-de-ban/imac-24-m4-2024-10-cpu-10-gpu-16gb-512gb",
+      "image_url": null,
+      "shop": "fptshop",
+      "product_line": "mac",
+      "source": "fptshop",
+      "specs": {
+        "model_type": "iMac",
+        "chip": "M4",
+        "chip_variant": null,
+        "screen_size": "24\"",
+        "cpu_cores": 10,
+        "gpu_cores": 10,
+        "ram_gb": 16,
+        "storage_gb": 512,
+        "storage_display": "512GB",
+        "year": 2024
+      },
+      "product_id": "m4-imac-24-16-512gb",
+      "clean_name": "iMac 24\" M4 10C 10G 16GB 512GB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "Mac mini M5 Pro 15CPU/16GPU/24GB/512GB",
+      "raw_name": "Mac mini M5 Pro 15CPU/16GPU/24GB/512GB",
+      "price_vnd": 46990000,
+      "price_text": "46.990.000đ",
+      "url": "https://fptshop.com.vn/may-tinh-de-ban/mac-mini-m5-pro-15cpu-16gpu-24gb-512gb",
+      "image_url": null,
+      "shop": "fptshop",
+      "product_line": "mac",
+      "source": "fptshop",
+      "specs": {
+        "model_type": "Mac mini",
+        "chip": "M5",
+        "chip_variant": "Pro",
+        "screen_size": null,
+        "cpu_cores": 15,
+        "gpu_cores": 16,
+        "ram_gb": 24,
+        "storage_gb": 512,
+        "storage_display": "512GB",
+        "year": null
+      },
+      "product_id": "m5-pro-mini-24-512gb",
+      "clean_name": "Mac mini M5 Pro 15C 16G 24GB 512GB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
+      "stale": false
+    },
+    {
+      "model": "iMac 24 inch M4 2024 10CPU/10GPU/16GB/256GB",
+      "raw_name": "iMac 24 inch M4 2024 10CPU/10GPU/16GB/256GB",
+      "price_vnd": 45990000,
+      "price_text": "45.990.000đ",
+      "url": "https://fptshop.com.vn/may-tinh-de-ban/imac-24-m4-2024-10-cpu-10-gpu-16gb-256gb",
+      "image_url": null,
+      "shop": "fptshop",
+      "product_line": "mac",
+      "source": "fptshop",
+      "specs": {
+        "model_type": "iMac",
+        "chip": "M4",
+        "chip_variant": null,
+        "screen_size": "24\"",
+        "cpu_cores": 10,
+        "gpu_cores": 10,
+        "ram_gb": 16,
+        "storage_gb": 256,
+        "storage_display": "256GB",
+        "year": 2024
+      },
+      "product_id": "m4-imac-24-16-256gb",
+      "clean_name": "iMac 24\" M4 10C 10G 16GB 256GB",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -6910,7 +6937,7 @@
       },
       "product_id": "iphone-duo-256gb",
       "clean_name": "iPhone Duo 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -6937,7 +6964,7 @@
       },
       "product_id": "iphone-18-pro-max-256gb",
       "clean_name": "iPhone 18 Pro Max 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -6964,7 +6991,7 @@
       },
       "product_id": "iphone-18-pro-max-512gb",
       "clean_name": "iPhone 18 Pro Max 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -6991,7 +7018,7 @@
       },
       "product_id": "iphone-18-pro-max-1tb",
       "clean_name": "iPhone 18 Pro Max 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -7018,7 +7045,7 @@
       },
       "product_id": "iphone-18-pro-max-2tb",
       "clean_name": "iPhone 18 Pro Max 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -7045,7 +7072,7 @@
       },
       "product_id": "iphone-18-pro-256gb",
       "clean_name": "iPhone 18 Pro 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -7072,7 +7099,7 @@
       },
       "product_id": "iphone-18-pro-512gb",
       "clean_name": "iPhone 18 Pro 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -7099,7 +7126,7 @@
       },
       "product_id": "iphone-18-pro-1tb",
       "clean_name": "iPhone 18 Pro 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -7126,14 +7153,14 @@
       },
       "product_id": "iphone-18-pro-2tb",
       "clean_name": "iPhone 18 Pro 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
       "model": "iPhone 17 Pro Max 256GB",
       "raw_name": "iPhone 17 Pro Max 256GB Cam Vũ Trụ",
-      "price_vnd": 34990000,
-      "price_text": "34990000",
+      "price_vnd": 34490000,
+      "price_text": "34490000",
       "url": "https://fptshop.com.vn/dien-thoai/iphone-17-pro-max-256gb",
       "image_url": null,
       "shop": "fptshop",
@@ -7153,14 +7180,14 @@
       },
       "product_id": "iphone-17-pro-max-256gb",
       "clean_name": "iPhone 17 Pro Max 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
       "model": "iPhone 17 Pro Max 512GB",
       "raw_name": "iPhone 17 Pro Max 512GB Cam Vũ Trụ",
-      "price_vnd": 41490000,
-      "price_text": "41490000",
+      "price_vnd": 40990000,
+      "price_text": "40990000",
       "url": "https://fptshop.com.vn/dien-thoai/iphone-17-pro-max-512gb",
       "image_url": null,
       "shop": "fptshop",
@@ -7180,7 +7207,7 @@
       },
       "product_id": "iphone-17-pro-max-512gb",
       "clean_name": "iPhone 17 Pro Max 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -7207,7 +7234,7 @@
       },
       "product_id": "iphone-17-pro-max-1tb",
       "clean_name": "iPhone 17 Pro Max 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -7234,7 +7261,7 @@
       },
       "product_id": "iphone-17-pro-max-2tb",
       "clean_name": "iPhone 17 Pro Max 2TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -7261,15 +7288,15 @@
       },
       "product_id": "iphone-16-plus-128gb",
       "clean_name": "iPhone 16 Plus 128GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
       "model": "iPhone 16 Plus 256GB",
-      "raw_name": "iPhone 16 Plus 256GB Hồng MXY13VN/A",
+      "raw_name": "iPhone 16 Plus 256GB Đen MXWN3VN/A",
       "price_vnd": 27790000,
       "price_text": "27790000",
-      "url": "https://fptshop.com.vn/dien-thoai/iphone-16-plus-256gb?sku=00911152",
+      "url": "https://fptshop.com.vn/dien-thoai/iphone-16-plus-256gb?sku=00911153",
       "image_url": null,
       "shop": "fptshop",
       "product_line": "iphone",
@@ -7288,7 +7315,7 @@
       },
       "product_id": "iphone-16-plus-256gb",
       "clean_name": "iPhone 16 Plus 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -7315,7 +7342,7 @@
       },
       "product_id": "iphone-16-plus-512gb",
       "clean_name": "iPhone 16 Plus 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -7342,7 +7369,7 @@
       },
       "product_id": "iphone-15-128gb",
       "clean_name": "iPhone 15 128GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -7369,7 +7396,7 @@
       },
       "product_id": "iphone-15-256gb",
       "clean_name": "iPhone 15 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -7396,14 +7423,14 @@
       },
       "product_id": "iphone-15-512gb",
       "clean_name": "iPhone 15 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
       "model": "iPhone 16e 128GB",
       "raw_name": "iPhone 16e 128GB Trắng MD1R4VN/A",
-      "price_vnd": 18890000,
-      "price_text": "18890000",
+      "price_vnd": 17990000,
+      "price_text": "17990000",
       "url": "https://fptshop.com.vn/dien-thoai/iphone-16e?sku=00916021",
       "image_url": null,
       "shop": "fptshop",
@@ -7423,7 +7450,7 @@
       },
       "product_id": "iphone-16e-128gb",
       "clean_name": "iPhone 16e 128GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -7450,15 +7477,15 @@
       },
       "product_id": "iphone-16e-512gb",
       "clean_name": "iPhone 16e 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
       "model": "iPhone 17 Pro 256GB",
-      "raw_name": "iPhone 17 Pro 256GB Bạc",
+      "raw_name": "iPhone 17 Pro 256GB Cam Vũ Trụ",
       "price_vnd": 31990000,
       "price_text": "31990000",
-      "url": "https://fptshop.com.vn/dien-thoai/iphone-17-pro-256gb?sku=00921739",
+      "url": "https://fptshop.com.vn/dien-thoai/iphone-17-pro-256gb",
       "image_url": null,
       "shop": "fptshop",
       "product_line": "iphone",
@@ -7477,15 +7504,15 @@
       },
       "product_id": "iphone-17-pro-256gb",
       "clean_name": "iPhone 17 Pro 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
       "model": "iPhone 17 Pro 512GB",
-      "raw_name": "iPhone 17 Pro 512GB Bạc",
+      "raw_name": "iPhone 17 Pro 512GB Xanh Đậm",
       "price_vnd": 38490000,
       "price_text": "38490000",
-      "url": "https://fptshop.com.vn/dien-thoai/iphone-17-pro-512gb?sku=00921743",
+      "url": "https://fptshop.com.vn/dien-thoai/iphone-17-pro-512gb?sku=00921745",
       "image_url": null,
       "shop": "fptshop",
       "product_line": "iphone",
@@ -7504,7 +7531,7 @@
       },
       "product_id": "iphone-17-pro-512gb",
       "clean_name": "iPhone 17 Pro 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -7531,15 +7558,15 @@
       },
       "product_id": "iphone-17-pro-1tb",
       "clean_name": "iPhone 17 Pro 1TB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
       "model": "iPhone 17 256GB",
-      "raw_name": "iPhone 17 256GB Tím Oải Hương",
-      "price_vnd": 26490000,
-      "price_text": "26490000",
-      "url": "https://fptshop.com.vn/dien-thoai/iphone-17-256gb",
+      "raw_name": "iPhone 17 256GB Xanh Lá Xô Thơm",
+      "price_vnd": 24990000,
+      "price_text": "24990000",
+      "url": "https://fptshop.com.vn/dien-thoai/iphone-17-256gb?sku=00921653",
       "image_url": null,
       "shop": "fptshop",
       "product_line": "iphone",
@@ -7558,14 +7585,14 @@
       },
       "product_id": "iphone-17-256gb",
       "clean_name": "iPhone 17 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
       "model": "iPhone 17 512GB",
       "raw_name": "iPhone 17 512GB Trắng",
-      "price_vnd": 32990000,
-      "price_text": "32990000",
+      "price_vnd": 31990000,
+      "price_text": "31990000",
       "url": "https://fptshop.com.vn/dien-thoai/iphone-17-512gb?sku=00921656",
       "image_url": null,
       "shop": "fptshop",
@@ -7585,7 +7612,7 @@
       },
       "product_id": "iphone-17-512gb",
       "clean_name": "iPhone 17 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -7612,15 +7639,15 @@
       },
       "product_id": "iphone-17e-512gb",
       "clean_name": "iPhone 17e 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
       "model": "iPhone 17e 256GB",
-      "raw_name": "iPhone 17e 256GB Đen MHRV4ZP/A",
+      "raw_name": "iPhone 17e 256GB Hồng Phai MHRX4ZP/A",
       "price_vnd": 20990000,
       "price_text": "20990000",
-      "url": "https://fptshop.com.vn/dien-thoai/iphone-17e?sku=00926264",
+      "url": "https://fptshop.com.vn/dien-thoai/iphone-17e?sku=00926262",
       "image_url": null,
       "shop": "fptshop",
       "product_line": "iphone",
@@ -7639,7 +7666,7 @@
       },
       "product_id": "iphone-17e-256gb",
       "clean_name": "iPhone 17e 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -7666,7 +7693,7 @@
       },
       "product_id": "iphone-air-256gb",
       "clean_name": "iPhone Air 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -7693,7 +7720,7 @@
       },
       "product_id": "iphone-air-512gb",
       "clean_name": "iPhone Air 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -7720,7 +7747,7 @@
       },
       "product_id": "iphone-16-128gb",
       "clean_name": "iPhone 16 128GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
@@ -7747,15 +7774,15 @@
       },
       "product_id": "iphone-16-512gb",
       "clean_name": "iPhone 16 512GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     },
     {
       "model": "iPhone 16 256GB",
-      "raw_name": "iPhone 16 256GB Xanh Lưu Ly MYEH3VN/A",
+      "raw_name": "iPhone 16 256GB Xanh Mòng Két MYEJ3VN/A",
       "price_vnd": 27590000,
       "price_text": "27590000",
-      "url": "https://fptshop.com.vn/dien-thoai/iphone-16-256gb",
+      "url": "https://fptshop.com.vn/dien-thoai/iphone-16-256gb?sku=00911199",
       "image_url": null,
       "shop": "fptshop",
       "product_line": "iphone",
@@ -7774,18 +7801,18 @@
       },
       "product_id": "iphone-16-256gb",
       "clean_name": "iPhone 16 256GB",
-      "scraped_at": "2026-10-08T12:48:10.777156",
+      "scraped_at": "2026-10-10T12:00:06.555003",
       "stale": false
     }
   ],
   "summary": {
-    "total_products": 288,
+    "total_products": 289,
     "by_shop": {
       "cellphones": {
-        "count": 72,
+        "count": 74,
         "success": true,
         "status": "fresh",
-        "scraped_at": "2026-10-08T12:48:10.777156",
+        "scraped_at": "2026-10-10T12:00:06.555003",
         "skipped_incomplete": [
           "https://cellphones.com.vn/macbook-pro-14-inch-m3-max-2023-128gb-8tb.html",
           "https://cellphones.com.vn/imac-pro-2022.html",
@@ -7796,13 +7823,13 @@
         "count": 60,
         "success": true,
         "status": "fresh",
-        "scraped_at": "2026-10-08T12:48:10.777156"
+        "scraped_at": "2026-10-10T12:00:06.555003"
       },
       "cellphones-iphone": {
-        "count": 34,
+        "count": 32,
         "success": true,
         "status": "fresh",
-        "scraped_at": "2026-10-08T12:48:10.777156",
+        "scraped_at": "2026-10-10T12:00:06.555003",
         "skipped_incomplete": [
           "https://cellphones.com.vn/iphone-15-pro-max-2tb-68865.html",
           "https://cellphones.com.vn/iphone-5s-16-gb.html"
@@ -7812,19 +7839,19 @@
         "count": 32,
         "success": true,
         "status": "fresh",
-        "scraped_at": "2026-10-08T12:48:10.777156"
+        "scraped_at": "2026-10-10T12:00:06.555003"
       },
       "fptshop": {
-        "count": 57,
+        "count": 58,
         "success": true,
         "status": "fresh",
-        "scraped_at": "2026-10-08T12:48:10.777156"
+        "scraped_at": "2026-10-10T12:00:06.555003"
       },
       "fptshop-iphone": {
         "count": 33,
         "success": true,
         "status": "fresh",
-        "scraped_at": "2026-10-08T12:48:10.777156"
+        "scraped_at": "2026-10-10T12:00:06.555003"
       }
     },
     "errors": []
